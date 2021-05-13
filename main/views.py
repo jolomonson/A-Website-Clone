@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Tutorial
+
 # Create your views here.
-def home(request):
-    return HttpResponse('Django <strong>Web Development</strong> with Python')
+def homePage(request):
+    return render(request, 'main/home.html', context={"tutorials":Tutorial.objects.all})
+
