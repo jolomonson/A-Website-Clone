@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tinymce/css/prism.css' %}">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Python Programming Tutorials</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar-fixed">
+            <div class="nav-wrapper container">
+                <img class="img-responsive" src="{% static 'main/images/python logo.png' %}" alt="python_logo"
+                    style="width:50px; height:50px; margin-top:5px;">
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><i class="material-icons">search</i></li>
+                    <li>
+                        <form action="" id="searchForm" style="height:50px; padding-top:10px">
+                        <input type="search" style="font-size:16px" placeholder="search" id="search">
+                        </form>
+                    </li>
+                    <li><a href="home/">Home</a></li>
+                    <li><a href="#">+=1</a></li>
+                    <li><a href="#">Support the Content</a></li>
+                    <li><a href="https://goo.gl/7zgAVQ" target="_blank">Community</a></li>
+                    <li><a href="login/">Login</a></li>
+                    <li><a href="signUp/">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+
+    {% endblock %}
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'tinymce/js/prism.js' %}"></script>
+</body>
+
+</html>
