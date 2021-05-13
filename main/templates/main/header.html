@@ -16,8 +16,8 @@
 </head>
 
 <body>
-    <nav>
-        <div class="navbar-fixed">
+    <div class="navbar-fixed">
+        <nav>
             <div class="nav-wrapper container">
                 <img class="img-responsive" src="{% static 'main/images/python logo.png' %}" alt="python_logo"
                     style="width:50px; height:50px; margin-top:5px;">
@@ -25,7 +25,7 @@
                     <li><i class="material-icons">search</i></li>
                     <li>
                         <form action="" id="searchForm" style="height:50px; padding-top:10px">
-                        <input type="search" style="font-size:16px" placeholder="search" id="search">
+                            <input type="search" style="font-size:16px" placeholder="search" id="search">
                         </form>
                     </li>
                     <li><a href="home/">Home</a></li>
@@ -36,8 +36,8 @@
                     <li><a href="signUp/">Sign Up</a></li>
                 </ul>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     {% block content %}
 
     {% endblock %}
