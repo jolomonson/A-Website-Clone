@@ -19,5 +19,7 @@ from . import views
 app_name = 'main'
 
 urlpatterns = [
-    path('', views.homePage, name='home'),path('home/', views.homePage, name='homePage')
+    path('', views.homePage, name='home'),path('home/', views.homePage, name='homePage'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
 ]
