@@ -15,8 +15,13 @@
                 <li><a href="/">+=1</a></li>
                 <li><a href="/">Support the Content</a></li>
                 <li><a href="https://goo.gl/7zgAVQ" target="_blank">Community</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/account">Hello, {{user.username}}</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>

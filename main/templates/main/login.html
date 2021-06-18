@@ -6,6 +6,7 @@
 <h3 style="text-align: center;">Login Page</h3>
 <form action="" method="post">
     {% csrf_token %}
+    {{LoginForm|cripsy}}
 </form>
 
 <footer class="page-footer">
