@@ -6,7 +6,13 @@
 <h3 style="text-align: center;">Login Page</h3>
 <form action="" method="post">
     {% csrf_token %}
-    {{LoginForm|cripsy}}
+    <div class="container">
+        {{LoginForm|crispy}}
+        <button class="btn waves-effect waves-light" type="submit">Submit
+            <i class="material-icons right">send</i>
+        </button>
+        <h5 style="text-align: center;">Don't have an account <a href="/register">Register</a> here</h5>
+    </div>
 </form>
 
 <footer class="page-footer">

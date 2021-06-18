@@ -1,7 +1,7 @@
 from email import message
 from django.shortcuts import render, redirect
 from .models import Tutorial
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import RegistrationForm
 from django.contrib import messages
@@ -23,20 +23,26 @@ def register(request):
             for msg in RegForm.error_messages:
                 messages.error(request, '{} form.error_messages[msg]'.format(msg))
     else:
-        RegForm = RegistrationForm()
+        RegForm = RegistrationForm
     return render(request, 'main/register.html', {'RegForm':RegForm})
 
 def user_login(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        messages.success(request, 'You are Logged in as {}'.format(username))
-        return redirect('main:homePage')
-    else:
-        messages.error(request, 'Username or Password is Incorrect')
-    return render(request, 'main/login.html')
+    if request.method == 'POST':
+        LoginForm = AuthenticationForm(request, data=request.POST)
+        if LoginForm.is_valid():
+            username = LoginForm.cleaned_data.get('username')
+            password = LoginForm.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'You are Logged in as {}'.format(username))
+                return redirect('main:homePage')
+            else:
+                messages.error(request, 'Username or Password is Incorrect')
+        else:
+            messages.error(request, 'Username or Password is Incorrect')
+    LoginForm = AuthenticationForm()
+    return render(request, 'main/login.html', {'LoginForm':LoginForm})
 
 def user_logout(request):
     logout(request)
