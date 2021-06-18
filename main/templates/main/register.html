@@ -1,19 +1,18 @@
-{% extends 'main/header.html' %}
-{% load static %}
-{% block content %}
+{% extends 'main/header.html' %} {% load static %} {% load crispy_forms_tags %} {% block content %}
 
 <h3 style="text-align: center;">Register Page</h3>
-<form action="" method="post">
+<form action="" method="POST">
     {% csrf_token %}
     <div class="container">
-        {{form.as_p}}
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        {{RegForm|crispy}}
+        <p>By registering you accept the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Notice</a></p>
+        <button class="btn waves-effect waves-light" type="submit">Submit
             <i class="material-icons right">send</i>
         </button>
-        <h5 style="text-align: center;">Already have an account <a href="login/">Login</a> here</h5>
+        <h5 style="text-align: center;">Already have an account <a href="/login">Login</a> here</h5>
     </div>
 </form>
-
+<br><br>
 <footer class="page-footer">
     <div class="container">
         <div class="row">
@@ -23,8 +22,7 @@
                 <ul>
                     <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
                     <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
-                    <li><a href="https://www.facebook.com/pythonprogramming.net/"
-                            class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
                     <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
                     <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
                 </ul>

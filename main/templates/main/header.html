@@ -1,32 +1,49 @@
 <html lang="en">
-
-<head>
+  <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'tinymce/css/prism.css' %}">
-    <link rel="shortcut icon" href="{% static 'main/images/logo/python_dark_view.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static
+      'main/images/logo/python_dark_view.png' %}" type="image/x-icon">
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"
+      media="screen,projection" />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Python Programming Tutorials</title>
-</head>
+  </head>
 
-<body>
+  {% if messages %}
+  {% for message in messages %}
+  {% if message.tags == 'success'%}
+  <script>M.toast({html: "{{message}}", classes: 'green rounded', displayLength:2000});</script>
+  {% elif message.tags == 'info'%}
+  <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+  {% elif message.tags == 'warning'%}
+  <script>M.toast({html: "{{message}}", classes: 'orange rounded', displayLength:10000});</script>
+  {% elif message.tags == 'error'%}
+  <script>M.toast({html: "{{message}}", classes: 'red rounded', displayLength:10000});</script>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  <body>
     {% include 'main/includes/navbar.html' %}
-    
     <br>
     {% block content %}
 
     {% endblock %}
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{% static 'tinymce/js/prism.js' %}"></script>
-</body>
+  </body>
 
 </html>
