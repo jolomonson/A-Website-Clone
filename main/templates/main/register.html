@@ -4,7 +4,7 @@
 <form action="" method="POST">
     {% csrf_token %}
     <div class="container">
-        {{RegForm|crispy}}
+        {{RegForm|safe}}
         <p>By registering you accept the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Notice</a></p>
         <button class="btn waves-effect waves-light" type="submit">Submit
             <i class="material-icons right">send</i>

@@ -20,6 +20,16 @@ app_name = 'main'
 
 urlpatterns = [
     path('', views.homePage, name='home'),path('home/', views.homePage, name='homePage'),
+    path('machine-learning-tutorials/', views.machinelearningtutorials, name='machineLearning'),
+    path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),
+    path('quantum-programming-tutorials/', views.quantumprogrammingtutorials, name='quantumProgramming'),
+    path('game-development-tutorials/', views.gamedevelopmenttutorials, name='gameDevelopment'),
+    path('python-fundamental-tutorials/', views.pythonfundamentaltutorials, name='pythonFundamentals'),
+    path('web-development-tutorials/', views.webdevelopmenttutorials, name='webDevelopment'),
+    path('bot-tutorials/', views.bottutorials, name='botandai'),
+    path('robotics-tutorials/', views.roboticstutorials, name='robotics'),
+    path('gui-development-tutorials/', views.guitutorials, name='gui'),
+    path('golang-tutorials/', views.golangtutorials, name='golang'),
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),

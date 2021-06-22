@@ -1,0 +1,828 @@
+{% extends 'main/header.html' %}
+{% load static %}
+{% block content %}
+		<!-- main content -->
+		<div class="container" style="max-width:1500px; min-height:100%">
+			<!--Notification:-->
+            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+            <!--End Notification:-->				
+<!--       <pre class="prettyprint">              width="750" height="423"    -->
+<body class="body">
+    <div class="row">
+    <div class="col l8 m12 s12">
+
+
+      <div class="container-fluid" align="left" >
+		
+
+
+
+
+
+
+
+		<br>
+		<h2>Introduction to the Go Programming Language</h2>
+		<br>
+	  
+		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/G3PvTWRIhZA" frameborder="0" allowfullscreen></iframe></div><br>
+		
+
+
+
+
+
+
+		<br>
+	  
+<p>Hello and welcome to a <a href="https://golang.org/" target="blank"><strong>Go Language</strong></a> programming tutorial. In this series, we're going to cover setting up and the basics of using Go in a practical way. Go is a programming language where you could easily run through the basics, and then be totally lost when it comes to actually applying it to some actual task. Because of this, we're going to learn and immediately apply at the same time as we move through these concepts.</p>
+
+<p>First off, why might we be interested in the Go programming language? For me, since I mainly program in Python, I am going to compare it to a high-level language like that. Go was developed by Google to solve challenges that they were facing, purpose built from the ground up. A language like Python is great for rapid development and many tasks, but, due to the GIL and dynamic typing, it can sometimes be slow. If you scale out Python to millions of instances, you pay quite the price in performance and cost as opposed to if you had written the same program in C++. The problem is, however, C++ isn't the most enjoyable language to program in, nor is it the most friendly to learn.</p>
+
+<p>Go is a static-typed language (as opposed to dynamic typing with something like Python), and has concepts like concurrency baked in right from the start. For me personally, my main interest in Go is for web development, but I can see it being useful for a variety of high-volume types of tasks and just systems in general. Not only does Go have web frameworks, the language itself comes out of the gate with full web support, a built in web server, and could be considered already a low-level web framework.</p>
+
+<p>To begin, we need Go. You can <a href="https://golang.org/doc/install" target="blank"><strong>download Go here</strong></a>. In Windows, you can just grab a simple installer, a .pkg for Mac, or a tarball for Linux. If you are on Linux, make sure you add Go to your path. You can do that by:</p>
+
+<pre>nano ~/.profile</pre>
+<p>And then add the following to the end of the file:</p>
+<pre>export PATH=$PATH:/usr/local/go/bin</pre>
+<p>Save, exit and then do:</p>
+<pre>$ source  ~/.profile</pre>
+
+
+<p>A simple Go program will just consist of a single <code>.go</code> file. You can make and edit this file with whatever you want. I will personally be using <a href="https://www.sublimetext.com/3" target="blank"><strong>Sublime Text</strong></a>. On Windows, it's a simple <code>.exe</code> installer, on Linux you can get Sublime with:</p>
+
+<pre>$ sudo add-apt-repository ppa:webupd8team/sublime-text-3
+$ sudo apt-get update
+$ sudo apt-get install sublime-text-installer</pre>
+
+<p>To run your files, you use your terminal / cmd.exe and use the syntax: <code>go run YOURFILE.go</code></p>
+
+<p>Let's write a quick basic Go program to see if we've got everything setup and ready to go:</p>
+
+<p><code>gointro.go</code></p>
+<pre class='prettyprint lang-go'>package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Welcome to Go!")
+}</pre>
+
+<p>To run this, we can do <code>go run gointro.go</code>, and you should see:</p>
+<pre>Welcome to Go!</pre>
+
+<p>If you made it this far, congratulations on your first Go program! Let's cover briefly what each line is doing. I will do this by commenting above or beside the lines what they do. If you do not know what comments are in programming, they are ways to write notes and such in your code that will not be run as actual code when your program runs. In Go, the way you can do single-line comments is with <code>//</code> and you can do multi-line comments with <code>/* and end with */</code></p>
+
+<pre class='prettyprint lang-go'>package main //go programs consist of packages, and start with main
+
+// import a library/package. In this case we import fmt, which brings in 
+// standard formatted I/O strings from C
+import "fmt"
+
+
+// syntax for a function in Go. 
+// define, name, parms, and your code goes in curly braces.
+func main() {
+	//print line just outputs what you mass. 
+	// Println is a function from the fmt library
+	// we can reference other packages from fmt with .
+	fmt.Println("Welcome to Go!")
+}
+
+//we'll talk more on some other specifics in the next tutorial, such as how or why this main function even runs.</pre>
+
+
+        
+
+		
+
+		
+		
+
+
+                
+		<p>The next tutorial: <a title="Go Language Syntax" href="../syntax-go-language-programming-tutorial/indexf546.html?completed=/go/introduction-go-language-programming-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Go Language Syntax</button></a></p>
+
+		
+
+
+
+
+
+<br>
+	  </div>
+
+</div>
+<div class="col l4 m12 s12">
+<br><br><br>
+
+  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+  		<!-- C.A. : -->
+
+	    
+	    	
+        <a href="https://bit.ly/2FTjPW1?a=101&amp;t=/go/introduction-go-language-programming-tutorial/" id=process_click>
+          <div class="card hoverable" style="max-width:400px; align-items: left;">
+            <div class="card-image">
+              <img id=process_click class="responsive-img" src="../../static/images/CAs/pydiscord.png"/>
+            </div>
+          </div>
+        </a>
+        
+		
+
+  		<!--HONLY -->
+
+  	    
+
+
+
+	
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+
+				     
+						 
+							
+							    <li>
+								  <div class="collapsible-header active" style="padding:2px">Introduction to the Go Programming Language</div>
+
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Go Language Syntax</div>
+								  <div class="collapsible-body">
+										<p><a href="../syntax-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Go Language Types</div>
+								  <div class="collapsible-body">
+										<p><a href="../types-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Pointers in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../pointers-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Simple Web App in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../web-app-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Structs in the Go Programming Language</div>
+								  <div class="collapsible-body">
+										<p><a href="../structs-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Methods in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../methods-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Pointer Receivers in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../pointer-receivers-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">More Web Dev in Go Language</div>
+								  <div class="collapsible-body">
+										<p><a href="../more-web-dev-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Acessing the Internet in Go</div>
+								  <div class="collapsible-body">
+										<p><a href="../parsing-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Parsing XML with Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../parsing-xml-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Looping in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../looping-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Continuing our Go Web application</div>
+								  <div class="collapsible-body">
+										<p><a href="../looping-sitemap-data-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Mapping in Golang</div>
+								  <div class="collapsible-body">
+										<p><a href="../mapping-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Mapping Golang sitemap data</div>
+								  <div class="collapsible-body">
+										<p><a href="../mapping-sitemap-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Golang Web App HTML Templating</div>
+								  <div class="collapsible-body">
+										<p><a href="../templating-webapp-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Applying templating to our Golang web app</div>
+								  <div class="collapsible-body">
+										<p><a href="../template-news-aggregator-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Goroutines - Concurrency in Goprogramming</div>
+								  <div class="collapsible-body">
+										<p><a href="../goroutines-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Synchronizing Goroutines - Concurrency in Golang</div>
+								  <div class="collapsible-body">
+										<p><a href="../sync-goroutines-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Defer - Golang</div>
+								  <div class="collapsible-body">
+										<p><a href="../defer-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Panic and Recover in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../panic-recover-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Go Channels - Concurrency in Go</div>
+								  <div class="collapsible-body">
+										<p><a href="../channels-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Go Channels buffering, iteration, and synchronization</div>
+								  <div class="collapsible-body">
+										<p><a href="../channel-buffer-range-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Adding Concurrency to speed up our Golang Web Application</div>
+								  <div class="collapsible-body">
+										<p><a href="../concurrency-web-app-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+  </ul>
+
+
+</div>
+</div>
+
+
+
+			</div>
+		</div>
+
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">You've reached the end!</h5>
+                        <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                        <ul>
+                            <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                            <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                            <li><a href="https://www.facebook.com/pythonprogramming.net/"
+                                    class="grey-text text-lighten-3">Facebook</a></li>
+                            <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                            <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Legal Stuff:</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © OVER 9000! PythonProgramming.net
+                    <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+                </div>
+            </div>
+        </footer>
+{% endblock %}

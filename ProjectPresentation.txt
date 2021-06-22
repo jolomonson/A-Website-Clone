@@ -1,0 +1,5 @@
+ABOUT PYTHON PROGRAMMING.NET WEBSITE
+6th June 2021
+PythonProgramming.net is an open platform mainly specialised for python related tutorials and some alike
+
+Our website clone provides a more detailed and streamlined

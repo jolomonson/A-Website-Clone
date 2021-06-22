@@ -7,7 +7,7 @@
 <form action="" method="post">
     {% csrf_token %}
     <div class="container">
-        {{LoginForm|crispy}}
+        {{LoginForm|safe}}
         <button class="btn waves-effect waves-light" type="submit">Submit
             <i class="material-icons right">send</i>
         </button>
