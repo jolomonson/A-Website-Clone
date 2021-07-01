@@ -1,0 +1,591 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <div class="row">
+        <div class="col l8 m12 s12">
+            <div class="container-fluid" align="left">
+                <br>
+                <h2>Introduction - Deep Learning and Neural Networks with Python and Pytorch p.1</h2>
+                <br>
+                <div tabindex="-1" id="notebook" class="border-box-sizing">
+                    <div id="notebook-container">
+
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>Hello and welcome to a deep learning with Python and Pytorch tutorial series. It's been a while since I last did a full coverage of deep learning on a lower level, and quite a few things have changed both in the field
+                                        and regarding my understanding of deep learning.</p>
+                                    <p>For this series, I am going to be using <strong><a href="https://pytorch.org/" target="blank">Pytorch</a></strong> as our deep learning framework, though later on in the series we will also build a neural network from
+                                        scratch.
+                                    </p>
+                                    <p>I also have a tutorial miniseries for <strong><a href="../introduction-deep-learning-python-tensorflow-keras/index.html" target="blank">machine learning with Tensorflow and Keras</a></strong> if you're looking for TensorFlow
+                                        specifically.
+                                    </p>
+                                    <p>Once you know one framework and how neural networks work, you should be able to move freely between the other frameworks quite easily.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="What-are-neural-networks?">What are neural networks?<a class="anchor-link" href="#What-are-neural-networks?">&#182;</a></h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>I am going to assume many people are starting fresh, so I will quickly explain neural networks. It's my belief that you're going to learn the most by actually working with this technology, so I will be brief, but it
+                                        can be useful to have a basic understanding going in.</p>
+                                    <p>Neural networks at their core are just another tool in the set of machine learning algorithms.</p>
+                                    <p>Neural networks consist of a bunch of "neurons" which are values that start off as your input data, and then get multiplied by weights, summed together, and then passed through an activation function to produce new
+                                        values, and this process then repeats over however many "layers" your neural network has to then produce an output.</p>
+                                    <p>It looks something like</p>
+                                    <p><img src="../static/images/machine-learning/artificial-neural-network-model.png" style="max-width:500px"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>The <code>X1</code>, <code>X2</code>, <code>X3</code> are the "features" of your data. These could be pixel values of an image, or some other numerical characteristic that describes your data.</p>
+                                    <p>In your <code>hidden</code> layers ("hidden" just generally refers to the fact that the programmer doesn't really set or control the values to these layers, the machine does), these are neurons, numbering in however
+                                        many you want (you control how many there are, just not the value of those neurons), and then they lead to an output layer. The output is usually either a single neuron for regression tasks, or as many neurons as
+                                        you have classes. In the above case, there are 3 output neurons, so maybe this neural network is classifying dogs vs cats vs humans. Each neuron's value can be thought of as a confidence score for if the neural
+                                        network thinks it's that class.</p>
+                                    <p>Whichever neuron has the highest value, that's the predicted class! So maybe the top of the three output neurons is "human," then "dog" in the middle and then "cat" on the bottom. If the human value is the largest one,
+                                        then that would be the prediction of the neural network.</p>
+                                    <p>Connecting all of the neurons are those lines. Each of them is a weight, and possibly a bias. So the inputs get multiplied by the weights, the biases are added in, then it gets summed at the next neuron, passed through
+                                        an activation function, to be the next input value for the next one!</p>
+                                    <p><img src="../static/images/machine-learning/artificial-neuron-model-sigmoid-activiation-function.png" style="max-width:500px"></p>
+                                    <p>Above is an example of this "zoomed in" so to speak to show the mechanism for just a single neuron. You can see the inputs from other neurons come in, they're multiplied by the weights, then they are summed together.
+                                        After this summation, they pass through an <code>activation function</code>. The activation function's job is to calculate whether or not, or how much, a neuron is "firing." A neuron could output a 0 or 1 to be
+                                        off or on, but also, more commonly, could instead output a range between 0 and 1, for example, which serves as input to the next layer.</p>
+                                    <p><strong>How does a neural network "learn?"</strong></p>
+                                    <p>For now, we'll just consider the "supervised learning" approach, where the programmer shows the neural network the input data, and then also tells the machine what the output should be.</p>
+                                    <p>It then becomes the machine's job to figure out how to adjust the weights (every line is a weight) such that the output of the model is as close as possible to the classifications that the programmer tells the machine
+                                        that everything is. The machine aims to do this not just for a single sample, but for up to millions, or more of samples! ...hunting by slowly tweaking weights, like turning and tweaking nobs in the system, in such
+                                        a way so as to get closer and closer to the target/desired output.</p>
+                                    <p>Alright, you're basically an expert now. Let's get to Pytorch. If you're still confused about certain things, that's totally fine. Most, if not all, should be ironed out by actually working with this stuff. If you are
+                                        confused at any point, however, just come to the discord channel: <a href="http://discord.gg/sentdex"><strong>discord.gg/sentdex</strong></a> and ask your question in one of the help channels.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p><strong>What you will need for this series:</strong></p>
+                                    <ul>
+                                        <li><strong><a href="https://www.python.org/">Python 3+</a></strong>. I will be using Python 3.7 specifically.</li>
+                                        <li><strong><a href="https://pytorch.org/get-started/locally/" target="blank">Pytorch</a></strong>. I am using version 1.2.0 here.</li>
+                                        <li><strong><a href="../introduction-learn-python-3-tutorials/index.html" target="blank">Understanding of the Python 3 basics</a></strong></li>
+                                        <li><strong><a href="../object-oriented-programming-introduction-intermediate-python-tutorial/index.html" target="blank">Understanding of OOP and other intermediate concepts</a></strong></li>
+                                    </ul>
+                                    <p>Optionally, you may want to be running things on a GPU, rather than your CPU.</p>
+                                    <p><strong>Why GPU?</strong></p>
+                                    <p>We often want to run on the GPU because the thing we do with these tensor-processing libraries is we compute huge numbers of simple calculations. Each "core" of your CPU can only do 1 thing. With virtual cores, this
+                                        doubles, but CPUs were meant to work on much more complicated, hard-to-solve, problems at a time. GPUs were intended to help generate graphics, which also require many small/simple calculations. As such, your CPU
+                                        probably does somewhere between 8 and 24 calculations at a time. A decent GPU will do *thousands.*</p>
+                                    <p>For this tutorial, you can still follow along on your CPU, and probably any CPU will work. For just about any practical use-case of deep learning,however, you really are going to need a good GPU.</p>
+                                    <p><strong>Cloud GPUs</strong></p>
+                                    <p>There are some "free" platforms that do offer GPUs on a free tier, but, again, this wont be practical for any real case, and eventually you will want to upgrade your account there and then you will be paying prices
+                                        typically above industry standard for what you're getting. There are no corners to cut, at some point, you're going to want a high-ish end GPU locally, or in the cloud.</p>
+                                    <p>Currently, in the cloud, the best bang for your buck option is <a href="http://linode.com/sentdex" target="blank"><strong>Linode.com</strong></a>. I have a tutorial on <a href="../cloud-gpu-compare-and-setup-linode-rtx-6000/index.html"
+                                            target="blank"><strong>how to efficiently make use of your cloud GPU</strong></a> as well, which uses Linode.</p>
+                                    <p>1.50 USD an hour can still be cost prohibitive, however, and many tasks wont need this kind of power. For the next best option, there is <a href="../paperspace/index.html" target="blank"><strong>Paperspace</strong></a>,
+                                        which offers cheaper GPUs and is super simple to setup. Here, you can get a deep-learning viable GPU for $0.50/hr, and you only pay while your machine is turned on.</p>
+                                    <p><strong>Local GPUs</strong></p>
+                                    <p>If you want to use your own GPU locally and you're on Linux, Linode has a good <a href="https://www.linode.com/docs/platform/linode-gpu/getting-started-with-gpu/" target="blank"><strong>Cuda Toolkit and CuDNN setup tutorial</strong></a>.</p>
+                                    <p>If you're on Windows, then just get <a href="https://developer.nvidia.com/cuda-downloads?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10" target="blank"><strong>Cuda Toolkit 10.0</strong></a>.</p>
+                                    <p>Next, download <a href="https://developer.nvidia.com/rdp/cudnn-download#a-collapse763-10" target="blank"><strong>CuDNN for Cuda Toolkit 10.0</strong></a> (you may need to create an account and be logged in for this
+                                        step).
+                                    </p>
+                                    <p>Install the CUDA Toolkit, then extract the CuDNN files. From those CuDNN files (the dirs <code>bin</code>, <code>include</code>, and <code>lib</code>), you just need to move them to your Cuda Toolkit location, which
+                                        is likely: <code>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0</code>, which should also have <code>bin</code>, <code>include</code>, and <code>lib</code> dirs which you will merge with.</p>
+                                    <p>If you're having a hard time with this, come to <a href="http://discord.gg/sentdex" target="blank"><strong>Discord.gg/sentdex</strong></a> and we'll help to get you setup!</p>
+                                    <p>...or you can just stick with the CPU version of things!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <h3 id="What-is-Pytorch?">What is Pytorch?<a class="anchor-link" href="#What-is-Pytorch?">&#182;</a></h1>
+                                        <p>The <strong><a href="https://pytorch.org/" target="blank">Pytorch</a></strong> library, like the other deep learning libraries, really is just a library that does operations on tensors.</p>
+                                        <p><strong>What's a tensor?!</strong></p>
+                                        <p>You can just think of a tensor like an array. Really all we're doing is basically multiplying arrays here. That's all there is to it. The fancy bits are when we run an optimization algorithm on all those weights
+                                            to start modifying them. Neural networks themselves are actually super basic and simple. Their optimization is a little more challenging, but most of these deep learning libraries also help you a bit with that
+                                            math. If you want to learn how to do <em>everything</em> yourself by hand, stay tuned later in the series. I just don't think it would be wise to lead with that.</p>
+                                        <p>So, let's poke with some tensors.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                                <div class="output">
+
+
+                                    <div class="output_area">
+
+                                        <div class="prompt"></div>
+
+
+                                        <div class="output_subarea output_stream output_stdout output_text">
+                                            <pre>tensor([10.,  3.])
+</pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>So yeah, it's just [5 <em> 2, 3 </em> 1]. Simple stuff!</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>Because it's a lot of operations on arrays, Pytorch aims to mimic the very popular numeric library in Python called NumPy. Many of the exact same methods exist, usually with the same names, but sometimes different ones.
+                                        One common task is to make an "empty" array, of some shape. In NumPy, we use <code>np.zeros</code>. In Pytorch, we do the same!</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                                <div class="output">
+
+
+                                    <div class="output_area">
+
+                                        <div class="prompt"></div>
+
+
+                                        <div class="output_subarea output_stream output_stdout output_text">
+                                            <pre>tensor([[0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0.]])
+</pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                                <div class="output">
+
+
+                                    <div class="output_area">
+
+                                        <div class="prompt"></div>
+
+
+                                        <div class="output_subarea output_stream output_stdout output_text">
+                                            <pre>torch.Size([2, 5])
+</pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>If you need to generate an array of random values, but a specific shape</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                                <div class="output">
+
+
+                                    <div class="output_area">
+
+                                        <div class="prompt"></div>
+
+
+                                        <div class="output_subarea output_stream output_stdout output_text">
+                                            <pre>tensor([[0.2632, 0.9136, 0.5702, 0.9915, 0.4885],
+        [0.5025, 0.7631, 0.5265, 0.4594, 0.1881]])
+</pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>And no, I am not wasting your time with any of these examples. We will be using all of these methods, and learning more along the way.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>For the last one, how about a reshape? It turns out Pytorch decided to come up with a new name that no one else uses, they call it <code>.view()</code></p>
+                                    <p>For people coming here from Numpy or other ML libraries, that'll be a goofy one, but pretty quick to remember.</p>
+                                    <p>So, in the above, we have 2 tensors, with 5 values in each. We could flatten this to be 1 tensor with 10 values. To do this, we would use <code>.view()</code>:</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">view</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                                <div class="output">
+
+
+                                    <div class="output_area">
+
+
+
+
+
+
+                                        <div class="output_text output_subarea output_execute_result">
+                                            <pre>tensor([[0.2632, 0.9136, 0.5702, 0.9915, 0.4885, 0.5025, 0.7631, 0.5265, 0.4594,
+         0.1881]])</pre>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>I don't totally mind this naming convention. You're literally "viewing" that tensor as a 1x10 now. It doesn't actually modify the tensor:</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                                <div class="output">
+
+
+                                    <div class="output_area">
+
+
+
+
+
+
+                                        <div class="output_text output_subarea output_execute_result">
+                                            <pre>tensor([[0.2632, 0.9136, 0.5702, 0.9915, 0.4885],
+        [0.5025, 0.7631, 0.5265, 0.4594, 0.1881]])</pre>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>Of course you can re-assign:</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">view</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+                                <div class="inner_cell">
+                                    <div class="input_area">
+                                        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span>
+</pre></div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="output_wrapper">
+                                <div class="output">
+
+
+                                    <div class="output_area">
+
+
+
+
+
+
+                                        <div class="output_text output_subarea output_execute_result">
+                                            <pre>tensor([[0.2632, 0.9136, 0.5702, 0.9915, 0.4885, 0.5025, 0.7631, 0.5265, 0.4594,
+         0.1881]])</pre>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="cell border-box-sizing text_cell rendered">
+                            <div class="prompt input_prompt">
+                            </div>
+                            <div class="inner_cell">
+                                <div class="text_cell_render border-box-sizing rendered_html">
+                                    <p>Alright, there's your super fast introduction to Pytorch and neural networks. In the next tutorial, we'll be working on the input to our neural network, the data.</p>
+                                    <p>One of the very few things that we have control over when it comes to neural networks is the data, and the format/structure of this data.</p>
+                                    <p>First we have to acquire that data, then we have to consider how to convert the data to numerical values, consider things like scaling, and then figure out how we will be showing this data to the neural network.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell border-box-sizing code_cell rendered">
+                            <div class="input">
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <li>
+                    <div class="collapsible-header active" style="padding:2px">Introduction - Deep Learning and Neural Networks with Python and Pytorch p.1</div>
+
+                </li>
+
+
+
+                <li>
+                    <div class="collapsible-header">Data - Deep Learning and Neural Networks with Python and Pytorch p.2</div>
+                    <div class="collapsible-body">
+                        <p><a href="../data-deep-learning-neural-network-pytorch/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <div class="collapsible-header">Building our Neural Network - Deep Learning and Neural Networks with Python and Pytorch p.3</div>
+                    <div class="collapsible-body">
+                        <p><a href="../building-deep-learning-neural-network-pytorch/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <div class="collapsible-header">Training Neural Network - Deep Learning and Neural Networks with Python and Pytorch p.4</div>
+                    <div class="collapsible-body">
+                        <p><a href="../training-deep-learning-neural-network-pytorch/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <div class="collapsible-header">Convolutional Neural Networks - Deep Learning and Neural Networks with Python and Pytorch p.5</div>
+                    <div class="collapsible-body">
+                        <p><a href="../convolutional-neural-networks-deep-learning-neural-network-pytorch/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <div class="collapsible-header">Convolutional Neural Nework Model - Deep Learning and Neural Networks with Python and Pytorch p.6</div>
+                    <div class="collapsible-body">
+                        <p><a href="../convnet-model-deep-learning-neural-network-pytorch/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <div class="collapsible-header">Running on the GPU - Deep Learning and Neural Networks with Python and Pytorch p.7</div>
+                    <div class="collapsible-body">
+                        <p><a href="../gpu-deep-learning-neural-network-pytorch/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <div class="collapsible-header">Basic Network Analysis and Visualizations - Deep Learning and Neural Networks with Python and Pytorch p.8</div>
+                    <div class="collapsible-body">
+                        <p><a href="../analysis-visualization-deep-learning-neural-network-pytorch/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                    </div>
+                </li>
+                </body>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                <ul>
+                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Legal Stuff:</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+        </div>
+    </div>
+</footer>
+{% endblock %}

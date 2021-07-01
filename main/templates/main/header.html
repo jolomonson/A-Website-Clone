@@ -1,42 +1,28 @@
 <html lang="en">
-  <head>
+
+<head>
     {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'tinymce/css/prism.css' %}">
-    <link rel="shortcut icon" href="{% static
-      'main/images/logo/python_dark_view.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'main/images/logo/python_dark_view.png' %}" type="image/x-icon">
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-      media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Python Programming Tutorials</title>
-  </head>
+</head>
 
-  <body>
-    {% include 'main/includes/navbar.html' %}
-    {% include 'main/includes/messages.html' %}
-    <br>
-    <button onclick="myToast()">Click Me!</button>
-    <script>
-      function myToast(){
-        M.toast({html: 'I am a toast!'})
-      }
-    </script>
-    {% block content %}
-
-    {% endblock %}
+<body>
+    {% include 'main/includes/navbar.html' %} {% include 'main/includes/messages.html' %}
+    <br> {% block content %} {% endblock %}
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!-- Compiled and minified JavaScript -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{% static 'tinymce/js/prism.js' %}"></script>
-  </body>
+</body>
 
 </html>

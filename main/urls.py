@@ -20,7 +20,10 @@ app_name = 'main'
 
 urlpatterns = [
     path('', views.homePage, name='home'),path('home/', views.homePage, name='homePage'),
+
     path('machine-learning-tutorials/', views.machinelearningtutorials, name='machineLearning'),
+    path('deep-learning-neural-networks/', views.deeplearningneuralnetworks, name='deepLearningNeuralNetwork'),
+    
     path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),
     path('quantum-programming-tutorials/', views.quantumprogrammingtutorials, name='quantumProgramming'),
     path('game-development-tutorials/', views.gamedevelopmenttutorials, name='gameDevelopment'),

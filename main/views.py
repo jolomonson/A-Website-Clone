@@ -11,6 +11,8 @@ def homePage(request):
 
 def machinelearningtutorials(request):
     return render(request, 'main/tutorials/MachineLearning/machine-learning-tutorials/index.html')
+def deeplearningneuralnetworks(request):
+    return render(request, 'main/tutorials/MachineLearning/deep-learning-tutorials/index.html')
 
 def dataanalysistutorials(request):
     return render(request, 'main/tutorials/DataAnalysis/data-analysis-tutorials/index.html')
