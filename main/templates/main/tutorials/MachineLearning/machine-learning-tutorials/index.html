@@ -1,134 +1,61 @@
 {% extends 'main/header.html' %}
 {% load static %}
 {% block content %}
-		
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
-			
-<br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+	<!--Notification:-->
+	<!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+	<!--End Notification:-->
+
+	<br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
 	<div class="row">
 
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../introduction-deep-learning-neural-network-pytorch/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/playlistimages/pytorch-basics.png" style="width:250px">
-				  <br><span class="card-title"><strong>Deep Learning and Neural Networks with Python and Pytorch</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Learn how to create neural networks and do deep learning with Python and Pytorch.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../introduction-deep-learning-neural-network-pytorch/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../introduction-deep-learning-neural-network-pytorch/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/pytorch-basics.png' %}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Deep Learning and Neural Networks with Python and
+								Pytorch</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Learn how to create neural networks and do deep learning with Python and Pytorch.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../introduction-deep-learning-neural-network-pytorch/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
+			</div>
 
 
 		</div>
 
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../cloud-gpu-compare-and-setup-linode-rtx-6000/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/playlistimages/cloud_GPUs.png" style="width:250px">
-				  <br><span class="card-title"><strong>Cloud GPUs Tutorial (comparing &amp; using)</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Compare the major cloud-GPU providers and learn how to make efficient use of them for deep learning in the cloud.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../cloud-gpu-compare-and-setup-linode-rtx-6000/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../cloud-gpu-compare-and-setup-linode-rtx-6000/index.html" class="waves-effect waves-light"
+					style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/cloud_GPUs.png' %}" style="width:210px">
+						<br><span class="card-title"><strong>Cloud GPUs Tutorial (comparing &amp; using)</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Compare the major cloud-GPU providers and learn how to make efficient use of them for deep
+							learning in the cloud.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../cloud-gpu-compare-and-setup-linode-rtx-6000/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
-
-
-		</div>
-
-
-
-		<div class="col l4 s12 m12">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../q-learning-reinforcement-learning-python-tutorial/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/playlistimages/Reinforcement%20Learning%20with%20Python%20Tutorial.png" style="width:250px">
-				  <br><span class="card-title"><strong>Reinforcement Learning</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Train machines (agents) to interact in environments through the use of rewards and punishments to incentivise specific results.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../q-learning-reinforcement-learning-python-tutorial/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
-
-
-		</div>
-
-		<div class="col l4 s12 m12">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../introduction-self-driving-autonomous-cars-carla-python/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/playlistimages/carla-512.jpg" style="width:250px">
-				  <br><span class="card-title"><strong>Self-driving cars in Python with Carla</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Train a self driving car with reinforcement learning using Python and the Carla autonomous car simulator.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../introduction-self-driving-autonomous-cars-carla-python/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
-
-
-		</div>
-
-		<div class="col l4 s12 m12">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../introduction-deep-learning-python-tensorflow-keras/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/Deep%20Learning%20basics%20with%20Python%2c%20TensorFlow%20and%20Keras.png" style="width:250px">
-				  <br><span class="card-title"><strong>Deep Learning basics with Python, TensorFlow and Keras</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>An updated series to learn how to use Python, TensorFlow, and Keras to do deep learning. Suitable for ML beginner.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../introduction-deep-learning-python-tensorflow-keras/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
-
-
-		</div>
-
-		<div class="col l4 s12 m12">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../machine-learning-tutorial-python-introduction/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/machine-learning-playlist.png" style="width:250px">
-				  <br><span class="card-title"><strong>Practical Machine Learning with Python</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Learn theory, real world application, and the inner workings of regression, classification, clustering, and deep learning.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../machine-learning-tutorial-python-introduction/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
+			</div>
 
 
 		</div>
@@ -136,90 +63,130 @@
 
 
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../game-frames-open-cv-python-plays-gta-v/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/python-plays-gta-v.png" style="width:250px">
-				  <br><span class="card-title"><strong>Python Plays GTA V</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Training Python how to play and do a self-driving car in Grand Theft Auto 5 through machine learning and other statistical approaches.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../game-frames-open-cv-python-plays-gta-v/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../q-learning-reinforcement-learning-python-tutorial/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img"
+							src="{% static 'main/images/MachineLearning/Reinforcement Learning with Python Tutorial.png' %}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Reinforcement Learning</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Train machines (agents) to interact in environments through the use of rewards and
+							punishments to incentivise specific results.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../q-learning-reinforcement-learning-python-tutorial/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
+			</div>
+
+
+		</div>
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../introduction-self-driving-autonomous-cars-carla-python/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/carla-512.jpg' %}" style="width:220px">
+						<br><span class="card-title"><strong>Self-driving cars in Python with Carla</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Train a self driving car with reinforcement learning using Python and the Carla autonomous
+							car simulator.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../introduction-self-driving-autonomous-cars-carla-python/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
+
+
+		</div>
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../introduction-deep-learning-python-tensorflow-keras/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img"
+							src="{% static 'main/images/MachineLearning/Deep Learning basics with Python, TensorFlow and Keras.png'%}"
+							style="width:220px">
+						<br><span class="card-title"><strong>Deep Learning basics with Python, TensorFlow and
+								Keras</strong></span>
+					</div>
+					<div class="card-content">
+						<p>An updated series to learn how to use Python, TensorFlow, and Keras to do deep learning.
+							Suitable for ML beginner.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../introduction-deep-learning-python-tensorflow-keras/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
+
+
+		</div>
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../machine-learning-tutorial-python-introduction/index.html" class="waves-effect waves-light"
+					style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{%static 'main/images/machine-learning-playlist.png'%}"
+							style="width:210px">
+						<br><span class="card-title"><strong>Practical Machine Learning with Python</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Learn theory, real world application, and the inner workings of regression, classification,
+							clustering, and deep learning.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../machine-learning-tutorial-python-introduction/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
 
 
 		</div>
 
 
 
-
-
-
-
-
-
-
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../starcraft-ii-ai-python-sc2-tutorial/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/starcraft-ii.jpg" style="width:250px">
-				  <br><span class="card-title"><strong>AI in StarCraft II</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Learn how to build AI in StarCraft II, a multi-player strategy computer game, with Python!</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../starcraft-ii-ai-python-sc2-tutorial/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../game-frames-open-cv-python-plays-gta-v/index.html" class="waves-effect waves-light"
+					style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/python-plays-gta-v.png'%}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Python Plays GTA V</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Training Python how to play and do a self-driving car in Grand Theft Auto 5 through machine
+							learning and other statistical approaches.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../game-frames-open-cv-python-plays-gta-v/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
-
-
-		</div>
-
-		<div class="col l4 s12 m12">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../chatbot-deep-learning-python-tensorflow/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/chatbotseries.png" style="width:250px">
-				  <br><span class="card-title"><strong>Creating a Chatbot with Deep Learning, Python, and TensorFlow</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Learn how to create a deep learning chatbot using Reddit comments.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../chatbot-deep-learning-python-tensorflow/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
-
-
-		</div>
-
-		<div class="col l4 s12 m12">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../generative-model-python-playing-neural-network-tensorflow/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/Unconventional%20things%20with%20Neural%20Networks.png" style="width:250px">
-				  <br><span class="card-title"><strong>Unconventional Neural Networks</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Doing things like using a generative model to classify things, building a number drawer, doing math, and attempting to break encryption with neural networks.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../generative-model-python-playing-neural-network-tensorflow/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
+			</div>
 
 
 		</div>
@@ -229,62 +196,158 @@
 
 
 
-        <div class="col l4 s12 m12">
-            
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../deep-learning-browser-introduction-tensorflowjs/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/tensorflowjs.png" style="width:250px">
-				  <br><span class="card-title"><strong>TensorFlow.js</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Deep learning in the browser with no installs using TensorFlow.js.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../deep-learning-browser-introduction-tensorflowjs/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
 
 
-        </div>
 
-        <div class="col l4 s12 m12">
-            
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../introduction-use-tensorflow-object-detection-api-tutorial/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/object-detection.png" style="width:250px">
-				  <br><span class="card-title"><strong>TensorFlow Object Detection</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Learn how to detect and track objects in images or real time video with TensorFlow.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../introduction-use-tensorflow-object-detection-api-tutorial/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
-            </div>
-
-
-        </div>
 
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../machine-learning-python-sklearn-intro/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/mainsvmimage.png" style="width:250px">
-				  <br><span class="card-title"><strong>Support Vector Machines with Scikit Learn</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Learn how to deploy a support vector machine with Scikit Learn.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../machine-learning-python-sklearn-intro/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../starcraft-ii-ai-python-sc2-tutorial/index.html" class="waves-effect waves-light"
+					style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/starcraft-ii.jpg'%}"
+							style="width:270px">
+						<br><span class="card-title"><strong>AI in StarCraft II</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Learn how to build AI in StarCraft II, a multi-player strategy computer game, with Python!
+						</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../starcraft-ii-ai-python-sc2-tutorial/index.html" class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
+			</div>
+
+
+		</div>
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../chatbot-deep-learning-python-tensorflow/index.html" class="waves-effect waves-light"
+					style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/chatbotseries.png'%}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Creating a Chatbot with Deep Learning, Python, and
+								TensorFlow</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Learn how to create a deep learning chatbot using Reddit comments.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../chatbot-deep-learning-python-tensorflow/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
+
+
+	</div>
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../generative-model-python-playing-neural-network-tensorflow/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img"
+							src="{% static 'main/images/MachineLearning/Unconventional things with Neural Networks.png'%}"
+							style="width:210px">
+						<br><span class="card-title"><strong>Unconventional Neural Networks</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Doing things like using a generative model to classify things, building a number drawer,
+							doing math, and attempting to break encryption with neural networks.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../generative-model-python-playing-neural-network-tensorflow/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
+
+
+		</div>
+
+
+
+
+
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../deep-learning-browser-introduction-tensorflowjs/index.html" class="waves-effect waves-light"
+					style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/tensorflowjs.png'%}"
+							style="width:270px">
+						<br><span class="card-title"><strong>TensorFlow.js</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Deep learning in the browser with no installs using TensorFlow.js.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../deep-learning-browser-introduction-tensorflowjs/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
+
+
+		</div>
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../introduction-use-tensorflow-object-detection-api-tutorial/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/object-detection.png'%}"
+							style="width:250px">
+						<br><span class="card-title"><strong>TensorFlow Object Detection</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Learn how to detect and track objects in images or real time video with TensorFlow.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../introduction-use-tensorflow-object-detection-api-tutorial/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
+
+
+		</div>
+
+		<div class="col l4 s12 m12">
+
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+				<a href="../machine-learning-python-sklearn-intro/index.html" class="waves-effect waves-light"
+					style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/mainsvmimage.png'%}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Support Vector Machines with Scikit Learn</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Learn how to deploy a support vector machine with Scikit Learn.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../machine-learning-python-sklearn-intro/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
+				</a>
+			</div>
 
 
 		</div>
@@ -294,94 +357,111 @@
 
 
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../flat-clustering-machine-learning-python-scikit-learn/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/hierarchcical-clustering-3d-matplotlib-meanshift-tutorial.png" style="width:250px">
-				  <br><span class="card-title"><strong>Clustering (unsupervised machine learning)</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Learn about clustering (unsupervised machine learning) through using Scikit Learn.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../flat-clustering-machine-learning-python-scikit-learn/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../flat-clustering-machine-learning-python-scikit-learn/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img"
+							src="{% static 'main/images/MachineLearning/hierarchcical-clustering-3d-matplotlib-meanshift-tutorial.png'%}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Clustering (unsupervised machine learning)</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Learn about clustering (unsupervised machine learning) through using Scikit Learn.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../flat-clustering-machine-learning-python-scikit-learn/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
+			</div>
 
 
 		</div>
 
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../image-recognition-python/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/image-recognition-with-python-tutorial.png" style="width:250px">
-				  <br><span class="card-title"><strong>Image recognition w/ basic Pattern Recognition</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Discover how powerful even a very simple pattern recognition algorithm can be with character recognition.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../image-recognition-python/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../image-recognition-python/index.html" class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img"
+							src="{% static 'main/images/MachineLearning/image-recognition-with-python-tutorial.png'%}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Image recognition w/ basic Pattern
+								Recognition</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Discover how powerful even a very simple pattern recognition algorithm can be with character
+							recognition.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../image-recognition-python/index.html" class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
+			</div>
 
 
 		</div>
 
 		<div class="col l4 s12 m12">
-			
+
 			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../introduction-halite-ii-artificial-intelligence-competition/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="../static/images/categories/halite-ii-ai-competition.png" style="width:250px">
-				  <br><span class="card-title"><strong>Halite II - Artificial Intelligence Coding Challenge/Competition</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Compete with programmers around the world by creating AI bots to take over a space-like environment.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../introduction-halite-ii-artificial-intelligence-competition/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
+				<a href="../introduction-halite-ii-artificial-intelligence-competition/index.html"
+					class="waves-effect waves-light" style="color:#000">
+					<div class="card-image">
+						<img class="responsive-img" src="{% static 'main/images/MachineLearning/Halite III (2018) AI Coding Competition.png'%}"
+							style="width:250px">
+						<br><span class="card-title"><strong>Halite II - Artificial Intelligence Coding
+								Challenge/Competition</strong></span>
+					</div>
+					<div class="card-content">
+						<p>Compete with programmers around the world by creating AI bots to take over a space-like
+							environment.</p>
+					</div>
+					<div class="card-action right-align">
+						<a href="../introduction-halite-ii-artificial-intelligence-competition/index.html"
+							class="waves-effect waves-light btn"
+							style="color:#000000; background-color:#FFD166">Start</a>
+					</div>
 				</a>
-            </div>
+			</div>
 
 
 		</div>
 	</div>
-	<footer class="page-footer">
+</div>
+<footer class="page-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col l6 s12">
+				<h5 class="white-text">You've reached the end!</h5>
+				<p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+				<ul>
+					<li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+					<li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+					<li><a href="https://www.facebook.com/pythonprogramming.net/"
+							class="grey-text text-lighten-3">Facebook</a></li>
+					<li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+					<li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+				</ul>
+			</div>
+			<div class="col l4 offset-l2 s12">
+				<h5 class="white-text">Legal Stuff:</h5>
+				<ul>
+					<li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+					<li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-copyright">
 		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">You've reached the end!</h5>
-					<p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
-					<ul>
-						<li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
-						<li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
-						<li><a href="https://www.facebook.com/pythonprogramming.net/"
-								class="grey-text text-lighten-3">Facebook</a></li>
-						<li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
-						<li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
-					</ul>
-				</div>
-				<div class="col l4 offset-l2 s12">
-					<h5 class="white-text">Legal Stuff:</h5>
-					<ul>
-						<li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
-						<li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
-					</ul>
-				</div>
-			</div>
+			© OVER 9000! PythonProgramming.net
+			<a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
 		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				© OVER 9000! PythonProgramming.net
-				<a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
-			</div>
-		</div>
-	</footer>
+	</div>
+</footer>
 {% endblock %}
