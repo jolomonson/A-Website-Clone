@@ -23,6 +23,8 @@ def deeplearningwithtensorflowkeras(request):
     return render(request, 'main/tutorials/MachineLearning/deep-learning-with-tensorflow-keras/index.html')
 def practicalmachinelearning(request):
     return render(request, 'main/tutorials/MachineLearning/practical-machine-learning/index.html')
+def haliteiiartificialintelligence(request):
+    return render(request, 'main/tutorials/MachineLearning/halite-ii-artificial-intelligence/index.html')
 
 
 def dataanalysistutorials(request):

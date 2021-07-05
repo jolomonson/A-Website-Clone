@@ -28,6 +28,8 @@ urlpatterns = [
     path('self-driving-cars/', views.selfdrivingcars, name='selfDrivingCars'),
     path('deep-learning-with-tensorflow-keras/', views.deeplearningwithtensorflowkeras, name='deepLearningWithTensorflowKeras'),
     path('practical-machine-learning/', views.practicalmachinelearning, name='practicalMachineLearning'),
+    path('halite-ii-artificial-intelligence/', views.haliteiiartificialintelligence, name=' haliteiiArtificialIntelligence'),
+   
     
     
     path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),
@@ -43,3 +45,4 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
 ]
+
