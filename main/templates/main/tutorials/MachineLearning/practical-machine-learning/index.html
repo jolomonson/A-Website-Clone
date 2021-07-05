@@ -1,0 +1,752 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Practical Machine Learning Tutorial with Python Introduction</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/OGxgnH8y2NM?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+
+                    <div class='card hoverable'>
+                        <div class='card-content'>
+                            <div class='card-title'>What you will need for this tutorial series:</div>
+                            <ul>
+                                <li>Install numpy, matplotlib, pandas, sklearn and their dependencies</li><br>
+                            </ul>
+                            <p><code>pip install numpy</code></p>
+                            <p><code>pip install scipy</code></p>
+                            <p><code>pip install scikit-learn</code></p>
+                            <p><code>pip install matplotlib</code></p>
+                            <p><code>pip install pandas</code></p><br>
+
+                            <p style='font-size:85%'>Need help installing packages with pip? see the <a href="../using-pip-install-for-python-modules/index.html" target="blank"><strong>pip install tutorial</strong></a></p>
+                        </div>
+                    </div>
+
+
+
+                    <p>Hello girls and guys, welcome to an in-depth and practical machine learning course.</p>
+
+                    <p>The objective of this course is to give you a wholistic understanding of machine learning, covering theory, application, and inner workings of supervised, unsupervised, and deep learning algorithms.</p>
+
+                    <p>In this series, we'll be covering linear regression, K Nearest Neighbors, Support Vector Machines (SVM), flat clustering, hierarchical clustering, and neural networks.</p>
+
+                    <p>For each major algorithm that we cover, we will discuss the high level intuitions of the algorithms and how they are logically meant to work. Next, we'll apply the algorithms in code using real world data sets along with a module,
+                        such as with Scikit-Learn. Finally, we'll be diving into the inner workings of each of the algorithms by recreating them in code, from scratch, ourselves, including all of the math involved. This should give you a complete understanding
+                        of exactly how the algorithms work, how they can be tweaked, what advantages are, and what their disadvantages are.</p>
+
+
+                    <p>In order to follow along with the series, I suggest you have at the very least a basic understanding of Python. If you do not, I suggest you at least follow the <a href="../introduction-to-python-programming/index.html" target="blank"><strong>Python 3 Basics tutorial</strong></a>                        until the module installation with pip tutorial. If you have a basic understanding of Python, and the willingness to learn/ask questions, you will be able to follow along here with no issues. Most of the machine learning algorithms
+                        are actually quite simple, since they need to be in order to scale to large datasets. Math involved is typically linear algebra, but I will do my best to still explain all of the math. If you are confused/lost/curious about anything,
+                        ask in the comments section on YouTube, the <a href="../community/index.html" target="blank"><strong>community</strong></a> here, or by emailing me. You will also need Scikit-Learn and Pandas installed, along with others that we'll
+                        grab along the way.</p>
+
+
+                    <p>Machine learning was defined in 1959 by Arthur Samuel as the "field of study that gives computers the ability to learn without being explicitly programmed." This means imbuing knowledge to machines without hard-coding it. From what
+                        I have personally found, people outside the programming community mainly believe machine intelligence is hard-coded, completely unaware of the reality of the field. One of the largest challenges I had with machine learning was
+                        the abundance of material on the learning part. You can find formulas, charts, equations, and a bunch of theory on the topic of machine learning, but very little on the actual "machine" part, where you actually program the machine
+                        and run the algorithms on real data. This is mainly due to the history. In the 50s, machines were quite weak, and in very little supply, which remained very much the case for half a century. Machine Learning was relegated to being
+                        mainly theoretical and rarely actually employed. The Support Vector Machine (SVM), for example, was created by Vladimir Vapnik in the Soviet Union in 1963, but largely went unnoticed until the 90s when Vapnik was scooped out the
+                        Soviet Union to the United States by Bell Labs. The neural network was conceived in the 1940's, but computers at the time were nowhere near powerful enough to run them well, and have not been until the relatively recent times.</p>
+
+
+
+                    <p>The "idea" of machine learning has come in and out of favor a few times through history, each time leaving people thinking it was merely a fad. It is really only very recently that we've been able to put much of machine learning to
+                        any decent test. Nowadays, you can spin up and rent a $100,000 GPU cluster for a few dollars an hour, the stuff of PhD student dreams just 10 years ago. Machine learning got another up tick in the mid 2000's and has been on the
+                        rise ever since, also benefitting in general from Moore's Law. Beyond this, there are ample resources out there to help you on your journey with machine learning, like this tutorial. You can just do a Google search on the topic
+                        and find more than enough information to keep you busy for a while.</p>
+
+
+                    <p>This is so much so to the point where we now have modules and APIs at our disposal, and you can engage in machine learning very easily without almost any knowledge at all of how it works. With the defaults from Scikit-learn, you can
+                        get 90-95% accuracy on many tasks right out of the gate. Machine learning is a lot like a car, you do not need to know much about how it works in order to get an incredible amount of utility from it. If you want to push the limits
+                        on performance and efficiency, however, you need to dig in under the hood, which is more how this course is geared. If you are just looking for a quick tutorial for employing machine learning on data, I already have a <a href="../linear-svc-example-scikit-learn-svm-python/index.html"
+                            target="blank"><strong>simple classification example tutorial</strong></a> and a <a href="../flat-clustering-machine-learning-python-scikit-learn/index.html" target="blank"><strong>simple clustering (unsupervised machine learning)</strong></a>                        example that you can check out.</p>
+
+                    <p>Despite the apparent age and maturity of machine learning, I would say there's no better time than now to learn it, since you can actually use it. Machines are quite powerful, the one you are working on can probably do most of this
+                        series quickly. Data is also very plentiful lately.</p>
+
+                    <p>The first topic we'll be covering is Regression, which is where we'll pick up in the next tutorial. Make sure you have Python 3 installed, along with Pandas and Scikit-Learn.</p>
+
+                    <p>The next tutorial: <a title="Regression - Intro and Data" href="../regression-introduction-machine-learning-tutorial/indexb202.html?completed=/machine-learning-tutorial-python-introduction/"><button class="btn" style="background-color:#FFD166; color:#000000">Regression - Intro and Data</button></a></p>
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=2&amp;t=/machine-learning-tutorial-python-introduction/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Practical Machine Learning Tutorial with Python Introduction</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - Intro and Data</div>
+                        <div class="collapsible-body">
+                            <p><a href="../regression-introduction-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - Features and Labels</div>
+                        <div class="collapsible-body">
+                            <p><a href="../features-labels-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - Training and Testing</div>
+                        <div class="collapsible-body">
+                            <p><a href="../training-testing-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - Forecasting and Predicting</div>
+                        <div class="collapsible-body">
+                            <p><a href="../forecasting-predicting-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Pickling and Scaling</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pickling-scaling-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - Theory and how it works</div>
+                        <div class="collapsible-body">
+                            <p><a href="../simple-linear-regression-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - How to program the Best Fit Slope</div>
+                        <div class="collapsible-body">
+                            <p><a href="../how-to-program-best-fit-line-slope-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - How to program the Best Fit Line</div>
+                        <div class="collapsible-body">
+                            <p><a href="../how-to-program-best-fit-line-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - R Squared and Coefficient of Determination Theory</div>
+                        <div class="collapsible-body">
+                            <p><a href="../r-squared-coefficient-of-determination-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Regression - How to Program R Squared</div>
+                        <div class="collapsible-body">
+                            <p><a href="../how-to-program-r-squared-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating Sample Data for Testing</div>
+                        <div class="collapsible-body">
+                            <p><a href="../sample-data-testing-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Classification Intro with K Nearest Neighbors</div>
+                        <div class="collapsible-body">
+                            <p><a href="../k-nearest-neighbors-intro-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Applying K Nearest Neighbors to Data</div>
+                        <div class="collapsible-body">
+                            <p><a href="../k-nearest-neighbors-application-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Euclidean Distance theory</div>
+                        <div class="collapsible-body">
+                            <p><a href="../euclidean-distance-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating a K Nearest Neighbors Classifer from scratch</div>
+                        <div class="collapsible-body">
+                            <p><a href="../programming-k-nearest-neighbors-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating a K Nearest Neighbors Classifer from scratch part 2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../coding-k-nearest-neighbors-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Testing our K Nearest Neighbors classifier</div>
+                        <div class="collapsible-body">
+                            <p><a href="../testing-our-k-nearest-neighbors-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Final thoughts on K Nearest Neighbors</div>
+                        <div class="collapsible-body">
+                            <p><a href="../final-thoughts-knn-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Support Vector Machine introduction</div>
+                        <div class="collapsible-body">
+                            <p><a href="../support-vector-machine-intro-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Vector Basics</div>
+                        <div class="collapsible-body">
+                            <p><a href="../vector-basics-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Support Vector Assertions</div>
+                        <div class="collapsible-body">
+                            <p><a href="../support-vector-assertions-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Support Vector Machine Fundamentals</div>
+                        <div class="collapsible-body">
+                            <p><a href="../support-vector-machine-fundamentals-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Constraint Optimization with Support Vector Machine</div>
+                        <div class="collapsible-body">
+                            <p><a href="../svm-constraint-optimization-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Beginning SVM from Scratch in Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../svm-in-python-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Support Vector Machine Optimization in Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../svm-optimization-python-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Support Vector Machine Optimization in Python part 2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../svm-optimization-python-2-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Visualization and Predicting with our Custom SVM</div>
+                        <div class="collapsible-body">
+                            <p><a href="../predictions-svm-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Kernels Introduction</div>
+                        <div class="collapsible-body">
+                            <p><a href="../kernels-with-svm-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Why Kernels</div>
+                        <div class="collapsible-body">
+                            <p><a href="../why-use-kernel-with-svm-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Soft Margin Support Vector Machine</div>
+                        <div class="collapsible-body">
+                            <p><a href="../soft-margin-svm-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Kernels, Soft Margin SVM, and Quadratic Programming with Python and CVXOPT</div>
+                        <div class="collapsible-body">
+                            <p><a href="../soft-margin-kernel-cvxopt-svm-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Support Vector Machine Parameters</div>
+                        <div class="collapsible-body">
+                            <p><a href="../support-vector-machine-parameters-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Machine Learning - Clustering Introduction</div>
+                        <div class="collapsible-body">
+                            <p><a href="../machine-learning-clustering-introduction-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Handling Non-Numerical Data for Machine Learning</div>
+                        <div class="collapsible-body">
+                            <p><a href="../working-with-non-numerical-data-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">K-Means with Titanic Dataset</div>
+                        <div class="collapsible-body">
+                            <p><a href="../k-means-titanic-dataset-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">K-Means from Scratch in Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../k-means-from-scratch-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Finishing K-Means from Scratch in Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../k-means-from-scratch-2-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Hierarchical Clustering with Mean Shift Introduction</div>
+                        <div class="collapsible-body">
+                            <p><a href="../hierarchical-clustering-mean-shift-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Mean Shift applied to Titanic Dataset</div>
+                        <div class="collapsible-body">
+                            <p><a href="../mean-shift-titanic-dataset-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Mean Shift algorithm from scratch in Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../mean-shift-from-scratch-python-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Dynamically Weighted Bandwidth for Mean Shift</div>
+                        <div class="collapsible-body">
+                            <p><a href="../weighted-bandwidth-mean-shift-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Introduction to Neural Networks</div>
+                        <div class="collapsible-body">
+                            <p><a href="../neural-networks-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Installing TensorFlow for Deep Learning - OPTIONAL</div>
+                        <div class="collapsible-body">
+                            <p><a href="../installing-tensorflow-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Introduction to Deep Learning with TensorFlow</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tensorflow-introduction-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Learning with TensorFlow - Creating the Neural Network Model</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tensorflow-deep-neural-network-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Learning with TensorFlow - How the Network will run</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tensorflow-neural-network-session-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Learning with our own Data</div>
+                        <div class="collapsible-body">
+                            <p><a href="../using-our-own-data-tensorflow-deep-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Simple Preprocessing Language Data for Deep Learning</div>
+                        <div class="collapsible-body">
+                            <p><a href="../preprocessing-tensorflow-deep-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Training and Testing on our Data for Deep Learning</div>
+                        <div class="collapsible-body">
+                            <p><a href="../train-test-tensorflow-deep-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">10K samples compared to 1.6 million samples with Deep Learning</div>
+                        <div class="collapsible-body">
+                            <p><a href="../data-size-example-tensorflow-deep-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">How to use CUDA and the GPU Version of Tensorflow for Deep Learning</div>
+                        <div class="collapsible-body">
+                            <p><a href="../how-to-cuda-gpu-tensorflow-deep-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Recurrent Neural Network (RNN) basics and the Long Short Term Memory (LSTM) cell</div>
+                        <div class="collapsible-body">
+                            <p><a href="../recurrent-neural-network-rnn-lstm-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">RNN w/ LSTM cell example in TensorFlow and Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../rnn-tensorflow-python-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Convolutional Neural Network (CNN) basics</div>
+                        <div class="collapsible-body">
+                            <p><a href="../convolutional-neural-network-cnn-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Convolutional Neural Network CNN with TensorFlow tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../cnn-tensorflow-convolutional-nerual-network-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">TFLearn - High Level Abstraction Layer for TensorFlow Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tflearn-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Using a 3D Convolutional Neural Network on medical imaging data (CT Scans) for Kaggle</div>
+                        <div class="collapsible-body">
+                            <p><a href="../3d-convolutional-neural-network-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Classifying Cats vs Dogs with a Convolutional Neural Network on Kaggle</div>
+                        <div class="collapsible-body">
+                            <p><a href="../convolutional-neural-network-kats-vs-dogs-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Using a neural network to solve OpenAI&#39;s CartPole balancing environment</div>
+                        <div class="collapsible-body">
+                            <p><a href="../openai-cartpole-neural-network-example-machine-learning-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</div>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                <ul>
+                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Legal Stuff:</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+        </div>
+    </div>
+</footer>
+{% endblock %}

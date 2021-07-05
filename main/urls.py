@@ -23,6 +23,12 @@ urlpatterns = [
 
     path('machine-learning-tutorials/', views.machinelearningtutorials, name='machineLearning'),
     path('deep-learning-neural-networks/', views.deeplearningneuralnetworks, name='deepLearningNeuralNetwork'),
+    path('cloud-gpus/', views.cloudgpus, name='cloud GPUs'),
+    path('reinforcement-learning/', views.reinforcementlearning, name='reinforcementLearning'),
+    path('self-driving-cars/', views.selfdrivingcars, name='selfDrivingCars'),
+    path('deep-learning-with-tensorflow-keras/', views.deeplearningwithtensorflowkeras, name='deepLearningWithTensorflowKeras'),
+    path('practical-machine-learning/', views.practicalmachinelearning, name='practicalMachineLearning'),
+    
     
     path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),
     path('quantum-programming-tutorials/', views.quantumprogrammingtutorials, name='quantumProgramming'),

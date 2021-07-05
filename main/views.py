@@ -12,7 +12,18 @@ def homePage(request):
 def machinelearningtutorials(request):
     return render(request, 'main/tutorials/MachineLearning/machine-learning-tutorials/index.html')
 def deeplearningneuralnetworks(request):
-    return render(request, 'main/tutorials/MachineLearning/deep-learning-tutorials/index.html')
+    return render(request, 'main/tutorials/MachineLearning/deep-learning-and-neural-networks/index.html')
+def cloudgpus(request):
+    return render(request, 'main/tutorials/MachineLearning/cloud-gpus/index.html')
+def reinforcementlearning(request):
+    return render(request, 'main/tutorials/MachineLearning/reinforcement-learning/index.html')
+def selfdrivingcars(request):
+    return render(request, 'main/tutorials/MachineLearning/self-driving-cars/index.html')
+def deeplearningwithtensorflowkeras(request):
+    return render(request, 'main/tutorials/MachineLearning/deep-learning-with-tensorflow-keras/index.html')
+def practicalmachinelearning(request):
+    return render(request, 'main/tutorials/MachineLearning/practical-machine-learning/index.html')
+
 
 def dataanalysistutorials(request):
     return render(request, 'main/tutorials/DataAnalysis/data-analysis-tutorials/index.html')

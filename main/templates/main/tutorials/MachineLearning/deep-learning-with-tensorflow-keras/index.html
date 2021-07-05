@@ -1,0 +1,1866 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+                    <br>
+                    <h2>Introduction to Deep Learning - Deep Learning basics with Python, TensorFlow and Keras p.1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/wQ8BIBpya2k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
+                    <br>
+                    <!DOCTYPE html>
+                    <html>
+
+                    <head>
+                        <meta charset="utf-8" />
+                        <title>Deep Learning with Python and TensorFlow 1.10 - Intro</title>
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+                        <style type="text/css">
+                            .highlight .hll {
+                                background-color: #ffffcc
+                            }
+                            
+                            .highlight {
+                                background: #f8f8f8;
+                            }
+                            
+                            .highlight .c {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment */
+                            
+                            .highlight .err {
+                                border: 1px solid #FF0000
+                            }
+                            /* Error */
+                            
+                            .highlight .k {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword */
+                            
+                            .highlight .o {
+                                color: #666666
+                            }
+                            /* Operator */
+                            
+                            .highlight .ch {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Hashbang */
+                            
+                            .highlight .cm {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Multiline */
+                            
+                            .highlight .cp {
+                                color: #BC7A00
+                            }
+                            /* Comment.Preproc */
+                            
+                            .highlight .cpf {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.PreprocFile */
+                            
+                            .highlight .c1 {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Single */
+                            
+                            .highlight .cs {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Special */
+                            
+                            .highlight .gd {
+                                color: #A00000
+                            }
+                            /* Generic.Deleted */
+                            
+                            .highlight .ge {
+                                font-style: italic
+                            }
+                            /* Generic.Emph */
+                            
+                            .highlight .gr {
+                                color: #FF0000
+                            }
+                            /* Generic.Error */
+                            
+                            .highlight .gh {
+                                color: #000080;
+                                font-weight: bold
+                            }
+                            /* Generic.Heading */
+                            
+                            .highlight .gi {
+                                color: #00A000
+                            }
+                            /* Generic.Inserted */
+                            
+                            .highlight .go {
+                                color: #888888
+                            }
+                            /* Generic.Output */
+                            
+                            .highlight .gp {
+                                color: #000080;
+                                font-weight: bold
+                            }
+                            /* Generic.Prompt */
+                            
+                            .highlight .gs {
+                                font-weight: bold
+                            }
+                            /* Generic.Strong */
+                            
+                            .highlight .gu {
+                                color: #800080;
+                                font-weight: bold
+                            }
+                            /* Generic.Subheading */
+                            
+                            .highlight .gt {
+                                color: #0044DD
+                            }
+                            /* Generic.Traceback */
+                            
+                            .highlight .kc {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Constant */
+                            
+                            .highlight .kd {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Declaration */
+                            
+                            .highlight .kn {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Namespace */
+                            
+                            .highlight .kp {
+                                color: #008000
+                            }
+                            /* Keyword.Pseudo */
+                            
+                            .highlight .kr {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Reserved */
+                            
+                            .highlight .kt {
+                                color: #B00040
+                            }
+                            /* Keyword.Type */
+                            
+                            .highlight .m {
+                                color: #666666
+                            }
+                            /* Literal.Number */
+                            
+                            .highlight .s {
+                                color: #BA2121
+                            }
+                            /* Literal.String */
+                            
+                            .highlight .na {
+                                color: #7D9029
+                            }
+                            /* Name.Attribute */
+                            
+                            .highlight .nb {
+                                color: #008000
+                            }
+                            /* Name.Builtin */
+                            
+                            .highlight .nc {
+                                color: #0000FF;
+                                font-weight: bold
+                            }
+                            /* Name.Class */
+                            
+                            .highlight .no {
+                                color: #880000
+                            }
+                            /* Name.Constant */
+                            
+                            .highlight .nd {
+                                color: #AA22FF
+                            }
+                            /* Name.Decorator */
+                            
+                            .highlight .ni {
+                                color: #999999;
+                                font-weight: bold
+                            }
+                            /* Name.Entity */
+                            
+                            .highlight .ne {
+                                color: #D2413A;
+                                font-weight: bold
+                            }
+                            /* Name.Exception */
+                            
+                            .highlight .nf {
+                                color: #0000FF
+                            }
+                            /* Name.Function */
+                            
+                            .highlight .nl {
+                                color: #A0A000
+                            }
+                            /* Name.Label */
+                            
+                            .highlight .nn {
+                                color: #0000FF;
+                                font-weight: bold
+                            }
+                            /* Name.Namespace */
+                            
+                            .highlight .nt {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Name.Tag */
+                            
+                            .highlight .nv {
+                                color: #19177C
+                            }
+                            /* Name.Variable */
+                            
+                            .highlight .ow {
+                                color: #AA22FF;
+                                font-weight: bold
+                            }
+                            /* Operator.Word */
+                            
+                            .highlight .w {
+                                color: #bbbbbb
+                            }
+                            /* Text.Whitespace */
+                            
+                            .highlight .mb {
+                                color: #666666
+                            }
+                            /* Literal.Number.Bin */
+                            
+                            .highlight .mf {
+                                color: #666666
+                            }
+                            /* Literal.Number.Float */
+                            
+                            .highlight .mh {
+                                color: #666666
+                            }
+                            /* Literal.Number.Hex */
+                            
+                            .highlight .mi {
+                                color: #666666
+                            }
+                            /* Literal.Number.Integer */
+                            
+                            .highlight .mo {
+                                color: #666666
+                            }
+                            /* Literal.Number.Oct */
+                            
+                            .highlight .sa {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Affix */
+                            
+                            .highlight .sb {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Backtick */
+                            
+                            .highlight .sc {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Char */
+                            
+                            .highlight .dl {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Delimiter */
+                            
+                            .highlight .sd {
+                                color: #BA2121;
+                                font-style: italic
+                            }
+                            /* Literal.String.Doc */
+                            
+                            .highlight .s2 {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Double */
+                            
+                            .highlight .se {
+                                color: #BB6622;
+                                font-weight: bold
+                            }
+                            /* Literal.String.Escape */
+                            
+                            .highlight .sh {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Heredoc */
+                            
+                            .highlight .si {
+                                color: #BB6688;
+                                font-weight: bold
+                            }
+                            /* Literal.String.Interpol */
+                            
+                            .highlight .sx {
+                                color: #008000
+                            }
+                            /* Literal.String.Other */
+                            
+                            .highlight .sr {
+                                color: #BB6688
+                            }
+                            /* Literal.String.Regex */
+                            
+                            .highlight .s1 {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Single */
+                            
+                            .highlight .ss {
+                                color: #19177C
+                            }
+                            /* Literal.String.Symbol */
+                            
+                            .highlight .bp {
+                                color: #008000
+                            }
+                            /* Name.Builtin.Pseudo */
+                            
+                            .highlight .fm {
+                                color: #0000FF
+                            }
+                            /* Name.Function.Magic */
+                            
+                            .highlight .vc {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Class */
+                            
+                            .highlight .vg {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Global */
+                            
+                            .highlight .vi {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Instance */
+                            
+                            .highlight .vm {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Magic */
+                            
+                            .highlight .il {
+                                color: #666666
+                            }
+                            /* Literal.Number.Integer.Long */
+                        </style>
+                        <style type="text/css">
+                            /* Temporary definitions which will become obsolete with Notebook release 5.0 */
+                            
+                            .ansi-black-fg {
+                                color: #3E424D;
+                            }
+                            
+                            .ansi-black-bg {
+                                background-color: #3E424D;
+                            }
+                            
+                            .ansi-black-intense-fg {
+                                color: #282C36;
+                            }
+                            
+                            .ansi-black-intense-bg {
+                                background-color: #282C36;
+                            }
+                            
+                            .ansi-red-fg {
+                                color: #E75C58;
+                            }
+                            
+                            .ansi-red-bg {
+                                background-color: #E75C58;
+                            }
+                            
+                            .ansi-red-intense-fg {
+                                color: #B22B31;
+                            }
+                            
+                            .ansi-red-intense-bg {
+                                background-color: #B22B31;
+                            }
+                            
+                            .ansi-green-fg {
+                                color: #00A250;
+                            }
+                            
+                            .ansi-green-bg {
+                                background-color: #00A250;
+                            }
+                            
+                            .ansi-green-intense-fg {
+                                color: #007427;
+                            }
+                            
+                            .ansi-green-intense-bg {
+                                background-color: #007427;
+                            }
+                            
+                            .ansi-yellow-fg {
+                                color: #DDB62B;
+                            }
+                            
+                            .ansi-yellow-bg {
+                                background-color: #DDB62B;
+                            }
+                            
+                            .ansi-yellow-intense-fg {
+                                color: #B27D12;
+                            }
+                            
+                            .ansi-yellow-intense-bg {
+                                background-color: #B27D12;
+                            }
+                            
+                            .ansi-blue-fg {
+                                color: #208FFB;
+                            }
+                            
+                            .ansi-blue-bg {
+                                background-color: #208FFB;
+                            }
+                            
+                            .ansi-blue-intense-fg {
+                                color: #0065CA;
+                            }
+                            
+                            .ansi-blue-intense-bg {
+                                background-color: #0065CA;
+                            }
+                            
+                            .ansi-magenta-fg {
+                                color: #D160C4;
+                            }
+                            
+                            .ansi-magenta-bg {
+                                background-color: #D160C4;
+                            }
+                            
+                            .ansi-magenta-intense-fg {
+                                color: #A03196;
+                            }
+                            
+                            .ansi-magenta-intense-bg {
+                                background-color: #A03196;
+                            }
+                            
+                            .ansi-cyan-fg {
+                                color: #60C6C8;
+                            }
+                            
+                            .ansi-cyan-bg {
+                                background-color: #60C6C8;
+                            }
+                            
+                            .ansi-cyan-intense-fg {
+                                color: #258F8F;
+                            }
+                            
+                            .ansi-cyan-intense-bg {
+                                background-color: #258F8F;
+                            }
+                            
+                            .ansi-white-fg {
+                                color: #C5C1B4;
+                            }
+                            
+                            .ansi-white-bg {
+                                background-color: #C5C1B4;
+                            }
+                            
+                            .ansi-white-intense-fg {
+                                color: #A1A6B2;
+                            }
+                            
+                            .ansi-white-intense-bg {
+                                background-color: #A1A6B2;
+                            }
+                            
+                            .ansi-bold {
+                                font-weight: bold;
+                            }
+                        </style>
+
+
+                        <style type="text/css">
+                            /* Overrides of notebook CSS for static HTML export */
+                            
+                            body {
+                                overflow: visible;
+                                padding: 8px;
+                            }
+                            
+                            div#notebook {
+                                overflow: visible;
+                                border-top: none;
+                            }
+                            
+                            @media print {
+                                div.cell {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                                div.output_wrapper {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                                div.output {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                            }
+                        </style>
+
+                        <!-- Custom stylesheet, it must be in the same directory as the html file -->
+                        <link rel="stylesheet" href="custom.html">
+
+                        <!-- Loading mathjax macro -->
+                        <!-- Load mathjax -->
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax7b8b.js?config=TeX-AMS_HTML"></script>
+                        <!-- MathJax configuration -->
+                        <script type="text/x-mathjax-config">
+                            MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells. Elsewhere // we use CSS to
+                            left justify single line equations in code cells. displayAlign: 'center', "HTML-CSS": { styles: {'.MathJax_Display': {"margin": 0}}, linebreaks: { automatic: true } } });
+                        </script>
+                        <!-- End of mathjax configuration -->
+                    </head>
+
+                    <body>
+                        <div tabindex="-1" id="notebook" class="border-box-sizing">
+                            <div id="notebook-container">
+
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Welcome everyone to an updated deep learning with Python and Tensorflow tutorial mini-series.</p>
+                                            <p>Since doing the first deep learning with TensorFlow course a little over 2 years ago, much has changed. It's nowhere near as complicated to get started, nor do you need to know as much to be successful with
+                                                deep learning.</p>
+                                            <p>If you're interested in more of the details with how TensorFlow works, you can still check out the previous tutorials, as they go over the more raw TensorFlow. This is more of a deep learning quick start!</p>
+                                            <p>To begin, we need to find some balance between treating neural networks like a total black box, and understanding every single detail with them.</p>
+                                            <p>Let's show a typical model:</p>
+                                            <p><img class="responsive-img" src="../static/images/machine-learning/artificial-neural-network-model.png" alt="python tutorials" /></p>
+
+
+
+                                            <p>A basic neural network consists of an input layer, which is just your data, in numerical form. After your input layer, you will have some number of what are called "hidden" layers. A hidden layer is just in
+                                                between your input and output layers. One hidden layer means you just have a neural network. Two or more hidden layers? Boom, you've got a deep neural network!</p>
+                                            <p>Why is this? Well, if you just have a single hidden layer, the model is going to only learn linear relationships.</p>
+                                            <p>If you have many hidden layers, you can begin to learn non-linear relationships between your input and output layers.</p>
+                                            <p>A single neuron might look as follows:</p>
+                                            <p><img class="responsive-img" src="../static/images/machine-learning/artificial-neuron-model-sigmoid-activiation-function.png" alt="python tutorials" /></p>
+                                            <p>So this is really where the magic happens. The idea is a single neuron is just sum of all of the inputs x weights, fed through some sort of activation function. The activation function is meant to simulate a
+                                                neuron firing or not. A simple example would be a stepper function, where, at some point, the threshold is crossed, and the neuron fires a 1, else a 0. Let's say that neuron is in the first hidden layer,
+                                                and it's going to communicate with the next hidden layer. So it's going to send it's 0 or a 1 signal, multiplied by the weights, to the next neuron, and this is the process for all neurons and all layers.</p>
+                                            <p>The mathematical challenge for the artificial neural network is to best optimize thousands or millions or whatever number of weights you have, so that your output layer results in what you were hoping for. Solving
+                                                for this problem, and building out the layers of our neural network model is exactly what TensorFlow is for. TensorFlow is used for all things "operations on tensors." A tensor in this case is nothing fancy.
+                                                It's a multi-dimensional array.</p>
+                                            <p>To install TensorFlow, simply do a:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p><code>pip install --upgrade tensorflow</code></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Following the release of deep learning libraries, higher-level API-like libraries came out, which sit on top of the deep learning libraries, like TensorFlow, which make building, testing, and tweaking models
+                                                even more simple. One such library that has easily become the most popular is Keras.</p>
+                                            <p>Keras has become so popular, that it is now a superset, included with TensorFlow releases now! If you're familiar with Keras previously, you can still use it, but now you can use <code>tensorflow.keras</code>                                                to call it. By that same token, if you find example code that uses Keras, you can use with the TensorFlow version of Keras too. In fact, you can just do something like:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow.keras</span> <span class="k">as</span> <span class="nn">keras</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>For this tutorial, I am going to be using TensorFlow version 1.10. You can figure out your version:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>1.10.0
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Once we've got tensorflow imported, we can then begin to prepare our data, model it, and then train it. For the sake of simplicity, we'll be using the most common "hello world" example for deep learning, which
+                                                is the mnist dataset. It's a dataset of hand-written digits, 0 through 9. It's 28x28 images of these hand-written digits. We will show an example of using outside data as well, but, for now, let's load in
+                                                this data:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>When you're working with your own collected data, chances are, it wont be packaged up so nicely, and you'll spend a bit more time and effort on this step. But, for now, woo!</p>
+                                            <p>What exactly do we have here? Let's take a quick peak.</p>
+                                            <p>So the <code>x_train</code> data is the "features." In this case, the features are pixel values of the 28x28 images of these digits 0-9. The <code>y_train</code> is the label (is it a 0,1,2,3,4,5,6,7,8 or a
+                                                9?)
+                                            </p>
+                                            <p>The testing variants of these variables is the "out of sample" examples that we will use. These are examples from our data that we're going to set aside, reserving them for testing the model.</p>
+                                            <p>Neural networks are exceptionally good at fitting to data, so much so that they will commonly over-fit the data. Our real hope is that the neural network doesn't just memorize our data and that it instead "generalizes"
+                                                and learns the actual problem and patterns associated with it.</p>
+                                            <p>Let's look at this actual data:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>[[  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   3  18  18  18 126 136
+  175  26 166 255 247 127   0   0   0   0]
+ [  0   0   0   0   0   0   0   0  30  36  94 154 170 253 253 253 253 253
+  225 172 253 242 195  64   0   0   0   0]
+ [  0   0   0   0   0   0   0  49 238 253 253 253 253 253 253 253 253 251
+   93  82  82  56  39   0   0   0   0   0]
+ [  0   0   0   0   0   0   0  18 219 253 253 253 253 253 198 182 247 241
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0  80 156 107 253 253 205  11   0  43 154
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0  14   1 154 253  90   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0 139 253 190   2   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0  11 190 253  70   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0  35 241 225 160 108   1
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0  81 240 253 253 119
+   25   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0  45 186 253 253
+  150  27   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0  16  93 252
+  253 187   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 249
+  253 249  64   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0  46 130 183 253
+  253 207   2   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0  39 148 229 253 253 253
+  250 182   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0  24 114 221 253 253 253 253 201
+   78   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0  23  66 213 253 253 253 253 198  81   2
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0  18 171 219 253 253 253 253 195  80   9   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0  55 172 226 253 253 253 253 244 133  11   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0 136 253 253 253 212 135 132  16   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]
+ [  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+    0   0   0   0   0   0   0   0   0   0]]
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Alright, could we visualize this?</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+
+
+                                                <div class="output_text output_subarea ">
+                                                    <pre>&lt;Figure size 640x480 with 1 Axes&gt;</pre>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Okay, that makes sense. How about the value for <code>y_train</code> with the same index?</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>5
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>It's generally a good idea to "normalize" your data. This typically involves scaling the data to be between 0 and 1, or maybe -1 and positive 1. In our case, each "pixel" is a feature, and each feature currently
+                                                ranges from 0 to 255. Not quite 0 to 1. Let's change that with a handy utility function:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Let's peak one more time:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>[[0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.00393124 0.02332955 0.02620568 0.02625207 0.17420356 0.17566281
+  0.28629534 0.05664824 0.51877786 0.71632322 0.77892406 0.89301644
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.05780486 0.06524513 0.16128198 0.22713296
+  0.22277047 0.32790981 0.36833534 0.3689874  0.34978968 0.32678448
+  0.368094   0.3747499  0.79066747 0.67980478 0.61494005 0.45002403
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.12250613 0.45858525 0.45852825 0.43408872 0.37314701
+  0.33153488 0.32790981 0.36833534 0.3689874  0.34978968 0.32420121
+  0.15214552 0.17865984 0.25626376 0.1573102  0.12298801 0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.04500225 0.4219755  0.45852825 0.43408872 0.37314701
+  0.33153488 0.32790981 0.28826244 0.26543758 0.34149427 0.31128482
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.1541463  0.28272888 0.18358693 0.37314701
+  0.33153488 0.26569767 0.01601458 0.         0.05945042 0.19891229
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.0253731  0.00171577 0.22713296
+  0.33153488 0.11664776 0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.20500962
+  0.33153488 0.24625638 0.00291174 0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.01622378
+  0.24897876 0.32790981 0.10191096 0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.04586451 0.31235677 0.32757096 0.23335172 0.14931733 0.00129164
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.10498298 0.34940902 0.3689874  0.34978968 0.15370495
+  0.04089933 0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.06551419 0.27127137 0.34978968 0.32678448
+  0.245396   0.05882702 0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.02333517 0.12857881 0.32549285
+  0.41390126 0.40743158 0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.32161793
+  0.41390126 0.54251585 0.20001074 0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.06697006 0.18959827 0.25300993 0.32678448
+  0.41390126 0.45100715 0.00625034 0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.05110617 0.19182076 0.33339444 0.3689874  0.34978968 0.32678448
+  0.40899334 0.39653769 0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.04117838 0.16813739
+  0.28960162 0.32790981 0.36833534 0.3689874  0.34978968 0.25961929
+  0.12760592 0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.04431706 0.11961607 0.36545809 0.37314701
+  0.33153488 0.32790981 0.36833534 0.28877275 0.111988   0.00258328
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.05298497 0.42752138 0.4219755  0.45852825 0.43408872 0.37314701
+  0.33153488 0.25273681 0.11646967 0.01312603 0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.37491383 0.56222061
+  0.66525569 0.63253163 0.48748768 0.45852825 0.43408872 0.359873
+  0.17428513 0.01425695 0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.92705966 0.82698729
+  0.74473314 0.63253163 0.4084877  0.24466922 0.22648107 0.02359823
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]
+ [0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.        ]]
+</pre>
+                                                </div>
+                                            </div>
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+
+
+                                                <div class="output_png output_subarea ">
+                                                    <img src="data:image/png;base64,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
+">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Alright, still a 5. Now let's build our model!</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>A sequential model is what you're going to use most of the time. It just means things are going to go in direct order. A feed forward model. No going backwards...for now.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Now, we'll pop in layers. Recall our neural network image? Was the input layer flat, or was it multi-dimensional? It was flat. So, we need to take this 28x28 image, and make it a flat 1x784. There are many ways
+                                                for us to do this, but keras has a Flatten layer built just for us, so we'll use that.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>This will serve as our input layer. It's going to take the data we throw at it, and just flatten it for us. Next, we want our hidden layers. We're going to go with the simplest neural network layer, which is
+                                                just a <code>Dense</code> layer. This refers to the fact that it's a densely-connected layer, meaning it's "fully connected," where each node connects to each prior and subsequent node. Just like our image.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">))</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>This layer has 128 units. The activation function is <code>relu</code>, short for rectified linear. Currently, <code>relu</code> is the activation function you should just default to. There are many more to
+                                                test for sure, but, if you don't know what to use, use relu to start.</p>
+                                            <p>Let's add another identical layer for good measure.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">))</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Now, we're ready for an output layer:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">))</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>This is our final layer. It has 10 nodes. 1 node per possible number prediction. In this case, our activation function is a softmax function, since we're really actually looking for something more like a probability
+                                                distribution of which of the possible prediction options this thing we're passing features through of is. Great, our model is done.</p>
+                                            <p>Now we need to "compile" the model. This is where we pass the settings for actually optimizing/training the model we've defined.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Remember why we picked relu as an activation function? Same thing is true for the Adam optimizer. It's just a great default to start with.</p>
+                                            <p>Next, we have our <code>loss</code> metric. Loss is a calculation of error. A neural network doesn't actually attempt to maximize accuracy. It attempts to minimize loss. Again, there are many choices, but some
+                                                form of categorical crossentropy is a good start for a classification task like this.</p>
+                                            <p>Now, we fit!</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>Epoch 1/3
+60000/60000 [==============================] - 7s 119us/step - loss: 0.2624 - acc: 0.9244
+Epoch 2/3
+60000/60000 [==============================] - 5s 89us/step - loss: 0.1074 - acc: 0.9675
+Epoch 3/3
+60000/60000 [==============================] - 5s 89us/step - loss: 0.0715 - acc: 0.9779
+</pre>
+                                                </div>
+                                            </div>
+
+                                            <div class="output_area">
+
+
+
+
+
+
+                                                <div class="output_text output_subarea output_execute_result">
+                                                    <pre>&lt;tensorflow.python.keras.callbacks.History at 0x2871a387cf8&gt;</pre>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>As we train, we can see loss goes down (yay), and accuracy improves quite quickly to 98-99% (double yay!)</p>
+                                            <p>Now that's loss and accuracy for in-sample data. Getting a high accuracy and low loss might mean your model learned how to classify digits in general (it generalized)...or it simply memorized every single example
+                                                you showed it (it overfit). This is why we need to test on out-of-sample data (data we didn't use to train the model).</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">val_loss</span><span class="p">,</span> <span class="n">val_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">val_loss</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">val_acc</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>10000/10000 [==============================] - 0s 34us/step
+0.09623032998903655
+0.9722
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Full code up to this point, with some notes:</p>
+
+                                            <p><strong>As of Dec 21st 2018, there's a known issue with the code. I am going to paste a snippet that you should use to replace the code with, should you be hitting an error: </strong></p>
+
+                                            <pre class="prettyprint lang-py">(x_train, y_train), (x_test, y_test) = mnist.load_data()   # 28x28 numbers of 0-9
+x_train = tf.keras.utils.normalize(x_train, axis=1).reshape(x_train.shape[0], -1)
+x_test = tf.keras.utils.normalize(x_test, axis=1).reshape(x_test.shape[0], -1)
+
+model = tf.keras.models.Sequential()
+#model.add(tf.keras.layers.Flatten())   #Flatten the images! Could be done with numpy reshape
+model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu, input_shape= x_train.shape[1:]))
+model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
+model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))   #10 because dataset is numbers from 0 - 9</pre>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+                                        <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>  <span class="c1"># deep learning library. Tensors are just multi-dimensional arrays</span>
+
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>  <span class="c1"># mnist is a dataset of 28x28 images of handwritten digits and their labels</span>
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>  <span class="c1"># unpacks images to x_train/x_test and labels to y_train/y_test</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># scales data between 0 and 1</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># scales data between 0 and 1</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>  <span class="c1"># a basic feed-forward model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>  <span class="c1"># takes our 28x28 and makes it 1x784</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">))</span>  <span class="c1"># a simple fully-connected layer, 128 units, relu activation</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">))</span>  <span class="c1"># a simple fully-connected layer, 128 units, relu activation</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">))</span>  <span class="c1"># our output layer. 10 units for 10 classes. Softmax for probability distribution</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>  <span class="c1"># Good default optimizer to start with</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>  <span class="c1"># how will we calculate our &quot;error.&quot; Neural network aims to minimize loss.</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>  <span class="c1"># what to track</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># train the model</span>
+
+<span class="n">val_loss</span><span class="p">,</span> <span class="n">val_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>  <span class="c1"># evaluate the out of sample data with model</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">val_loss</span><span class="p">)</span>  <span class="c1"># model&#39;s loss (error)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">val_acc</span><span class="p">)</span>  <span class="c1"># model&#39;s accuracy</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>It's going to be very likely your accuracy out of sample is a bit worse, same with loss. In fact, it should be a red flag if it's identical, or better.</p>
+                                            <p>Finally, with your model, you can save it super easily:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;epic_num_reader.model&#39;</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Load it back:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;epic_num_reader.model&#39;</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>finally, make predictions!</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">new_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>[[4.2427444e-09 1.6043286e-08 1.2955404e-06 ... 9.9999785e-01
+  9.2534069e-09 1.3064107e-07]
+ [2.8164232e-08 1.0317165e-04 9.9989593e-01 ... 1.0429282e-09
+  2.1738730e-07 3.1334544e-12]
+ [2.0918677e-07 9.9984252e-01 2.9539053e-05 ... 5.4588450e-05
+  6.1221406e-05 1.4490828e-07]
+ ...
+ [2.3763378e-09 8.4034167e-07 2.0469349e-08 ... 1.1768799e-05
+  4.7667407e-07 1.0428642e-04]
+ [4.5215497e-06 6.1512014e-06 4.7418069e-08 ... 1.1381173e-06
+  7.6969003e-04 8.6409798e-08]
+ [6.3100595e-07 2.5021842e-07 2.4660849e-07 ... 2.5157806e-10
+  5.8900000e-08 2.3496944e-09]]
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Uwotm8?</p>
+                                            <p>That sure doesn't start off as helpful, but recall these are probability distributions. We can get the actual number pretty simply:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>7
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>There's your prediction, let's look at the input:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">binary</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+
+                                                <div class="prompt"></div>
+
+
+
+
+                                                <div class="output_png output_subarea ">
+                                                    <img src="data:image/png;base64,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
+">
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Awesome! Okay, I think that covers all of the "quick start" types of things with Keras. This is just barely scratching the surface of what's available to you, so start poking around <a href="https://www.tensorflow.org/api_docs/python/"
+                                                    target="blank">Tensorflow</a> and <a href="https://keras.io/layers/about-keras-layers/" target="blank">Keras</a> documentation.</p>
+                                            <p>Also check out the <a href="https://www.reddit.com/r/MachineLearning/" target="blank">Machine Learning</a> and <a href="https://www.reddit.com/r/learnmachinelearning/" target="blank">Learn Machine Learning</a>                                                subreddits to stay up to date on news and information surrounding deep learning.</p>
+                                            <p>If you have further questions too, you can join our <a href="https://discord.gg/sentdex" target="blank">Python Discord</a>. Til next time.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </body>
+
+
+
+
+
+                    <!-- Mirrored from pythonprogramming.net/introduction-deep-learning-python-tensorflow-keras/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:09 GMT -->
+
+                    </html>
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Loading in your own data - Deep Learning basics with Python, TensorFlow and Keras p.2" href="../loading-custom-data-deep-learning-python-tensorflow-keras/index5da1.html?completed=/introduction-deep-learning-python-tensorflow-keras/"><button class="btn" style="background-color:#FFD166; color:#000000">Loading in your own data - Deep Learning basics with Python, TensorFlow and Keras p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=1&amp;t=/introduction-deep-learning-python-tensorflow-keras/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction to Deep Learning - Deep Learning basics with Python, TensorFlow and Keras p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Loading in your own data - Deep Learning basics with Python, TensorFlow and Keras p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../loading-custom-data-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Convolutional Neural Networks - Deep Learning basics with Python, TensorFlow and Keras p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../convolutional-neural-network-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Analyzing Models with TensorBoard - Deep Learning basics with Python, TensorFlow and Keras p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tensorboard-analysis-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Optimizing Models with TensorBoard - Deep Learning basics with Python, TensorFlow and Keras p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tensorboard-optimizing-models-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">How to use your trained model - Deep Learning basics with Python, TensorFlow and Keras p.6</div>
+                        <div class="collapsible-body">
+                            <p><a href="../using-trained-model-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Recurrent Neural Networks - Deep Learning basics with Python, TensorFlow and Keras p.7</div>
+                        <div class="collapsible-body">
+                            <p><a href="../recurrent-neural-network-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating a Cryptocurrency-predicting finance recurrent neural network - Deep Learning basics with Python, TensorFlow and Keras p.8</div>
+                        <div class="collapsible-body">
+                            <p><a href="../cryptocurrency-recurrent-neural-network-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Normalizing and creating sequences for our cryptocurrency predicting RNN - Deep Learning basics with Python, TensorFlow and Keras p.9</div>
+                        <div class="collapsible-body">
+                            <p><a href="../normalizing-sequences-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Balancing Recurrent Neural Network sequence data for our crypto predicting RNN - Deep Learning basics with Python, TensorFlow and Keras p.10</div>
+                        <div class="collapsible-body">
+                            <p><a href="../balancing-rnn-data-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Cryptocurrency-predicting RNN Model - Deep Learning basics with Python, TensorFlow and Keras p.11</div>
+                        <div class="collapsible-body">
+                            <p><a href="../crypto-rnn-model-deep-learning-python-tensorflow-keras/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                <ul>
+                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Legal Stuff:</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+        </div>
+    </div>
+</footer>
+{% endblock %}

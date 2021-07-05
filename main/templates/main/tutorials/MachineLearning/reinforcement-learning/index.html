@@ -1,0 +1,306 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Q-Learning introduction and Q Table - Reinforcement Learning w/ Python Tutorial p.1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/yMk_XtIEzH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to a reinforcement learning tutorial. In this part, we're going to focus on Q-Learning.</p>
+
+                    <p>Q-Learning is a model-free form of machine learning, in the sense that the AI "agent" does not need to know or have a model of the environment that it will be in. The same algorithm can be used across a variety of environments.</p>
+
+                    <p>For a given environment, everything is broken down into "states" and "actions." The states are observations and samplings that we pull from the environment, and the actions are the choices the agent has made based on the observation.
+                        For the purposes of the rest of this tutorial, we'll use the context of our environment to exemplify how this works.</p>
+
+                    <p>While our agent doesn't actually need to know anything about our environment, it would be somewhat useful for you to understand how it works in the context of learning how Q-learning works!</p>
+
+                    <p>We're going to be working with OpenAI's gym, specifically with the "MountainCar-v0" environment. To get gym, just do a <code>pip install gym</code>.</p>
+
+                    <p>Okay, now let's check out this environment. Most of these basic gym environments are very much the same in the way they work. To intialize the environment, you do a <code>gym.make(NAME)</code>, then you <code>env.reset</code> the environment,
+                        then you enter into a loop where you do an <code>env.step(ACTION)</code> every iteration. Let's poke around this environment:</p>
+
+                    <pre class="prettyprint lang-py">import gym
+
+env = gym.make("MountainCar-v0")
+print(env.action_space.n)</pre>
+
+                    <p>For the various environments, we can query them for how many actions/moves are possible. In this case, there are "3" actions we can pass. This means, when we step the environment, we can pass a 0, 1, or 2 as our "action" for each step.
+                        Each time we do this, the environment will return to us the new state, a reward, whether or not the environment is done/complete, and then any extra info that some envs might have.</p>
+
+                    <p>It doesnt matter to our model, but, for your understanding, a 0 means push left, 1 is stay still, and 2 means push right. We wont tell our model any of this, and that's the power of Q learning. This information is basically irrelevant
+                        to it. All the model needs to know is what the options for actions are, and what the reward of performing a chain of those actions would be given a state. Continuing along:</p>
+
+                    <pre class="prettyprint lang-py">import gym
+
+env = gym.make("MountainCar-v0")
+env.reset()
+
+done = False
+while not done:
+    action = 2  # always go right!
+    env.step(action)
+    env.render()</pre>
+
+
+
+                    <div class="video-container">
+                        <iframe width="853" height="480" src="../static/images/reinforcement-learning/goright.mp4" " frameborder="0 " allowfullscreen></iframe>
+      </div>
+
+
+<p>As you can see, despite asking this car to go right constantly, we can see that it just doesn't quite have the power to make it. Instead, we need to actually build momentum here to reach that flag. To do that, we'd want to move back and forth to build up momentum. We could program a function to do this task for us, or we can use Q-learning to solve it!</p>
+
+<p>How will Q-learning do that? So we know we can take 3 actions at any given time. That's our "action space. " Now, we need our "observation space. " In the case of this gym environment, the observations are returned from resets and steps. For example:</p>
+
+<pre class="prettyprint lang-py ">import gym
+
+env = gym.make("MountainCar-v0 ")
+print(env.reset())</pre>
+
+<p>Will give you something like <code>[-0.4826636  0.       ]</code>, which is the starting observation state. While the environment runs, we can also get this information:</p>
+
+<pre class="prettyprint lang-py ">import gym
+
+env = gym.make("MountainCar-v0 ")
+state = env.reset()
+
+done = False
+while not done:
+    action = 2
+    new_state, reward, done, _ = env.step(action)
+    print(reward, new_state)</pre>
+
+<p>At each step, we get the new state, the reward, whether or not the environment is done (either we beat it or exhausted our limit of 200 steps), and then a final "extra info " is returned, but, in this environment, this final return item is not used. Gym throws it in there so we can use the same reinforcement learning programs across a variety of environments without the need to actually change any of the code. </p>
+
+<p>Output from the above:</p>
+
+<pre class="prettyprint lang-py
+                            ">-1.0 [-0.26919024 -0.00052001]
+-1.0 [-0.27043839 -0.00124815]
+-1.0 [-0.2724079  -0.00196951]
+-1.0 [-0.27508804 -0.00268013]
+-1.0 [-0.27846408 -0.00337604]
+-1.0 [-0.28251734 -0.00405326]
+-1.0 [-0.28722515 -0.00470781]
+-1.0 [-0.29256087 -0.00533573]
+-1.0 [-0.29849394 -0.00593307]</pre>
+
+<p>Okay so we can see the reward is just simply -1 always so far. Then we see the observation is yet again these 2 values.</p>
+
+<p>And again, to our agent, what these values are...really doesn't matter. But, for your curiosity, the values are position (along an x/horizontal axis) and velocity. So, we can see above that the car was moving left, for example, because velocity is negative.</p>
+
+<p>With a general position, and a velocity, we could *definitely* come up with some sort of algorithm that could calculate whether or not we'd make it to the flag, or if we should instead reverse again to build more momentum, so we hope Q learning can do the same. These 2 values are our "observation space. " This space can be of any size, but, the larger it gets, the much larger the Q Table becomes!</p>
+
+<p>What's a Q Table!?</p>
+
+<p>The way Q-Learning works is there's a "Q " value per action possible per state. This creates a table. In order to figure out all of the possible states, we can either query the environment (if it is kind enough to us to tell us)...or we just simply have to engage in the environment for a while to figure it out.</p>
+
+<p>In our case, we can query the enviornment to find out the possible ranges for each of these state values:</p>
+
+<pre class="prettyprint lang-py ">print(env.observation_space.high)
+print(env.observation_space.low)</pre>
+
+<pre>[0.6  0.07]
+[-1.2  -0.07]</pre>
+
+<p>For the value at index 0, we can see the high value is 0.6, the low is -1.2, and then for the value at index 1, the high is 0.07, and the low is -0.07. Okay, so these are the ranges, but from one of the above observation states that we output: <code>[-0.27508804 -0.00268013]</code>, we can see that these numbers can become quite granular. Can you imagine the size of a Q Table if we were going to have a value for every combination of these ranges out to 8 decimal places? That'd be huge! And, more importantly, it'd be useless. We don't need that much granularity. So, instead, what we want to do is conver these continuous values to discrete values. Basically, we want to bucket/group the ranges into something more manageable.</p>
+
+<p>We'll use 20 groups/buckets for each range. This is a variable you might decide to tweak later.</p>
+
+<pre class="prettyprint lang-py ">DISCRETE_OS_SIZE = [20, 20]
+discrete_os_win_size = (env.observation_space.high - env.observation_space.low)/DISCRETE_OS_SIZE
+
+
+print(discrete_os_win_size)</pre>
+
+<pre>[0.09  0.007]</pre>
+<p>So this tells us how large each bucket is, basically how much to increment the range by for each bucket. We can build our <code>q_table</code> now with:</p>
+
+<pre class="prettyprint lang-py ">import numpy as np
+
+...
+
+q_table = np.random.uniform(low=-2, high=0, size=(DISCRETE_OS_SIZE + [env.action_space.n]))
+</pre>
+
+<p>So, this is a 20x20x3 shape, which has initialized random Q values for us. The 20 x 20 bit is every combination of the bucket slices of all possible states. The x3 bit is for every possible action we could take.</p>
+
+<p>As you can likely already see...even this simple environment has a pretty large table. We have a value for every possible state!</p>
+
+<p>So these values are random, and the choice to be between -2 and 0 is also a variable. Each step is a -1 reward, and the flag is a 0 reward, so it seems to make sense to make the starting point of random Q values all negative.</p>
+
+<p>This table is our bible. We will consult with this table to determine our moves. That final x3 is our 3 actions and each of those 3 actions have the "Q value " associated with them. When we're being "greedy " and trying to "exploit
+                            " our environment, we will choose to go with the action that has the highest Q value for this state. Sometimes, however, especially initially, we may instead wish to "explore " and just choose a random action. These random actions are how our model will learn better moves over time. So how do we learn over time? We need to update these Q values! How do we update those Q values?</p>
+
+<p>Easy!</p>
+
+<img class="responsive-img " src="../static/images/reinforcement-learning/new-q-value-formula.png " alt="python tutorials " />
+
+<p>...Which is what we'll be talking about in the next tutorial!</p>
+
+
+        
+
+		
+
+		
+		
+
+
+
+		<p>The next tutorial: <a title="Q Algorithm and Agent (Q-Learning) - Reinforcement Learning w/ Python Tutorial p.2 " href="../q-learning-algorithm-reinforcement-learning-python-tutorial/index996c.html?completed=/q-learning-reinforcement-learning-python-tutorial/
+                            "><button class="btn " style="background-color:#FFD166; color:#000000 ">Q Algorithm and Agent (Q-Learning) - Reinforcement Learning w/ Python Tutorial p.2</button></a></p>
+
+		
+
+
+
+
+
+<br>
+	  </div>
+
+</div>
+<div class="col l4 m12 s12 ">
+<br><br><br>
+
+  <ul class="collapsible popout " data-collapsible="accordion " style='font-size:85%; padding-left:50px'>
+
+  		<!-- C.A. : -->
+
+	    
+	    	
+        <a href="https://bit.ly/2FTjPW1?a=101&amp;t=/q-learning-reinforcement-learning-python-tutorial/ " id=process_click>
+          <div class="card hoverable " style="max-width:400px; align-items: left; ">
+            <div class="card-image ">
+              <img id=process_click class="responsive-img " src="../static/images/CAs/pydiscord.png "/>
+            </div>
+          </div>
+        </a>    											
+							    <li>
+								  <div class="collapsible-header active " style="padding:2px ">Q-Learning introduction and Q Table - Reinforcement Learning w/ Python Tutorial p.1</div>
+
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header ">Q Algorithm and Agent (Q-Learning) - Reinforcement Learning w/ Python Tutorial p.2</div>
+								  <div class="collapsible-body ">
+										<p><a href="../q-learning-algorithm-reinforcement-learning-python-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header ">Q-Learning Analysis - Reinforcement Learning w/ Python Tutorial p.3</div>
+								  <div class="collapsible-body ">
+										<p><a href="../q-learning-analysis-reinforcement-learning-python-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header ">Q-Learning In Our Own Custom Environment - Reinforcement Learning w/ Python Tutorial p.4</div>
+								  <div class="collapsible-body ">
+										<p><a href="../own-environment-q-learning-reinforcement-learning-python-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header ">Deep Q Learning and Deep Q Networks (DQN) Intro and Agent - Reinforcement Learning w/ Python Tutorial p.5</div>
+								  <div class="collapsible-body ">
+										<p><a href="../deep-q-learning-dqn-reinforcement-learning-python-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header ">Training Deep Q Learning and Deep Q Networks (DQN) Intro and Agent - Reinforcement Learning w/ Python Tutorial p.6</div>
+								  <div class="collapsible-body ">
+										<p><a href="../training-deep-q-learning-dqn-reinforcement-learning-python-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+								  </div>
+								</li>
+  </ul>
+
+
+</div>
+</div>
+
+
+
+			</div>
+		</div>
+
+		<footer class="page-footer ">
+			<div class="container ">
+				<div class="row ">
+					<div class="col l6 s12 ">
+						<h5 class="white-text ">You've reached the end!</h5>
+						<p class="grey-text text-lighten-4 ">Contact: Harrison@pythonprogramming.net</p>
+						<ul>
+							<li><a href="# " class="grey-text text-lighten-3 ">Support this Website!</a></li>
+							<li><a href="# " class="grey-text text-lighten-3 ">Consulting and Contracting</a></li>
+							<li><a href="https://www.facebook.com/pythonprogramming.net/ " class="grey-text text-lighten-3 ">Facebook</a></li>
+							<li><a href="https://twitter.com/sentdex " class="grey-text text-lighten-3 ">Twitter</a></li>
+							<li><a href="https://instagram.com/sentdex " class="grey-text text-lighten-3 ">Instagram</a></li>
+						</ul>
+					</div>
+					<div class="col l4 offset-l2 s12 ">
+						<h5 class="white-text ">Legal Stuff:</h5>
+						<ul>
+							<li><a class="grey-text text-lighten-3 " href="# ">Terms and Conditions</a></li>
+							<li><a class="grey-text text-lighten-3 " href="# ">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer-copyright ">
+				<div class="container ">
+					© OVER 9000! PythonProgramming.net
+					<a class="grey-text text-lighten-4 right " href="#! ">Programming is a SuperPower!</a>
+				</div>
+			</div>
+		</footer>
+
+{% endblock %}
