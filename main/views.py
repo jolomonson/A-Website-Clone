@@ -12,7 +12,7 @@ def homePage(request):
 def machinelearningtutorials(request):
     return render(request, 'main/tutorials/MachineLearning/machine-learning-tutorials/index.html')
 def deeplearningneuralnetworks(request):
-    return render(request, 'main/tutorials/MachineLearning/deep-learning-and-neural-networks/index.html')
+    return render(request, 'main/tutorials/MachineLearning/deep-learning-neural-networks/index.html')
 def cloudgpus(request):
     return render(request, 'main/tutorials/MachineLearning/cloud-gpus/index.html')
 def reinforcementlearning(request):
@@ -20,11 +20,34 @@ def reinforcementlearning(request):
 def selfdrivingcars(request):
     return render(request, 'main/tutorials/MachineLearning/self-driving-cars/index.html')
 def deeplearningwithtensorflowkeras(request):
-    return render(request, 'main/tutorials/MachineLearning/deep-learning-with-tensorflow-keras/index.html')
+    return render(request, 'main/tutorials/MachineLearning/deep-learning-tensorflow-keras/index.html')
 def practicalmachinelearning(request):
     return render(request, 'main/tutorials/MachineLearning/practical-machine-learning/index.html')
+def gtav(request):
+    return render(request, 'main/tutorials/MachineLearning/gta-v/index.html')
+def chatbotwithdeeplearning(request):
+    return render(request, 'main/tutorials/MachineLearning/chatbot-with-deep-learning/index.html')
+def unconventionalneuralnetworks(request):
+    return render(request, 'main/tutorials/MachineLearning/unconventional-neural-networks/index.html')
+def tensorflowjs(request):
+    return render(request, 'main/tutorials/MachineLearning/tensorflowjs/index.html')
+def tensorflowobjectdetection(request):
+    return render(request, 'main/tutorials/MachineLearning/tensorflow-object-detection/index.html')
+def supportvectormachines(request):
+    return render(request, 'main/tutorials/MachineLearning/support-vector-machines/index.html')
+def learnaboutclustering(request):
+    return render(request, 'main/tutorials/MachineLearning/learn-about-clustering/index.html')
+
+
+
+
+
+
+
+def starcraftiiai(request):
+    return render(request, 'main/tutorials/MachineLearning/starcraft-ii-ai/index.html')
 def haliteiiartificialintelligence(request):
-    return render(request, 'main/tutorials/MachineLearning/halite-ii-artificial-intelligence/index.html')
+    return render(request, 'main/tutorials/MachineLearning/halite-ii-ai/index.html')
 def imagerecognition(request):
     return render(request, 'main/tutorials/MachineLearning/image-recognition/index.html')
 

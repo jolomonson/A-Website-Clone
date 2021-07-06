@@ -1,0 +1,505 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+		<!-- main content -->
+		<div class="container" style="max-width:1500px; min-height:100%">
+			<!--Notification:-->
+            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+            <!--End Notification:-->
+
+<!--       <pre class="prettyprint">              width="750" height="423"    -->
+<body class="body">
+    <div class="row">
+    <div class="col l8 m12 s12">
+      <div class="container-fluid" align="left" >
+		<!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				Support Vector Machines (SVM) Progress:  0%
+			</div>
+		</div>-->
+		<img class="responsive-img" src="../static/images/svm/mainsvmimage.png"/>
+	  <h2>Intro to Machine Learning with Scikit Learn and Python</h2>
+	  <br>
+	  
+	  
+	  
+While a lot of people like to make it sound really complex, machine learning is quite simple at its core and can be best envisioned as machine classification. Machine learning shines when the number of dimensions exceeds what we can graphically represent, but here's a nice 2D representation of machine learning with two features:
+
+<img class="responsive-img" src="../static/images/machine-learning-support-vector-machine-linear-svc-example-with-python-and-sklearn.png"/>
+
+The above image is taken from part 11 of this series, where we show an extremely basic example of how a Support Vector Machine (SVM) works. This particular example and the specific estimator that we will be using is linear SVC. If that means nothing to you now, that is perfectly okay.
+
+The above image is taken by feeding through data sets of x,y coordinates like:
+<blockquote>[1,2],<br>
+[5,8],<br>
+[1.5,1.8],<br>
+[8,8],<br>
+[1,0.6],<br>
+[9,11]<br>
+</blockquote>
+
+<p>As you can see, this data set has some larger pairs, and some smaller pairs. What an SVM is going to do is help you find the perfect dividing line between the data. We can then take it a step further, and ask the SVM to predict which "group" a coordinate like [0.8,0.92] would belong to.</p>
+
+<p>With features (think of these as dimensions) as 2D or 3D, it is really quite simple to visualize and for us humans to just look at the graph and do some basic clustering. Machine learning, however, can be used to analyze, say, 100 features (100 dimensions). Try that yourself with 5 billion samples.</p>
+
+
+<div class="video-container"><iframe width="750" height="423" src="https://www.youtube.com/embed/URTZ2jKCgBc?list=PLQVvvaa0QuDd0flgGphKCej-9jp-QdzZ3" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+<br>
+
+
+<p>This series is concerned with machine learning in a hands-on and practical manner, using the Python programming language and the Scikit-learn module (sklearn).</p>
+
+<p>Our example used here is to analyze fundamental characteristics of publicly-traded companies (stocks), comparing these fundamentals to the stock's market value performance over time. Our goal is to see if we can use machine learning to identify good stocks with solid fundamentals that matter so we can invest in them.</p>
+
+<p>I will try to cover more machine learning examples in the future, as each machine learning algorithm is fairly specific to the "type" of problem you might have. A Support Vector Machine (SVM) is great for some tasks, but very poor for others. There are many other machine learning algorithms to learn about, and there is a lot more to learn about machine learning in general. We're going to be taken only a small slice of the pie per machine learning algorithm that we use.</p>
+
+<p>Machine learning, for the most part, is not actual learning at all, though a lot of people in the media generally fear-monger with that as the premise.</p>
+
+<p>With machine learning, we can perform a lot of amazing tasks and give the appearance, or probably better put: "the illusion" of intelligence, but it's not really intelligence as we know it. The real question, however, is if that matters in the end? If the end-result is the same, and achieved in a far more efficient manner, then what does it matter how the conclusion was reached? </p>
+
+<p>There are many applications where this form of computing is superior to human intelligence. Properly weighing and analyzing all aspects is simply done better with less bias, and far quicker, by computers.</p>
+
+<p>There are two main categories of machine learning:</p>
+<p><blockquote>Supervised learning<br>
+
+Unsupervised learning.</blockquote></p>
+<p>Within supervised learning, we have classification and regression. Remember earlier when I said machine learning is really just machine classification? It still is, but there's also a specific form of machine learning called classification.</p>
+<p>So, supervised learning is where we, the scientist, supervise and sometimes sort of guide the learning process. We might say what some of the data is, and leave some to question.</p>
+<p>Within supervised learning, we have classification, which is where we already have the classifications done. An example here would be the image recognition tutorial we did, where you have a set of numbers, and you have an unknown that you want to fit into one of your pre-defined categories.
+</p>
+<p>Then we have regression, still under supervised learning, which is maybe better called induction or something like that, where we have certain known variables of the data in question, and then, using past sample or historical data, we can make predictions on the unknown.</p>
+<p>An example here would be what Facebook does to you when it guesses where you live. Given your network and the people you have the closest ties to and communicate with, and where they are from, Facebook can then guess that you too are from that location.</p>
+<p>Another example would be if we sample a million people, then find an unknown person who has blonde hair and pale skin. We're curious what color eyes that they have. Our regression algorithm will probably suggest our new person has blue or grey eyes, based on the previous samples.</p>
+<p>Now, immediately red flags should probably go off here. For you philosophy majors out there, you knew there was a problem immediately when we used inductive reasoning. For the rest of you, the problem is we're making predictions here, using the weaker form of reasoning.
+</p>
+<p>All that said, humans have owed quite a bit of their evolution to their ability to do inductive reasoning. It is not all bad, but people do like to use inductive reasoning and regression analysis for things like trading stocks. The problem is this reasoning follows history and makes predictions to the future. As we know and hear many times over and over, history is not a representation of future.
+</p>
+<p>I do not want to spend too much time here, but I would like to lastly point out, with induction, computers are better at it than humans. When it comes to inductive reasoning, humans have the tendency to miss-judge and incorrectly weigh various attributes. They generally have a lot more bias, and other statistical flaws that particularly plague inductive reasoning. Computers do not have these issues, and they can perform this reasoning on a far larger data set at an astronomically faster pace than us.</p>
+
+<p>Unsupervised learning is where we create the learning algorithm, then we just throw a ton of data at the computer and we let the computer make sense of it.</p>
+<p>The basics of unsupervised learning is to just throw a massive data set at the machine, and the machine, you guessed it, classifies, or groups, the data. this is why the terms can be confusing. Just remember that all machine learning is machine classification, and the specific version of machine learning called classification is where we're just pre-defining categories, forcing the machine to choose one.</p>
+<p>The last major terms I would like to have us cover here before we get our feet wet are testing and training</p>
+<p>When we "train" the machine, this is where we give data which is pre-classified. So again, with the image recognition series, we trained our machine by giving it examples of 0s through 9s.</p>
+<p>When we test this algo, we use new, unclassified data to the machine, but we know the proper classification. Generally, you feed the data through to test it, then you run the correct answers through the machine and see how many the machine got right and wrong.</p>
+<p>As you may soon find, actually acquiring the data necessary for training and testing is the most challenging part. For me and Sentdex.com, which does sentiment analysis of text, I was able to use movie and product reviews scraped offline as my training and testing sets. The reviews come with rankings, so I could train and test the machine on massive data-sets that were personally ranked by the reviewer themselves.</p>
+<p>I made this picture long ago, but I find it still applies to machine learning:</p>
+<img class="responsive-img" src="../static/images/svm/machineLearning.png"/>
+<p>While I think machine learning is actually more complicated than that, most people are likely to read about machine learning and think it is incredibly complicated both in programming and mathematically, thus being scared off.</p>
+<p>While machine learning algorithms are actually incredibly long and complex, you will almost never need to write your own, except just for fun or just to see if you can.</p>
+<p>In almost all production cases, you wouldn't want to write your own, nor should you. You will want to use a peer-reviewed, highly efficient, and highly tested algorithm. For most major cases, there will be a very effective algorithm available for you. Because of this, it's actually not necessary for you to learn about all of the inner workings of machine learning to be successful with it.</p>
+<p>You can think of this much like how you probably treat your car, your computer, or your cell phone. You can get a lot of utility out of these things, yet you probably actually know very little about all of the intricacies of them.</p>
+<p>Machine learning is the same way. It's best to understand some of the major parameters, like "learning rate," as well as what machine learning is actually doing for you, that way you can figure how how best to apply machine learning to a problem. This is why I find visualizing some examples before moving into impossible dimensions is a great idea.</p>
+<p>Of course, you may find that you're curious about the inner-workings, and I would encourage you to feed your curiosity. The algorithms are truly fascinating, and it will certainly improve your efficacy the more you understand the algorithms that you intend to employ.</p>
+<p>The focus of this course is to actually apply a machine learning algorithm to a problem. If that sounds like something you'd like to do, head to the next tutorial.</p>
+<p></p>
+<p></p>
+
+
+
+				
+		
+
+
+		
+
+		
+			
+				<br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>2 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
+			
+		
+		
+
+
+		
+<p>The next tutorial: <a title="Simple Support Vector Machine (SVM) example with character recognition" href="../support-vector-machine-svm-example-tutorial-scikit-learn-python/indexe6f6.html?completed=/machine-learning-python-sklearn-intro/"><button class="btn" style="background-color:#FFD166; color:#000000">Simple Support Vector Machine (SVM) example with character recognition</button></a></p><br>
+
+
+
+
+
+
+
+	  </div>
+
+
+</div>
+<div class="col l4 m12 s12">
+<br><br><br>
+
+  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+  		<!-- C.A. : -->
+
+	    
+	    	
+        <a href="https://nnfs.io?a=2&amp;t=/machine-learning-python-sklearn-intro/" id=process_click>
+          <div class="card hoverable" style="max-width:400px; align-items: left;">
+            <div class="card-image">
+              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+            </div>
+          </div>
+        </a>
+        							
+							    <li>
+								  <div class="collapsible-header active" style="padding:2px">Intro to Machine Learning with Scikit Learn and Python</div>
+
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Simple Support Vector Machine (SVM) example with character recognition</div>
+								  <div class="collapsible-body">
+										<p><a href="../support-vector-machine-svm-example-tutorial-scikit-learn-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Our Method and where we will be getting our Data</div>
+								  <div class="collapsible-body">
+										<p><a href="../data-acquisition-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Parsing data</div>
+								  <div class="collapsible-body">
+										<p><a href="../getting-data-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">More Parsing</div>
+								  <div class="collapsible-body">
+										<p><a href="../parsing-data-website-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Structuring data with Pandas</div>
+								  <div class="collapsible-body">
+										<p><a href="../using-pandas-structure-process-data/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Getting more data and meshing data sets</div>
+								  <div class="collapsible-body">
+										<p><a href="../getting-data-sp-500-index-value-comparison/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Labeling of data part 1</div>
+								  <div class="collapsible-body">
+										<p><a href="../labeling-data-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Labeling data part 2</div>
+								  <div class="collapsible-body">
+										<p><a href="../labeling-data-machine-learning-part-2/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Finally finishing up the labeling</div>
+								  <div class="collapsible-body">
+										<p><a href="../label-data-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Linear SVC Machine learning SVM example with Python</div>
+								  <div class="collapsible-body">
+										<p><a href="../linear-svc-example-scikit-learn-svm-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Getting more features from our data</div>
+								  <div class="collapsible-body">
+										<p><a href="../collecting-features-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Linear SVC machine learning and testing our data</div>
+								  <div class="collapsible-body">
+										<p><a href="../linear-svc-machine-learning-testing-data/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Scaling, Normalizing, and machine learning with many features</div>
+								  <div class="collapsible-body">
+										<p><a href="../preprocessing-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Shuffling our data to solve a learning issue</div>
+								  <div class="collapsible-body">
+										<p><a href="../shuffling-data-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Using Quandl for more data</div>
+								  <div class="collapsible-body">
+										<p><a href="../using-quandl-data/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Improving our Analysis with a more accurate measure of performance in relation to fundamentals</div>
+								  <div class="collapsible-body">
+										<p><a href="../improving-analysis-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Learning and Testing our Machine learning algorithm</div>
+								  <div class="collapsible-body">
+										<p><a href="../learning-and-testing-svm/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">More testing, this time including N/A data</div>
+								  <div class="collapsible-body">
+										<p><a href="../machine-learning-testing-with-na/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Back-testing the strategy</div>
+								  <div class="collapsible-body">
+										<p><a href="../back-testing-machine-learning-investing-strategy/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Pulling current data from Yahoo</div>
+								  <div class="collapsible-body">
+										<p><a href="../current-yahoo-data-for-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Building our New Data-set</div>
+								  <div class="collapsible-body">
+										<p><a href="../building-yahoo-data-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Searching for investment suggestions</div>
+								  <div class="collapsible-body">
+										<p><a href="../investment-suggestions-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Raising investment requirement standards</div>
+								  <div class="collapsible-body">
+										<p><a href="../raising-investment-suggestion-requirements/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Testing raised standards</div>
+								  <div class="collapsible-body">
+										<p><a href="../machine-learning-testing-new-algo/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Streamlining the changing of standards</div>
+								  <div class="collapsible-body">
+										<p><a href="../streamlining-changing-machine-learning/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+  </ul>
+
+
+</div>
+</div>	
+	
+	
+	
+
+	
+</body>
+
+
+
+
+			</div>
+		</div>
+
+		<!--login modal-->
+		
+
+		<!--Register modal-->
+		
+
+
+		<script>
+			$(document).ready(function(){
+				$(".button-collapse").sideNav();
+				$('.modal-trigger').leanModal();
+				$('.collapsible').collapsible({
+				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+				});
+				$('#aside').pushpin({ top:110, bottom:500 });
+		  });
+		</script>
+		<script>
+		  $(document).ready(function(){
+			$('.collapsible').collapsible({
+			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+			});
+			$('select').material_select();
+		  });
+	  </script>
+	  <script>
+		function goBack() {
+			window.history.back()
+		}
+	</script>
+		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+	</body>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
+          <div class="footer-copyright">
+            <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+            </div>
+
+          </div>
+        </footer>
+
+
+<!-- Mirrored from pythonprogramming.net/machine-learning-python-sklearn-intro/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:18 GMT -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -28,8 +28,17 @@ urlpatterns = [
     path('self-driving-cars/', views.selfdrivingcars, name='selfDrivingCars'),
     path('deep-learning-with-tensorflow-keras/', views.deeplearningwithtensorflowkeras, name='deepLearningWithTensorflowKeras'),
     path('practical-machine-learning/', views.practicalmachinelearning, name='practicalMachineLearning'),
+    path('gta-v/', views.gtav, name='gtav'),
+    path('starcraft-ii-ai/', views.starcraftiiai, name='starcraftiiAI'),
     path('halite-ii-artificial-intelligence/', views.haliteiiartificialintelligence, name=' haliteiiArtificialIntelligence'),
     path('image-recognition/', views.imagerecognition, name='imageRecognition'),
+    path('chatbot-with-deep-learning/', views.chatbotwithdeeplearning, name='chatbotWithDeepLearning'),
+    path('unconventional-neural-networks/', views.unconventionalneuralnetworks, name='unconventionalNeuralNetworks'),
+    path('tensorflowjs/', views.tensorflowjs, name='tensorflowJs'),
+    path('tensorflow-object-detection/', views.tensorflowobjectdetection, name='tensorflowObjectDetection'),
+    path('support-vector-machines/', views.supportvectormachines, name='supportVectorMachines'),
+    path('learn-about-clustering/', views.learnaboutclustering, name='learnAboutClustering'),
+    
     
     
     path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),

@@ -1,0 +1,317 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+		<!-- main content -->
+		<div class="container" style="max-width:1500px; min-height:100%">
+			<!--Notification:-->
+            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+            <!--End Notification:-->
+
+					
+					
+					  
+					
+
+					
+<!--       <pre class="prettyprint">              width="750" height="423"    -->
+<body class="body">
+    <div class="row">
+    <div class="col l8 m12 s12">
+
+
+      <div class="container-fluid" align="left" >
+		
+
+
+
+
+
+
+
+		<br>
+		<h2>Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 1</h2>
+		<br>
+	  
+		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/dvOnYLDg8_Y" frameborder="0" allowfullscreen></iframe></div><br>
+		
+
+
+
+
+
+
+		<br>
+	  
+<p>Hello and welcome to a chatbot with Python tutorial series. In this series, we're going to cover how I created a halfway decent chatbot with Python and TensorFlow. Here are some examples of the chatbot in action:</p>
+
+
+<div class="row">
+	<div class="col l6 s12 m6">
+		<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I use Google and it works.</p>&mdash; Charles the AI (@Charles_the_AI) <a href="https://twitter.com/Charles_the_AI/status/934076328390914050?ref_src=twsrc%5Etfw">November 24, 2017</a></blockquote>
+	</div>
+
+	<div class="col l6 s12 m6">
+	<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I prefer cheese.</p>&mdash; Charles the AI (@Charles_the_AI) <a href="https://twitter.com/Charles_the_AI/status/934075858226212865?ref_src=twsrc%5Etfw">November 24, 2017</a></blockquote>
+</div>
+
+
+	<div class="col l6 s12 m6">
+	<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The internet</p>&mdash; Charles the AI (@Charles_the_AI) <a href="https://twitter.com/Charles_the_AI/status/934076679059857409?ref_src=twsrc%5Etfw">November 24, 2017</a></blockquote>
+</div>
+
+
+	<div class="col l6 s12 m6">
+	<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I&#39;m not sure . I&#39;m just a little drunk.</p>&mdash; Charles the AI (@Charles_the_AI) <a href="https://twitter.com/Charles_the_AI/status/934076974452101120?ref_src=twsrc%5Etfw">November 24, 2017</a></blockquote>
+</div>
+
+	<script async src="../../platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</div>
+
+
+<p>My goal was to create a chatbot that could talk to people on the <a href="https://www.twitch.tv/sentdex" target="blank"><strong>Twitch Stream</strong></a> in real-time, and not sound like a total idiot. In order to create a chatbot, or really do any machine learning task, of course, the first job you have is to acquire training data, then you need to structure and prepare it to be formatted in a "input" and "output" manner that a machine learning algorithm can digest. Arguably, this is where all the real work is when doing just about any machine learning. The building of a model and training/testing steps are the easy parts!</p>
+
+<p>For getting chat training data, there are quite a few resources you could look into. For example, there is the <a href="https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html" target="blank"><strong>Cornell movie dialogue corpus</strong></a> that seems to be one of the most popular. There are many other sources, but I wanted something that was more... raw. Something a little less polished... something with some character to it. Naturally, this took me to <a href="https://www.reddit.com/" target="blank"><strong>Reddit</strong></a>. At first, I thought I would use the <a href="../introduction-python-reddit-api-wrapper-praw-tutorial/index.html" target="blank"><strong>Python Reddit API Wrapper</strong></a>, but the limits imposed by Reddit on crawling are not the most friendly. To collect bulk amounts of data, you'd have to break some rules. Instead, I found a data dump of <a href="https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/?st=j9udbxta&amp;sh=69e4fee7" target="blank"><strong>1.7 Billion Reddit Comments</strong></a>. Well, that should do it!</p>
+
+<p>The structure of Reddit is in a tree-form, not like a forum or something where everything is linear. The parent comments are linear, but replies to parent comments branch out. Just in case there are some people who aren't familiar:</p>
+
+<pre>-Top level reply 1
+--Reply to top level reply 1
+--Reply to top level reply 1
+---Reply to reply...
+-Top level reply 2
+--Reply to top level reply 1
+-Top level reply 3	</pre>
+
+<p>The structure we need for deep learning is input-output. So we really are trying to get something more along the lines of comment and reply pairs. In the above example, we could use the following as comment-reply pairs:</p>
+
+<p><code>-Top level reply 1</code> and <code>--Reply to top level reply 1</code></p>
+<p><code>--Reply to top level reply 1<code> and </code>---Reply to reply...</code></p>
+
+<p>So, what we need to do is take this Reddit dump, and produce these pairs. The next thing we need to consider is that we should probably have only 1 reply per comment. Even though many single comments might have many replies, we should really just go with one. We can either go with the first one, or we can go with the top-voted one. More on this later. Our first order of business is to get the data. If you have storage constraints, you can check out the <a href="https://mega.nz/#!ysBWXRqK!yPXLr25PgJi184pbJU3GtnqUY4wG7YvuPpxJjEmnb9A" target="blank"><strong>one month of Reddit comments</strong></a>, which is for Jan 2015. Otherwise, you can get the entire dump:</p>
+
+<pre>magnet:?xt=urn:btih:7690f71ea949b868080401c749e878f98de34d3d&dn=reddit%5Fdata&tr=http%3A%2F%2Ftracker.pushshift.io%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80</pre>
+
+<p>I have only downloaded this torrent twice, but, depending on seeds and peers, your download speeds may vary significantly.</p>
+
+<p>Finally, you can also access the data via Google BigQuery: <a href="https://www.reddit.com/r/bigquery/comments/3cej2b/17_billion_reddit_comments_loaded_on_bigquery/?st=j9xmvats&amp;sh=5843d18e" target="blank"><strong>Google BigQuery of all Reddit comments</strong></a>. The BigQuery tables appear to be updated over time, while the torrent isn't, so this is also a fine option. I am personally going to be using the torrent, because it is totally free, so, if you want to follow along exactly, you'll need that, but feel free to change things to work with Google BigQuery if you want!</p>
+
+<p>Since the download of the data can take a considerable amount of time, I will break here. Continue in the next tutorial once you have the data downloaded. You can follow along with this entire tutorial series by downloading *just* the 2015-01 file, you do not need the entire 1.7 billion comment dump. A single month will suffice.</p>
+
+        
+
+		
+
+		
+		
+
+
+                
+		<p>The next tutorial: <a title="Chat Data Structure - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 2" href="../data-structure-chatbot-deep-learning-python-tensorflow/index4bce.html?completed=/chatbot-deep-learning-python-tensorflow/"><button class="btn" style="background-color:#FFD166; color:#000000">Chat Data Structure - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 2</button></a></p>
+
+		
+
+
+
+
+
+<br>
+	  </div>
+
+</div>
+<div class="col l4 m12 s12">
+<br><br><br>
+
+  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+  		<!-- C.A. : -->
+
+	    
+	    	
+        <a href="https://nnfs.io?a=1&amp;t=/chatbot-deep-learning-python-tensorflow/" id=process_click>
+          <div class="card hoverable" style="max-width:400px; align-items: left;">
+            <div class="card-image">
+              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+            </div>
+          </div>
+        </a>
+ 						
+							    <li>
+								  <div class="collapsible-header active" style="padding:2px">Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 1</div>
+
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Chat Data Structure - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 2</div>
+								  <div class="collapsible-body">
+										<p><a href="../data-structure-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Buffering Data - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 3</div>
+								  <div class="collapsible-body">
+										<p><a href="../buffering-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Insert Logic - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 4</div>
+								  <div class="collapsible-body">
+										<p><a href="../insert-logic-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Building Database - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 5</div>
+								  <div class="collapsible-body">
+										<p><a href="../building-database-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Training Dataset - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 6</div>
+								  <div class="collapsible-body">
+										<p><a href="../training-dataset-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Training a Model - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 7</div>
+								  <div class="collapsible-body">
+										<p><a href="../training-model-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Exploring concepts and parameters of our NMT Model - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 8</div>
+								  <div class="collapsible-body">
+										<p><a href="../bidirectional-attention-mechanism-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Interacting with our Chatbot - Creating a Chatbot with Deep Learning, Python, and TensorFlow Part 9</div>
+								  <div class="collapsible-body">
+										<p><a href="../interacting-chatbot-deep-learning-python-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+  </ul>
+
+
+</div>
+</div>
+
+
+
+			</div>
+		</div>
+
+		<!--login modal-->
+		
+
+		<!--Register modal-->
+		
+
+
+		<script>
+			$(document).ready(function(){
+				$(".button-collapse").sideNav();
+				$('.modal-trigger').leanModal();
+				$('.collapsible').collapsible({
+				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+				});
+				$('#aside').pushpin({ top:110, bottom:500 });
+		  });
+		</script>
+		<script>
+		  $(document).ready(function(){
+			$('.collapsible').collapsible({
+			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+			});
+			$('select').material_select();
+		  });
+	  </script>
+	  <script>
+		function goBack() {
+			window.history.back()
+		}
+	</script>
+		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+	</body>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
+          <div class="footer-copyright">
+            <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+            </div>
+
+          </div>
+        </footer>
+
+
+<!-- Mirrored from pythonprogramming.net/chatbot-deep-learning-python-tensorflow/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:14 GMT -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
