@@ -29,7 +29,7 @@ urlpatterns = [
     path('deep-learning-with-tensorflow-keras/', views.deeplearningwithtensorflowkeras, name='deepLearningWithTensorflowKeras'),
     path('practical-machine-learning/', views.practicalmachinelearning, name='practicalMachineLearning'),
     path('halite-ii-artificial-intelligence/', views.haliteiiartificialintelligence, name=' haliteiiArtificialIntelligence'),
-   
+    path('image-recognition/', views.imagerecognition, name='imageRecognition'),
     
     
     path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),

@@ -25,6 +25,10 @@ def practicalmachinelearning(request):
     return render(request, 'main/tutorials/MachineLearning/practical-machine-learning/index.html')
 def haliteiiartificialintelligence(request):
     return render(request, 'main/tutorials/MachineLearning/halite-ii-artificial-intelligence/index.html')
+def imagerecognition(request):
+    return render(request, 'main/tutorials/MachineLearning/image-recognition/index.html')
+
+
 
 
 def dataanalysistutorials(request):
