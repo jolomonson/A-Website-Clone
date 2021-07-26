@@ -30,18 +30,19 @@ urlpatterns = [
     path('practical-machine-learning/', views.practicalmachinelearning, name='practicalMachineLearning'),
     path('gta-v/', views.gtav, name='gtav'),
     path('starcraft-ii-ai/', views.starcraftiiai, name='starcraftiiAI'),
-    path('halite-ii-artificial-intelligence/', views.haliteiiartificialintelligence, name=' haliteiiArtificialIntelligence'),
-    path('image-recognition/', views.imagerecognition, name='imageRecognition'),
     path('chatbot-with-deep-learning/', views.chatbotwithdeeplearning, name='chatbotWithDeepLearning'),
     path('unconventional-neural-networks/', views.unconventionalneuralnetworks, name='unconventionalNeuralNetworks'),
     path('tensorflowjs/', views.tensorflowjs, name='tensorflowJs'),
     path('tensorflow-object-detection/', views.tensorflowobjectdetection, name='tensorflowObjectDetection'),
     path('support-vector-machines/', views.supportvectormachines, name='supportVectorMachines'),
     path('learn-about-clustering/', views.learnaboutclustering, name='learnAboutClustering'),
-    
-    
-    
+    path('image-recognition/', views.imagerecognition, name='imageRecognition'),
+    path('halite-ii-artificial-intelligence/', views.haliteiiartificialintelligence, name=' haliteiiArtificialIntelligence'),
+    # Data Analysis
     path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),
+    path('machine-learning/', views.machinelearning, name='machineLearning'),
+
+
     path('quantum-programming-tutorials/', views.quantumprogrammingtutorials, name='quantumProgramming'),
     path('game-development-tutorials/', views.gamedevelopmenttutorials, name='gameDevelopment'),
     path('python-fundamental-tutorials/', views.pythonfundamentaltutorials, name='pythonFundamentals'),

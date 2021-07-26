@@ -10,56 +10,48 @@ def homePage(request):
     return render(request, 'main/home.html')
 
 def machinelearningtutorials(request):
-    return render(request, 'main/tutorials/MachineLearning/machine-learning-tutorials/index.html')
+    return render(request, 'main/tutorials/MachineLearning/machine-learning/index.html')
 def deeplearningneuralnetworks(request):
-    return render(request, 'main/tutorials/MachineLearning/deep-learning-neural-networks/index.html')
+    return render(request, 'main/tutorials/MachineLearning/neural-networks/index.html')
 def cloudgpus(request):
     return render(request, 'main/tutorials/MachineLearning/cloud-gpus/index.html')
 def reinforcementlearning(request):
-    return render(request, 'main/tutorials/MachineLearning/reinforcement-learning/index.html')
+    return render(request, 'main/tutorials/MachineLearning/reinforcement/index.html')
 def selfdrivingcars(request):
     return render(request, 'main/tutorials/MachineLearning/self-driving-cars/index.html')
 def deeplearningwithtensorflowkeras(request):
-    return render(request, 'main/tutorials/MachineLearning/deep-learning-tensorflow-keras/index.html')
+    return render(request, 'main/tutorials/MachineLearning/tensorflow-keras/index.html')
 def practicalmachinelearning(request):
-    return render(request, 'main/tutorials/MachineLearning/practical-machine-learning/index.html')
+    return render(request, 'main/tutorials/MachineLearning/practical-ml/index.html')
 def gtav(request):
     return render(request, 'main/tutorials/MachineLearning/gta-v/index.html')
+def starcraftiiai(request):
+    return render(request, 'main/tutorials/MachineLearning/starcraft-ii-ai/index.html')
 def chatbotwithdeeplearning(request):
-    return render(request, 'main/tutorials/MachineLearning/chatbot-with-deep-learning/index.html')
+    return render(request, 'main/tutorials/MachineLearning/chatbot/index.html')
 def unconventionalneuralnetworks(request):
-    return render(request, 'main/tutorials/MachineLearning/unconventional-neural-networks/index.html')
+    return render(request, 'main/tutorials/MachineLearning/unconventional-net/index.html')
 def tensorflowjs(request):
     return render(request, 'main/tutorials/MachineLearning/tensorflowjs/index.html')
 def tensorflowobjectdetection(request):
-    return render(request, 'main/tutorials/MachineLearning/tensorflow-object-detection/index.html')
+    return render(request, 'main/tutorials/MachineLearning/tensorflow-object/index.html')
 def supportvectormachines(request):
-    return render(request, 'main/tutorials/MachineLearning/support-vector-machines/index.html')
+    return render(request, 'main/tutorials/MachineLearning/svm/index.html')
 def learnaboutclustering(request):
-    return render(request, 'main/tutorials/MachineLearning/learn-about-clustering/index.html')
-
-
-
-
-
-
-
-def starcraftiiai(request):
-    return render(request, 'main/tutorials/MachineLearning/starcraft-ii-ai/index.html')
-def haliteiiartificialintelligence(request):
-    return render(request, 'main/tutorials/MachineLearning/halite-ii-ai/index.html')
+    return render(request, 'main/tutorials/MachineLearning/clustering/index.html')  
 def imagerecognition(request):
     return render(request, 'main/tutorials/MachineLearning/image-recognition/index.html')
+def haliteiiartificialintelligence(request):
+    return render(request, 'main/tutorials/MachineLearning/halite-ii-ai/index.html')
 
-
-
-
+# Data Analysis
 def dataanalysistutorials(request):
-    return render(request, 'main/tutorials/DataAnalysis/data-analysis-tutorials/index.html')
+    return render(request, 'main/tutorials/DataAnalysis/data-analysis/index.html')
+def machinelearning(request):
+    return render(request, 'main/tutorials/DataAnalysis/machine-learning/index.html')
 
 def quantumprogrammingtutorials(request):
     return render(request, 'main/tutorials/QuantumProgramming/quantum-programming-tutorials/index.html')
-
 def quantumprogrammingtutorials(request):
     return render(request, 'main/tutorials/QuantumProgramming/quantum-programming-tutorials/index.html')
 
