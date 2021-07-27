@@ -1,0 +1,243 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Intro and creating a virtual machine - Google Cloud Tutorial</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/chk2rRjSn5o" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome everyone to a tutorial series on <a href="https://cloud.google.com/" target="blank"><strong>Google Cloud</strong></a>. With Google Cloud, we can do things from running a typical virtual machine, to doing various machine learning
+                        tasks like analyzing text, speech, and imagery.</p>
+
+                    <p>To begin, we're going to launch a virtual machine. The user interface to do this may change slightly in time but I expect the process to remain mostly the same.</p>
+
+                    <p>The first thing you need to do is create an account. As of March 2017, if you create a new account, you should get $300 in free credit to explore the service.</p>
+
+                    <p>Once you have an account, and you log in, click on the "console" link in the top right. This takes you to your, big surprise, console! If you just created a trial account, then you probably already have a project started/created for
+                        you. To see, check here:</p>
+
+                    <img class="responsive-img" src="../static/images/google-cloud/google-cloud-project.png" alt="python tutorials" />
+
+                    <p>In my case, I have a project called "Tutorials." If you don't, then click on the drop down, and then create a new project.</p>
+
+                    <p>Next, we can click on the hamburger icon to bring over a sidebar. Now, under the "compute" header, choose "Compute Engine." The compute engine is Google Cloud's virtual machine. When here, click to create an instance. Choose a name,
+                        then choose a zone. Note that various zones will have various costs per hour. Feel free to check a few to see what the cheapest option is.</p>
+
+                    <p>Our next choices are our Machine Type. Here, we can pick the processors and memory, including GPUs if we like. Click on customize, then slide the cores all of the way to the left, which will give you 1 shared CPU. This will be enough
+                        for you to follow along this miniseries for a while, but feel free to go larger if you'd like. If you did want GPUs, note that they are currently only available in certain zones.</p>
+
+                    <p>Once you're happy with your machine type, you're ready to choose your boot disk. You can go off the default if you like, but I am going to customize mine to be Ubuntu 16.04. While here, note that this is also where you can change your
+                        disk type (solid state or standard, and what size).</p>
+
+                    <p>After this, you've made all of the changes that will affect your price. You can see your monthly price on the right. You can click on the "more" option below to see the price broken down to see where you're costs are. Next, we can
+                        configure access to the server. You do not need to actually configure this to follow along here, but it can be useful. Setup of remote access differs by operating system and setup. If you're on a windows machine, see the video
+                        around 6:53 in. On Windows, Linux, or MacOS, you can also view the <a href="https://cloud.google.com/compute/docs/instances/connecting-to-instance" target="blank"><strong>Google Cloud documentation for remote access</strong></a>.
+                        You can also just simply access your server via browser after you create it, which is also just fine, and super simple. To connect via your browser, you create the server, then click under the connect heading on the drop down arrow,
+                        and then you can choose to "open in browser."</p>
+
+                    <p>At this point, you're all set with your Google Cloud virtual machine. You can do whatever you want at this point, but, if you continue here, we're going to begin digging into the Google Cloud APIs for things like image and language
+                        analysis.
+                    </p>
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Setting up API and Vision Intro - Google Cloud Tutorial" href="../vision-api-intro-google-cloud-tutorial/index47e7.html?completed=/virtual-machine-google-cloud-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Setting up API and Vision Intro - Google Cloud Tutorial</button></a></p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=2&amp;t=/virtual-machine-google-cloud-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Intro and creating a virtual machine - Google Cloud Tutorial</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Setting up API and Vision Intro - Google Cloud Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../vision-api-intro-google-cloud-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Vision API continued - Google Cloud Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../vision-api-contd-google-cloud-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Natural Language API - Google Cloud Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../natural-language-api-google-cloud-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Translation API - Google Cloud Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../translation-api-google-cloud-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+{% endblock %}

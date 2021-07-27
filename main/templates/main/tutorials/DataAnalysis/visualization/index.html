@@ -1,0 +1,1657 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				Matplotlib Data Visualization Progress:  0%
+			</div>
+		</div>-->
+                    <h2>Introduction to Matplotlib and basic line</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/q7Bo_J8x_dw" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+
+                    <p>Welcome to a Matplotlib with Python 3+ tutorial series. In this series, we're going to be covering most aspects to the Matplotlib data visualization module. Matplotlib is capable of creating most kinds of charts, like line graphs,
+                        scatter plots, bar charts, pie charts, stack plots, 3D graphs, and geographic map graphs.</p>
+                    <p>First, in order to actually use Matplotlib, we're going to need it!</p>
+                    <p>If you have a later version of Python installed, you should be able to open cmd.exe/terminal and then run:</p>
+                    <p><code>pip install matplotlib</code></p>
+                    <p>Note: You may need to do <code>C:/Python34/Scripts/pip install matplotlib</code> if the above shorter version doesn't work.</p>
+                    <p>If, when importing matplotlib, you get an error something like "no module named" and a module name, it means you need to also install that module. A common issue is that people do not have the module named "six." This means you need
+                        to pip install six.</p>
+                    <p>Alternatively, you can head to <a href="http://matplotlib.org/" target='blank'>Matplotlib.org</a> and install by heading to the downloads section and downloading your appropriate version. Keep in mind that, just because you have a
+                        64 bit operating system, you do not necessarily have a 64 bit version of Python. Chances are, you have 32 bit unless you tried to get 64 bit. Open IDLE and read the top. If it says you have 64 bit, you have 64 bit, if it says 32,
+                        then you have 32 bit. Once you have Python installed, you're ready to rumble. You can code this logic however you wish. I prefer to code using IDLE, but feel free to use whatever you prefer.</p>
+
+                    <pre class="prettyprint">import matplotlib.pyplot as plt</pre>
+                    <p>This line imports the integral pyplot, which we're going to use throughout this entire series. We import pyplot as plt, and this is a traditional standard for python programs using pylot.</p>
+                    <pre class="prettyprint">plt.plot([1,2,3],[5,7,4])</pre>
+                    <p>Next, we invoke the .plot method of pyplot to plot some coordinates. This .plot takes many parameters, but the first two here are 'x' and 'y' coordinates, which we've placed lists into. This means, we have 3 coordinates according to
+                        these lists: 1,5 2,7 and 3,4.</p>
+                    <p>The plt.plot will "draw" this plot in the background, but we need to bring it to the screen when we're ready, after graphing everything we intend to.</p>
+                    <pre class="prettyprint">plt.show()</pre>
+                    <p>With that, the graph should pop up. If not, sometimes it can pop under, or you may have gotten an error. Your graph should look like:</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/matplotlib-basic-graph-tutorial.png" />
+
+                    <p>This window is a matplotlib window, which allows us to see our graph, as well as interact with it and navigate it. You can hover the graph and see the coordinates in the bottom right typically. You can also utilize the buttons. These
+                        may be in various locations, but, in the picture above, these are the buttons that are in the lower left corner.</p>
+                    <hr>
+                    <p>Home Button</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/home-navigation-matplotlib-button.png" />
+                    <p>The home button will help you once you have begun navigating your chart. If you ever want to return back to the original view, you can click on this. Clicking this before you have navigated your graph will do nothing.</p>
+                    <hr>
+                    <p>Forward/Back buttons</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/forward-and-back-matplotlib-buttons.png" />
+                    <p>These buttons can be used like the forward and back buttons in your browser. You can click these to move back to the previous point you were at, or forward again.</p>
+                    <hr>
+                    <p>Pan Axis</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/matplotlib-click-and-drag.png" />
+                    <p>This cross-looking button allows you to click it, and then click and drag your graph around.</p>
+                    <hr>
+                    <p>Zoom</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/zoom-matplotlib.png" />
+                    <p>The zoom button lets you click on it, then click and drag a square that you would like to zoom into specifically. Zooming in will require a left click and drag. You can alternatively zoom out with a right click and drag.</p>
+                    <hr>
+                    <p>Configure Subplots</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/configure-subplots-matplotlib.png" />
+                    <p>This button allows you to configure various spacing options with your figure and plot. Clicking it will bring up:</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/configure-subplots-window.png" />
+                    <p>Each of those blue bars is a slider, which allows you to adjust the padding. Some of these wont do anything right now, because there aren't any other subplots. Left, bottom, right, and top adjust the padding of the figure from the
+                        edge of the window. Then wspace and hspace correspond to when you have multiple subplots, and this will act like "spacing" or "padding" between them.</p>
+                    <hr>
+                    <p>Save Figure</p>
+                    <img class="responsive-img" src="../static/images/matplotlib/save-figure-matplotlib.png" />
+                    <p>This button will allow you to save your figure in various forms.</p>
+                    <hr>
+                    <p>So there's a quick introduction to matplotlib, we have much more to cover!</p>
+
+
+
+
+
+
+
+
+
+
+                    <br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>2 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Legends, Titles, and Labels with Matplotlib" href="../legends-titles-labels-matplotlib-tutorial/index82cf.html?completed=/matplotlib-intro-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Legends, Titles, and Labels with Matplotlib</button></a></p><br>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=2&amp;t=/matplotlib-intro-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+
+                    <!--HONLY -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction to Matplotlib and basic line</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Legends, Titles, and Labels with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../legends-titles-labels-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Bar Charts and Histograms with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../bar-chart-histogram-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Scatter Plots with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../scatter-plot-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Stack Plots with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../stack-plot-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Pie Charts with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pie-chart-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Loading Data from Files for Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../loading-file-data-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Data from the Internet for Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../internet-data-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Converting date stamps for Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../converting-date-stamps-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Basic customization with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../basic-customization-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Unix Time with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../unix-time-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Colors and Fills with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../colors-fills-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Spines and Horizontal Lines with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../spines-hline-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Candlestick OHLC graphs with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../candlestick-ohlc-graph-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Styles with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../styles-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Live Graphs with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../live-graphs-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Annotations and Text with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../annotations-text-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Annotating Last Price Stock Chart with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../last-price-stock-chart-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Subplots with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../subplot2grid-add_subplot-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Implementing Subplots to our Chart with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../implementing-subplots-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">More indicator data with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../more-indicator-data-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Custom fills, pruning, and cleaning with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../fill-pruning-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Share X Axis, sharex, with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../share-x-axis-sharex-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Multi Y Axis with twinx Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../multi-y-axis-twinx-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Custom Legends with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../custom-legends-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Basemap Geographic Plotting with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../geographic-basemap-plotting-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Basemap Customization with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../basemap-customization-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Plotting Coordinates in Basemap with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../basemap-coordinates-plotting-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">3D graphs with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../3d-graphs-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">3D Scatter Plot with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../3d-scatter-plot-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">3D Bar Chart with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../3d-bar-chart-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Conclusion with Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../conclusion-matplotlib-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+
+{% endblock %}

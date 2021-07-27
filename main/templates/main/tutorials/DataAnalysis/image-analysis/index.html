@@ -1,0 +1,436 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+                <div class="container-fluid" style="text-align:left ">
+
+
+
+
+
+
+
+
+                    <br>
+                    <!--<div class="progress " style="background-color:#ffebbe;height:20px; ">
+			<div class="determinate " style="background-color:#FFD166;width: 0%; ">
+				OpenCV with Python for Image and Video Analysis Progress:  0%
+			</div>
+		</div>-->
+                    <h2>OpenCV with Python Intro and loading Images tutorial</h2>
+                    <br>
+
+                    <div class="video-container "><iframe width="560 " height="315 " src="https://www.youtube.com/embed/Z78zbnLlPUA?list=PLQVvvaa0QuDdttJXlLtAJxJetJcqmqlQq " frameborder="0 " allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <img class="responsive-img " src="../../aul.edu.lan/login8c69.html " />
+
+                    <p>Welcome to a tutorial series, covering OpenCV, which is an image and video processing library with bindings in C++, C, Python, and Java. OpenCV is used for all sorts of image and video analysis, like facial recognition and detection,
+                        license plate reading, photo editing, advanced robotic vision, optical character recognition, and a whole lot more.</p>
+
+                    <p>We will be working through many Python examples here. Getting started with OpenCV's Python bindings is actually much easier than many people make it out to be initially. You will need two main libraries, with an optional third:
+                        <code>python-OpenCV</code>, <code>Numpy</code>, and <code>Matplotlib</code>.
+
+                        <h3>Windows Users:</h3>
+                        <p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv " target="blank "><strong>python-OpenCV</strong></a> - There are alternative methods, but this is the easiest. Download the appropriate wheel (.whl) file, and install using
+                            pip. See video for help.</p>
+                        <p><code>pip install numpy</code></p>
+                        <p><code>pip install matplotlib</code></p>
+                        <p>Not familiar with using pip? See the <a href="../using-pip-install-for-python-modules/index.html " target="blank "><strong>Pip installation tutorial</strong></a> for help.</p>
+
+                        <h3>Linux / Mac Users:</h3>
+                        <p><code>pip3 install numpy</code> or <code>apt-get install python3-numpy</code>. You may need to apt-get install python3-pip.</p>
+                        <p><code>pip3 install matplotlib</code> or <code>apt-get install python3-matplotlib</code>.</p>
+                        <p><code>apt-get install python3-OpenCV</code></p>
+
+                        <hr>
+
+                        <p><a href="../matplotlib-intro-tutorial/index.html " target="blank
+                    "><strong>Matplotlib</strong></a> is an optional choice for displaying frames from video or images. We will show a couple of examples using it here. <a href="http://www.numpy.org/ " target="blank "><strong>Numpy</strong></a> is used
+                            for all things "numbers and Python. " We are mainly making use of Numpy's array functionality. Finally, we are using the python-specific bindings for OpenCV called python-OpenCV.</p>
+
+                        <p>There are some operations for OpenCV that you will not be able to do without a full installation of OpenCV (about 3GB in size), but you can actually do quite a bit with the fairly minimal installation of python-OpenCV. We will
+                            wind up using the full installation of OpenCV later in this series, so you can feel free to get it if you like, but these 3 modules will keep us busy for a while!</p>
+
+                        <p>Make sure your installations were successful by running Python, and doing:</p>
+                        <pre class='prettyprint lang-py'>import cv2
+import matplotlib
+import numpy</pre>
+                        <p>If you get no errors, then you are ready to go. Ready? Let's dive off the deep-end!</p>
+
+                        <p>First, we should understand a few basic assumptions and paradigms when it comes to image and video analysis. With the way just about every video camera records today, recordings are actually frames, displayed one after another,
+                            30-60+ times a second. At the core, however, they are static frames, just like images. Thus, image recognition and video analysis use identical methods for the most part. Some things, like directional tracking, is going to
+                            require a succession of images (frames), but something like facial detection, or object recognition can be done with almost the exact same code on images and video.</p>
+
+                        <p>Next, a lot of image and video analysis boils down to simplifying the source as much as possible. This almost always begins with a conversion to grayscale, but it can also be a color filter, gradient, or a combination of these.
+                            From here, we can do all sorts of analysis and transformations to the source. Generally, what winds up happening is there is a transformation done, then analysis, then any overlays that we wish to apply are applied back to
+                            the original source, which is why you can often see the "finished product " of maybe object or facial recognition being shown on a full-color image or video. Rarely is the data actually processed in raw form like this, however.
+                            Some examples of what we can do at a basic level. All of these are done with a basic web cam, nothing special:</p>
+
+
+                        <h4>Background Subtracting:</h4>
+                        <img class="responsive-img " src="../static/images/opencv/opencv-background-subtracting.png " />
+
+                        <h4>Color filtering:</h4>
+                        <img class="responsive-img " src="../static/images/opencv/opencv-filtering.jpg " />
+
+                        <h4>Edge detection:</h4>
+                        <img class="responsive-img " src="../static/images/opencv/opencv-edge-detection.png " />
+
+                        <h4>Feature matching for object recognition:</h4>
+                        <img class="responsive-img " src="../static/images/opencv/opencv-feature-matching.png " />
+
+                        <h4>General object recognition:</h4>
+                        <img class="responsive-img " src="../static/images/opencv/opencv-object-recognition.png " />
+
+                        <p>In the case of edge detection, the black corresponds to pixel values of (0,0,0), and white lines are (255,255,255). Every picture and frame from a video breaks down to pixels like this, and we can deduce, like in the case of edge
+                            detection, where edges are based on where the white pixels are compared to black. Then, if we want to see the original image with the edges marked, we note all of the coordinate locations of white pixels, and then we mark these
+                            locations on the original source feed image or video.</p>
+
+                        <p>By the end of this tutorial, you will be able to do all of the above, and be able to train your machine to recognize any object you want. Like I said initially though, the first step is usually to convert to gray scale. Before
+                            that, we need to load the image. Thus, let's do it! Throughout this entire tutorial, I greatly encourage you to use your own data to play with. If you have a webcam, definitely use it, otherwise find an image that you think
+                            will be fun to work with. If you're having trouble, here's an image of a watch:</p>
+
+                        <img class="responsive-img " src="../static/images/opencv/watch.jpg " />
+
+                        <pre class='prettyprint lang-py'>import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+img = cv2.imread('watch.jpg',cv2.IMREAD_GRAYSCALE)
+cv2.imshow('image',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+</pre>
+
+                        <p>First, we are importing a few things, those three modules I had you all install. Next, we define img to be cv2.read(image file, parms). The default is going to be IMREAD_COLOR, which is color without any alpha channel. If you're
+                            not familiar, alpha is the degree of opaqueness (the opposite of transparency). If you need to retain the alpha channel, you can also use IMREAD_UNCHANGED. Many times, you will be reading in the color version, and later converting
+                            it to gray. If you do not have a webcam, this will be the main method you will use throughout this tutorial, loading an image.</p>
+
+                        <p>Rather than using IMREAD_COLOR...etc, you can also use simple numbers. You should be familiar with both options, so you understand what the person is doing. For the second parameter, you can use -1, 0, or 1. Color is 1, grayscale
+                            is 0, and the unchanged is -1. Thus, for grayscale, one could do <code>img = cv2.imread('watch.jpg', 0)</code></p>
+
+                        <p>Once loaded, we use cv2.imshow(title,image) to show the image. From here, we use the cv2.waitKey(0) to wait until any key is pressed. Once that's done, we use cv2.destroyAllWindows() to close everything.</p>
+
+                        <p>As mentioned before, you can also display images with Matplotlib, here's some code for how you might do that:</p>
+
+                        <pre class='prettyprint lang-py'>import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+img = cv2.imread('watch.jpg',cv2.IMREAD_GRAYSCALE)
+
+plt.imshow(img, cmap = 'gray', interpolation = 'bicubic')
+plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+plt.plot([200,300,400],[100,200,300],'c', linewidth=5)
+plt.show()
+</pre>
+
+                        <p>Note that you can plot lines, just as you would or could with any other Matplotlib graph using the pixel locations as coordinates, here. Should you wish to draw on your images, however, Matplotlib is not required. OpenCV provides
+                            great methods for this. When you are done making modifications, you can save, like so:</p>
+                        <pre class='prettyprint lang-py'>cv2.imwrite('watchgray.png',img)</pre>
+
+                        <p>Getting images into OpenCV seems easy enough, how about loading video feeds? In the next tutorial, we're going to show how to load in a webcam or video feed.</p>
+
+
+
+
+
+
+
+
+
+
+                        <p>The next tutorial: <a title="Loading Video Source OpenCV Python Tutorial " href="../loading-video-python-opencv-tutorial/index9c56.html?completed=/loading-images-python-opencv-tutorial/ "><button class="btn " style="background-color:#FFD166;
+                    color:#000000 ">Loading Video Source OpenCV Python Tutorial</button></a></p>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12 ">
+                <br><br><br>
+
+                <ul class="collapsible popout " data-collapsible="accordion " style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=5&amp;t=/loading-images-python-opencv-tutorial/ " id=process_click>
+                        <div class="card hoverable " style="max-width:400px; align-items: left; ">
+                            <div class="card-image ">
+                                <img id=process_click class="responsive-img " src="../static/images/CAs/nnfs-1.png " />
+                            </div>
+                        </div>
+                    </a>
+                    <li>
+                        <div class="collapsible-header ">Loading Video Source OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../loading-video-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Drawing and Writing on Image OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../drawing-writing-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Image Operations OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../image-operations-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Image arithmetics and Logic OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../image-arithmetics-logic-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Thresholding OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../thresholding-image-analysis-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Color Filtering OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../color-filter-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Blurring and Smoothing OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../blurring-smoothing-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Morphological Transformations OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../morphological-transformation-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Canny Edge Detection and Gradients OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../canny-edge-detection-gradients-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Template Matching OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../template-matching-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">GrabCut Foreground Extraction OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../grabcut-foreground-extraction-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Corner Detection OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../corner-detection-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Feature Matching (Homography) Brute Force OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../feature-matching-homography-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">MOG Background Reduction OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../mog-background-reduction-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Haar Cascade Object Detection Face &amp; Eye OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../haar-cascade-face-eye-detection-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header ">Creating your own Haar Cascade OpenCV Python Tutorial</div>
+                        <div class="collapsible-body ">
+                            <p><a href="../haar-cascade-object-detection-python-opencv-tutorial/index.html "><button class="btn waves-effect waves-light right-align " style="background-color:#FFD166; color:#000000 ">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse ").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript " src="../static/js/run_prettify.js "></script>
+
+</body>
+
+<footer class="page-footer ">
+    <div class="container ">
+        <div class="row ">
+            <div class="col l6 s12 ">
+                <h5 class="white-text ">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4 ">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3 " href="../support-donate/index.html ">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3 " href="../consulting/index.html ">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3 " href="https://www.facebook.com/pythonprogramming.net/ ">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3 " href="https://twitter.com/sentdex ">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3 " href="https://instagram.com/sentdex ">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12 ">
+                <h6 class="white-text ">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3 " href="../about/tos/index.html ">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3 " href="../about/privacy-policy/index.html ">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/ " target='blank'>
+        <p class="grey-text right " style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright ">
+        <div class="container ">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+{% endblock %}

@@ -49,6 +49,33 @@ def dataanalysistutorials(request):
     return render(request, 'main/tutorials/DataAnalysis/data-analysis/index.html')
 def machinelearning(request):
     return render(request, 'main/tutorials/DataAnalysis/machine-learning/index.html')
+def dataanalysiswithpandas(request):
+    return render(request, 'main/tutorials/DataAnalysis/da-pandas/index.html')
+def datavisualizationwithdashandpython(request):
+    return render(request, 'main/tutorials/DataAnalysis/dv-dash/index.html')
+def datavisualization(request):
+    return render(request, 'main/tutorials/DataAnalysis/visualization/index.html')
+def finance(request):
+    return render(request, 'main/tutorials/DataAnalysis/finance/index.html')
+def stockprices(request):
+    return render(request, 'main/tutorials/DataAnalysis/finance/stock-prices/index.html')
+def sklearnintro(request):
+    return render(request, 'main/tutorials/DataAnalysis/finance/sklearn-intro/index.html')
+def googlecloud(request):
+    return render(request, 'main/tutorials/DataAnalysis/google-cloud/index.html')
+def imagesandvideoanalysis(request):
+    return render(request, 'main/tutorials/DataAnalysis/image-analysis/index.html')
+def distributedcomputing(request):
+    return render(request, 'main/tutorials/DataAnalysis/distributed-computing/index.html')
+def naturallanguageprocessing(request):
+    return render(request, 'main/tutorials/DataAnalysis/nl-processing/index.html')
+    
+
+
+
+
+
+
 
 def quantumprogrammingtutorials(request):
     return render(request, 'main/tutorials/QuantumProgramming/quantum-programming-tutorials/index.html')

@@ -1,0 +1,590 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+    <script>
+        Materialize.toast('Chat with us on Discord:<a href="https://discord.gg/sentdex" target="blank"><button style="margin-bottom:5px" class="btn btn-sm">Join</button></a>', 4000)
+    </script>
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Intro and Getting Stock Price Data - Python Programming for Finance p.1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/2BrpKpWwT2A?list=PLQVvvaa0QuDcOdF96TBtRtuQksErCEBYZ" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+
+                    <div class='card hoverable'>
+                        <div class='card-content'>
+                            <div class='card-title'>What you will need for this tutorial series:</div>
+                            <ul>
+                                <li>An understanding of the <a href="../introduction-to-python-programming/index.html" target="blank"><strong>Python Basics</strong></a></li>
+                                <li>Install numpy, matplotlib, pandas, pandas-datareader, beautifulsoup4, sklearn.</li>
+                            </ul>
+
+                            <p style='font-size:85%'>Need help installing packages with pip? see the <a href="../using-pip-install-for-python-modules/index.html" target="blank"><strong>pip install tutorial</strong></a></p>
+                        </div>
+                    </div>
+
+                    <p>Hello and welcome to a Python for Finance tutorial series. In this series, we're going to run through the basics of importing financial (stock) data into Python using the Pandas framework. From here, we'll manipulate the data and attempt
+                        to come up with some sort of system for investing in companies, apply some machine learning, even some deep learning, and then learn how to back-test a strategy. I assume you know the <a href="../python-fundamental-tutorials/index.html"
+                            target="blank"><strong>fundamentals</strong></a> of Python. If you're not sure if that's you, click the fundamentals link, look at some of the topics in the series, and make a judgement call. If at any point you are stuck in this
+                        series or confused on a topic or concept, feel free to ask for help and I will do my best to help.</p>
+
+                    <p>A common question that I am asked is whether or not I make a profit investing or trading with these techniques. I mostly play with finance data for fun and to practice my data analysis skills, but it actually does also influence my
+                        investment decisions to this day. I do not do active algorithmic trading with programming at the time of my writing this, but I have, and I have actually made a profit, but it's a lot more work than you might think to algorithmically
+                        trade. Finally, the knowledge about how to manipulate and analyze financial data, as well as how to backtest trading stategies, has *saved* me a ton of money.</p>
+
+                    <p>None of the strategies presented here will make you an ultra wealthy person. If they would, I'd probably keep them to myself! The knowledge itself, however, can save you money, and even make you money.</p>
+
+                    <p>Alright great, let's get started. To begin, I am using Python 3.5, but you should be able to get by with later versions. I will assume you already have Python installed. If you do not have 64 bit Python, but do have a 64bit operating
+                        system, get 64 bit Python, it'll help you a bit later. If you're on a 32 bit operating system, I am sorry for your situation, but you should be fine to follow most of this anyway.</p>
+
+                    <p>Required Modules to start:</p>
+                    <ol>
+                        <li><strong>Numpy</strong></li>
+                        <li><strong>Matplotlib</strong></li>
+                        <li><strong>Pandas</strong></li>
+                        <li><strong>Pandas-datareader</strong></li>
+                        <li><strong>BeautifulSoup4</strong></li>
+                        <li><strong>scikit-learn / sklearn</strong></li>
+                    </ol>
+
+                    <p>That'll do for now, we'll deal with other modules as they come up. To begin, let's cover how we might go about dealing with stock data using pandas, matplotlib and Python.</p>
+
+                    <p>If you'd like to learn more on Matplotlib, check out the <a href="../matplotlib-intro-tutorial/index.html" target="blank"><strong>Data Visualization with Matplotlib tutorial series</strong></a>.</p>
+                    <p>If you'd like to learn more on Pandas, check out <a href="../data-analysis-python-pandas-tutorial-introduction/index.html" target="blank"><strong>the Data Analysis with Pandas tutorial series</strong></a>.</p>
+
+                    <p>To begin, we're going to make the following imports:</p>
+
+                    <pre class="prettyprint lang-py">import datetime as dt
+import matplotlib.pyplot as plt
+from matplotlib import style
+import pandas as pd
+import pandas_datareader.data as web</pre>
+
+                    <p><code>Datetime</code> will easily allow us to work with dates, <code>matplotlib</code> to graph things, <code>pandas</code> to manipulate data, and the <code>pandas_datareader</code> is the newest pandas io library at the time of my
+                        writing this.</p>
+
+                    <p>Now for some starting setup:</p>
+
+                    <pre class="prettyprint lang-py">style.use('ggplot')
+
+start = dt.datetime(2015, 1, 1)
+end = dt.datetime.now()</pre>
+
+                    <p>We're setting a style, so our graphs don't look horrendous. In finance, it's of the utmost importance that your graphs are pretty, even if you're losing money. Next, we're setting a start and end datetime object, this will be the range
+                        of dates that we're going to grab stock pricing information for.</p>
+
+                    <p>Now, we can make a dataframe from this data:</p>
+
+                    <p>Note: This has changed since the video was filmed. Both Yahoo and Google have stopped their APIs, so we'll use morningstar this time:</p>
+
+                    <pre class="prettyprint lang-py">df = web.DataReader("TSLA", 'morningstar', start, end)</pre>
+
+                    <p>If you're not currently familiar with what a DataFrame object is, you can check out the tutorial on <a href="../data-analysis-python-pandas-tutorial-introduction/index.html" target="blank"><strong>Pandas</strong></a>, or just be content
+                        to think of it like a spreadsheet, or a database table that's in your memory/RAM. It's just a table of rows and columns, you have an index, and column names. In our case, our index will likely be date. The index should be something
+                        that relates to all of the columns.</p>
+
+                    <p>The line <code>web.DataReader('TSLA', "yahoo", start, end)</code> uses the <code>pandas_datareader</code> package, looks for the stock ticker <code>TSLA</code>(Tesla), gets the information from <code>yahoo</code>, for the starting
+                        date of whatever <code>start</code> is and ends at the <code>end</code> variable that we chose. Just incase you don't know, a stock is a share of ownership of a company, and the ticker is the "symbol" used to reference the company
+                        in the stock exchange that it's on. Most tickers are 1-4 letters.</p>
+
+                    <p>So now we've got a <code>Pandas.DataFrame</code> object that contains stock pricing information for Tesla. Let's see what we have here:</p>
+
+                    <pre class="prettyprint lang-py">print(df.head())</pre>
+
+
+                    <pre>                    Close    High       Low    Open   Volume
+Symbol Date
+TSLA   2015-01-01  222.41  222.41  222.4100  222.41        0
+       2015-01-02  219.31  223.25  213.2600  222.63  4764443
+       2015-01-05  210.09  216.50  207.1626  214.50  5368477
+       2015-01-06  211.28  214.20  204.2100  210.06  6261936
+       2015-01-07  210.95  214.78  209.7800  213.40  2968390</pre>
+
+
+
+                    <p>Now, let's simplify this dataframe slightly:</p>
+
+                    <pre class="prettyprint lang-py">df.reset_index(inplace=True)
+df.set_index("Date", inplace=True)
+df = df.drop("Symbol", axis=1)
+
+print(df.head())</pre>
+
+                    <p>Now, the full code is:</p>
+
+                    <pre class="prettyprint lang-py">import datetime as dt
+import matplotlib.pyplot as plt
+from matplotlib import style
+import pandas as pd
+import pandas_datareader.data as web
+
+style.use('ggplot')
+
+start = dt.datetime(2015, 1, 1)
+end = dt.datetime.now()
+df = web.DataReader("TSLA", 'morningstar', start, end)
+df.reset_index(inplace=True)
+df.set_index("Date", inplace=True)
+df = df.drop("Symbol", axis=1)
+
+print(df.head())</pre>
+
+                    <p>Giving us:</p>
+
+                    <pre>             Close    High       Low    Open   Volume
+Date
+2015-01-01  222.41  222.41  222.4100  222.41        0
+2015-01-02  219.31  223.25  213.2600  222.63  4764443
+2015-01-05  210.09  216.50  207.1626  214.50  5368477
+2015-01-06  211.28  214.20  204.2100  210.06  6261936
+2015-01-07  210.95  214.78  209.7800  213.40  2968390</pre>
+
+                    <p>Now, this is a python object that is rows and columns, like a spreadsheet.</p>
+
+
+                    <p>The <code>.head()</code> is something you can do with Pandas DataFrames, and it will output the first <code>n</code> rows, where <code>n</code> is the optional parameter you pass. If you don't pass a parameter, 5 is the default value.
+                        We mosly will use <code>.head()</code> to just get a quick glimpse of our data to make sure we're on the right track. Looks great to me!</p>
+
+                    <p>In case you do not know:</p>
+
+                    <ul>
+                        <li>Open - When the stock market opens in the morning for trading, what was the price of one share?</li>
+                        <li>High - over the course of the trading day, what was the highest value for that day?</li>
+                        <li>Low - over the course of the trading day, what was the lowest value for that day?</li>
+                        <li>Close - When the trading day was over, what was the final price?</li>
+                        <li>Volume - For that day, how many shares were traded?</li>
+                        <li>Adj Close - This one is slightly more complicated, but, over time, companies may decide to do something called a stock split. For example, Apple did one once their stock price exceeded $1000. Since in most cases, people cannot
+                            buy fractions of shares, a stock price of $1,000 is fairly limiting to investors. Companies can do a stock split where they say every share is now 2 shares, and the price is half. Anyone who had 1 share of Apple for $1,000,
+                            after a split where Apple doubled the shares, they would have 2 shares of Apple (AAPL), each worth $500. Adj Close is helpful, since it accounts for future stock splits, and gives the relative price to splits. For this reason,
+                            the adjusted prices are the prices you're most likely to be dealing with.</li>
+                    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Handling Data and Graphing - Python Programming for Finance p.2" href="../handling-stock-data-graphing-python-programming-for-finance/index6697.html?completed=/getting-stock-prices-python-programming-for-finance/"><button class="btn" style="background-color:#FFD166; color:#000000">Handling Data and Graphing - Python Programming for Finance p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=5&amp;t=/getting-stock-prices-python-programming-for-finance/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Intro and Getting Stock Price Data - Python Programming for Finance p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Handling Data and Graphing - Python Programming for Finance p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../handling-stock-data-graphing-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Basic stock data Manipulation - Python Programming for Finance p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../stock-data-manipulation-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">More stock manipulations - Python Programming for Finance p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../more-stock-data-manipulation-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Automating getting the S&amp;P 500 list - Python Programming for Finance p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../sp500-company-list-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Getting all company pricing data in the S&amp;P 500 - Python Programming for Finance p.6</div>
+                        <div class="collapsible-body">
+                            <p><a href="../sp500-company-price-data-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Combining all S&amp;P 500 company prices into one DataFrame - Python Programming for Finance p.7</div>
+                        <div class="collapsible-body">
+                            <p><a href="../combining-stock-prices-into-one-dataframe-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating massive S&amp;P 500 company correlation table for Relationships - Python Programming for Finance p.8</div>
+                        <div class="collapsible-body">
+                            <p><a href="../stock-price-correlation-table-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Preprocessing data to prepare for Machine Learning with stock data - Python Programming for Finance p.9</div>
+                        <div class="collapsible-body">
+                            <p><a href="../preprocessing-for-machine-learning-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating targets for machine learning labels - Python Programming for Finance p.10 and 11</div>
+                        <div class="collapsible-body">
+                            <p><a href="../targets-for-machine-learning-labels-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Machine learning against S&amp;P 500 company prices - Python Programming for Finance p.12</div>
+                        <div class="collapsible-body">
+                            <p><a href="../machine-learning-stock-prices-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Testing trading strategies with Quantopian Introduction - Python Programming for Finance p.13</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quantopian-trading-strategies-introduction-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Placing a trade order with Quantopian - Python Programming for Finance p.14</div>
+                        <div class="collapsible-body">
+                            <p><a href="../placing-an-order-quantopian-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Scheduling a function on Quantopian - Python Programming for Finance p.15</div>
+                        <div class="collapsible-body">
+                            <p><a href="../schedule-function-quantopian-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Quantopian Research Introduction - Python Programming for Finance p.16</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quantopian-research-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Quantopian Pipeline - Python Programming for Finance p.17</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quantopian-pipeline-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Alphalens on Quantopian - Python Programming for Finance p.18</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quantopian-alphalens-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Back testing our Alpha Factor on Quantopian - Python Programming for Finance p.19</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quantopian-backtesting-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Analyzing Quantopian strategy back test results with Pyfolio - Python Programming for Finance p.20</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quantopian-pyfolio-analysis-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Strategizing - Python Programming for Finance p.21</div>
+                        <div class="collapsible-body">
+                            <p><a href="../strategizing-quantopian-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Finding more Alpha Factors - Python Programming for Finance p.22</div>
+                        <div class="collapsible-body">
+                            <p><a href="../finding-more-alpha-factors-quantopian-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Combining Alpha Factors - Python Programming for Finance p.23</div>
+                        <div class="collapsible-body">
+                            <p><a href="../combining-alpha-factors-quantopian-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Portfolio Optimization - Python Programming for Finance p.24</div>
+                        <div class="collapsible-body">
+                            <p><a href="../portfolio-optimization-quantopian-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Zipline Local Installation for backtesting - Python Programming for Finance p.25</div>
+                        <div class="collapsible-body">
+                            <p><a href="../zipline-local-install-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Zipline backtest visualization - Python Programming for Finance p.26</div>
+                        <div class="collapsible-body">
+                            <p><a href="../zipline-backtest-visualization-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Custom Data with Zipline Local - Python Programming for Finance p.27</div>
+                        <div class="collapsible-body">
+                            <p><a href="../custom-data-zipline-local-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Custom Markets Trading Calendar with Zipline (Bitcoin/cryptocurrency example) - Python Programming for Finance p.28</div>
+                        <div class="collapsible-body">
+                            <p><a href="../custom-markets-trading-calendar-bitcoin-python-programming-for-finance/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}}

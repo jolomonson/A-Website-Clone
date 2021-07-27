@@ -1,0 +1,415 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+    <script>
+        Materialize.toast('Chat with us on Discord:<a href="https://discord.gg/sentdex" target="blank"><button style="margin-bottom:5px" class="btn btn-sm">Join</button></a>', 4000)
+    </script>
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Intro - Data Visualization Applications with Dash and Python p.1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/J_Cy_QjG6NE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Hello and welcome to an updated series on data visualization in Python. It has been a while since I personally have looked into data visualization in Python, being very familiar and comfortable with Matplotlib. Matplotlib is a fine
+                        graphing library, and is the backend to many other packages that allow you to graph, such as Pandas' <code>.plot()</code> method. While I have been able to make any graph I have ever wanted in Matplotlib, there are a few issues
+                        that I have always experienced:</p>
+
+
+
+                    <ul>
+                        <li>Interactivity - Matplotlib graphs can be slightly interacted with, with zooms and such, but any serious interactivity will cost you a lot of time to work in</li>
+                        <li>Embeddability - While we can embed matplotlib graphs into other applications, this can *often* be a very tedious process, again, taking up a lot of development time.</li>
+                        <li>Aesthetics - While somewhat trivial, it does matter. When the graphs are just for me, it doesn't matter much what they look like, but, for presentation, it, again, takes a lot of time to make matplotlib visualizations appealing.
+                            If you were trying to sell something based on the graphs, or sell an application with embedded charts, Matplotlib is likely unacceptable. I have personally had clients refuse Matplotlib, not based on the ability to represent
+                            data, but because the representation wasn't appealing.</li>
+                    </ul>
+
+                    <p>For quick graphs to test, prototype...etc, I do still find that I wind up using Matplotlib, mostly because of Pandas' very nice integration. </p>
+
+                    <p>That said, *much* of the time, I am not actually just trying to make a stand-alone graph. I am trying to make a graphical user interface (GUI) in some form of fashion, and graphs are just a big part. When looking into the other available
+                        charting libraries, Bokeh also stands out significantly, which is easily embeddable as well. </p>
+
+                    <p>Then I came across Dash, from Plot.ly, which helps you to build web-based data visualization interfaces by tying together Plot.ly, React, and Flask. </p>
+
+                    <p>Let's check it out! I have been using Dash to create a vehicle data monitoring app:</p>
+
+                    <!--<div class="video-container">
+    <iframe width="853" height="600" src="https://i.imgur.com/pzcv8vy.mp4" frameborder="0" allowfullscreen></iframe>
+</div>-->
+
+                    <div class="video-container">
+                        <iframe width="853" height="600" src="../static/images/dash/interactive-data-viz-GUI.mp4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+
+                    <p>To create something like this within some sort of desktop GUI framework, using something like PyQt or Tkinter, or via some web app like Flask or Django, and then combining it with any of the interactive JS frameworks, and then incorporating
+                        the javascript interactivity with jquery, ajax, and React like we are here...would take you quite a bit of time and code. The app shown above, required less than 100 lines of code for the actual GUI/app itself, many of the lines
+                        are actually just for styling purposes to keep the code readable.</p>
+
+                    <p>To use Dash, we need the following packages: dash, dash-renderer, dash-html-components, dash-core-components, and plotly. These packages also have various dependencies. You can install them with:</p>
+
+                    <p><code>sudo pip install dash dash-renderer dash-html-components dash-core-components plotly</code></p>
+
+                    <p>or, on Windows, open cmd.exe as administrator and do</p>
+
+                    <p>pip install dash dash-renderer dash-html-components dash-core-components plotly</p>
+
+                    <p>You may have issues with getting MarkupSafe. If so, you can either remedy the compiler issue by following the steps presented <a href="https://stackoverflow.com/questions/34135280/valueerror-unknown-ms-compiler-version-1900" target="blank"><strong>here</strong></a>,
+                        or you can just grab a pre-compiled wheel file for markupsafe here: <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#markupsafe" target="blank"><strong>https://www.lfd.uci.edu/~gohlke/pythonlibs/#markupsafe</strong></a>. See
+                        the second half of <a href="../using-pip-install-for-python-modules/index.html" target="blank"><strong>installing packages in Python tutorial</strong></a> for installing .whl packages if you're not sure how to install them.</p>
+
+                    <p>Let's show a quick and basic example of Dash in action. This will start off as more lines than what might be required to make just a graph in another framework, but, as we convert it to a fully-fleded GUI, it will be vastly simpler
+                        than the others.</p>
+
+                    <p>To begin, let's make some imports:</p>
+
+                    <pre class="prettyprint lang-py">import dash
+import dash_core_components as dcc
+import dash_html_components as html</pre>
+
+                    <p>Here, we're just importing things like the dash lib, various components (things like graph components), and then HTML components (things like div tags...etc). Next, we begin our app:</p>
+
+                    <pre class="prettyprint lang-py">app = dash.Dash()</pre>
+
+                    <p>Since Dash is built around the <code>Flask</code> framework, many of these app settings and setups should look familiar if you are familiar with Flask. Next, we create a layout:</p>
+
+                    <pre class="prettyprint lang-py">app.layout = html.Div('Dash Tutorials')</pre>
+
+                    <p>In the above case, this would make an app that simply said "Dash Tutorials" on page load. Nothing amazing, but nice and simple! Let's run this:</p>
+
+                    <pre class="prettyprint lang-py">if __name__ == '__main__':
+    app.run_server(debug=True)</pre>
+
+                    <p>Run this, and you should see the following in your console: <code> * Restarting with stat</code></p>
+
+                    <p>Now, you can go to your browser, heading to the default <a href="127.0.0.html" target="blank"><strong>127.0.0.1:8050</strong></a></p>
+
+                    <p>You should see something like:</p>
+
+                    <img class="responsive-img" src="../static/images/dash/basic-dash-layout.html" alt="python dash tutorials" />
+
+                    <p>Now, this should be fairly easy to understand right now, but pretty quickly we start adding attributes, and embedding child HTML tags inside of here. For the sake of clarity, the actual content of a tag is contained under a parameter
+                        called <code>children</code>, which will look like:</p>
+                    <pre class="prettyprint lang-py">app.layout = html.Div(children='Dash Tutorials')</pre>
+
+
+                    <p>If you don't have embedded tags, or attributes like <code>style</code> or <code>id</code> or <code>className</code> (the Dash equivalent of HTML's <code>class</code>), then you might not see the need for explicitly naming the children,
+                        but I'd suggest you do it for any app that is set to grow.</p>
+
+                    <p>The children can also be a list of items, not just one. Let's add a graph, that's what we are here for isn't it? To do that, we'll start with a skeleton:</p>
+
+                    <pre class="prettyprint lang-py">import dash
+import dash_core_components as dcc
+import dash_html_components as html
+
+app = dash.Dash()
+
+app.layout = html.Div(children=[
+    html.H1(children='Dash Tutorials'),
+    dcc.Graph()
+])
+
+if __name__ == '__main__':
+    app.run_server(debug=True)</pre>
+
+
+                    <p>Here, you can see our layout consists of one giant div, which contains the following children: an <code>h1</code> tag of "dash tutorials" and a <code>dcc.Graph</code>. This wont run yet, we need to specify the elements of the graph,
+                        so now let's build that out. Here's a quick graph example:</p>
+
+
+                    <pre class="prettyprint lang-py">    dcc.Graph(
+        id='example',
+        figure={
+            'data': [
+                {'x': [1, 2, 3, 4, 5], 'y': [9, 6, 2, 1, 5], 'type': 'line', 'name': 'Boats'},
+                {'x': [1, 2, 3, 4, 5], 'y': [8, 7, 2, 7, 3], 'type': 'bar', 'name': 'Cars'},
+            ],
+            'layout': {
+                'title': 'Basic Dash Example'
+            }
+        }
+    )</pre>
+
+
+                    <p>The ID is required, and we can use this later to manipulate the graph. We then have the <code>figure</code> element, which contains the data and layout for the graph. Here is where we pass all of the data and what type of graph we
+                        want, along with other bits of information. Inside of layout, we can add thigns like the title we've added here.</p>
+
+                    <p>Running this now gives us:</p>
+
+                    <img class="responsive-img" src="../static/images/dash/basic-dash-graph.png" alt="python dash tutorials" />
+
+                    <p>I will note that you can change things *live* as your server is running. Every time you save your script, the server should update. Sometimes this doesn't work, or you hit an error, and then things can get funky. When all else fails,
+                        you can kill the Python running processes to restart things.</p>
+
+                    <p>Now that we can see how to create graphs, we are going to focus back on interact-ability. Dash gives us the power of the javascript libary React, which we can use to interact in real time with our app, without needing to reload the
+                        page. I will exemplify this in the next tutorial.</p>
+
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Interactive User Interface - Data Visualization GUIs with Dash and Python p.2" href="../interactive-interface-data-visualization-application-dash-python-tutorial/index5c57.html?completed=/data-visualization-application-dash-python-tutorial-introduction/"><button class="btn" style="background-color:#FFD166; color:#000000">Interactive User Interface - Data Visualization GUIs with Dash and Python p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=1&amp;t=/data-visualization-application-dash-python-tutorial-introduction/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Intro - Data Visualization Applications with Dash and Python p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Interactive User Interface - Data Visualization GUIs with Dash and Python p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../interactive-interface-data-visualization-application-dash-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Dynamic Graph based on User Input - Data Visualization GUIs with Dash and Python p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../dynamic-data-visualization-application-dash-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Live Graphs - Data Visualization GUIs with Dash and Python p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../live-graphs-data-visualization-application-dash-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Vehicle Data App Example - Data Visualization GUIs with Dash and Python p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../vehicle-data-visualization-application-dash-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Out of the Box Sentiment Analysis options with Python using VADER Sentiment and TextBlob</div>
+                        <div class="collapsible-body">
+                            <p><a href="../sentiment-analysis-python-textblob-vader/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Streaming Tweets and Sentiment from Twitter in Python - Sentiment Analysis GUI with Dash and Python p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../twitter-stream-sentiment-analysis-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Reading from our sentiment database - Sentiment Analysis GUI with Dash and Python p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../twitter-sentiment-analysis-gui-dash-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Live Twitter Sentiment Graph - Sentiment Analysis GUI with Dash and Python p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../live-graph-twitter-sentiment-analysis-gui-dash-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Dynamically Graphing Terms for Sentiment - Sentiment Analysis GUI with Dash and Python p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../search-for-term-twitter-sentiment-analysis-gui-dash-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deploy Dash App to a VPS web server - Data Visualization Applications with Dash and Python p.11</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deploy-vps-dash-data-visualization/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

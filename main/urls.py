@@ -41,6 +41,24 @@ urlpatterns = [
     # Data Analysis
     path('data-analysis-tutorials/', views.dataanalysistutorials, name='dataAnalysis'),
     path('machine-learning/', views.machinelearning, name='machineLearning'),
+    path('data-analysis-with-pandas/', views.dataanalysiswithpandas, name='dataAnalysisWithPandas'),
+    path('data-visualization-with-dash-and-python/', views.datavisualizationwithdashandpython, name='dataVisualizationWithDash'),
+    path('data-visualization/', views.datavisualization, name='dataVisualization'),
+        #Finance
+    path('finance/', views.finance, name='finance'),
+    path('getting-stock-prices/', views.stockprices, name='gettingStockPrices'),
+    path('sklearn-intro/', views.sklearnintro, name='sklearnIntro'),
+    path('google-cloud/', views.googlecloud, name='googleCloud'),
+    path('images-and-video-analysis/', views.imagesandvideoanalysis, name='imagesAndVideoAnalysis'),
+    path('distributed-computing/', views.distributedcomputing, name='distributedComputing'),
+    path('natural-language-processing/', views.naturallanguageprocessing, name='naturalLanguageProcessing'),
+    
+    
+
+
+    
+    
+    
 
 
     path('quantum-programming-tutorials/', views.quantumprogrammingtutorials, name='quantumProgramming'),

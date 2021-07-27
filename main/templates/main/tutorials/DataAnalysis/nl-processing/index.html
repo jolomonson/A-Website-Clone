@@ -1,0 +1,509 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">            width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" style="text-align:left ">
+
+
+
+
+
+
+
+                    <!--<div class="progress " style="background-color:#ffebbe;height:20px; ">
+			<div class="determinate " style="background-color:#FFD166;width: 0%; ">
+				Natural Language Processing with NLTK 3 Progress:  0%
+			</div>
+		</div>-->
+                    <h2>Tokenizing Words and Sentences with NLTK</h2>
+                    <br>
+
+                    <div class="video-container "><iframe width="750 " height="423 " src="https://www.youtube.com/embed/FLZvOKSCkxY?list=PLQVvvaa0QuDf2JswnfiGkliBInZnIC4HL " frameborder="0 " allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to a Natural Language Processing tutorial series, using the Natural Language Toolkit, or NLTK, module with Python.</p>
+                    <p>The NLTK module is a massive tool kit, aimed at helping you with the entire Natural Language Processing (NLP) methodology. NLTK will aid you with everything from splitting sentences from paragraphs, splitting up words, recognizing
+                        the part of speech of those words, highlighting the main subjects, and then even with helping your machine to understand what the text is all about. In this series, we're going to tackle the field of opinion mining, or sentiment
+                        analysis.
+                    </p>
+                    <p>In our path to learning how to do sentiment analysis with NLTK, we're going to learn the following:</p>
+                    <ul>
+                        <li>Tokenizing - Splitting sentences and words from the body of text.</li>
+                        <li>Part of Speech tagging</li>
+                        <li>Machine Learning with the Naive Bayes classifier</li>
+                        <li>How to tie in Scikit-learn (sklearn) with NLTK</li>
+                        <li>Training classifiers with datasets</li>
+                        <li>Performing live, streaming, sentiment analysis with Twitter.</li>
+                        <li>...and much more.</li>
+                    </ul>
+                    <p>In order to get started, you are going to need the NLTK module, as well as Python.</p>
+                    <p>If you do not have Python yet, go to <a href="https://www.python.org/ " target="blank "><strong>Python.org</strong></a> and download the latest version of Python if you are on Windows. If you are on Mac or Linux, you should be able
+                        to run an <code>apt-get install python3</code></p>
+
+                    <p>Next, you're going to need NLTK 3. The easiest method to installing the NLTK module is going to be with pip.</p>
+                    <p>For all users, that is done by opening up cmd.exe, bash, or whatever shell you use and typing:<br><code>pip install nltk</code></p>
+                    <p>Next, we need to install some of the components for NLTK. Open python via whatever means you normally do, and type:</p>
+                    <pre class="prettyprint ">
+	  import nltk
+	  nltk.download()
+	  </pre>
+                    <p>Unless you are operating headless, a GUI will pop up like this, only probably with red instead of green:</p>
+                    <img class="responsive-img " src="../static/images/nltk/nltk-download-gui.png " />
+                    <p>Choose to download "all " for all packages, and then click 'download.' This will give you all of the tokenizers, chunkers, other algorithms, and all of the corpora. If space is an issue, you can elect to selectively download everything
+                        manually. The NLTK module will take up about 7MB, and the entire nltk_data directory will take up about 1.8GB, which includes your chunkers, parsers, and the corpora.</p>
+                    <p>If you are operating headless, like on a VPS, you can install everything by running Python and doing:</p>
+                    <p><code>import nltk</code></p>
+                    <p><code>nltk.download()</code></p>
+                    <p><code>d</code> (for download)</p>
+                    <p><code>all</code> (for download everything)</p>
+                    <p>That will download everything for you headlessly.</p>
+                    <p>Now that you have all the things that you need, let's knock out some quick vocabulary:</p>
+                    <ul>
+                        <li><strong>Corpus</strong> - Body of text, singular. Corpora is the plural of this. Example: A collection of medical journals.</li>
+                        <li><strong>Lexicon</strong> - Words and their meanings. Example: English dictionary. Consider, however, that various fields will have different lexicons. For example: To a financial investor, the first meaning for the word "Bull "
+                            is someone who is confident about the market, as compared to the common English lexicon, where the first meaning for the word "Bull " is an animal. As such, there is a special lexicon for financial investors, doctors, children,
+                            mechanics, and so on.</li>
+                        <li><strong>Token</strong> - Each "entity " that is a part of whatever was split up based on rules. For examples, each word is a token when a sentence is "tokenized " into words. Each sentence can also be a token, if you tokenized
+                            the sentences out of a paragraph.</li>
+                    </ul>
+                    <p>These are the words you will most commonly hear upon entering the Natural Language Processing (NLP) space, but there are many more that we will be covering in time. With that, let's show an example of how one might actually tokenize
+                        something into tokens with the NLTK module.</p>
+
+                    <pre class="prettyprint ">
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+EXAMPLE_TEXT = "Hello Mr. Smith, how are you doing today? The weather is great, and Python is awesome. The sky is pinkish-blue. You shouldn 't eat cardboard."
+
+print(sent_tokenize(EXAMPLE_TEXT))
+	  </pre>
+
+                    <p>At first, you may think tokenizing by things like words or sentences is a rather trivial enterprise. For many sentences it can be. The first step would be likely doing a simple .split('. '), or splitting by period followed by a space.
+                        Then maybe you would bring in some <a href="../regular-expressions-regex-tutorial-python-3/index.html" target="_blank"><strong>regular expressions</a></strong> to split by period, space, and then a capital letter. The problem is
+                        that things like Mr. Smith would cause you trouble, and many other things. Splitting by word is also a challenge, especially when considering things like concatenations like we and are to we're. NLTK is going to go ahead and just
+                        save you a ton of time with this seemingly simple, yet very complex, operation.</p>
+
+                    <p>The above code will output the sentences, split up into a list of sentences, which you can do things like iterate through with a <a href="../loop-python-3-basics-tutorial/index.html" target="blank"><strong>for loop</strong></a>.<br><code>['Hello Mr. Smith, how are you doing today?', 'The weather is great, and Python is awesome.', 'The sky is pinkish-blue.', "You shouldn't eat cardboard."]</code></p>
+
+                    <p>So there, we have created tokens, which are sentences. Let's tokenize by word instead this time:</p>
+                    <pre class="prettyprint">print(word_tokenize(EXAMPLE_TEXT))</pre>
+                    <p>Now our output is: <code>['Hello', 'Mr.', 'Smith', ',', 'how', 'are', 'you', 'doing', 'today', '?', 'The', 'weather', 'is', 'great', ',', 'and', 'Python', 'is', 'awesome', '.', 'The', 'sky', 'is', 'pinkish-blue', '.', 'You', 'should', "n't", 'eat', 'cardboard', '.']</code></p>
+                    <p>There are a few things to note here. First, notice that punctuation is treated as a separate token. Also, notice the separation of the word "shouldn't" into "should" and "n't." Finally, notice that "pinkish-blue" is indeed treated
+                        like the "one word" it was meant to be turned into. Pretty cool!</p>
+
+                    <p>Now, looking at these tokenized words, we have to begin thinking about what our next step might be. We start to ponder about how might we derive meaning by looking at these words. We can clearly think of ways to put value to many words,
+                        but we also see a few words that are basically worthless. These are a form of "stop words," which we can also handle for. That is what we're going to be talking about in the next tutorial.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>4 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Stop words with NLTK" href="../stop-words-nltk-tutorial/index7375.html?completed=/tokenizing-words-sentences-nltk-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Stop words with NLTK</button></a></p><br>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=6&amp;t=/tokenizing-words-sentences-nltk-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Tokenizing Words and Sentences with NLTK</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Stop words with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../stop-words-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Stemming words with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../stemming-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Part of Speech Tagging with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../part-of-speech-tagging-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Chunking with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../chunking-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Chinking with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../chinking-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Named Entity Recognition with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../named-entity-recognition-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Lemmatizing with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../lemmatizing-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">The corpora with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../nltk-corpus-corpora-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Wordnet with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../wordnet-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Text Classification with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../text-classification-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Converting words to Features with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../words-as-features-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Naive Bayes Classifier with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../naive-bayes-classifier-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Saving Classifiers with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pickle-classifier-save-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Scikit-Learn Sklearn with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../sklearn-scikit-learn-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Combining Algorithms with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../combine-classifier-algorithms-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Investigating bias with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../investigating-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Improving Training Data for sentiment analysis with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../new-data-set-training-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating a module for Sentiment Analysis with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../sentiment-analysis-module-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Twitter Sentiment Analysis with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../twitter-sentiment-analysis-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Graphing Live Twitter Sentiment Analysis with NLTK with NLTK</div>
+                        <div class="collapsible-body">
+                            <p><a href="../graph-live-twitter-sentiment-nltk-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Named Entity Recognition with Stanford NER Tagger</div>
+                        <div class="collapsible-body">
+                            <p><a href="../named-entity-recognition-stanford-ner-tagger/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Testing NLTK and Stanford NER Taggers for Accuracy</div>
+                        <div class="collapsible-body">
+                            <p><a href="../testing-stanford-ner-taggers-for-accuracy/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Testing NLTK and Stanford NER Taggers for Speed</div>
+                        <div class="collapsible-body">
+                            <p><a href="../testing-stanford-ner-taggers-for-speed/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Using BIO Tags to Create Readable Named Entity Lists</div>
+                        <div class="collapsible-body">
+                            <p><a href="../using-bio-tags-create-named-entity-lists/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}}

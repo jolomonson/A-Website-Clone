@@ -1,0 +1,223 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
+    <div class="row">
+
+
+        <div class="col l6 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/getting-stock-prices" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/DataAnalysis/python-for-finance.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Python for Finance</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn how to do finance with Python, from getting data, to manipulating data, to formulating and testing trading strategies.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="/getting-stock-prices" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l6 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/sklearn-intro" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/DataAnalysis/mainsvmimage.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Support Vector Machines with Scikit Learn</strong></span>
+                    </div>
+
+                    <div class="card-content">
+                        <p>Learn how to deploy a support vector machine with Scikit Learn.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="/sklearn-intro" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+
+        <!--
+		<div class="col l3 s12 m6">
+			
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+			<a href="/python-fundamental-investing/" class="waves-effect waves-light" style="color:#000">
+				<div class="card-image">
+				  <img class="responsive-img" src="/static/images/categories/funamental-investing-basic-python.png" style="width:250px">
+				  <br><span class="card-title"><strong>Python for Fundamental Investing basics</strong></span>
+				</div>
+				<div class="card-content">
+				  <p>Leverage the power of Python & programming to aid you in fundamental investing.</p>
+				</div>
+				<div class="card-action right-align">
+				  <a href="/python-fundamental-investing/" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+				</div>
+				</a>
+            </div>
+
+
+		</div>
+
+		<div class="col l3 s12 m6">
+			
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+			<a href="/ibpy-tutorial-using-interactive-brokers-api-python/" class="waves-effect waves-light" style="color:#000">
+				<div class="card-image">
+				  <img class="responsive-img" src="/static/images/categories/trader-workstation-example.png" style="width:250px">
+				  <br><span class="card-title"><strong>How to use the Interactive Brokers API</strong></span>
+				</div>
+				<div class="card-content">
+				  <p>Communicate with the Interactive Brokers API for automated trading.</p> 
+				</div>
+				<div class="card-action right-align">
+				  <a href="/ibpy-tutorial-using-interactive-brokers-api-python/" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+				</div>
+				</a>
+            </div>
+
+
+		</div>
+		
+		<div class="col l3 s12 m6">
+			
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+			<a href="/monte-carlo-simulator-python/" class="waves-effect waves-light" style="color:#000">
+				<div class="card-image">
+				  <img class="responsive-img" src="/static/images/categories/monte-carlo-3d-graph.png" style="width:250px">
+				  <br><span class="card-title"><strong>Monte Carlo Simulations</strong></span>
+				</div>
+				<div class="card-content">
+				  <p>Leverage Monte Carlo simulations to inspect plausible future outcomes.</p>
+				</div>
+				<div class="card-action right-align">
+				  <a href="/monte-carlo-simulator-python/" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+				</div>
+				</a>
+            </div>
+
+
+		</div>
+
+		<div class="col l3 s12 m6">
+			
+			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+			<a href="/machine-learning-pattern-recognition-algorithmic-forex-stock-trading/" class="waves-effect waves-light" style="color:#000">
+				<div class="card-image">
+				  <img class="responsive-img" src="/static/images/categories/machine-learning-algorithmic-trading-example.png" style="width:250px">
+				  <br><span class="card-title"><strong>Basic pattern recognition with Forex data</strong></span>
+				</div>
+				<div class="card-content">
+				  <p>Employ basic pattern recognition techniques with forex data.</p>
+				</div>
+				<div class="card-action right-align">
+				  <a href="/machine-learning-pattern-recognition-algorithmic-forex-stock-trading/" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+				</div>
+				</a>
+            </div>
+
+
+		</div>
+		-->
+    </div>
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+
+{% endblock %}
