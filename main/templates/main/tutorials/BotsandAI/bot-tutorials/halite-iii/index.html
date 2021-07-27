@@ -1,0 +1,969 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Introduction - Halite III (2018) AI Coding Competition p.1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/IXhZLRagXNU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+                    <!DOCTYPE html>
+                    <html>
+
+                    <head>
+                        <meta charset="utf-8" />
+                        <title>Halite III Part 1 Intro</title>
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+                        <style type="text/css">
+                            .highlight .hll {
+                                background-color: #ffffcc
+                            }
+                            
+                            .highlight {
+                                background: #f8f8f8;
+                            }
+                            
+                            .highlight .c {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment */
+                            
+                            .highlight .err {
+                                border: 1px solid #FF0000
+                            }
+                            /* Error */
+                            
+                            .highlight .k {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword */
+                            
+                            .highlight .o {
+                                color: #666666
+                            }
+                            /* Operator */
+                            
+                            .highlight .ch {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Hashbang */
+                            
+                            .highlight .cm {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Multiline */
+                            
+                            .highlight .cp {
+                                color: #BC7A00
+                            }
+                            /* Comment.Preproc */
+                            
+                            .highlight .cpf {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.PreprocFile */
+                            
+                            .highlight .c1 {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Single */
+                            
+                            .highlight .cs {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Special */
+                            
+                            .highlight .gd {
+                                color: #A00000
+                            }
+                            /* Generic.Deleted */
+                            
+                            .highlight .ge {
+                                font-style: italic
+                            }
+                            /* Generic.Emph */
+                            
+                            .highlight .gr {
+                                color: #FF0000
+                            }
+                            /* Generic.Error */
+                            
+                            .highlight .gh {
+                                color: #000080;
+                                font-weight: bold
+                            }
+                            /* Generic.Heading */
+                            
+                            .highlight .gi {
+                                color: #00A000
+                            }
+                            /* Generic.Inserted */
+                            
+                            .highlight .go {
+                                color: #888888
+                            }
+                            /* Generic.Output */
+                            
+                            .highlight .gp {
+                                color: #000080;
+                                font-weight: bold
+                            }
+                            /* Generic.Prompt */
+                            
+                            .highlight .gs {
+                                font-weight: bold
+                            }
+                            /* Generic.Strong */
+                            
+                            .highlight .gu {
+                                color: #800080;
+                                font-weight: bold
+                            }
+                            /* Generic.Subheading */
+                            
+                            .highlight .gt {
+                                color: #0044DD
+                            }
+                            /* Generic.Traceback */
+                            
+                            .highlight .kc {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Constant */
+                            
+                            .highlight .kd {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Declaration */
+                            
+                            .highlight .kn {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Namespace */
+                            
+                            .highlight .kp {
+                                color: #008000
+                            }
+                            /* Keyword.Pseudo */
+                            
+                            .highlight .kr {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Reserved */
+                            
+                            .highlight .kt {
+                                color: #B00040
+                            }
+                            /* Keyword.Type */
+                            
+                            .highlight .m {
+                                color: #666666
+                            }
+                            /* Literal.Number */
+                            
+                            .highlight .s {
+                                color: #BA2121
+                            }
+                            /* Literal.String */
+                            
+                            .highlight .na {
+                                color: #7D9029
+                            }
+                            /* Name.Attribute */
+                            
+                            .highlight .nb {
+                                color: #008000
+                            }
+                            /* Name.Builtin */
+                            
+                            .highlight .nc {
+                                color: #0000FF;
+                                font-weight: bold
+                            }
+                            /* Name.Class */
+                            
+                            .highlight .no {
+                                color: #880000
+                            }
+                            /* Name.Constant */
+                            
+                            .highlight .nd {
+                                color: #AA22FF
+                            }
+                            /* Name.Decorator */
+                            
+                            .highlight .ni {
+                                color: #999999;
+                                font-weight: bold
+                            }
+                            /* Name.Entity */
+                            
+                            .highlight .ne {
+                                color: #D2413A;
+                                font-weight: bold
+                            }
+                            /* Name.Exception */
+                            
+                            .highlight .nf {
+                                color: #0000FF
+                            }
+                            /* Name.Function */
+                            
+                            .highlight .nl {
+                                color: #A0A000
+                            }
+                            /* Name.Label */
+                            
+                            .highlight .nn {
+                                color: #0000FF;
+                                font-weight: bold
+                            }
+                            /* Name.Namespace */
+                            
+                            .highlight .nt {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Name.Tag */
+                            
+                            .highlight .nv {
+                                color: #19177C
+                            }
+                            /* Name.Variable */
+                            
+                            .highlight .ow {
+                                color: #AA22FF;
+                                font-weight: bold
+                            }
+                            /* Operator.Word */
+                            
+                            .highlight .w {
+                                color: #bbbbbb
+                            }
+                            /* Text.Whitespace */
+                            
+                            .highlight .mb {
+                                color: #666666
+                            }
+                            /* Literal.Number.Bin */
+                            
+                            .highlight .mf {
+                                color: #666666
+                            }
+                            /* Literal.Number.Float */
+                            
+                            .highlight .mh {
+                                color: #666666
+                            }
+                            /* Literal.Number.Hex */
+                            
+                            .highlight .mi {
+                                color: #666666
+                            }
+                            /* Literal.Number.Integer */
+                            
+                            .highlight .mo {
+                                color: #666666
+                            }
+                            /* Literal.Number.Oct */
+                            
+                            .highlight .sa {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Affix */
+                            
+                            .highlight .sb {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Backtick */
+                            
+                            .highlight .sc {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Char */
+                            
+                            .highlight .dl {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Delimiter */
+                            
+                            .highlight .sd {
+                                color: #BA2121;
+                                font-style: italic
+                            }
+                            /* Literal.String.Doc */
+                            
+                            .highlight .s2 {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Double */
+                            
+                            .highlight .se {
+                                color: #BB6622;
+                                font-weight: bold
+                            }
+                            /* Literal.String.Escape */
+                            
+                            .highlight .sh {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Heredoc */
+                            
+                            .highlight .si {
+                                color: #BB6688;
+                                font-weight: bold
+                            }
+                            /* Literal.String.Interpol */
+                            
+                            .highlight .sx {
+                                color: #008000
+                            }
+                            /* Literal.String.Other */
+                            
+                            .highlight .sr {
+                                color: #BB6688
+                            }
+                            /* Literal.String.Regex */
+                            
+                            .highlight .s1 {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Single */
+                            
+                            .highlight .ss {
+                                color: #19177C
+                            }
+                            /* Literal.String.Symbol */
+                            
+                            .highlight .bp {
+                                color: #008000
+                            }
+                            /* Name.Builtin.Pseudo */
+                            
+                            .highlight .fm {
+                                color: #0000FF
+                            }
+                            /* Name.Function.Magic */
+                            
+                            .highlight .vc {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Class */
+                            
+                            .highlight .vg {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Global */
+                            
+                            .highlight .vi {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Instance */
+                            
+                            .highlight .vm {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Magic */
+                            
+                            .highlight .il {
+                                color: #666666
+                            }
+                            /* Literal.Number.Integer.Long */
+                        </style>
+                        <style type="text/css">
+                            /* Temporary definitions which will become obsolete with Notebook release 5.0 */
+                            
+                            .ansi-black-fg {
+                                color: #3E424D;
+                            }
+                            
+                            .ansi-black-bg {
+                                background-color: #3E424D;
+                            }
+                            
+                            .ansi-black-intense-fg {
+                                color: #282C36;
+                            }
+                            
+                            .ansi-black-intense-bg {
+                                background-color: #282C36;
+                            }
+                            
+                            .ansi-red-fg {
+                                color: #E75C58;
+                            }
+                            
+                            .ansi-red-bg {
+                                background-color: #E75C58;
+                            }
+                            
+                            .ansi-red-intense-fg {
+                                color: #B22B31;
+                            }
+                            
+                            .ansi-red-intense-bg {
+                                background-color: #B22B31;
+                            }
+                            
+                            .ansi-green-fg {
+                                color: #00A250;
+                            }
+                            
+                            .ansi-green-bg {
+                                background-color: #00A250;
+                            }
+                            
+                            .ansi-green-intense-fg {
+                                color: #007427;
+                            }
+                            
+                            .ansi-green-intense-bg {
+                                background-color: #007427;
+                            }
+                            
+                            .ansi-yellow-fg {
+                                color: #DDB62B;
+                            }
+                            
+                            .ansi-yellow-bg {
+                                background-color: #DDB62B;
+                            }
+                            
+                            .ansi-yellow-intense-fg {
+                                color: #B27D12;
+                            }
+                            
+                            .ansi-yellow-intense-bg {
+                                background-color: #B27D12;
+                            }
+                            
+                            .ansi-blue-fg {
+                                color: #208FFB;
+                            }
+                            
+                            .ansi-blue-bg {
+                                background-color: #208FFB;
+                            }
+                            
+                            .ansi-blue-intense-fg {
+                                color: #0065CA;
+                            }
+                            
+                            .ansi-blue-intense-bg {
+                                background-color: #0065CA;
+                            }
+                            
+                            .ansi-magenta-fg {
+                                color: #D160C4;
+                            }
+                            
+                            .ansi-magenta-bg {
+                                background-color: #D160C4;
+                            }
+                            
+                            .ansi-magenta-intense-fg {
+                                color: #A03196;
+                            }
+                            
+                            .ansi-magenta-intense-bg {
+                                background-color: #A03196;
+                            }
+                            
+                            .ansi-cyan-fg {
+                                color: #60C6C8;
+                            }
+                            
+                            .ansi-cyan-bg {
+                                background-color: #60C6C8;
+                            }
+                            
+                            .ansi-cyan-intense-fg {
+                                color: #258F8F;
+                            }
+                            
+                            .ansi-cyan-intense-bg {
+                                background-color: #258F8F;
+                            }
+                            
+                            .ansi-white-fg {
+                                color: #C5C1B4;
+                            }
+                            
+                            .ansi-white-bg {
+                                background-color: #C5C1B4;
+                            }
+                            
+                            .ansi-white-intense-fg {
+                                color: #A1A6B2;
+                            }
+                            
+                            .ansi-white-intense-bg {
+                                background-color: #A1A6B2;
+                            }
+                            
+                            .ansi-bold {
+                                font-weight: bold;
+                            }
+                        </style>
+
+
+                        <style type="text/css">
+                            /* Overrides of notebook CSS for static HTML export */
+                            
+                            body {
+                                overflow: visible;
+                                padding: 8px;
+                            }
+                            
+                            div#notebook {
+                                overflow: visible;
+                                border-top: none;
+                            }
+                            
+                            @media print {
+                                div.cell {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                                div.output_wrapper {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                                div.output {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                            }
+                        </style>
+
+                        <!-- Custom stylesheet, it must be in the same directory as the html file -->
+                        <link rel="stylesheet" href="custom.html">
+
+                        <!-- Loading mathjax macro -->
+                        <!-- Load mathjax -->
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax7b8b.js?config=TeX-AMS_HTML"></script>
+                        <!-- MathJax configuration -->
+                        <script type="text/x-mathjax-config">
+                            MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells. Elsewhere // we use CSS to
+                            left justify single line equations in code cells. displayAlign: 'center', "HTML-CSS": { styles: {'.MathJax_Display': {"margin": 0}}, linebreaks: { automatic: true } } });
+                        </script>
+                        <!-- End of mathjax configuration -->
+                    </head>
+
+                    <body>
+                        <div tabindex="-1" id="notebook" class="border-box-sizing">
+                            <div id="notebook-container">
+
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Welcome everyone to a tutorial on Halite III, a game where you compete against other programmers to create artificial intelligences to collect resources.</p>
+                                            <p>The overall theme of Halite III is that you have ships (or turtles), that move about to collect "halite" in the ocean. The ships can move in the cardinal directions (north, south, east, or west). You task is
+                                                to move each ship in a direction per turn. If you move over halite, you will automatically collect it. As your ship fills with halite, you need to drop it off at a shipyard or depot.</p>
+                                            <p>You can create more ships with the shipyard, and ships themselves are what you can turn into depots for a cost. As ships move, they also expend halite. If your ship is in close proximity to an enemy, then that
+                                                ship is "inspired" and will collect halite quicker. If ships collide, they both sink.</p>
+                                            <p>Alright, so, when I hear this, I can immediately recognize the crux of this competition boils down to one major thing: pathing, how to best navigate our ships. Our main focus will be on the micro level, on a
+                                                per-ship basis.</p>
+                                            <p>We will of course need to consider other objectives like building more ships, converting ships to depots and trying to surround a smaller number of enemy ships in order to get our ships inspired.</p>
+                                            <p>Before we go too far, you will need to get the files required to run locally, or you can run in the browser. The browser is nice, but can make debugging tedious. Once you have a lot of the more basic stuff working,
+                                                I think browser is more convenient.</p>
+                                            <p>Also, there is an embedded tutorial that is worth going through. Beyond this, it can also be helpful to download the files locally, if only just to read the source code. It's all heavily commented and it's a
+                                                good idea to know what's already available to you to use (methods, functions...etc).</p>
+                                            <p>For example, if you download the local code, and go into the <code>hlt</code> directory, check out <code>entity.py</code>, you can see various methods for each of the entities in the game. If you check out
+                                                <code>game_map.py</code>, you can see all of the methods you can call, such as finding out if a certain position is occupied by a ship or structure, and even a simple navigation function that you'll probably
+                                                eventually want to modify.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Since this is primarily a pathing issue, our first major task is actually to just figure out where the heck we want to go. Okay, so let's get started! Here's some basic starting code, taken from the tutorial
+                                                on the Halite website. You can follow along either in the embedded editor, or locally.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Python 3.6</span>
+<span class="kn">import</span> <span class="nn">hlt</span>  <span class="c1">#main halite stuff</span>
+<span class="kn">from</span> <span class="nn">hlt</span> <span class="k">import</span> <span class="n">constants</span>  <span class="c1"># halite constants</span>
+<span class="kn">from</span> <span class="nn">hlt.positionals</span> <span class="k">import</span> <span class="n">Direction</span>  <span class="c1"># helper for moving</span>
+<span class="kn">import</span> <span class="nn">random</span>  <span class="c1"># randomly picking a choice for now.</span>
+<span class="kn">import</span> <span class="nn">logging</span>  <span class="c1"># logging stuff to console</span>
+
+<span class="n">game</span> <span class="o">=</span> <span class="n">hlt</span><span class="o">.</span><span class="n">Game</span><span class="p">()</span>  <span class="c1"># game object</span>
+<span class="c1"># Initializes the game</span>
+<span class="n">game</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s2">&quot;Sentdebot&quot;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># This loop handles each turn of the game. The game object changes every turn, and you refresh that state by</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">update_frame</span><span class="p">()</span>
+    <span class="c1"># You extract player metadata and the updated map metadata here for convenience.</span>
+    <span class="n">me</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">me</span>
+
+    <span class="sd">&#39;&#39;&#39;comes from game, game comes from before the loop, hlt.Game points to networking, which is where you will </span>
+<span class="sd">    find the actual Game class (hlt/networking.py). From here, GameMap is imported from hlt/game_map.py. </span>
+<span class="sd">    </span>
+<span class="sd">    open that file to seee all the things we do with game map.&#39;&#39;&#39;</span>
+    <span class="n">game_map</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">game_map</span>  <span class="c1"># game map data. Recall game is</span>
+
+    <span class="c1"># A command queue holds all the commands you will run this turn. You build this list up and submit it at the</span>
+    <span class="c1">#   end of the turn.</span>
+    <span class="n">command_queue</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">ship</span> <span class="ow">in</span> <span class="n">me</span><span class="o">.</span><span class="n">get_ships</span><span class="p">():</span>
+        <span class="n">command_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ship</span><span class="o">.</span><span class="n">move</span><span class="p">(</span>
+                <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span> <span class="n">Direction</span><span class="o">.</span><span class="n">North</span><span class="p">,</span> <span class="n">Direction</span><span class="o">.</span><span class="n">South</span><span class="p">,</span> <span class="n">Direction</span><span class="o">.</span><span class="n">East</span><span class="p">,</span> <span class="n">Direction</span><span class="o">.</span><span class="n">West</span> <span class="p">])))</span>
+
+    <span class="c1"># Send your moves back to the game environment, ending this turn.</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">end_turn</span><span class="p">(</span><span class="n">command_queue</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>If we run this code, nothing happens...because we have no ships! Let's make some ships:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span>    <span class="c1"># ship costs 1000, dont make a ship on a ship or they both sink</span>
+    <span class="k">if</span> <span class="n">me</span><span class="o">.</span><span class="n">halite_amount</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">game_map</span><span class="p">[</span><span class="n">me</span><span class="o">.</span><span class="n">shipyard</span><span class="p">]</span><span class="o">.</span><span class="n">is_occupied</span><span class="p">:</span>
+        <span class="n">command_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">me</span><span class="o">.</span><span class="n">shipyard</span><span class="o">.</span><span class="n">spawn</span><span class="p">())</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Full code:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Python 3.6</span>
+<span class="kn">import</span> <span class="nn">hlt</span>  <span class="c1">#main halite stuff</span>
+<span class="kn">from</span> <span class="nn">hlt</span> <span class="k">import</span> <span class="n">constants</span>  <span class="c1"># halite constants</span>
+<span class="kn">from</span> <span class="nn">hlt.positionals</span> <span class="k">import</span> <span class="n">Direction</span>  <span class="c1"># helper for moving</span>
+<span class="kn">import</span> <span class="nn">random</span>  <span class="c1"># randomly picking a choice for now.</span>
+<span class="kn">import</span> <span class="nn">logging</span>  <span class="c1"># logging stuff to console</span>
+
+<span class="n">game</span> <span class="o">=</span> <span class="n">hlt</span><span class="o">.</span><span class="n">Game</span><span class="p">()</span>  <span class="c1"># game object</span>
+<span class="c1"># Initializes the game</span>
+<span class="n">game</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s2">&quot;Sentdebot&quot;</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># This loop handles each turn of the game. The game object changes every turn, and you refresh that state by</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">update_frame</span><span class="p">()</span>
+    <span class="c1"># You extract player metadata and the updated map metadata here for convenience.</span>
+    <span class="n">me</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">me</span>
+
+    <span class="sd">&#39;&#39;&#39;comes from game, game comes from before the loop, hlt.Game points to networking, which is where you will </span>
+<span class="sd">    find the actual Game class (hlt/networking.py). From here, GameMap is imported from hlt/game_map.py. </span>
+<span class="sd">    </span>
+<span class="sd">    open that file to seee all the things we do with game map.&#39;&#39;&#39;</span>
+    <span class="n">game_map</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">game_map</span>  <span class="c1"># game map data. Recall game is</span>
+
+    <span class="c1"># A command queue holds all the commands you will run this turn. You build this list up and submit it at the</span>
+    <span class="c1">#   end of the turn.</span>
+    <span class="n">command_queue</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">ship</span> <span class="ow">in</span> <span class="n">me</span><span class="o">.</span><span class="n">get_ships</span><span class="p">():</span>
+        <span class="n">command_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ship</span><span class="o">.</span><span class="n">move</span><span class="p">(</span>
+                <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span> <span class="n">Direction</span><span class="o">.</span><span class="n">North</span><span class="p">,</span> <span class="n">Direction</span><span class="o">.</span><span class="n">South</span><span class="p">,</span> <span class="n">Direction</span><span class="o">.</span><span class="n">East</span><span class="p">,</span> <span class="n">Direction</span><span class="o">.</span><span class="n">West</span> <span class="p">])))</span>
+
+    <span class="c1"># ship costs 1000, dont make a ship on a ship or they both sink</span>
+    <span class="k">if</span> <span class="n">me</span><span class="o">.</span><span class="n">halite_amount</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">game_map</span><span class="p">[</span><span class="n">me</span><span class="o">.</span><span class="n">shipyard</span><span class="p">]</span><span class="o">.</span><span class="n">is_occupied</span><span class="p">:</span>
+        <span class="n">command_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">me</span><span class="o">.</span><span class="n">shipyard</span><span class="o">.</span><span class="n">spawn</span><span class="p">())</span>
+
+    <span class="c1"># Send your moves back to the game environment, ending this turn.</span>
+    <span class="n">game</span><span class="o">.</span><span class="n">end_turn</span><span class="p">(</span><span class="n">command_queue</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Okay, not horrible, but we're crashing into ourselves and sinking. We also aren't trying to drop off the halite either. In the next tutorial, let's work on fixing these things too.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </body>
+
+
+
+
+
+                    <!-- Mirrored from pythonprogramming.net/introduction-halite-iii-ai-coding-competition/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:38:31 GMT -->
+
+                    </html>
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Running Locally and getting surrounding halite - Halite III (2018) AI Coding Competition p.2" href="../run-local-collect-halite-iii-ai-coding-competition/indexdba1.html?completed=/introduction-halite-iii-ai-coding-competition/"><button class="btn" style="background-color:#FFD166; color:#000000">Running Locally and getting surrounding halite - Halite III (2018) AI Coding Competition p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=3&amp;t=/introduction-halite-iii-ai-coding-competition/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction - Halite III (2018) AI Coding Competition p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Running Locally and getting surrounding halite - Halite III (2018) AI Coding Competition p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../run-local-collect-halite-iii-ai-coding-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Moving towards most halite - Halite III (2018) AI Coding Competition p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../moving-to-halite-iii-ai-coding-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Trying to not run into ourselves - Halite III (2018) AI Coding Competition p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../not-running-into-halite-iii-ai-coding-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Moving to drop off halite - Halite III (2018) AI Coding Competition p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../dropping-off-halite-iii-ai-coding-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Cleaning up a few things - Halite III (2018) AI Coding Competition p.6</div>
+                        <div class="collapsible-body">
+                            <p><a href="../cleaning-up-halite-iii-ai-coding-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+{% endblock %}

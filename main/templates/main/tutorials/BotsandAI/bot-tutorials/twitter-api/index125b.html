@@ -1,0 +1,490 @@
+
+<html>
+	
+<!-- Mirrored from pythonprogramming.net/twitter-api-streaming-tweets-python-tutorial/?completed=/mysql-live-database-example-streaming-data/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:51:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+
+		<!--
+		palette:
+		dark blue: #003F72
+		yellow: #FFD166
+		salmon: #EF476F
+		offwhite: #e7d7d7
+		Light Blue: #118AB2
+		Light green: #7DDF64
+		-->
+
+		<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+		<title>Python Programming Tutorials</title>
+
+		<meta name="description" content="Python Programming tutorials from beginner to advanced on a massive variety of topics. All video and text tutorials are free.">
+
+		<link rel="shortcut icon" href="../static/favicon.ico">
+		<link rel="stylesheet" href="../static/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="google-site-verification" content="3fLok05gk5gGtWd_VSXbSSSH27F2kr1QqcxYz9vYq2k" />
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+
+
+		  <!-- Compiled and minified CSS -->
+
+		<!-- Compiled and minified JavaScript -->
+
+		<script src="../../code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="../../cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+
+
+        <style>
+		@media (min-width:992px) {
+		#aside {
+			width:250px;
+		}
+		pre { tab-size: 4;}
+		.btn {background-color:#FFD166;
+			  color:#000;
+		      height:auto;
+			  font-color:#000;
+			  }
+		.btn:hover {background-color:#FFD166;
+					}
+
+
+		</style>
+
+		<!-- Google Tracking -->
+		<script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+              ga('config', 'UA-51891827-1', {'anonymize_ip': true});﻿
+			  ga('create', 'UA-51891827-1', 'auto');
+			  ga('send', 'pageview');
+
+		</script>
+
+            
+                
+                    <script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({
+                              google_ad_client: "ca-pub-1579050400541873",
+                              enable_page_level_ads: true
+                         });
+                    </script>
+                
+            
+
+
+
+
+	</head>
+
+	<body>
+
+		<div class="navbar-fixed">
+			<nav style="background-color:#003F72">
+				<div class="nav-wrapper container">
+					<a href="../index.html" class="brand-logo"><img class="img-responsive" style="width:50px; height;50px; margin-top:5px" src="../static/images/mainlogowhitethick.jpg"></a>
+					<a href="#" data-activates="navsidebar" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+					<ul class="right hide-on-med-and-down">
+					<li><i class="material-icons">search</i></li>
+					<li>
+						<form method='get' id='searchform' style='height:50px; padding-top:10px' action='https://pythonprogramming.net/search/?l=hi'>
+							<input name='q' id="search" type="search" placeholder="search"  style='font-size:16px'>
+						</form>
+					</li>
+						
+			<li><a href="../index.html">Home</a></li>
+			<li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="sudo apt-get upgrade" href="../%2b%3d1/index.html">+=1</a></li>
+			<!--<li><a href="/store/python-hoodie/">Store</a></li>-->
+			<li><a href="../support/index.html">Support the Content</a></li>
+			
+			<li><a href="https://goo.gl/7zgAVQ" target='blank'><!--<i class="material-icons">question_answer</i>-->Community</a></li>
+				<li><a href="../login/index.html">Log in</a></li>
+                <li><a href="../register/index.html">Sign up</a></li>
+			
+
+					</ul>
+					<ul class="side-nav" id="navsidebar">
+					<li>
+						<form method='get' id='searchform' style='height:50px; padding-top:10px' action='https://pythonprogramming.net/search/?l=hi'>
+							<input name='q' id="search" type="search" placeholder="search"  style='font-size:16px'>
+						</form>
+					</li>
+						
+			<li><a href="../index.html">Home</a></li>
+			<li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="sudo apt-get upgrade" href="../%2b%3d1/index.html">+=1</a></li>
+			<!--<li><a href="/store/python-hoodie/">Store</a></li>-->
+			<li><a href="../support/index.html">Support the Content</a></li>
+			
+			<li><a href="https://goo.gl/7zgAVQ" target='blank'><!--<i class="material-icons">question_answer</i>-->Community</a></li>
+				<li><a href="../login/index.html">Log in</a></li>
+                <li><a href="../register/index.html">Sign up</a></li>
+			
+
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+
+
+		<!-- main content -->
+		<div class="container" style="max-width:1500px; min-height:100%">
+			<!--Notification:-->
+            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+            <!--End Notification:-->
+
+					
+					
+					  
+					
+
+					
+<!--       <pre class="prettyprint">              width="750" height="423"    -->
+<body class="body">
+    <div class="row">
+    <div class="col l12 m12 s12">
+
+
+      <div class="container-fluid" align="left" >
+		
+
+
+
+
+
+
+		<!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				MySQL Progress:  0%
+			</div>
+		</div>-->
+	  <h2>Streaming Tweets from Twitter to Database</h2>
+	  <br>
+
+	  <div class="video-container"><iframe width="750" height="423" src="https://www.youtube.com/embed/pUUxmvvl2FE?list=PLQVvvaa0QuDdlcEkEtW64jmeFlLZ_XgmT" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+<br>
+
+	  <p>Streaming tweets from the Twitter API v1.1</p>
+	  <p>First let's cover streaming tweets from Twitter. You're going to need a Twitter dev account. Sometimes Twitter uses dev.twitter.com to advertise various things they expect devs to be interested in. The problem is they sometimes make it hard to get to where you want to be. Just in case they've done this and the video's method isn't available, here's the link: <a href="https://apps.twitter.com/" target="_blank">Twitter Apps</a></p>
+
+	  <p>Next, make a new application, filling in your name, description, website, agree to their terms, do the captcha, and create the application.</p>
+
+	  <p>Once submitted successfully, you should be presented with a page where you can see your consumer key and consumer secret. Now you need an access token, so scroll down and click on "create my access token."</p>
+
+	  <p>After a few moments, refresh, and you should be able to see the access key and access token. Once you have that, you're going to need to get Tweepy, which is a Python module for streaming Twitter tweets.</p>
+
+	  <p>It is probably easiest to download and install Tweepy via pip if you're using a current version of Python.</p>
+
+	  <pre>pip install tweepy</pre>
+
+	  <a title="Python Programming tutorials dashboard" href="../using-pip-install-for-python-modules/index.html" target="_blank"><button class="btn" style="background-color:#FFD166; color:#000000">installing modules using pip tutorial</button></a>
+
+	  <p>You can also install using the setup.py method that I used in the video.</p>
+
+	  <p>Once you have Tweepy, let's show a very basic example of its use:</p>
+
+
+<pre  class="prettyprint">
+from tweepy import Stream
+from tweepy import OAuthHandler
+from tweepy.streaming import StreamListener
+
+
+#consumer key, consumer secret, access token, access secret.
+ckey=""
+csecret=""
+atoken=""
+asecret=""
+
+class listener(StreamListener):
+
+    def on_data(self, data):
+        print(data)
+        return(True)
+
+    def on_error(self, status):
+        print status
+
+auth = OAuthHandler(ckey, csecret)
+auth.set_access_token(atoken, asecret)
+
+twitterStream = Stream(auth, listener())
+twitterStream.filter(track=["car"])
+		</pre>
+
+
+			<p>Now, revisiting our code from the <a href="../mysql-intro/index.html" target="_blank"><strong>MySQL</strong></a> tutorial series, how might we insert this data into a database?</p>
+
+
+			<p>Code from MySQL with Python tutorials:</p>
+	  	  <pre class="prettyprint">
+import MySQLdb
+import time
+
+#        replace mysql.server with "localhost" if you are running via your own server!
+#                        server       MySQL username	MySQL pass  Database name.
+conn = MySQLdb.connect("mysql.server","beginneraccount","cookies","beginneraccount$tutorial")
+
+c = conn.cursor()
+
+username='python'
+
+tweet='man im so cool'
+
+c.execute("INSERT INTO taula (time, username, tweet) VALUES (%s,%s,%s)",
+            (time.time(), username, tweet))
+
+conn.commit()
+
+
+			</pre>
+	  <p>Looks like all we really need to do is connect these two scripts, so let's mesh them like so:</p>
+
+	  <pre class="prettyprint">
+from tweepy import Stream
+from tweepy import OAuthHandler
+from tweepy.streaming import StreamListener
+import MySQLdb
+import time
+import json
+</pre>
+
+<p>Above, we're adding the imports of MySQLdb and time. MySQLdb is the module we're going to use to interact with our MySQL database, and time is to get our current time. Finally, we're importing json. This module is part of your standard library, and you will not need to download/install it. We're going to be using the json module to interact with the returned json that the Twitter API throws at us.</p>
+
+<pre class="prettyprint">
+#        replace mysql.server with "localhost" if you are running via your own server!
+#                        server       MySQL username	MySQL pass  Database name.
+conn = MySQLdb.connect("mysql.server","beginneraccount","cookies","beginneraccount$tutorial")
+
+c = conn.cursor()
+
+
+#consumer key, consumer secret, access token, access secret.
+ckey=""
+csecret=""
+atoken=""
+asecret=""
+
+</pre>
+
+
+<p>Here, we've meshed some of our main global variables. Added to the existing Twitter script is mainly the connection and the cursor definition.</p>
+
+<pre class="prettyprint">
+
+class listener(StreamListener):
+
+    def on_data(self, data):
+
+        all_data = json.loads(data)
+        tweet = all_data["text"]
+        username = all_data["user"]["screen_name"]
+
+        c.execute("INSERT INTO taula (time, username, tweet) VALUES (%s,%s,%s)",
+            (time.time(), username, tweet))
+
+        conn.commit()
+
+        print((username,tweet))
+
+        return True
+</pre>
+<p>Now we've written our listener class, with quite a few changes. We use json.loads to load the string data from the Twitter API data. Then, we identify the "tweet" as the "text" section of the json data. We then identify the username by visiting the all_data json, then navigate to the "user" part, and then use the "screen_name" identifier that Twitter gives to the user's name.</p>
+<p>Once we have that data, we execute an INSERT query, inserting the time.time() value for time, the username, and the tweet data. Finally, we commit the data.</p>
+<p>For our viewing pleasure, we are also printing out the username and tweet data, so that we can see it's working.</p>
+<p>Next, we finish out the script, nothing major changed here:</p>
+<pre class="prettyprint">
+
+    def on_error(self, status):
+        print status
+
+auth = OAuthHandler(ckey, csecret)
+auth.set_access_token(atoken, asecret)
+
+twitterStream = Stream(auth, listener())
+twitterStream.filter(track=["car"])
+
+	  </pre>
+
+<p>All together now:</p>
+
+<pre class="prettyprint">
+from tweepy import Stream
+from tweepy import OAuthHandler
+from tweepy.streaming import StreamListener
+import MySQLdb
+import time
+import json
+
+
+
+#        replace mysql.server with "localhost" if you are running via your own server!
+#                        server       MySQL username	MySQL pass  Database name.
+conn = MySQLdb.connect("mysql.server","beginneraccount","cookies","beginneraccount$tutorial")
+
+c = conn.cursor()
+
+
+#consumer key, consumer secret, access token, access secret.
+ckey=""
+csecret=""
+atoken=""
+asecret=""
+
+class listener(StreamListener):
+
+    def on_data(self, data):
+        all_data = json.loads(data)
+
+        tweet = all_data["text"]
+
+        username = all_data["user"]["screen_name"]
+
+        c.execute("INSERT INTO taula (time, username, tweet) VALUES (%s,%s,%s)",
+            (time.time(), username, tweet))
+
+        conn.commit()
+
+        print((username,tweet))
+
+        return True
+
+    def on_error(self, status):
+        print status
+
+auth = OAuthHandler(ckey, csecret)
+auth.set_access_token(atoken, asecret)
+
+twitterStream = Stream(auth, listener())
+twitterStream.filter(track=["car"])
+
+</pre>
+
+
+
+
+
+		<p>Want more tutorials? Head to the <a title="Home Page" href="../index125b.html?completed=/mysql-live-database-example-streaming-data/"><button class="btn" style="background-color:#FFD166; color:#000000">Home Page</button></p><br>
+
+
+
+
+
+
+
+	  </div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+			</div>
+		</div>
+
+		<!--login modal-->
+		
+
+		<!--Register modal-->
+		
+
+
+		<script>
+			$(document).ready(function(){
+				$(".button-collapse").sideNav();
+				$('.modal-trigger').leanModal();
+				$('.collapsible').collapsible({
+				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+				});
+				$('#aside').pushpin({ top:110, bottom:500 });
+		  });
+		</script>
+		<script>
+		  $(document).ready(function(){
+			$('.collapsible').collapsible({
+			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+			});
+			$('select').material_select();
+		  });
+	  </script>
+	  <script>
+		function goBack() {
+			window.history.back()
+		}
+	</script>
+		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+	</body>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
+          <div class="footer-copyright">
+            <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+            </div>
+
+          </div>
+        </footer>
+
+
+<!-- Mirrored from pythonprogramming.net/twitter-api-streaming-tweets-python-tutorial/?completed=/mysql-live-database-example-streaming-data/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:51:13 GMT -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

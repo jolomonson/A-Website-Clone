@@ -1,0 +1,260 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Intro and Skill Logic - Alexa Skills w/ Python and Flask-Ask Part 1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/DFiCsMcipr4?list=PLQVvvaa0QuDe3E0TlV7q7bFyMqbnO5-TL" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to an Alexa Skills tutorial for Python programmers. In this tutorial, we're going to go through the making of a quick skill for an Alexa device.</p>
+
+                    <p>To follow along, you will need an <a href="http://amzn.to/2fhd2br" target="blank"><strong>Alexa enabled device</strong></a>, <a href="https://ngrok.com/download" target="blank"><strong>ngrok</strong></a> or an https enabled server,
+                        and an <a href="https://developer.amazon.com/" target="blank"><strong>Amazon Developer Account</strong></a>. Do note, this account (the account you're using in the developer console) needs to be the same account that you paired
+                        your Alexa device with when setting it up.</p>
+
+                    <p>Got all of that? Great, on to the Python! We're going to use <a href="https://github.com/johnwheeler/flask-ask" target="blank"><strong>Flask-Ask</strong></a>, which is a Flask-extension that will make skill creation a bit easier. To
+                        begin, open cmd.exe/a terminal and do: <code>pip install flask</code>, <code>pip install flask-ask</code>. Also, since we're going to be using unidecode, do a <code>pip install unidecode</code></p>
+
+                    <p>Now, we can begin our Python script. Since Flask-Ask is a Flask extension, the code looks just like a Flask web app might. For example, here's a super simple Flask app:</p>
+
+                    <pre class="prettyprint lang-py">from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def homepage():
+    return "Hi there, how ya doin?"
+
+if __name__ == '__main__':
+    app.run(debug=True)</pre>
+
+                    <p>Wherever we have app routes, these are decorating our functions and basically assigning those functions to actual web app pages in a typical Flask App. This basic app, whenever someone goes to the homepage, will simply just output
+                        "Hi there, how ya doin?" An Alexa skill, being an app itself, also works similarly to a webapp, only, instead of clicking buttons to get to new "pages," the user verbally communicates with the device and the choices a user makes
+                        will take them to a new function, or even close the app itself. You can run any Flask app locally on the development server that comes with Flask. Run the code above, and you will have a server hosted at <code>127.0.0.1:5000</code>.
+                        You can visit that address in your browser.</p>
+
+                    <p>That's all I will say on the basics of Flask, but, if you would like to learn more about Flask specifically, you can check out the <a href="../practical-flask-introduction/index.html" target="blank"><strong>Flask tutorial series</strong></a>.
+                        This tutorial website, for example, is built with Flask!</p>
+
+                    <p>Now, with Flask-Ask, since it's an extension of Flask, we can actually just build the Alexa skill on top of our Flask application, or we can totally ignore a Flask application and just write code for the skill. We'll leave the homepage
+                        code there for now, but that's all we'll do for the webapp. You do not need any webapp code for the Alexa skills to work.</p>
+
+                    <p>For this tutorial, we're going to work purely on the <code>Flask-Ask</code> logic, and then in the next tutorial, we'll build the Python function that will actually do something for us. This skill is going to head over to Reddit's
+                        worldnews subreddit, and grab the headlines.</p>
+
+                    <p>To engage with Alexa, you usually say something like <code>Alexa, start "something"</code>. This is what actually launches the skill. Our <code>Flask-Ask</code> code for this can be:</p>
+                    <pre class="prettyprint lang-py">@ask.launch
+def start_skill():
+    welcome_message = 'Hello there, would you like the news?'
+    return question(welcome_message)</pre>
+
+                    <p>Notice the decorator here is <code>@ask.launch</code>. This means, when the app is first launched, the user will wind up here. This is basically the Skill's "home page." Whatever you put in here is what the user will first encounter.
+                        For us, we're just going to start the skill, specify a welcome message, and then return a <code>question</code>, which is a specific type that we imported from <code>flask-ask</code> above (we are importing both a statement, and
+                        question). Since the introduction asks if the user wants to hear the news, then this is a <code>question</code>, and we're going to need input from the user to know where to go next!</p>
+
+                    <p>Now, when it comes to interacting with a user, Alexa Skills refers to these interactions as "intents." Thus, let's consider an example where a user says "yes" when asked if they want to hear the news. We'll call this a <code>YesIntent</code>.
+                        Now, in our decorator, the "path" to handling the yes intent would be: <code>@ask.intent("YesIntent")</code>. Our function would be something like:</p>
+
+                    <pre class="prettyprint lang-py">@ask.intent("YesIntent")
+def share_headlines():
+    headlines = get_headlines()
+    headline_msg = 'The current world news headlines are {}'.format(headlines)
+    return statement(headline_msg)</pre>
+
+                    <p>If the user says "yes," we're going to tie that answer to this function, which will grab the headlines, build a single string out of them, and then share these headlines with us. Notice that, in this case, we're returning a <code>statement</code>.
+                        When this statement is done, there's nowhere else for the application to go, and it will close. What if the user says "no?" We'll handle that too:</p>
+
+                    <pre class="prettyprint lang-py">@ask.intent("NoIntent")
+def no_intent():
+    bye_text = 'I am not sure why you asked me to run then, but okay... bye'
+    return statement(bye_text)</pre>
+
+
+                    <p>Now we have all of the Python logic required to work with the Alexa device. Now we actually need to create the <code>get_headlines</code> function, which is where we'll use Python to actually get the headlines from Reddit.</p>
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Headlines Function - Alexa Skills w/ Python and Flask-Ask Part 2" href="../headlines-function-alexa-skill-flask-ask-python-tutorial/index47d9.html?completed=/intro-alexa-skill-flask-ask-python-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Headlines Function - Alexa Skills w/ Python and Flask-Ask Part 2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=5&amp;t=/intro-alexa-skill-flask-ask-python-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Intro and Skill Logic - Alexa Skills w/ Python and Flask-Ask Part 1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Headlines Function - Alexa Skills w/ Python and Flask-Ask Part 2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../headlines-function-alexa-skill-flask-ask-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Testing our Skill - Alexa Skills w/ Python and Flask-Ask Part 3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../testing-deploying-alexa-skill-flask-ask-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}}
