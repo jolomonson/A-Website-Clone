@@ -1,0 +1,504 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+    <script>
+        Materialize.toast('Chat with us on Discord:<a href="https://discord.gg/sentdex" target="blank"><button style="margin-bottom:5px" class="btn btn-sm">Join</button></a>', 4000)
+    </script>
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Django Web Development with Python Introduction</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/yD0_1DPmfKM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to the updated web development in Python with the Django web framework tutorial series. In these tutorials, we will be covering everything you should need to get started and become familiar with the Django web framework. To
+                        do this, we're going to create a PythonProgramming.net-like website, which allows us to to cover topics like:</p>
+
+                    <ul>
+                        <li>Databases</li>
+                        <li>Users</li>
+                        <li>Content Management</li>
+                        <li>Dynamic Pages</li>
+                    </ul>
+
+                    <p>...and much more!</p>
+
+                    <p>Django is a very "high-level" (handles many things for you) and fully-featured web frame-work aimed at allowing you to achieve rapid development while also preparing you from the start to create websites that will scale in time, both
+                        in terms of speed and code bloat as well.</p>
+
+                    <p>A "web framework" is anything that provides some scaffolding to help you make a web application.</p>
+
+                    <p><strong>Before you begin</strong></p>
+                    <p>I suggest you are familiar with the <a href="https://www.youtube.com/playlist?list=PLQVvvaa0QuDeAams7fkdcwOGBpGdHpXln" target="blank"><strong>Python 3 basics.</strong></a></p>
+
+                    <p>In this tutorial, I will be using Python 3.7 and Django 2.1.4. To get Django, you just do:</p>
+
+                    <p><code>pip install django</code></p>
+
+                    <p>Make sure you're pointing to pip for python 3. Throughout this tutorial, I am going to mainly be using the syntax that you'll find useful on Linux. For example, to reference Python 3 on Linux, you would say <code>python3</code>. On
+                        Windows, you would instead do something like <code>py -3.7</code>, which would reference Python 3.7 specifically. Eventually, you are almost certain to launch your website on a Linux server. For this reason, I am going to use the
+                        Linux syntax, but it's highly common to develop locally first, and you can use any operating system for this.</p>
+
+
+                    <p>You may find that, if you're viewing this tutorial long after I have covered it, things have changed with Django. You can either check the comments section of the videos, or grab the same version of Django that I am using, by doing:</p>
+                    <p><code>pip install django==2.1.4</code></p>
+
+
+                    <p>I would only do that for learning purposes, however. You should always try to use the latest version since it will include important changes, like security fixes.</p>
+
+                    <p>I will be using sublime-text 3 as my editor, but you can use whatever editor you want. You can also use whatever operating system you want. I have developed with Django on Windows, Mac, and Linux. They all work just fine.</p>
+
+                    <p>Alright, assuming you have Django installed, let's get started! With your installation of Django, you should now have a command line keyword: <code>django-admin</code>. You can use this to start a new <code>project</code>. Django considers
+                        all websites to be a collection of apps. Consider a website that has a forum, a shop, and a blog. Each of those three things would be considered its own "app." A collection of these apps is your project. So, let's start a project.
+                        In your terminal/cmd.exe, do:</p>
+
+                    <code>django-admin startproject mysite</code>
+
+                    <p>You can call the <code>mysite</code> bit whatever you want to call your project, but it seems to be a pretty consistent convention to call your project <code>mysite</code>, so I will stick with that.</p>
+
+                    <p>The <code>startproject</code> command will create a new directory called whatever you called your project, In our case, that's called <code>mysite</code>.
+
+
+                        <p>Your project's directory is called <code>mysite</code> and your primary app is also called <code>mysite</code>. The only real role of this "primary app" as I am going to call it is to link your other apps. You shouldn't really
+                            be doing much in there besides managing settings and urls mostly.</p>
+
+                        <p>Django is meant to be highly modular. When you develop an app like some forums for one website, you should be able to easily take your forum app to another website seemlessly and implement it nearly immediately.</p>
+
+                        <p>Okay, so with this in mind, let's add our first actual app to our project. To do this, we will use <code>manage.py</code>. This is a helper python script that will allow you to do things within your project. First, we'll use it
+                            to create another app. In your terminal/command line, navigate to the dir where this <code>manage.py</code> file is, then do:</p>
+
+                        <code>python3 manage.py startapp main</code>
+
+
+                        <p>You should see that a new directory has been created called <code>main</code>. So now the top levels of your project's structure are something like:</p>
+
+                        <pre class="prettyprint lang-py">main
+    -main (directory, your "primary" app)
+    -mysite (directory, this is your new app)
+    -manage.py (helper python script)
+</pre>
+
+
+                        <p>Okay great. Let's go ahead and run our server now. We will do this with <code>manage.py</code>. You should probably open a separate terminal/command prompt to run the server within. We will keep the server running through much
+                            of the development.</p>
+
+                        <p>To run the server, do:</p>
+
+                        <code>python3 manage.py runserver</code>
+
+                        <p>You should see something like:</p>
+
+                        <pre class="prettyprint lang-py">python3 manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 15 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+January 10, 2019 - 18:50:09
+Django version 2.1.5, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.</pre>
+
+
+                        <p>For now, we can ignore the migrations thing, we'll talk about that later on. We can see that our development server is now running at <code>http://127.0.0.1:8000</code>. Open a browser and head to that address. You should see something
+                            like:
+                        </p>
+
+                        <img class="responsive-img" src="../static/images/django/django-it-worked.png" alt="python tutorials" />
+
+                        <p>This is just the default "working" message that you will see if you're not handling for the home page yourself yet. Let's replace this with something of our own! I will leave the server running in a separate terminal from now on.
+                        </p>
+
+                        <p>Django uses what's called a Model View Controller paradigm. Every page you visit on a Django application is likely using these three things to serve you data.</p>
+
+                        <ul>
+                            <li>Model: Your database abstraction, which will contain objects that are mapped to your database. For example, we'll have a "Tutorial" model/object, a "User model/object," a "Tutorial Series" model/object...etc. All you need to
+                                do is define these models and Django handles the rest for you. You can even change your models down the line and, through migrations, Django can help you get it done within seconds, rather than the likely hour...or more...
+                                it would take you to do this yourself.</li>
+                            <li>View: How you will represent the data. This is where you will actually render things to a user.</li>
+                            <li>Controller: How you map URLs to views.</li>
+                        </ul>
+
+
+                        <p>While we call it an MVC (model, view, controller), you can imagine it moreso working in reverse. A user will visit a URL, your controller (urls.py) will point to a specific view (views.py). That view can then (it doesn't actually
+                            HAVE to) interface with your models.</p>
+
+
+                        <p>We can simplify this slightly, however, and just have the controller point to your view, and the view can just return a string, just so we can get a feel for how things connect.</p>
+
+                        <p>When first starting out with something like Django, all these connections and things we need to do in order to do seemingly simple things can seem daunting, and like it's not worth it. With other frameworks, displaying some simple
+                            text can be done in moments, and doesn't require all this fiddling about. Where Django shines is not with simple websites. It shines when you've got a website that has grown in time, and you keep wanting to add features...etc,
+                            but then you've got a huge mess of code. Django helps you to keep things organized, and forces you to immediately follow good practices which will scale over time. This is annoying at first, but worth it long term. I like to
+                            share the following comic:</p>
+
+                        <img class="responsive-img" src="../static/images/django/done-it-again-project-development.jpg" alt="python tutorials" />
+
+                        <p>We always start projects with the best of intentions, but, we tend to have poor foresight. The best thing Django can do for you is the very thing that you may find annoying initially: Abstraction. Over time if you wanted to add
+                            more attributes to your users? It would be super simple with Django. Say you wanted to add more functionality like a more advanced nav bar? How about search bar? How about a full redesign? Through Django, this would all be
+                            trivial. </p>
+
+
+                        <p>Okay, so let's display some simple text at the homepage. To do this, we don't need a model, but we do need the view (which will dictate the text we want to display) and the controller to point to the view, based on the URL. Because
+                            I think of things in the order of the user, I would first start with the controller. So we need to tell Django that homepage should return some view. Django begins in your "primary" app when looking for URLs. So first, let's
+                            go to: <code>mysite/mysite/urls.py</code>:</p>
+
+                        <pre class="prettyprint lang-py">from django.contrib import admin
+from django.urls import path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+</pre>
+                        <p>So we've only got one URL here, and that's apparently to some administration page, which isn't our focus right now. So, what we need to do is point this URL to a view. That said, Django sees websites as a collection of apps. So
+                            actually the <code>urls.py</code> file inside your "primary" app is usually just going to point to your apps. How do we point to an app? We just point to that app's <code>urls.py</code> file! So let's just add that:</p>
+
+                        <pre class="prettyprint lang-py">from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path("", include('main.urls')),
+    path('admin/', admin.site.urls),
+]</pre>
+
+
+                        <p>Aside from adding the extra path, don't forget to also import "include" from <code>django.urls</code>.</p>
+
+                        <p>Okay, so now django knows that, when the path is basically empty (the homepage), to look inside of the <code>main</code> app at its <code>urls.py</code> file to see if that file (the controller) points to a <code>view</code>, which
+                            would be some function inside of that app's <code>views.py</code>.</p>
+
+                        <p>We have yet to modify our <code>main</code> app's <code>urls.py</code> file, and we also have not made any view. Let's do both! Let's navigate into our <code>mysite/main</code> app. We can see that there are already various things
+                            here...but there's no <code>urls.py</code>! Let's add that now:</p>
+
+                        <code>mysite/main/urls.py</code>
+                        <pre class="prettyprint lang-py">from django.urls import path
+from . import views
+
+
+app_name = 'main'  # here for namespacing of urls.
+
+urlpatterns = [
+    path("", views.homepage, name="homepage"),
+]</pre>
+
+                        <p>We import path the same as before. We locally import our view. We specify the app name (this isn't required, but you might as well just get in the habit of doing it. Later it will become very useful when we want to dynamically
+                            reference URLs). Like I said, Django is highly modular, and even if you wanted to change URL paths, or use someone else's application, but maybe not the same URL paths, you can easily do it. This is also why we give a <code>name</code>                            as a parameter of the <code>path</code>. Okay, great! We've got the controller all set. When someone visits the homepage, Django looks first at the <code>mysite/mysite/urls.py</code>, seeing that it points to <code>mysite/main/urls.py</code>,
+                            which then points to views.homepage (so, a function called homepage inside of <code>views.py</code>). Do we have that? Nope. Let's do it. <code>views.py</code> does already exist here, however, so open that up to edit it. It
+                            should look like:</p>
+
+                        <code>mysite/main/views.py</code>
+                        <pre class="prettyprint lang-py">from django.shortcuts import render
+
+# Create your views here.
+</pre>
+                        <p>Normally, these views will render some HTML template and pass some variables, but we're just going to make it super simple and return a straight HTTP response. To do this, we need to import it:</p>
+
+                        <pre class="prettyprint lang-py">from django.http import HttpResponse</pre>
+                        <p>We told <code>urls.py</code> to look for a <code>homepage</code> function, so let's define that:</p>
+
+                        <pre class="prettyprint lang-py">def homepage(request):
+    return HttpResponse("pythonprogramming.net homepage! Wow so <strong>#amaze.</strong>")</pre>
+
+                        <p>Note that we pass <code>request</code>. You will always pass this to your views.</p>
+                        <p>Your full <code>views.py</code> should now be:</p>
+                        <code>mysite/main/views.py</code>
+
+                        <pre class="prettyprint lang-py">from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+def homepage(request):
+    return HttpResponse("pythonprogramming.net homepage! Wow so <strong>#amaze.</strong>")
+</pre>
+                        <p>Now, go back to your browser and refresh. If you fiddled at all up to this point, you probably hit an error, and you will need to re-run the server since you will have stopped on an error most likely. Now, at the homepage, you
+                            should see:</p>
+
+                        <img class="responsive-img" src="../static/images/django/our-first-view-django.png" alt="python tutorials" />
+
+                        <p>We'll stop here, and what I suggest you do is make sure you can do all of the above, without the use of a tutorial. So, start a fresh project, add an app, configure the url.py files to point the homepage to a view, and have that
+                            view return a simple string. Things will only become more complicated from here, so it's essential you understand these basics up to this point. If you're fuzzy on anything, I strongly advise you to ask questions or Google
+                            it until you're solid on everything up to this point.</p>
+                        <p>As we progress, I would suggest that you continue doing this. At the end of each tutorial, save the project. Then at the next tutorial, make a copy of the project, follow the tutorial, then try to do it to the copy without needing
+                            to consult the tutorial. You might forget import paths or function names, that's fine. What you want to make sure is that you actually understand what connections need to be made.</p>
+                        <p>Alternatively, you could also work on a side-project that isn't the same as what we're doing here. As you follow along here, apply it to your own project. The most important thing is that you don't gloss over some concept that
+                            you don't understand. Join us on <a href="https://discord.gg/sentdex" target="blank"><strong>Discord</strong></a> and ask for help in the #help channel if you can't figure something out.</p>
+
+
+
+
+
+
+
+
+
+
+
+                        <p>The next tutorial: <a title="Models - Django Tutorial" href="../models-django-tutorial/indexe679.html?completed=/django-web-development-python-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Models - Django Tutorial</button></a></p>
+
+
+
+
+
+
+
+                        <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=1&amp;t=/django-web-development-python-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Django Web Development with Python Introduction</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Models - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../models-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Admin and Apps - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../admin-apps-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Views and Templates - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../views-templates-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">CSS - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../css-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">User Registration - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../user-registration-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Messages - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../messages-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">User Login and Logout - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../user-login-logout-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Foreign Keys with Models - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../foreign-keys-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Working with Foreign Keys - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../working-foreign-keys-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Dynamic sidebar - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../dynamic-sidebar-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deploying to a Server - Django Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deploying-to-server-django-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+{% endblock %}

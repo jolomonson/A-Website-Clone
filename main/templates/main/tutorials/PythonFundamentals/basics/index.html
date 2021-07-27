@@ -1,0 +1,467 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+
+
+
+
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Introduction to Python 3 (basics) - Learning to Program with Python 3</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/eXBD2bB9-RA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <div class='card hoverable'>
+                        <div class='card-content'>
+                            <div class='card-title'>What you will need for this tutorial series:</div>
+                            <ol>
+                                <li>Either <a href="http://bit.ly/2WnsyH9" target="blank"><strong>ActivePython</strong></a>, which is a pre-compiled distribution of Python, which comes with most of the packages you will need right away, or vanilla Python
+                                    3+, downloaded from <a href="https://www.python.org/" target="blank"><strong>Python.org</strong></a></li>
+                                <li>A willingness to learn!</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <p>Welcome to an introduction to Python and Programming. My goal with this series is to do things a bit different than you usually see with programming tutorials. The problem with most basics tutorials is they just cover the syntax of
+                        a language and use a toy example per new concept, repeating this through up to 100s of things like statements, methods and other paradigms of programming.</p>
+
+                    <p>For one, this is boring. Two, this isn't how anyone I have ever met actually learns to program, it's certainly not the way I did it, and my goal with this website and youtube channel has always been to produce content in the way that
+                        I wish I had been taught. With my current basics series, I typically tell people to follow the basics until part 13 (it's a 70 part series), but even to part 13 isn't quite how I think one should learn to program or Python.</p>
+
+                    <p><strong>If you find this series too fast-paced</strong>, as some have, you can view the older one, which moves much slower and is more basic <a href="../beginner-python-programming-tutorials/index.html" target='blank'><strong>original Python 3 basics tutorial</strong></a>.
+                        Save/bookmark it if you want, or you can just come back here if you're feeling overwhelmed with this series.</p>
+
+                    <p>The way you will actually learn to program with a language like Python is the culmination of 3 things:</p>
+
+                    <ol>
+                        <li>What's "Programming" - what programming actually is, including the proper terms to describe what you're doing.</li>
+                        <li>Your tool set - An understanding of the language you're working with specifically, including things like built-in functions, syntax...etc. </li>
+                        <li>How to put these things together to achieve some task - This is something that sits outside of the programming language. Most projects, applications...etc are not language specific, they can be made in *any* language. The art of
+                            going from idea to code is something you have to learn as well.</li>
+                    </ol>
+
+                    <p>So, here's the deal. If you're looking for some sort of, step by step, reference guide to the language, look no further than the <a href="https://docs.python.org/3/tutorial/index.html" target="blank"><strong>official Python 3 tutorial</strong></a>.
+                        All other Python 3 tutorials that I have ever seen are just versions of that, including the old ones I have done. This is why I don't see much point in doing that again. If you already know a programming language well, then you
+                        should be just fine going through the official docs. If you're new to programming or you still want to follow along for whatever reason, let's do it!</p>
+
+                    <p>Python is a general-purpose programming language, built on top of C. What can you do with Python? Just about anything, and most things quite easily. Topics like data analysis, machine learning, web development, desktop applications,
+                        robotics, and more are all things that you can immediately begin doing with Python without much effort. Personally, I've used Python to create various websites, including this one! I've used Python to <a href="../game-frames-open-cv-python-plays-gta-v/index.html"
+                            target="blank"><strong>train an AI to play Grand Theft Auto 5</strong></a>, to help companies detect diseases, to help detect fraud and abuse against servers, to create games, to trade stocks, and I've built and helped to build
+                        multiple businesses with Python. Python and programming is life-changing, and it's my honor to share it with you!</p>
+
+                    <p>While raw Python is single-threaded and slow, Python in practice is actually quite fast, far faster than any code most of the people telling you that Python is slow could write on their best day. That said, if you were seeking out
+                        the absolute quickest execution time, you would still likely be going with C variant, no question about that. The beauty of Python is in just how quickly and easily you can create things. Most of us aren't writing operating systems,
+                        not because we're too stupid, but because we don't need millions of operating systems. We do need millions of apps in this world, however.</p>
+
+                    <p>Python has a robust and ever-growing community of people who build what are called "packages," "libraries," "wrappers", "frameworks," or any of the other names people might give them. Where speed counts, the heavy-lifting of these
+                        packages is done in C/C++, but you interface with them in Python. So when you're doing data analysis with Python, you get the ease and speed of development that we know and love with Python, but the number crunching, under the
+                        hood, is happening in C/C++.</p>
+
+                    <p>Alright, let's make some stuff. Your operating system is not important. I will be using Windows, because that's what works best with my recording and editing software. You can use whatever OS you like!</p>
+
+                    <p>To get Python, you can either grab something like <a href="http://bit.ly/2KzM3HN" target="blank"><strong>ActivePython</strong></a>, which is a pre-compiled distribution of Python, which comes with most of the packages you will need
+                        right away, or vanilla Python 3+, downloaded from <a href="https://www.python.org/" target="blank"><strong>Python.org</strong></a>. The difference between precompiled versions of Python and regular "vanilla" Python is usually just
+                        some speed differences and the fact that you wont have to download many, if any, other libraries to use Python. <a href="http://bit.ly/2KzM3HN" target="blank"><strong>ActivePython</strong></a> is just a quicker/simpler way to dive
+                        in to programming with Python.</p>
+
+                    <p>
+                        I will be doing this series in Python 3.7. You should be able to follow along in future versions of Python 3 as well. If you're having trouble, just ask! Either post a comment on the related YouTube video, or join our <a href="https://discordapp.com/invite/3jCqXJj"
+                            target="blank"><strong>Python Discord</strong></a>. If you're on a 32-bit machine, go to downloads, and download Python 3. If you're on a 64-bit machine, make sure you get 64-bit Python. You want 64 bit Python so you don't have
+                        a 2gb memory limit. At the moment, the path to get 64-bit Python on Windows, for example, is to hover downloads, choose "All releases," scroll down, choose the latest Python version, click on the version # part, scroll all the
+                        way down to the bottom, and choose the 64-bit version that matches your operating system. For me, I am going with <a href="https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe" target="blank"><strong>Windows x86-64 executable installer</strong></a>.</p>
+
+                    <p>Now, run this. You can either "install now" or customize the installation. I prefer to customize the install path to a simpler-than-default path. So I am going to choose the custom install, after checking the box for <code>Add Python 3.7 to PATH</code>.
+                        Hit next, I am going with all of the defaults except for the installation path. I am going to go with <code>C:/Python37</code> instead. Nice and short. I have multiple versions of Python on my system. As you continue with Python,
+                        you probably will too. it's nice to be able to quickly reference one or the other. With that, install it!</p>
+
+                    <p>Next, you're going to need an editor. Which editor isn't really all that important, just find one you like. You could write your Python in notepad or a Word document if you wanted. I wouldn't suggest it, but you could.</p>
+
+                    <p>Everyone is going to tell you that their editor is the best for whatever reasons. It just doesn't matter all that much. I personally prefer simpler editors. I used IDLE, the editor that comes with Python for about 5 years, and still
+                        often use that to this day. I like simple editors *because* they don't do things for me. As time has gone on, I've moved more towards <a href="https://www.sublimetext.com/" target="blank"><strong>Sublime-Text</strong></a>, which
+                        is what I am using for this series. Probably the most popular editor is <a href="https://www.jetbrains.com/pycharm/" target="blank"><strong>PyCharm</strong></a> at the moment. For a full list, check out all of the
+                        <a href="https://wiki.python.org/moin/PythonEditors" target="blank"><strong>Python Editors</strong></a>. There are quite a few! Because there are so many editors, I do not wish to spend much time on setting them up. I suspect,
+                        however, a large portion of people will want to use sublime-text since that's what I am using here. My setup of Sublime-text is super basic, so that wont take long!</p>
+
+                    <p>Once you've installed sublime, you can right-click a file and open in sublime, or just open sublime-text, start typing, and file > save as. To run a file in sublime, you can press <code>ctrl+b</code>. It will ask you the first time
+                        here how you want to run, choose Python. Simple as that. You can also run python from the terminal/command line. More on that later too.</p>
+
+                    <p>For now, you can write the following in sublime-text:</p>
+
+                    <pre class="prettyprint lang-py">print()</pre>
+
+                    <p>The <code>print()</code> is a built-in function (more on these later too) that outputs whatever you pass to the console. You can pass something as simple as a string here. A string is a type of object that is between quotes and generally
+                        is used to represent actual written text. This might be words, password hashes, names of people...etc. So let's print a string:</p>
+
+                    <pre class="prettyprint lang-py">print("Hello Universe")</pre>
+
+                    <p>Now do <code>ctrl+b</code> to run it and you should see "Hello Universe" is output in the console. In sublime, this is at the bottom of the window.</p>
+
+                    <p>Alright, so we've made our very first Python program, and it works! Woo! In the next tutorial, we're going to see one more basic example of the simplicity of Python before we dive in to our overarching project for this series.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Tuples, Strings, Loops - Learning to Program with Python 3 (basics)" href="../tuples-strings-loops-learn-python-3-tutorials/index5a00.html?completed=/introduction-learn-python-3-tutorials/"><button class="btn" style="background-color:#FFD166; color:#000000">Tuples, Strings, Loops - Learning to Program with Python 3 (basics)</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=2&amp;t=/introduction-learn-python-3-tutorials/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction to Python 3 (basics) - Learning to Program with Python 3</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Tuples, Strings, Loops - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tuples-strings-loops-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Lists and Tic Tac Toe Game - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../lists-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Built-in Functions - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../built-in-functions-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Indexes and Slices - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../indexes-slices-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Functions - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../functions-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Function Parameters and Typing - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../function-parameters-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Mutability Revisited - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../mutability-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Error Handling - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../error-handling-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Calculating Horizontal Winner (tic tac toe) - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../horizontal-winner-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Vertical Winners - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../vertical-winners-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Diagonal Winners - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../diagonal-winners-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Bringing Things Together - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../bringing-together-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Wrapping up Tic Tac Toe - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../wrapping-up-tic-tac-toe-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Conclusion - Learning to Program with Python 3 (basics)</div>
+                        <div class="collapsible-body">
+                            <p><a href="../conclusion-learn-python-3-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- Mirrored from pythonprogramming.net/introduction-learn-python-3-tutorials/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:30 GMT -->
+
+</html>
+<p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+<ul>
+    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+</ul>
+</div>
+<div class="col l4 offset-l2 s12">
+    <h6 class="white-text">Legal stuff:</h6>
+    <ul>
+        <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+        <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+    </ul>
+</div>
+</div>
+</div>
+<a href="https://xkcd.com/353/" target='blank'>
+    <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+</a>
+<div class="footer-copyright">
+    <div class="container">
+        © OVER 9000! PythonProgramming.net
+
+    </div>
+
+</div>
+</footer>
+
+
+<!-- Mirrored from pythonprogramming.net/introduction-learn-python-3-tutorials/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:30 GMT -->
+
+</html>
+<li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+<li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+</ul>
+</div>
+</div>
+</div>
+<a href="https://xkcd.com/353/" target='blank'>
+    <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+</a>
+<div class="footer-copyright">
+    <div class="container">
+        © OVER 9000! PythonProgramming.net
+
+    </div>
+
+</div>
+</footer>
+
+{% endblock %}

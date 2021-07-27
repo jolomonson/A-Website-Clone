@@ -8,7 +8,7 @@ from django.contrib import messages
 # Create your views here.
 def homePage(request):
     return render(request, 'main/home.html')
-
+# Machine Learning
 def machinelearningtutorials(request):
     return render(request, 'main/tutorials/MachineLearning/machine-learning/index.html')
 def deeplearningneuralnetworks(request):
@@ -43,7 +43,6 @@ def imagerecognition(request):
     return render(request, 'main/tutorials/MachineLearning/image-recognition/index.html')
 def haliteiiartificialintelligence(request):
     return render(request, 'main/tutorials/MachineLearning/halite-ii-ai/index.html')
-
 # Data Analysis
 def dataanalysistutorials(request):
     return render(request, 'main/tutorials/DataAnalysis/data-analysis/index.html')
@@ -69,30 +68,36 @@ def distributedcomputing(request):
     return render(request, 'main/tutorials/DataAnalysis/distributed-computing/index.html')
 def naturallanguageprocessing(request):
     return render(request, 'main/tutorials/DataAnalysis/nl-processing/index.html')
-    
-
-
-
-
-
-
-
+#Quantum Programming
 def quantumprogrammingtutorials(request):
-    return render(request, 'main/tutorials/QuantumProgramming/quantum-programming-tutorials/index.html')
-def quantumprogrammingtutorials(request):
-    return render(request, 'main/tutorials/QuantumProgramming/quantum-programming-tutorials/index.html')
-
+    return render(request, 'main/tutorials/QuantumProgramming/qp-tutorials/index.html')
+#Game Development
 def gamedevelopmenttutorials(request):
-    return render(request, 'main/tutorials/GameDevelopment/game-development-tutorials/index.html')
-
+    return render(request, 'main/tutorials/GameDevelopment/game-development/index.html')
+#Python Fundamentals
 def pythonfundamentaltutorials(request):
-    return render(request, 'main/tutorials/PythonFundamentals/python-fundamental-tutorials/index.html')
-
+    return render(request, 'main/tutorials/PythonFundamentals/python-fundamental/index.html')
+def pythonbasics(request):
+    return render(request, 'main/tutorials/PythonFundamentals/basics/index.html')
+def pythonintermediate(request):
+    return render(request, 'main/tutorials/PythonFundamentals/intermediate/index.html')
+def socketstutorial(request):
+    return render(request, 'main/tutorials/PythonFundamentals/socket-tutorials/index.html')
+#Web Development
 def webdevelopmenttutorials(request):
-    return render(request, 'main/tutorials/WebDevelopment/web-development-tutorials/index.html')
-
+    return render(request, 'main/tutorials/WebDevelopment/web-development/index.html')
+def djangowebdevelopment(request):
+    return render(request, 'main/tutorials/WebDevelopment/web-development/django/index.html')
+def flask(request):
+    return render(request, 'main/tutorials/WebDevelopment/web-development/flask/index.html')
+#Bots and AI
 def bottutorials(request):
-    return render(request, 'main/tutorials/Bots/bot-tutorials/index.html')
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/index.html')
+def gtav(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/gta-v/index.html')
+def redditapiwrapper(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/reddit-api/index.html')
+
 
 def roboticstutorials(request):
     return render(request, 'main/tutorials/Robotics/robotics-tutorials/index.html')
