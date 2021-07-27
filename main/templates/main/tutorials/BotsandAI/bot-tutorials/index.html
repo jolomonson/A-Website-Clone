@@ -1,0 +1,250 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
+    <div class="row">
+
+        <div class="col l4 s12 m12">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/gta-v" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/python-plays-gta-v.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Python Plays GTA V</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Training Python how to play and do a self-driving car in Grand Theft Auto 5 through machine learning and other statistical approaches.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="/gta-v" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/reddit-api-wrapper" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/redditcat.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Python Reddit API Wrapper (PRAW)</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Easily interact with the Reddit API via the PRAW.</p>
+                    </div><br><br>
+                    <div class="card-action right-align">
+                        <a href="/reddit-api-wrapper" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m12">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../introduction-self-driving-autonomous-cars-carla-python/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/carla-512.jpg' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Self-driving cars in Python with Carla</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Train a self driving car with reinforcement learning using Python and the Carla autonomous car simulator.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../introduction-self-driving-autonomous-cars-carla-python/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../discordpy-basic-bot-tutorial-introduction/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/Making Discord Bots with DiscordPy.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>DiscordPy: Making Discord Bots</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn how to build Discord bots for your server with DiscordPy.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../discordpy-basic-bot-tutorial-introduction/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../introduction-halite-iii-ai-coding-competition/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/Halite III (2018) AI Coding Competition.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Halite III (2018) - Artificial Intelligence Coding Challenge/Competition</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Compete with programmers in an AI competition to collect the most halite in the oceans.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../introduction-halite-iii-ai-coding-competition/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../introduction-scraping-parsing-beautiful-soup-tutorial/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/beautiful_soup_image.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Web Scraping and Parsing with Beautiful Soup</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn the basics of scraping and parsing websites with the Beautiful Soup 4 Library.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../introduction-scraping-parsing-beautiful-soup-tutorial/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../starcraft-ii-ai-python-sc2-tutorial/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/starcraft-ii.jpg' %}" style="width:250px">
+                        <br><span class="card-title"><strong>AI in StarCraft II</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn how to build AI in StarCraft II, a multi-player strategy computer game, with Python!</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../starcraft-ii-ai-python-sc2-tutorial/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../introduction-halite-ii-artificial-intelligence-competition/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/halite-ii-ai-competition.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Halite II - Artificial Intelligence Coding Challenge/Competition</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Compete with programmers around the world by creating AI bots to take over a space-like environment.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../introduction-halite-ii-artificial-intelligence-competition/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../intro-alexa-skill-flask-ask-python-tutorial/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/alexa-skills-python-tutorials.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Alexa Skills w/ Python and Flask-Ask</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn the basics of creating Alexa Skills.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../intro-alexa-skill-flask-ask-python-tutorial/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="../twitter-api-streaming-tweets-python-tutorial/index.html" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Bots/twitter.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Twitter API v1.1</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn how to connect and extract data from the streaming Twitter API version 1.1.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="../twitter-api-streaming-tweets-python-tutorial/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                <ul>
+                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Legal Stuff:</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

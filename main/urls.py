@@ -20,7 +20,7 @@ app_name = 'main'
 
 urlpatterns = [
     path('', views.homePage, name='home'),path('home/', views.homePage, name='homePage'),
-
+    # Machine Learning
     path('machine-learning-tutorials/', views.machinelearningtutorials, name='machineLearning'),
     path('deep-learning-neural-networks/', views.deeplearningneuralnetworks, name='deepLearningNeuralNetwork'),
     path('cloud-gpus/', views.cloudgpus, name='cloud GPUs'),
@@ -52,20 +52,23 @@ urlpatterns = [
     path('images-and-video-analysis/', views.imagesandvideoanalysis, name='imagesAndVideoAnalysis'),
     path('distributed-computing/', views.distributedcomputing, name='distributedComputing'),
     path('natural-language-processing/', views.naturallanguageprocessing, name='naturalLanguageProcessing'),
-    
-    
-
-
-    
-    
-    
-
-
+    #Quantum Programming
     path('quantum-programming-tutorials/', views.quantumprogrammingtutorials, name='quantumProgramming'),
     path('game-development-tutorials/', views.gamedevelopmenttutorials, name='gameDevelopment'),
+    #Python
     path('python-fundamental-tutorials/', views.pythonfundamentaltutorials, name='pythonFundamentals'),
+    path('python-basics/', views.pythonbasics, name='pythonBasics'),
+    path('python-intermediate/', views.pythonintermediate, name='pythonIntermediate'),
+    path('sockets-tutorial/', views.socketstutorial, name='socketsTutorial'),
+    # Web Development
     path('web-development-tutorials/', views.webdevelopmenttutorials, name='webDevelopment'),
+    path('django-web-development/', views.djangowebdevelopment, name='djangoWebDevelopment'),
+    path('flask/', views.flask, name='flask'),
+    # Bots and AI
     path('bot-tutorials/', views.bottutorials, name='botandai'),
+    path('gta-v/', views.gtav, name='gtav'),
+    path('reddit-api-wrapper/', views.redditapiwrapper, name='redditApiWrapper'),
+    
     path('robotics-tutorials/', views.roboticstutorials, name='robotics'),
     path('gui-development-tutorials/', views.guitutorials, name='gui'),
     path('golang-tutorials/', views.golangtutorials, name='golang'),

@@ -1,0 +1,512 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Sockets Tutorial with Python 3 part 1 - sending and receiving data</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/Lbfe3-v7yE0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to a tutorial on sockets with Python 3. We have a lot to cover, so let's just jump right in. The <code>socket</code> library is a part of the standard library, so you already have it.</p>
+
+                    <pre class="prettyprint lang-py">import socket
+
+# create the socket
+# AF_INET == ipv4
+# SOCK_STREAM == TCP
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</pre>
+
+                    <p>The <code>s</code> variable is our TCP/IP socket. The AF_INET is in reference to th family or domain, it means ipv4, as opposed to ipv6 with AF_INET6. The SOCK_STREAM means it will be a TCP socket, which is our type of socket. TCP
+                        means it will be connection-oriented, as opposed to connectionless. </p>
+
+                    <p>Okay, so what is a socket? The socket itself is just one of the endpoints in a communication between programs on some network. </p>
+
+                    <p>A socket will be tied to some port on some host. In general, you will have either a client or a server type of entity or program.</p>
+
+                    <p>In the case of the <code>server</code>, you will bind a socket to some port on the server (localhost). In the case of a <code>client</code>, you will connect a socket to that server, on the same port that the server-side code is using.
+                        </p>
+
+                    <p>Let's make this code so far our server-side:</p>
+
+
+                    <pre class="prettyprint lang-py">s.bind((socket.gethostname(), 1234))</pre>
+
+
+
+                    <p>For IP sockets, the address that we bind to is a tuple of the hostname and the port number. </p>
+
+                    <p>Now that we've done that, let's listen for incoming connections. We can only handle one connection at a given time, so we want to allow for some sort of a queue, just incase we get a slight burst. If someone attempts to connect while
+                        the queue is full, they will be denied.</p>
+
+                    <p>Let's make a queue of 5:</p>
+
+                    <pre class="prettyprint lang-py">s.listen(5)</pre>
+
+                    <p>And now, we just listen!</p>
+
+                    <pre class="prettyprint lang-py">while True:
+    # now our endpoint knows about the OTHER endpoint.
+    clientsocket, address = s.accept()
+    print(f"Connection from {address} has been established.")</pre>
+
+
+
+                    <p>Full code for <code>server.py</code>:</p>
+
+
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((socket.gethostname(), 1234))
+s.listen(5)
+
+while True:
+    # now our endpoint knows about the OTHER endpoint.
+    clientsocket, address = s.accept()
+    print(f"Connection from {address} has been established.")
+
+</pre>
+
+
+                    <p>Now we need to make our client's code!</p>
+
+
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</pre>
+
+
+                    <p>Now, since this is the client, rather than <code>binding</code>, we are going to <code>connect</code>.</p>
+
+                    <pre class="prettyprint lang-py">s.connect((socket.gethostname(), 1234))</pre>
+
+
+                    <p>In the more traditional sense of client and server, you wouldnt actually have the client and server on the same machine. If you wanted to have two programs talking to eachother locally, you could do this, but typically your client
+                        will more likely connect to some external server, using its public IP address, not <code>socket.gethostname()</code>. You will pass the string of the IP instead. </p>
+
+                    <p>Full <code>client.py</code> code up to this point:</p>
+
+
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))</pre>
+
+
+
+                    <p>Okay, now we just run both. First, let's run our server:</p>
+
+
+
+
+                    <p><code>python3 server.py</code></p>
+                    <p><code>python3 client.py</code></p>
+
+                    <p>On our server, we should see:</p>
+
+                    <pre>Connection from ('192.168.86.34', 54276) has been established.</pre>
+
+                    <p>Our client, however, just exits after that, because it has completed its job.</p>
+                    <p>So we've made a connection, and that's cool, but we really want to send messages and/or data back and forth. How do we do that?</p>
+
+
+                    <p>Our sockets can <code>send</code> and <code>recv</code> data. These methods of handling data deal in buffers. Buffers happen in chunks of data of some fixed size. Let's see that in action:</p>
+                    <p>Inside <code>server.py</code>, let's add:</p>
+                    <pre class="prettyprint lang-py">    clientsocket.send(bytes("Hey there!!!","utf-8"))</pre>
+
+                    <p>Into our <code>while</code> loop, so our full code for <code>server.py</code> becomes:</p>
+
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((socket.gethostname(), 1234))
+s.listen(5)
+
+while True:
+    # now our endpoint knows about the OTHER endpoint.
+    clientsocket, address = s.accept()
+    print(f"Connection from {address} has been established.")
+    clientsocket.send(bytes("Hey there!!!","utf-8"))</pre>
+                    <p>So we've sent some data, now we want to receive it. So, in our <code>client.py</code>, we'll do:</p>
+
+                    <pre class="prettyprint lang-py">msg = s.recv(1024)</pre>
+
+
+
+                    <p>This means our socket is going to attempt to receive data, in a buffer size of 1024 bytes at a time.</p>
+
+
+
+
+                    <p>Then, let's just do something basic with the data we get, like print it out!</p>
+
+                    <pre class="prettyprint lang-py">print(msg.decode("utf-8"))</pre>
+
+                    <p>Cool, our full <code>client.py</code> code is now:</p>
+
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
+
+msg = s.recv(1024)
+print(msg.decode("utf-8"))</pre>
+                    <p>Now, run both <code>server.py</code> and then <code>client.py</code>. Our <code>server.py</code> shows:</p>
+
+
+                    <pre>Connection from ('192.168.86.34', 55300) has been established.</pre>
+
+                    <p>While our <code>client.py</code> now shows:</p>
+
+
+                    <pre>Hey there!!!</pre>
+                    <p>And it exits. Okay, so let's adjust that buffer slightly, changing the <code>client.py</code> <code>recv</code> to be in 8 bytes at a time.</p>
+
+
+                    <p><code>client.py</code></p>
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
+
+msg = s.recv(8)
+print(msg.decode("utf-8"))</pre>
+                    <p>Now, re-run the <code>client.py</code>, and you will instead see something like:</p>
+
+                    <pre>Hey ther</pre>
+
+                    <p>Not lookin so hot! So you might realize that literally adds up to 8 characters, so each byte is a character. Why not... go back to 1024? or some massive number. Why work in buffers at all?</p>
+
+                    <p>At some point, no matter what number you set, many applications that use sockets will eventually desire to send some amount of bytes far over the buffer size. Instead, we need to probably build our program from the ground up to actually
+                        accept the entirety of the messages in chunks of the buffer, even if there's usually only one chunk. We do this mainly for memory management. The calculations depending on application can vary, and you're free to play with the
+                        buffer size later. The only thing I can for sure promise is: you need to plan from the beginning to handle communications in chunks.</p>
+
+                    <p>For our client, how might we do this? A <code>while</code> loop sounds like it could fit the bill. Data will come in as a stream, so really, handling for this is as simple as changing our <code>client.py</code> file to:</p>
+
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
+
+
+while True:
+    msg = s.recv(8)
+    print(msg.decode("utf-8"))</pre>
+
+
+                    <p>So, at the moment, we will receive this data and print it in chunks. If we run <code>client.py</code> now, we see:</p>
+
+
+                    <pre>Hey ther
+e!!!</pre>
+
+                    <p>You should also take note that our <code>client.py</code> no longer exits. This connection now is remaining open. This is due to our <code>while</code> loop. We can use <code>.close()</code> on a socket to close it if we wish. We can
+                        do this either on the server, or on the client...or both. It's probably a good idea to be prepared for either connection to drop or be closed for whatever reason. For example, we could close the connection after we send our message
+                        on the server:</p>
+
+                    <p><code>server.py</code></p>
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((socket.gethostname(), 1234))
+s.listen(5)
+
+while True:
+    # now our endpoint knows about the OTHER endpoint.
+    clientsocket, address = s.accept()
+    print(f"Connection from {address} has been established.")
+    clientsocket.send(bytes("Hey there!!!","utf-8"))
+    clientsocket.close()</pre>
+
+
+
+
+                    <p>If we run this, however, we will see our <code>client.py</code> then spams out a bunch of nothingness, because the data it's receiving, is, well, nothing. It's empty. 0 bytes, but we are still asking it to print out what it receives,
+                        even if that's nothing! We could fix that:</p>
+
+                    <p><code>client.py</code></p>
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
+
+full_msg = ''
+while True:
+    msg = s.recv(8)
+    if len(msg) <= 0:
+        break
+    full_msg += msg.decode("utf-8")
+
+print(full_msg)</pre>
+
+
+                    <p>So, now we are buffering through the full message. When we reach the end, which we're noting by getting 0 bytes, we break, and then return the message. This then concludes <code>client.py</code>. Now, client probably wants to also
+                        maintain the connection. How might we do that? Another <code>while</code> loop could do the trick.</p>
+
+
+                    <p><code>client.py</code></p>
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
+
+
+while True:
+    full_msg = ''
+    while True:
+        msg = s.recv(8)
+        if len(msg) <= 0:
+            break
+        full_msg += msg.decode("utf-8")
+
+    print(full_msg)</pre>
+
+
+                    <p>Of course, we probably should yet again make sure the <code>full_msg</code> has something of substance before we print it out:</p>
+
+
+                    <p><code>client.py</code></p>
+                    <pre class="prettyprint lang-py">import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((socket.gethostname(), 1234))
+
+
+while True:
+    full_msg = ''
+    while True:
+        msg = s.recv(8)
+        if len(msg) <= 0:
+            break
+        full_msg += msg.decode("utf-8")
+
+    if len(full_msg) > 0:
+        print(full_msg)</pre>
+
+
+                    <p>This works, but we have issues. What happens when we stop closing the client socket on the server's side? We never actually get a message! Why's this? </p>
+
+                    <p>TCP is a communication *stream*...so how do we actually know when a message is actually happening? Generally, we need sort of way to notify the receiving socket about the message and how big it will be. There are many ways that we
+                        can do this. One popular way is to use a sort of header that always leads our message. We could also use some sort of footer, but this could cause trouble should someone learn about our methods.</p>
+
+                    <p>We will be working on this in the next tutorial.</p>
+
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Sockets Tutorial with Python 3 part 2 - buffering and streaming data" href="../buffering-streaming-data-sockets-tutorial-python-3/index6621.html?completed=/sockets-tutorial-python-3/"><button class="btn" style="background-color:#FFD166; color:#000000">Sockets Tutorial with Python 3 part 2 - buffering and streaming data</button></a></p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=4&amp;t=/sockets-tutorial-python-3/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Sockets Tutorial with Python 3 part 1 - sending and receiving data</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Sockets Tutorial with Python 3 part 2 - buffering and streaming data</div>
+                        <div class="collapsible-body">
+                            <p><a href="../buffering-streaming-data-sockets-tutorial-python-3/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Sockets Tutorial with Python 3 part 3 - sending and receiving Python Objects with sockets</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pickle-objects-sockets-tutorial-python-3/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Socket Chatroom server - Creating chat application with sockets in Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../server-chatroom-sockets-tutorial-python-3/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Socket Chatroom client - Creating chat application with sockets in Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../client-chatroom-sockets-tutorial-python-3/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

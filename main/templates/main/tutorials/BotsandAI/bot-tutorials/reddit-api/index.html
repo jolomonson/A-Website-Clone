@@ -1,0 +1,1066 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+</script>
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Introduction and Basics - Python Reddit API Wrapper (PRAW) tutorial p.1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/NRgfgtzIhBQ?list=PLQVvvaa0QuDcg7v9OIyT-DWXX4WOjmJ9I" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+                    <!DOCTYPE html>
+                    <html>
+
+                    <head>
+                        <meta charset="utf-8" />
+                        <title>p1. Intro, setup, and basic use - Python Reddit API Wrapper (PRAW) Tutorial</title>
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+                        <script src="../../cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+                        <style type="text/css">
+                            .highlight .hll {
+                                background-color: #ffffcc
+                            }
+                            
+                            .highlight {
+                                background: #f8f8f8;
+                            }
+                            
+                            .highlight .c {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment */
+                            
+                            .highlight .err {
+                                border: 1px solid #FF0000
+                            }
+                            /* Error */
+                            
+                            .highlight .k {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword */
+                            
+                            .highlight .o {
+                                color: #666666
+                            }
+                            /* Operator */
+                            
+                            .highlight .cm {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Multiline */
+                            
+                            .highlight .cp {
+                                color: #BC7A00
+                            }
+                            /* Comment.Preproc */
+                            
+                            .highlight .c1 {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Single */
+                            
+                            .highlight .cs {
+                                color: #408080;
+                                font-style: italic
+                            }
+                            /* Comment.Special */
+                            
+                            .highlight .gd {
+                                color: #A00000
+                            }
+                            /* Generic.Deleted */
+                            
+                            .highlight .ge {
+                                font-style: italic
+                            }
+                            /* Generic.Emph */
+                            
+                            .highlight .gr {
+                                color: #FF0000
+                            }
+                            /* Generic.Error */
+                            
+                            .highlight .gh {
+                                color: #000080;
+                                font-weight: bold
+                            }
+                            /* Generic.Heading */
+                            
+                            .highlight .gi {
+                                color: #00A000
+                            }
+                            /* Generic.Inserted */
+                            
+                            .highlight .go {
+                                color: #888888
+                            }
+                            /* Generic.Output */
+                            
+                            .highlight .gp {
+                                color: #000080;
+                                font-weight: bold
+                            }
+                            /* Generic.Prompt */
+                            
+                            .highlight .gs {
+                                font-weight: bold
+                            }
+                            /* Generic.Strong */
+                            
+                            .highlight .gu {
+                                color: #800080;
+                                font-weight: bold
+                            }
+                            /* Generic.Subheading */
+                            
+                            .highlight .gt {
+                                color: #0044DD
+                            }
+                            /* Generic.Traceback */
+                            
+                            .highlight .kc {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Constant */
+                            
+                            .highlight .kd {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Declaration */
+                            
+                            .highlight .kn {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Namespace */
+                            
+                            .highlight .kp {
+                                color: #008000
+                            }
+                            /* Keyword.Pseudo */
+                            
+                            .highlight .kr {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Keyword.Reserved */
+                            
+                            .highlight .kt {
+                                color: #B00040
+                            }
+                            /* Keyword.Type */
+                            
+                            .highlight .m {
+                                color: #666666
+                            }
+                            /* Literal.Number */
+                            
+                            .highlight .s {
+                                color: #BA2121
+                            }
+                            /* Literal.String */
+                            
+                            .highlight .na {
+                                color: #7D9029
+                            }
+                            /* Name.Attribute */
+                            
+                            .highlight .nb {
+                                color: #008000
+                            }
+                            /* Name.Builtin */
+                            
+                            .highlight .nc {
+                                color: #0000FF;
+                                font-weight: bold
+                            }
+                            /* Name.Class */
+                            
+                            .highlight .no {
+                                color: #880000
+                            }
+                            /* Name.Constant */
+                            
+                            .highlight .nd {
+                                color: #AA22FF
+                            }
+                            /* Name.Decorator */
+                            
+                            .highlight .ni {
+                                color: #999999;
+                                font-weight: bold
+                            }
+                            /* Name.Entity */
+                            
+                            .highlight .ne {
+                                color: #D2413A;
+                                font-weight: bold
+                            }
+                            /* Name.Exception */
+                            
+                            .highlight .nf {
+                                color: #0000FF
+                            }
+                            /* Name.Function */
+                            
+                            .highlight .nl {
+                                color: #A0A000
+                            }
+                            /* Name.Label */
+                            
+                            .highlight .nn {
+                                color: #0000FF;
+                                font-weight: bold
+                            }
+                            /* Name.Namespace */
+                            
+                            .highlight .nt {
+                                color: #008000;
+                                font-weight: bold
+                            }
+                            /* Name.Tag */
+                            
+                            .highlight .nv {
+                                color: #19177C
+                            }
+                            /* Name.Variable */
+                            
+                            .highlight .ow {
+                                color: #AA22FF;
+                                font-weight: bold
+                            }
+                            /* Operator.Word */
+                            
+                            .highlight .w {
+                                color: #bbbbbb
+                            }
+                            /* Text.Whitespace */
+                            
+                            .highlight .mb {
+                                color: #666666
+                            }
+                            /* Literal.Number.Bin */
+                            
+                            .highlight .mf {
+                                color: #666666
+                            }
+                            /* Literal.Number.Float */
+                            
+                            .highlight .mh {
+                                color: #666666
+                            }
+                            /* Literal.Number.Hex */
+                            
+                            .highlight .mi {
+                                color: #666666
+                            }
+                            /* Literal.Number.Integer */
+                            
+                            .highlight .mo {
+                                color: #666666
+                            }
+                            /* Literal.Number.Oct */
+                            
+                            .highlight .sb {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Backtick */
+                            
+                            .highlight .sc {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Char */
+                            
+                            .highlight .sd {
+                                color: #BA2121;
+                                font-style: italic
+                            }
+                            /* Literal.String.Doc */
+                            
+                            .highlight .s2 {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Double */
+                            
+                            .highlight .se {
+                                color: #BB6622;
+                                font-weight: bold
+                            }
+                            /* Literal.String.Escape */
+                            
+                            .highlight .sh {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Heredoc */
+                            
+                            .highlight .si {
+                                color: #BB6688;
+                                font-weight: bold
+                            }
+                            /* Literal.String.Interpol */
+                            
+                            .highlight .sx {
+                                color: #008000
+                            }
+                            /* Literal.String.Other */
+                            
+                            .highlight .sr {
+                                color: #BB6688
+                            }
+                            /* Literal.String.Regex */
+                            
+                            .highlight .s1 {
+                                color: #BA2121
+                            }
+                            /* Literal.String.Single */
+                            
+                            .highlight .ss {
+                                color: #19177C
+                            }
+                            /* Literal.String.Symbol */
+                            
+                            .highlight .bp {
+                                color: #008000
+                            }
+                            /* Name.Builtin.Pseudo */
+                            
+                            .highlight .vc {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Class */
+                            
+                            .highlight .vg {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Global */
+                            
+                            .highlight .vi {
+                                color: #19177C
+                            }
+                            /* Name.Variable.Instance */
+                            
+                            .highlight .il {
+                                color: #666666
+                            }
+                            /* Literal.Number.Integer.Long */
+                        </style>
+                        <style type="text/css">
+                            /* Temporary definitions which will become obsolete with Notebook release 5.0 */
+                            
+                            .ansi-black-fg {
+                                color: #3E424D;
+                            }
+                            
+                            .ansi-black-bg {
+                                background-color: #3E424D;
+                            }
+                            
+                            .ansi-black-intense-fg {
+                                color: #282C36;
+                            }
+                            
+                            .ansi-black-intense-bg {
+                                background-color: #282C36;
+                            }
+                            
+                            .ansi-red-fg {
+                                color: #E75C58;
+                            }
+                            
+                            .ansi-red-bg {
+                                background-color: #E75C58;
+                            }
+                            
+                            .ansi-red-intense-fg {
+                                color: #B22B31;
+                            }
+                            
+                            .ansi-red-intense-bg {
+                                background-color: #B22B31;
+                            }
+                            
+                            .ansi-green-fg {
+                                color: #00A250;
+                            }
+                            
+                            .ansi-green-bg {
+                                background-color: #00A250;
+                            }
+                            
+                            .ansi-green-intense-fg {
+                                color: #007427;
+                            }
+                            
+                            .ansi-green-intense-bg {
+                                background-color: #007427;
+                            }
+                            
+                            .ansi-yellow-fg {
+                                color: #DDB62B;
+                            }
+                            
+                            .ansi-yellow-bg {
+                                background-color: #DDB62B;
+                            }
+                            
+                            .ansi-yellow-intense-fg {
+                                color: #B27D12;
+                            }
+                            
+                            .ansi-yellow-intense-bg {
+                                background-color: #B27D12;
+                            }
+                            
+                            .ansi-blue-fg {
+                                color: #208FFB;
+                            }
+                            
+                            .ansi-blue-bg {
+                                background-color: #208FFB;
+                            }
+                            
+                            .ansi-blue-intense-fg {
+                                color: #0065CA;
+                            }
+                            
+                            .ansi-blue-intense-bg {
+                                background-color: #0065CA;
+                            }
+                            
+                            .ansi-magenta-fg {
+                                color: #D160C4;
+                            }
+                            
+                            .ansi-magenta-bg {
+                                background-color: #D160C4;
+                            }
+                            
+                            .ansi-magenta-intense-fg {
+                                color: #A03196;
+                            }
+                            
+                            .ansi-magenta-intense-bg {
+                                background-color: #A03196;
+                            }
+                            
+                            .ansi-cyan-fg {
+                                color: #60C6C8;
+                            }
+                            
+                            .ansi-cyan-bg {
+                                background-color: #60C6C8;
+                            }
+                            
+                            .ansi-cyan-intense-fg {
+                                color: #258F8F;
+                            }
+                            
+                            .ansi-cyan-intense-bg {
+                                background-color: #258F8F;
+                            }
+                            
+                            .ansi-white-fg {
+                                color: #C5C1B4;
+                            }
+                            
+                            .ansi-white-bg {
+                                background-color: #C5C1B4;
+                            }
+                            
+                            .ansi-white-intense-fg {
+                                color: #A1A6B2;
+                            }
+                            
+                            .ansi-white-intense-bg {
+                                background-color: #A1A6B2;
+                            }
+                            
+                            .ansi-bold {
+                                font-weight: bold;
+                            }
+                        </style>
+
+
+                        <style type="text/css">
+                            /* Overrides of notebook CSS for static HTML export */
+                            
+                            body {
+                                overflow: visible;
+                                padding: 8px;
+                            }
+                            
+                            div#notebook {
+                                overflow: visible;
+                                border-top: none;
+                            }
+                            
+                            @media print {
+                                div.cell {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                                div.output_wrapper {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                                div.output {
+                                    display: block;
+                                    page-break-inside: avoid;
+                                }
+                            }
+                        </style>
+
+                        <!-- Custom stylesheet, it must be in the same directory as the html file -->
+                        <link rel="stylesheet" href="custom.html">
+
+                        <!-- Loading mathjax macro -->
+                        <!-- Load mathjax -->
+                        <script src="../../cdn.mathjax.org/mathjax/latest/MathJax7b8b.js?config=TeX-AMS_HTML"></script>
+                        <!-- MathJax configuration -->
+                        <script type="text/x-mathjax-config">
+                            MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], displayMath: [ ['$$','$$'], ["\\[","\\]"] ], processEscapes: true, processEnvironments: true }, // Center justify equations in code and markdown cells. Elsewhere // we use CSS to
+                            left justify single line equations in code cells. displayAlign: 'center', "HTML-CSS": { styles: {'.MathJax_Display': {"margin": 0}}, linebreaks: { automatic: true } } });
+                        </script>
+                        <!-- End of mathjax configuration -->
+                    </head>
+
+                    <body>
+                        <div tabindex="-1" id="notebook" class="border-box-sizing">
+                            <div id="notebook-container">
+
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>In this tutorial miniseries, we're going to be covering the Python Reddit API Wrapper, PRAW. Reddit is a place for just about everything, separated by "subreddits." I find it to be a decent source for news,
+                                                a great source to learn more about specific topics, and certainly always interesting.</p>
+                                            <p>While it fluctuates a bit, at the time of my writing this, Reddit is one of the top 10 websites in the world, and the sheer amount of contextual data that you can find here is staggering. I am currently interested
+                                                in pulling more specifically conversational data, but there's a lot more you could do here, so my goal here is to show you how quickly you can get your own bot up and running, do whatever it is you're wanting
+                                                to do.</p>
+                                            <p>The Reddit API has a rate limit of 30 requests per minute, but you can still make quite a bit with this. The PRAW also dynamically handles the rate limiting for you and attempts to be efficient, so you wont
+                                                have to worry about crossing the line, but you might wonder regardless why things might not be going as quick as you expect.</p>
+                                            <p>To get the PRAW, simply do a:</p>
+                                            <p>pip install praw</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">praw</span>
+
+<span class="n">reddit</span> <span class="o">=</span> <span class="n">praw</span><span class="o">.</span><span class="n">Reddit</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s">&#39;clientid&#39;</span><span class="p">,</span>
+                     <span class="n">client_secret</span><span class="o">=</span><span class="s">&#39;secret&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">&#39;password&#39;</span><span class="p">,</span>
+                     <span class="n">user_agent</span><span class="o">=</span><span class="s">&#39;PrawTut&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">&#39;username&#39;</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Above, we've created a Reddit instance. You will need to fill in all of the information above with your own information. You need a Reddit account, so you can either use an existing account or create a new one.
+                                                Once done, you can go to <a href="https://www.reddit.com/">https://www.reddit.com/</a>, and then click on "preferences" next to your name.</p>
+                                            <p>From here, choose the "apps" tab, and then "create an app" or "create another app..."</p>
+                                            <p>In here, fill out the name, description, about url and redirect uri as you see fit.</p>
+                                            <p>Once done, you should see your secret, and then the Client ID sits under your app's name in the top left. It'll look something like "l9QcKj32sa_x."</p>
+                                            <p>Once you have your Reddit instance, the world of Reddit just opened up to you! Let's see what you can do. At least for me, I am using a brand new acount, so I am not a member of any subreddits. SAD. So let's
+                                                check out a subreddit. I think the Python subreddit would be fitting.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">praw</span>
+
+<span class="n">reddit</span> <span class="o">=</span> <span class="n">praw</span><span class="o">.</span><span class="n">Reddit</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s">&#39;clientid&#39;</span><span class="p">,</span>
+                     <span class="n">client_secret</span><span class="o">=</span><span class="s">&#39;secret&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">&#39;password&#39;</span><span class="p">,</span>
+                     <span class="n">user_agent</span><span class="o">=</span><span class="s">&#39;PrawTut&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s">&#39;username&#39;</span><span class="p">)</span>
+
+<span class="n">subreddit</span> <span class="o">=</span> <span class="n">reddit</span><span class="o">.</span><span class="n">subreddit</span><span class="p">(</span><span class="s">&#39;python&#39;</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>From here, maybe we want to actually see what's going on here. I usually filter using the "hot" sorting, but you can feel free to use rising or controversial if you like.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="n">hot_python</span> <span class="o">=</span> <span class="n">subreddit</span><span class="o">.</span><span class="n">hot</span><span class="p">()</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>What this will give you is a bunch of 'submission objects' in the form of a Python generator object, which we can iterate through. To keep things simple, let's limit how many submission objects we get (submission
+                                                threads in this case). We'll limit to just one:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="n">hot_python</span> <span class="o">=</span> <span class="n">subreddit</span><span class="o">.</span><span class="n">hot</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Now we can iterate through this with something like</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="k">for</span> <span class="n">submission</span> <span class="ow">in</span> <span class="n">hot_python</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">submission</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+                                                <div class="prompt"></div>
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>6302cj
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>As you see here, what we have is the submission object's id, but it's not just an id, it's an object that we can do things with. For example:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="n">hot_python</span> <span class="o">=</span> <span class="n">subreddit</span><span class="o">.</span><span class="n">hot</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">submission</span> <span class="ow">in</span> <span class="n">hot_python</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+                                                <div class="prompt"></div>
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>/r/Python Official Job Board
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Note that I re-defined hot_python. That's because it's a generator object, so it's not saved after it's been iterated through. You could convert to list if you wanted to keep it stored in memory, but, in most
+                                                cases, you wont be doing that, so I am not doing that here.</p>
+                                            <p>Another issue is, as you can see, we did get a title, but if you actually go to the Python subreddit, you will see this is a sticky, posted 3 months ago. We don't really want stickies. Of course, if you are
+                                                familiar with the subreddit, you could know to just skip the stickies, or we can just check for them:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="n">hot_python</span> <span class="o">=</span> <span class="n">subreddit</span><span class="o">.</span><span class="n">hot</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">submission</span> <span class="ow">in</span> <span class="n">hot_python</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">submission</span><span class="o">.</span><span class="n">stickied</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+                                                <div class="prompt"></div>
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>Why is Python 50% faster under Windows Subsystem for Linux?
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>We can also gather all sorts of information on this submission:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="n">hot_python</span> <span class="o">=</span> <span class="n">subreddit</span><span class="o">.</span><span class="n">hot</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">submission</span> <span class="ow">in</span> <span class="n">hot_python</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">submission</span><span class="o">.</span><span class="n">stickied</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s">&#39;Title: {}, ups: {}, downs: {}, Have we visited?: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">submission</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+                                                                           <span class="n">submission</span><span class="o">.</span><span class="n">ups</span><span class="p">,</span>
+                                                                           <span class="n">submission</span><span class="o">.</span><span class="n">downs</span><span class="p">,</span>
+                                                                           <span class="n">submission</span><span class="o">.</span><span class="n">visited</span><span class="p">))</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="output_wrapper">
+                                        <div class="output">
+
+
+                                            <div class="output_area">
+                                                <div class="prompt"></div>
+
+                                                <div class="output_subarea output_stream output_stdout output_text">
+                                                    <pre>Title: Why is Python 50% faster under Windows Subsystem for Linux?, ups: 93, downs: 0, Have we visited?: False
+</pre>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>Not only can we get information, but we can also take actions on these objects, here are a few options at our disposal:</p>
+                                            <p>Submissions (threads/comments)</p>
+                                            <p>.upvote()</p>
+                                            <p>.clear_vote()</p>
+                                            <p>.downvote()</p>
+                                            <p>.reply()</p>
+                                            <p>Subreddits:</p>
+                                            <p>.subscribe()</p>
+                                            <p>.unsubscribe()</p>
+                                            <p>Let's take an obvious action:</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell border-box-sizing code_cell rendered">
+                                    <div class="input">
+
+                                        <div class="inner_cell">
+                                            <div class="input_area">
+                                                <div class=" highlight hl-ipython3"><pre><span class="n">subreddit</span><span class="o">.</span><span class="n">subscribe</span><span class="p">()</span>
+</pre></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="cell border-box-sizing text_cell rendered">
+                                    <div class="prompt input_prompt">
+                                    </div>
+                                    <div class="inner_cell">
+                                        <div class="text_cell_render border-box-sizing rendered_html">
+                                            <p>This will subscribe us to the Python subreddit. You might be seeing the upvote and downvote and thinking to yourself "jackpot!" Upvotes and downvotes are still meant to be done only by humans and you can still
+                                                wind up banned for abusing this rule. Information: <a href="https://www.reddit.com/dev/api#POST_api_vote">https://www.reddit.com/dev/api#POST_api_vote</a></p>
+                                            <p>The reason upvote/downvote exists in the API is in case you wanted to build some sort of Reddit application that other people would use.</p>
+                                            <p>In the next tutorial, we're going to be covering how to navigate the Reddit API by trying to parse and organize comments.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </body>
+
+
+
+
+
+                    <!-- Mirrored from pythonprogramming.net/introduction-python-reddit-api-wrapper-praw-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:38:30 GMT -->
+
+                    </html>
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Parsing Reddit Comments - Python Reddit API Wrapper (PRAW) tutorial p.2" href="../parsing-comments-python-reddit-api-wrapper-praw-tutorial/index03a0.html?completed=/introduction-python-reddit-api-wrapper-praw-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Parsing Reddit Comments - Python Reddit API Wrapper (PRAW) tutorial p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=4&amp;t=/introduction-python-reddit-api-wrapper-praw-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction and Basics - Python Reddit API Wrapper (PRAW) tutorial p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Parsing Reddit Comments - Python Reddit API Wrapper (PRAW) tutorial p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../parsing-comments-python-reddit-api-wrapper-praw-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Streaming from Reddit - Python Reddit API Wrapper (PRAW) tutorial p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../streaming-python-reddit-api-wrapper-praw-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Building a Reddit Bot that Detects Trash - Python Reddit API Wrapper (PRAW) tutorial p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../reddit-bot-python-reddit-api-wrapper-praw-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                    <!--login modal-->
+
+
+                    <!--Register modal-->
+
+
+
+                    <script>
+                        $(document).ready(function() {
+                            $(".button-collapse").sideNav();
+                            $('.modal-trigger').leanModal();
+                            $('.collapsible').collapsible({
+                                accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+                            });
+                            $('#aside').pushpin({
+                                top: 110,
+                                bottom: 500
+                            });
+                        });
+                    </script>
+                    <script>
+                        $(document).ready(function() {
+                            $('.collapsible').collapsible({
+                                accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+                            });
+                            $('select').material_select();
+                        });
+                    </script>
+                    <script>
+                        function goBack() {
+                            window.history.back()
+                        }
+                    </script>
+                    <script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+    </body>
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">You've reached the end!</h5>
+
+                    <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                        <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                    </ul>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h6 class="white-text">Legal stuff:</h6>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                        <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <a href="https://xkcd.com/353/" target='blank'>
+            <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+        </a>
+        <div class="footer-copyright">
+            <div class="container">
+                © OVER 9000! PythonProgramming.net
+
+            </div>
+
+        </div>
+    </footer>
+    {% endblock %}
