@@ -1,0 +1,245 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				Robotics Programming Basics with Python, the Raspberry Pi and GoPiGo Progress:  0%
+			</div>
+		</div>-->
+                    <h2>Robotics with Python Raspberry Pi and GoPiGo Introduction</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/ip0mYTLlldw?list=PLQVvvaa0QuDcG4wbhhCv_XTnexvWfjlBy" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+                    <p>This tutorial series covers a more basic version of programming robotics with Python and the Raspberry Pi, using the GoPiGo framework. The idea of the GoPiGo framework for robotics is to get you up and running as fast, and as simply,
+                        as possible. With the GoPiGo, you can build your robot in about 10 minutes, and you're ready to begin programming it.</p>
+                    <p>Not only is building it a breeze, you can also program on top of the GoPiGo software that is already provided to you. In our previous, more challenging, <a href="../robot-remote-control-car-with-the-raspberry-pi/index.html" target="blank"><strong>Programming with the Raspberry Pi and Python tutorial series</strong></a>,
+                        we found that we not only needed to build our robot, but we also had to work directly with the IO pins on the Raspberry Pi, and the H-bridge, sending various signal patterns to achieve different results with motors, for example.
+                        This proved tedious and challenging for some. The GoPiGo simplifies that for us, and all we need to program to make our robot go forward is <code>fwd()</code>. Of course, if you would still like to see how the forward function
+                        works, you can still peak into the gopigo.py script, and tinker if you so chose.</p>
+                    <p>While you can initially use the GoPiGo software to get you running as quick as possible, you can continue the challenge by writing your own software, as well as by connecting various sensors. For us, we're going to first create a simple
+                        remote-control script for our robot, and then we'll make it autonomous. We will use the distance sensor to make sure we aren't slamming into walls, and then we'll use the camera so that we can initially see what our robot is doing,
+                        and then we'll even get our feet wet with a little bit of OpenCV and face detection!</p>
+                    <img class="responsive-img" src="../static/images/gopigo/opencv-face-detection.jpg" />
+                    <p>If that all sounds interesting to you, stick around! First, we're going to need the supply list.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Supplies Needed - Robotics with Python Raspberry Pi and GoPiGo p.2" href="../supplies-needed-raspberry-pi-gopigo-robot/indexc4dd.html?completed=/robotics-raspberry-pi-tutorial-gopigo-introduction/"><button class="btn" style="background-color:#FFD166; color:#000000">Supplies Needed - Robotics with Python Raspberry Pi and GoPiGo p.2</button></a>
+                    </p>
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=5&amp;t=/robotics-raspberry-pi-tutorial-gopigo-introduction/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Robotics with Python Raspberry Pi and GoPiGo Introduction</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Supplies Needed - Robotics with Python Raspberry Pi and GoPiGo p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../supplies-needed-raspberry-pi-gopigo-robot/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Programming Robot Basics - Robotics with Python Raspberry Pi and GoPiGo p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../robot-programming-basics-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Programming Remote Control - Robotics with Python Raspberry Pi and GoPiGo p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../remote-control-robot-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Weaponizing our Robot - Robotics with Python Raspberry Pi and GoPiGo p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../usb-foam-cannon-robot-gopigo-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Programming Autonomy - Robotics with Python Raspberry Pi and GoPiGo p.6</div>
+                        <div class="collapsible-body">
+                            <p><a href="../programming-autonomous-robot-gopigo-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">OpenCV with Raspberry Pi Camera Face Detection Tutorial - Robotics with Python Raspberry Pi and GoPiGo p.7</div>
+                        <div class="collapsible-body">
+                            <p><a href="../raspberry-pi-camera-opencv-face-detection-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

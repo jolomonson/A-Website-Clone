@@ -1,122 +1,119 @@
-{% extends 'main/header.html' %}
-{% load static %}
-{% block content %}
-	
-	<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
+{% extends 'main/header.html' %} {% load static %} {% block content %}
 
-					
-					
-					  
-					
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
 
-					
-<br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
-	<div class="row">
-	
-		
-		<div class="col l4 s12 m6">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../introduction-raspberry-pi-tutorials/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="{% static 'main/images/Robotics/raspberry-pi-tutorials.jpg' %}" style="width:250px">
-				  <br><span class="card-title"><strong>Raspberry Pi Tutorials</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>How to setup and use your Raspberry Pi with various projects.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../introduction-raspberry-pi-tutorials/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
+
+
+
+
+
+
+    <br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
+    <div class="row">
+
+
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/raspberry-pi" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Robotics/raspberry-pi-tutorials.jpg' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Raspberry Pi Tutorials</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>How to setup and use your Raspberry Pi with various projects.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="/raspberry-pi" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
             </div>
 
 
-		</div>
+        </div>
 
-		<div class="col l4 s12 m6">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../robotics-raspberry-pi-tutorial-gopigo-introduction/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="{% static 'main/images/Robotics/robotics_with_raspberry_pi_gopigo.jpg' %}" style="width:250px">
-				  <br><span class="card-title"><strong>(Basic) Learn to program with the Raspberry Pi</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Use the Raspberry Pi along with the GoPiGo to learn about robotics.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../robotics-raspberry-pi-tutorial-gopigo-introduction/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
-				</div>
-				</a>
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/robotics-raspberry-pi" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Robotics/robotics_with_raspberry_pi_gopigo.jpg' %}" style="width:250px">
+                        <br><span class="card-title"><strong>(Basic) Learn to program with the Raspberry Pi</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Use the Raspberry Pi along with the GoPiGo to learn about robotics.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="/robotics-raspberry-pi" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
             </div>
 
 
-		</div>
+        </div>
 
-		<div class="col l4 s12 m6">
-			
-			<div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
-			<a href="../building-quadcopter-tutorial-intro/index.html" class="waves-effect waves-light" style="color:#000">
-				<div class="card-image">
-				  <img class="responsive-img" src="{% static 'main/images/Robotics/quadcopter.jpg' %}" style="width:250px">
-				  <br><span class="card-title"><strong>(Intermediate) Build and program a Quadcopter</strong></span>
-				</div>
-				<div class="card-content">
-				  <p>Build and program your own quadcopter from scratch to take-off.</p>
-				</div>
-				<div class="card-action right-align">
-				  <a href="../building-quadcopter-tutorial-intro/index.html" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">View</a>
-				 
-				</div>
-				</a>
+        <div class="col l4 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/building-quadcopter" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/Robotics/quadcopter.jpg' %}" style="width:250px">
+                        <br><span class="card-title"><strong>(Intermediate) Build and program a Quadcopter</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Build and program your own quadcopter from scratch to take-off.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="/building-quadcopter" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">View</a>
+
+                    </div>
+                </a>
             </div>
 
 
-		</div>
-		
-		
-		
-	</div>
+        </div>
 
 
-			</div>
-		</div>
 
-		<footer class="page-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col l6 s12">
-						<h5 class="white-text">You've reached the end!</h5>
-						<p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
-						<ul>
-							<li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
-							<li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
-							<li><a href="https://www.facebook.com/pythonprogramming.net/"
-									class="grey-text text-lighten-3">Facebook</a></li>
-							<li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
-							<li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
-						</ul>
-					</div>
-					<div class="col l4 offset-l2 s12">
-						<h5 class="white-text">Legal Stuff:</h5>
-						<ul>
-							<li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
-							<li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="footer-copyright">
-				<div class="container">
-					© OVER 9000! PythonProgramming.net
-					<a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
-				</div>
-			</div>
-		</footer>
+    </div>
+
+
+</div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                <ul>
+                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Legal Stuff:</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+        </div>
+    </div>
+</footer>
 
 {% endblock %}

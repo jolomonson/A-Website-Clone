@@ -113,6 +113,13 @@ def alexaskills(request):
     return render(request, 'main/tutorials/BotsandAI/bot-tutorials/alexa-skills/index.html')
 def twitterapi(request):
     return render(request, 'main/tutorials/BotsandAI/bot-tutorials/twitter-api/index.html')
+    #Raspberry PI
+def raspberrypi(request):
+    return render(request, 'main/tutorials/Robotics/robotics-tutorials/raspberry/index.html')
+def roboticsraspberrypi(request):
+    return render(request, 'main/tutorials/Robotics/robotics-tutorials/bots-pi/index.html')
+def buildingquadcopter(request):
+    return render(request, 'main/tutorials/Robotics/robotics-tutorials/quad/index.html')
 
 
 
