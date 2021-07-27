@@ -1,0 +1,159 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+                <div class="container-fluid" align="left">
+                    <br>
+                    <h2>Introduction - Self-driving cars with Carla and Python part 1</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/J1F32aVSYaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><br>
+
+                    <br>
+
+                    <p>Hello and welcome to a tutorial series covering <a href="http://carla.org/" target="blank"><strong>Carla</strong></a>, which is an open-source autonomous driving environment that also comes with a Python API to interact with it.</p>
+
+                    <p>The main idea of Carla is to have the environment (server) and then agents (clients). This server/client architecture means that we can of course run both the server and client locally on the same machines, but we could also run the
+                        environement (server) on one machine and multiple clients on multiple other machines, which is pretty cool.</p>
+
+                    <p>With Carla, we get a car (obviously), an environment to drive that car in, and then we have a bunch of sensors that we can place upon the car to emulate real-life self-driving car sensors. Things like LIDAR, cameras, accelerometers,
+                        and so on.</p>
+
+                    <p>Our first order of business is to actually get Carla. It's pretty simple. Click that big blue <a href="https://carla.readthedocs.io/en/latest/getting_started/" target="blank"><strong>Get Started</strong></a> button and then scroll
+                        down a bit to the <a href="https://github.com/carla-simulator/carla/blob/master/Docs/download.md" target="blank"><strong>latest release</strong></a>.</p>
+
+                    <p>From here, at least at the time of my writing this, the latest version to have windows support is <a href="https://github.com/carla-simulator/carla/releases/tag/0.9.5" target="blank"><strong>CARLA 0.9.5</strong></a>. If you're on linux,
+                        feel free to grab the 0.9.6, or later, versions.</p>
+
+                    <p>For the purposes of this tutorial, I am using both <code>0.9.6</code> on Linux and <code>0.9.5</code> on Windows.</p>
+
+                    <p>For both, you just need to download the compressed files. If you're on Linux, then click on <a href="https://github.com/carla-simulator/carla/releases/tag/0.9.6" target="blank"><strong>0.9.6</strong></a> and then click the <a href="http://carla-assets-internal.s3.amazonaws.com/Releases/Linux/CARLA_0.9.6.tar.gz"
+                            target="blank"><strong>CARLA_0.9.6.tar.gz</strong></a></p>
+
+                    <p>If you're on Windows, then go to <a href="https://github.com/carla-simulator/carla/releases/tag/0.9.5" target="blank"><strong>0.9.5</strong></a> and grab <a href="http://carla-assets-internal.s3.amazonaws.com/Releases/Windows/CARLA_0.9.5.zip"
+                            target="blank"><strong>CARLA_0.9.5.zip</strong></a></p>
+
+                    <p>Later, you might be able to get more up-to-date versions. Feel free to do that, just know that things will change over time, including the code syntax. It might be best for you to learn on the same versions that I am using, then later
+                        upgrade. Do whatever you want though!</p>
+
+                    <p>Once you have the compressed info, extract it, and you will have what you need to run. In the main directory of what you just extracted, you will either have a <code>CarlaUE4.sh</code> if you're on Linux, or a <code>CarlaUE4.exe</code>                        on Windows.</p>
+
+                    <p>To run this on Windows, just double click the .exe. On Linux, open a terminal in that directory and do <pre class="prettyprint lang-py">./CarlaUE4.sh</pre></p>
+
+                    <img class="responsive-img" src="../static/images/carla/carla-server-img.jpg" alt="carla self-driving cars" />
+
+                    <p>This will run the server. You should eventually see the map, which you can navigate with the WASD keys and your mouse. Of course, nothing is yet here. This is just our environment. The <a href="https://carla.readthedocs.io/en/latest/getting_started/"
+                            target="blank"><strong>get started</strong></a> section shows some examples of what we can do, which make use of the examples that we can find in the <code>PythonAPI</code> directory.</p>
+
+                    <p>Go ahead and navigate from the main Carla directory to the examples: <code>PythonAPI/examples</code>. Here, you will have some files like <code>manual_control.py</code>, <code>dynamic_weather.py</code>, and <code>spawn_npc.py</code>                        to name a few. We can check some of these out. Open terminal/cmd and run one like <code>manual_control.py</code>:</p>
+
+                    <pre class="prettyprint lang-py">py -3.7 manual_control.py</pre>
+
+                    <p>Note: You need to use Python 3.7 here, otherwise you will need to build Carla yourself for a different version of Python.</p>
+
+                    <p>This will create another window (since client/server is separate). What you're seeing is an example of what we can do with the Python API. Here, you can control the car with WASD keys, and Q will change into and out of reverse.</p>
+
+                    <img class="responsive-img" src="../static/images/carla/carla-manual-control.jpg" alt="carla self-driving cars" />
+
+                    <p>Of course, driving manually around in here is not actually what we're here for. My goal is to let Python take the wheel! To begin, we need to have an understanding of how the Python API actually works, which will be the topic of the
+                        next tutorial.</p>
+
+                    <p>The next tutorial:
+                        <a title="Controlling the Car and getting sensor data - Self-driving cars with Carla and Python part 2" href="../control-camera-sensor-self-driving-autonomous-cars-carla-python/index4886.html?completed=/introduction-self-driving-autonomous-cars-carla-python/"><button class="btn" style="background-color:#FFD166; color:#000000">Controlling the Car and getting sensor data - Self-driving cars with Carla and Python part 2</button></a>
+                    </p>
+                    <br>
+                </div>
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+                    <a href="https://nnfs.io?a=1&amp;t=/introduction-self-driving-autonomous-cars-carla-python/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction - Self-driving cars with Carla and Python part 1</div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Controlling the Car and getting sensor data - Self-driving cars with Carla and Python part 2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../control-camera-sensor-self-driving-autonomous-cars-carla-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Reinforcement Learning Environment - Self-driving cars with Carla and Python part 3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../reinforcement-learning-environment-self-driving-autonomous-cars-carla-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Reinforcement Learning Agent - Self-driving cars with Carla and Python part 4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../reinforcement-learning-agent-self-driving-autonomous-cars-carla-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Reinforcement Learning in Action - Self-driving cars with Carla and Python part 5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../reinforcement-learning-self-driving-autonomous-cars-carla-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">Longer-term model results - Self-driving cars with Carla and Python</div>
+                        <div class="collapsible-body">
+                            <p><a href="../trained-model-self-driving-autonomous-cars-carla-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+</div>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                <ul>
+                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Legal Stuff:</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+        </div>
+    </div>
+</footer>
+{% endblock %}

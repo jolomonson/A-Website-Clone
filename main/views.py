@@ -97,6 +97,25 @@ def gtav(request):
     return render(request, 'main/tutorials/BotsandAI/bot-tutorials/gta-v/index.html')
 def redditapiwrapper(request):
     return render(request, 'main/tutorials/BotsandAI/bot-tutorials/reddit-api/index.html')
+def selfdrivingcars(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/sd-cars/index.html')
+def discordbots(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/discord-bots/index.html')
+def beautifulsouptutorial(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/bs4/index.html')
+def starcraftiiai(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/starcraft-ii/index.html')
+def haliteiiartificialintelligence(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/halite-ii/index.html')
+def haliteiiiartificialintelligence(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/halite-iii/index.html')
+def alexaskills(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/alexa-skills/index.html')
+def twitterapi(request):
+    return render(request, 'main/tutorials/BotsandAI/bot-tutorials/twitter-api/index.html')
+
+
+
 
 
 def roboticstutorials(request):

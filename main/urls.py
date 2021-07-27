@@ -68,7 +68,15 @@ urlpatterns = [
     path('bot-tutorials/', views.bottutorials, name='botandai'),
     path('gta-v/', views.gtav, name='gtav'),
     path('reddit-api-wrapper/', views.redditapiwrapper, name='redditApiWrapper'),
-    
+    path('self-driving-cars/', views.selfdrivingcars, name='selfDrivingCars'),
+    path('discord-bots/', views.discordbots, name='discordbBots'),
+    path('beautiful-soup-tutorial/', views.beautifulsouptutorial, name='beautifulSoupTutorial'),
+    path('starcraft-ii-ai/', views.starcraftiiai, name='starcraftiiAI'),
+    path('halite-ii-ai-coding/', views.haliteiiartificialintelligence, name=' haliteiiArtificialIntelligence'),
+    path('halite-iii-ai-coding/', views.haliteiiiartificialintelligence, name=' haliteiiiArtificialIntelligence'),
+    path('alexa-skills/', views.alexaskills, name='alexaSkills'),
+    path('twitter-api/', views.twitterapi, name='twitterApi'),
+
     path('robotics-tutorials/', views.roboticstutorials, name='robotics'),
     path('gui-development-tutorials/', views.guitutorials, name='gui'),
     path('golang-tutorials/', views.golangtutorials, name='golang'),

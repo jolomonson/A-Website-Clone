@@ -1,0 +1,275 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Web scraping and parsing with Beautiful Soup 4 Introduction</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/aIPqt-OdmS0?list=PLQVvvaa0QuDfV1MIRBOcqClP6VZXsvyZS" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to a tutorial on web scraping with Beautiful Soup 4. Beautiful Soup is a Python library aimed at helping programmers who are trying to scrape data from websites.</p>
+
+                    <p>To use beautiful soup, you need to install it: <code>$ pip install beautifulsoup4</code>. Beautiful Soup also relies on a parser, the default is <code>lxml</code>. You may already have it, but you should check (open IDLE and attempt
+                        to import lxml). If not, do: <code>$ pip install lxml</code> or <code>$ apt-get install python-lxml</code>.</p>
+
+                    <p>To begin, we need HTML. I have created an <a href="../parsememcparseface/index.html" target="blank"><strong>example page</strong></a> for us to work with.</p>
+
+                    <p>To begin, we need to import Beautiful Soup and urllib, and grab source code:</p>
+
+                    <pre class="prettyprint lang-py">import bs4 as bs
+import urllib.request
+
+source = urllib.request.urlopen('https://pythonprogramming.net/parsememcparseface/').read()</pre>
+
+                    <p>Then, we create the "soup." This is a beautiful soup object:</p>
+
+                    <pre class="prettyprint lang-py">soup = bs.BeautifulSoup(source,'lxml')</pre>
+
+                    <p>If you do <code>print(soup)</code> and <code>print(source)</code>, it looks the same, but the source is just plain the response data, and the soup is an object that we can actually interact with, by tag, now, like so:</p>
+
+                    <pre class="prettyprint lang-py"># title of the page
+print(soup.title)
+
+# get attributes:
+print(soup.title.name)
+
+# get values:
+print(soup.title.string)
+
+# beginning navigation:
+print(soup.title.parent.name)
+
+# getting specific values:
+print(soup.p)</pre>
+
+                    <p>Finding paragraph tags <code>&#60;p&#62;</code> is a fairly common task. In the case above, we're just finding the first one. What if we wanted to find them all?</p>
+
+                    <pre class="prettyprint lang-py">print(soup.find_all('p'))</pre>
+
+                    <p>We can also iterate through them:</p>
+
+
+                    <pre class="prettyprint lang-py">for paragraph in soup.find_all('p'):
+    print(paragraph.string)
+    print(str(paragraph.text))
+</pre>
+
+                    <p>The difference between string and text is that string produces a NavigableString object, and text is just typical unicode text. Notice that, if there are child tags in the paragraph item that we're attempting to use <code>.string</code>                        on, we will get <code>None</code> returned.</p>
+
+                    <p>Another common task is to grab links. For example:</p>
+
+                    <pre class="prettyprint lang-py">for url in soup.find_all('a'):
+    print(url.get('href'))</pre>
+
+                    <p>In this case, if we just grabbed the <code>.text</code> from the tag, you'd get the anchor text, but we actually want the link itself. That's why we're using <code>.get('href')</code> to get the true URL.</p>
+
+                    <p>Finally, you may just want to grab text. You can use <code>.get_text()</code> on a Beautiful Soup object, including the full soup:</p>
+
+                    <pre class="prettyprint lang-py">print(soup.get_text())</pre>
+
+                    <p>This concludes the introduction to Beautiful Soup. In the next tutorial, we're going cover navigating a page's elements to get more specifically what you want.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Navigation with Beautiful Soup 4" href="../navigating-pages-scraping-parsing-beautiful-soup-tutorial/index6c21.html?completed=/introduction-scraping-parsing-beautiful-soup-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Navigation with Beautiful Soup 4</button></a></p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=6&amp;t=/introduction-scraping-parsing-beautiful-soup-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Web scraping and parsing with Beautiful Soup 4 Introduction</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Navigation with Beautiful Soup 4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../navigating-pages-scraping-parsing-beautiful-soup-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Parsing tables and XML with Beautiful Soup 4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../tables-xml-scraping-parsing-beautiful-soup-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Scraping Dynamic Javascript Text</div>
+                        <div class="collapsible-body">
+                            <p><a href="../javascript-dynamic-scraping-parsing-beautiful-soup-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- Mirrored from pythonprogramming.net/introduction-scraping-parsing-beautiful-soup-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:38:31 GMT -->
+
+</html>
+</footer>
+{% endblock %}
