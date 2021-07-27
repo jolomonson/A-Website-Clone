@@ -1,0 +1,396 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" style="text-align: left;">
+
+                    <br>
+                    <h2>Introduction - Raspberry Pi tutorial</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/RpseX2ylEuw" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to a series on the <a href="#" target="blank"><strong>Raspberry Pi</strong></a>. One of the most common questions I see about the Raspberry Pi is "What do I do with this?"</p>
+
+                    <img class="responsive-img" src="../static/images/rpi/raspberry-pi-plain.jpg" alt="Raspberry Pi tutorials" />
+
+                    <p>The Raspberry Pi is a fully-fledged mini computer, capable of doing whatever you might do with a computer. It comes with 4x USB, HDMI, LAN, built-in Bluetooth/WiFi support, 1GB RAM, 1.2GHz quad-core ARM CPU, 40 GPIO (General Purpose
+                        Input Output) pins, audio and composite video output, and more. Rather than not having many choices, instead, your options are staggeringly large!</p>
+
+                    <p>For some examples, I have personally used Raspberry Pis to:
+
+                        <div class="row">
+                            <div class="col l4 s12 m4">
+                                <a href="https://www.youtube.com/watch?v=V_fSoViiNOo" target="blank">
+                                    <div class='card hoverable'>
+                                        <div class='card-content'>
+                                            <div class='card-title'>Put a computer in my car</div>
+
+                                            <img class="responsive-img" src="../static/images/rpi/raspberry-pi-car-computer.jpg" alt="Raspberry Pi tutorials" />
+
+                                        </div>
+                                    </div>
+                            </div>
+                            </a>
+
+                            <div class="col l4 s12 m4">
+                                <a href="../build-supercomputer-raspberry-pi/index.html" target="blank">
+                                    <div class='card hoverable'>
+                                        <div class='card-content'>
+                                            <div class='card-title'>to learn about cluster computing</div>
+
+                                            <img class="responsive-img" src="../static/images/rpi/raspberry-pi-super-computer.jpg" alt="Raspberry Pi tutorials" />
+
+                                        </div>
+                                    </div>
+                            </div>
+                            </a>
+                            <div class="col l4 s12 m4">
+                                <a href="../robotics-raspberry-pi-tutorial-gopigo-introduction/index.html" target="blank">
+                                    <div class='card hoverable'>
+                                        <div class='card-content'>
+                                            <div class='card-title'>To do robotics</div>
+
+                                            <img class="responsive-img" src="../static/images/categories/robotics_with_raspberry_pi_gopigo.jpg" alt="Raspberry Pi tutorials" />
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <p>I have also used Raspberry Pis as home security cameras, server monitoring devices, cheap headless machines (basically running low-weight scripts 24/7 with a low cost-to-me)... others have used them for media centers and even for
+                            voice-enabled IoT devices. The possibilities are endless, but first we need to get acquainted!</p>
+
+                        <p>If you do not already have a Raspberry Pi, you can buy one <a href="http://amzn.to/2hHSbkg" target="blank"><strong>here</strong></a>, or in a variety of other locations.</p>
+
+                        <p>Beyond the Raspberry Pi, it can be wise, but not required, to get a case. Make sure that, if you do get a case, it has openings for the GPIO pins to be connected, otherwise you're ruining all of the fun. You will also need a
+                            <a href="http://amzn.to/2nrbjCK" target="blank"><strong>1000mA+ mini usb power supply</strong></a> and at least an 8GB micro SD card, but I would suggest a <a href="http://amzn.to/2ocWKm9" target="blank"><strong>16 GB micro SD card</strong></a>                            or greater.</p>
+
+                        <p>You will also want to have a spare monitor (HDMI), keyboard, and mouse handy to make things easier when first setting up. You wont will eventually be able to control your Pi remotely, so you wont always need a separate keyboard,
+                            mouse, and monitor. If you don't have a monitor with HDMI input, you can buy something like an <a href="http://amzn.to/2od5wkm" target="blank"><strong>HDMI to DVI converter</strong></a>.</p>
+
+                        <p>This is all assuming you're going to be using a Raspberry Pi 3 Model B. If you're using an older version board, please see what you might need to change, for example, the older Rasbperry Pis take a full-sized SD card, but the latest
+                            model requires a micro SD card. Also, the Raspberry Pi 3 Model B has built-in wifi, where the older models will require a wifi dongle.</p>
+
+                        <p>A typical Raspberry Pi shopping list, assuming you have a mouse, keyboard, and HDMI monitor that you can use temporarily while setting up is:</p>
+
+                        <ol>
+                            <li><a href="http://amzn.to/2hHSbkg" target="blank"><strong>Raspberry Pi</strong></a> - $37</li>
+                            <li><a href="http://amzn.to/2nrbjCK" target="blank"><strong>1000mA+ mini usb power supply</strong></a> - $10</li>
+                            <li><a href="http://amzn.to/2ocWKm9" target="blank"><strong>16 GB micro SD card</strong></a> - $10</li>
+                        </ol>
+
+                        <p>For a total of $57 and free shipping, at least on Amazon. You can also find kits that come with everything you might need and maybe some more goodies for a similar price, like <a href="http://amzn.to/2od4swH" target="blank"><strong>this Raspberry Pi 3 starter kit</strong></a>.</p>
+
+                        <p>Finally, JUST in case you don't have an SD card reader on your computer, you can buy a <a href="http://amzn.to/2neUJVX" target="blank"><strong>USB SD card reader</strong></a> for under $10.</p>
+
+                        <p>Additionally, if you plan to join us on the initial GPIO (General Purpose Input Output pins) tutorials, you will also want to pick up:</p>
+
+                        <ol>
+                            <li>10 x <a href="http://amzn.to/2nP05rS" target="blank"><strong>Male-to-Female jumper wires</strong></a> (you should consider just buying a bunch of these so you have plenty in the future).</li>
+                            <li>1 x <a href="http://amzn.to/2o2hakf" target="blank"><strong>Breadboard</strong></a> (You may also want multiples of these)</li>
+                            <li>3 x <a href="http://amzn.to/2nwy0nx" target="blank"><strong>LED light</strong></a> (...more wouldn't hurt)</li>
+                            <li>~6 x Resistors (between 300 and 1K Ohm). You will need at least 1K and 2K ohms for the distance sensor, then ~300-1K resistance per LED bulb. You probably should just buy a kit, they're super cheap.</li>
+                            <li>1 x <a href="http://amzn.to/2nOVkyk" target="blank"><strong>HC-SR04 Ultrasonic Distance Sensor</strong></a> (...you know what I'm going to say...think about maybe a few.)</li>
+                            <li>1 x <a href="http://amzn.to/2n4jrwd" target="blank"><strong>Raspberry Pi</strong></a> camera module. You only need one of these!</li>
+                        </ol>
+
+                        <p>For the jumpers, breadboard, and leds, you could also just buy a kit, something like: <a href="http://amzn.to/2n4ob4V" target="blank"><strong>this GPIO starter kit</strong></a>.</p>
+
+                        <p>There will be more parts further on in the series as well, but we'll get to them later.</p>
+                        <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/4z9trGhCbfk" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                        <p>Assuming you've got your board, and an SD card, you're ready to carry on. Being a full computer, the Raspberry Pi uses an Operating System. While you can run headless (from a command line, no desktop), you can also have a GUI desktop
+                            if you like. There are quite a few choices for Raspberry Pi operating systems, but most people choose Raspbian, which is a Debian-based operating system that is optimized specifically for the Raspberry pi. This operating system
+                            is also most likely to support other packages that you may already be familiar with from other Linux distributions, so it makes for a good starting OS.</p>
+
+                        <p>There are also a few ways to install and use an operating system on the Raspberry Pi. The most user-friendly method is to use the NOOBS (New Out of Box Software) installer. If you're comfortable enough, you can just simply download
+                            the operating system ISO, format the SD card, mount the ISO, and boot the Pi. If that sounds like gibberish to you, then follow along with the NOOBS installation option.</p>
+
+                        <p>While we're working with the SD card, let's go ahead and <a href="http://downloads.raspberrypi.org/NOOBS_latest" target="blank"><strong>Download NOOBS</strong></a>, which is just over 1GB.</p>
+
+                        <p>First, we must format the SD card. If you are on Windows, you can use <a href="https://www.sdcard.org/downloads/formatter_4/" target="blank"><strong>SD Formatter</strong></a>. Mac users can also use SD Formatter, but they have
+                            a built in formatter, and Linux users can use GParted. Whatever the case, you need to format the SD card, do not do a "quick format" and do make sure you have the "resize" option on. Using SDFormatter on Windows, and chosing
+                            options:
+                        </p>
+
+                        <img class="responsive-img" src="../static/images/rpi/raspberry-pi-sd-format.png" alt="Raspberry Pi tutorials" />
+
+                        <p>This should go without saying, but do make sure you're formatting the right drive. This will format any flash drive, in alphabetical order. If you had something plugged in already, like your favorite USB drive, and forgot about
+                            it, that'd likely be the default choice to format, and then you'd spend all afternoon trying to recover your data rather than enjoying playing with your Raspberry Pi.</p>
+
+                        <p>Once you're done, great. Now, assuming you've downloaded the NOOBS package, let's go ahead and extract that. Now, we want to copy all these NOOBS contents to our SD Card. Do not drag the directory, but rather the contents:</p>
+
+                        <img class="responsive-img" src="../static/images/rpi/copying-noobs-to-raspberry-pi-sd-card.png" alt="Raspberry Pi tutorials" />
+
+                        <p>While that's transferring, let's talk about a few things on the actual Raspberry Pi board:</p>
+
+                        <img class="responsive-img" src="../static/images/rpi/labeled-raspberry-pi.jpg" alt="Raspberry Pi tutorials" />
+
+                        <p>The GPIO (General Purpose Input/Output) pins are underlined in blue. We can use these to control peripheral devices like motors, servos, and more. Circled in red is the micro usb power input for the board. In orange, the HDMI output
+                            port. The yellow is where you can plug in the Raspberry Pi camera module. The grey circle has the USB ports. This is obviously not everything, but these are the main things to note.</p>
+
+                        <p>Once everything is transferred to the micro SD card, you can put it in the Raspberry Pi. The slot is on the bottom side of the board, circled in yellow here:</p>
+
+                        <img class="responsive-img" src="../static/images/rpi/where-sd-card-goes.jpg" alt="Raspberry Pi tutorials" />
+
+                        <p>Once you've got the SD card plugged in, go ahead and plug in your keyboard, mouse, and HDMI cable to your monitor. Finally, plug in the power, and this will start up the Raspberry Pi. Once fully loaded, you should land on the following
+                            screen:
+                        </p>
+
+                        <img class="responsive-img" src="../static/images/rpi/raspberry-pi-noobs-startup.jpg" alt="Raspberry Pi tutorials" />
+
+                        <p>Now you can choose the operating system. In my case, the only option is Raspbian, so I will check that box, then click "install."</p>
+
+
+                        <img class="responsive-img" src="../static/images/rpi/choose-os-and-install-raspberry-pi.jpg" alt="Raspberry Pi tutorials" />
+
+                        <p>Let the process go, this will take a while, something like 20-30 minutes or so.</p>
+
+                        <img class="responsive-img" src="../static/images/rpi/raspbian-installation-process-raspberry-pi.jpg" alt="Raspberry Pi tutorials" />
+                        <img class="responsive-img" src="../static/images/rpi/raspbian-install-complete-raspberry-pi.jpg" alt="Raspberry Pi tutorials" />
+                        <p>Once that's done, hit okay and the device should reboot to desktop. While on the desktop, wait for a moment for wifi to start up and find available connections. Connect to your wifi network if possible. You can also plug directly
+                            in with an ethernet cable if you don't have wifi. You can also just continue interacting directly with the Raspberry Pi with the mouse and keyboard connected to it if you like, but I prefer to access it remotely.</p>
+                        <img class="responsive-img" src="../static/images/rpi/desktop-turn-on-wifi-raspberry-pi.jpg" alt="Raspberry Pi tutorials" />
+
+                        <p>Can you guess which network is mine?!</p>
+
+                        <p>Alright, once we've connected to our network, we'd like to actually interface with the Pi. First, we want to update. Open a terminal by either right clicking on the desktop and opening terminal that way, or by doing <code>control+alt+t</code>.
+                            Now, in the terminal, do: <br><code>$ sudo apt-get update</code><br> and then <br><code>$ sudo apt-get upgrade</code><br>You do not type the <code>$</code> sign, it's there to denote when you're typing something in the command
+                            line. The upgrade might take a minute. While we wait, your Raspberry Pi's default credentials are: <code>username: pi</code> <code>password: raspberry</code>. For some reason, the <code>apt-get upgrade</code> for me was taking
+                            absurdly long. You need to be connected to your network, and have internet access, so make sure you have those things first before doing this, but I still was having trouble. I was able to solve this by doing:</p>
+
+                        <p><code>$ sudo nano /etc/apt/sources.list</code></p>
+                        <p>Then replace everything here with:</p>
+                        <p><pre>deb http://archive.raspbian.org/raspbian jessie main contrib non-free
+deb-src http://archive.raspbian.org/raspbian jessie main contrib non-free</pre></p>
+                        <p><code>control+x</code>, <code>y</code>, <code>enter</code></p>
+                        <p><code>$ sudo apt-get dist-upgrade</code></p>
+                        <p><code>$ sudo apt-get update</code></p>
+                        <p><code>$ sudo apt-get upgrade</code></p>
+
+                        <p>To save some space you can also do: <code>$ sudo apt-get purge wolfram-engine</code> and then <code>$ sudo apt-get autoremove</code>. This alone freed up almost 700mb of space for me.</p>
+
+                        <p>This is going to conclude the first part of this tutorial series. In the next tutorial, we're going to cover how we can remotely access our Raspberry Pi.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <p>The next tutorial: <a title="Remote Access with Raspberry Pi tutorial" href="../remote-access-raspberry-pi-tutorials/index5978.html?completed=/introduction-raspberry-pi-tutorials/"><button class="btn" style="background-color:#FFD166; color:#000000">Remote Access with Raspberry Pi tutorial</button></a></p>
+
+
+
+
+
+
+
+                        <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://bit.ly/2FTjPW1?a=101&amp;t=/introduction-raspberry-pi-tutorials/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/pydiscord.png" />
+                            </div>
+                        </div>
+
+                        <li>
+                            <div class="collapsible-header active" style="padding:2px">Introduction - Raspberry Pi tutorial</div>
+
+                        </li>
+
+
+
+                        <li>
+                            <div class="collapsible-header">Remote Access with Raspberry Pi tutorial</div>
+                            <div class="collapsible-body">
+                                <p><a href="../remote-access-raspberry-pi-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="collapsible-header">Terminal Navigation - Raspberry Pi tutorial</div>
+                            <div class="collapsible-body">
+                                <p><a href="../terminal-navigation-raspberry-pi-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="collapsible-header">Raspberry Pi Camera Module - Raspberry Pi tutorial</div>
+                            <div class="collapsible-body">
+                                <p><a href="../camera-module-raspberry-pi-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="collapsible-header">GPIO (General Purpose Input Output) Pins - Raspberry Pi tutorial</div>
+                            <div class="collapsible-body">
+                                <p><a href="../gpio-raspberry-pi-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="collapsible-header">Input from a Sensor via GPIO - Raspberry Pi tutorial</div>
+                            <div class="collapsible-body">
+                                <p><a href="../gpio-input-raspberry-pi-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                            </div>
+                        </li>
+
+
+
+                        <li>
+                            <div class="collapsible-header">Garage Stoplight GPIO Project - Raspberry Pi tutorial</div>
+                            <div class="collapsible-body">
+                                <p><a href="../garage-stoplight-raspberry-pi-tutorials/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                            </div>
+                        </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

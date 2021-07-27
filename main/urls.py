@@ -76,6 +76,11 @@ urlpatterns = [
     path('halite-iii-ai-coding/', views.haliteiiiartificialintelligence, name=' haliteiiiArtificialIntelligence'),
     path('alexa-skills/', views.alexaskills, name='alexaSkills'),
     path('twitter-api/', views.twitterapi, name='twitterApi'),
+    #RaspberryPI
+    path('raspberry-pi/', views.raspberrypi, name='raspberryPi'),
+    path('robotics-raspberry-pi/', views.roboticsraspberrypi, name='roboticsRaspberryPi'),
+    path('building-quadcopter/', views.buildingquadcopter, name='buildingQuadcopter'),
+    
 
     path('robotics-tutorials/', views.roboticstutorials, name='robotics'),
     path('gui-development-tutorials/', views.guitutorials, name='gui'),
@@ -84,4 +89,5 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
 ]
+
 

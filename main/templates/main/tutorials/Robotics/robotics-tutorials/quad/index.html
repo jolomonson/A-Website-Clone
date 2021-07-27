@@ -1,0 +1,255 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				Building and Programming a Quadcopter Progress:  0%
+			</div>
+		</div>-->
+                    <h2>Building and Programming a Quadcopter/multicopter introduction</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/g7SjuTzH44c?list=PLQVvvaa0QuDfp4GmCdhbPhPwWt4O_TBmB" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Hello and welcome to a tutorial series covering how to build a quadcopter. First, we'll be going over the parts and putting together a quadcopter/multicopter, and then we will be talking about using a Raspberry Pi with various sensors
+                        and peripherals on the quadcopter. Even if you do not have any interest in putting a Raspberry Pi computer on your quadcopter, the first few tutorials are purely aimed at putting together a quadcopter and flying it with a transmitter.
+                        The quadcopter we'll be building:</p>
+
+
+                    <img class="responsive-img" src="../static/images/quadcopter/raspberry-pi-quadcopter-picopter.jpg" alt="quadcopter tutorials" />
+
+                    <p>To start, why might you want to custom build a quadcopter or drone as opposed to simply going to the store and buying one. First, when tinkering with things, you're more likely to break it, fry it, or, in our case: crash it! The issue
+                        here is that commercially available drones tend to come with a lot of proprietary parts. What this really means usually is that the company has a monopoly on those specific parts and they charge as such. Also, as you decide to
+                        change things, if you have custom built your quadcopter, you can switch out motors, propellers, a frame, and all sorts of things easily with a custom build.</p>
+
+                    <p>Despite it likely being a better choice to build a quadcopter, it can be quite the hurdle to figure out all of the things you need and how to put one together. If you're like me when I first started, you don't know that not all motors
+                        spin in the same direction, for example.</p>
+
+                    <p>The first choice you have to make is what size of quadcopter / drone you want to make. There are various sizes, but the most popular size is the 250 for custom quadcopters, and then 500ish for the commercial drones. The number corresponds
+                        to the distance, diagonally between the motors. At first, I chose to go with a 525, but the 525 is quite large, and not as much fun to fly in my opinion. It does more damage if it does crash, and requires a bit more space to safely
+                        fly around. The 250 size is a total blast to fly, much easier to do very quick maneuvers with, and doesn't need as much space to fly safely. A 500 is not double the size of a 250, it is more like 4x the size, so keep this in mind.
+                        In this tutorial, we'll wind up building a 250, but feel free to build whatever size you want. The actual needed materials and build process is the same. Costs are also ~ the same, so it really does not matter beyond personal preference.
+                        Here's an example of the the sizes:</p>
+
+                    <p>The top 2 are 525, the bottom two are size 250</p>
+                    <img class="responsive-img" src="../static/images/quadcopter/quadcopter-tutorial-size-examples.jpg" alt="quadcopter tutorials" />
+
+
+                    <p>Here are two 250s next to each other. As you can see, one is fatter, and longer than the other overall, despite both being called 250 frames</p>
+                    <img class="responsive-img" src="../static/images/quadcopter/quadcopter-tutorial-250-size.jpg" alt="quadcopter tutorials" />
+
+                    <p>I have gone with the slightly fatter/longer frame in order to fit the Raspberry Pi + Grove Pi onboard, as you can see stuffed in there:</p>
+
+                    <img class="responsive-img" src="../static/images/quadcopter/picopter-raspberry-pi-quadcopter.jpg" alt="quadcopter tutorials" />
+                    <img class="responsive-img" src="../static/images/quadcopter/raspberry-pi-quadcopter-picopter.jpg" alt="quadcopter tutorials" />
+
+                    <p>If you are not looking to add things to the frame, and just want to have a remote-controlled quadcopter, get whatever frame you like, otherwise be mindful of your options. Moving forward to the next tutorial, we're going to be talking
+                        about parts!</p>
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Quadcopter Parts Tutorial" href="../quadcopter-parts-tutorial/index98bf.html?completed=/building-quadcopter-tutorial-intro/"><button class="btn" style="background-color:#FFD166; color:#000000">Quadcopter Parts Tutorial</button></a></p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://bit.ly/2FTjPW1?a=101&amp;t=/building-quadcopter-tutorial-intro/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/pydiscord.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Building and Programming a Quadcopter/multicopter introduction</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Quadcopter Parts Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quadcopter-parts-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Quadcopter Assembly Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quadcopter-assembly-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Quadcopter ESC and Flight Control board calibrations</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quadcopter-esc-calibration-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Quadcopter First Flight and more Information</div>
+                        <div class="collapsible-body">
+                            <p><a href="../quadcopter-flight-and-legal-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}
