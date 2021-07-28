@@ -1,0 +1,400 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				PyQT GUI Application Development Progress:  0%
+			</div>
+		</div>-->
+                    <h2>PyQT Basic Tutorial</h2>
+                    <br>
+                    <img class="responsive-img" src="../static/images/pyqt/pyqt-basic-window-tutorial.png" />
+                    <br>
+
+
+                    <div class="video-container"><iframe width="750" height="423" src="https://www.youtube.com/embed/JBME1ZyHiP8?list=PLQVvvaa0QuDdVpDFNq4FwY9APZPGSUyR4" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+
+                    <p><a href="http://www.riverbankcomputing.co.uk/software/pyqt/intro" target="blank"><strong>PyQT</strong></a> is a Python wrapper around the <a href="http://www.qt.io/" target="blank"><strong>QT framework</strong></a> for creating graphical
+                        user interfaces, or GUIs.</p>
+
+                    <p>This tutorial is written in PyQt4, but there is a newer version, PyQt5, that you can use. There are some differences, and <a href="https://github.com/kenwaldek" target="blank"><strong>kenwaldek</strong></a> has ported this series code,
+                        by individual tutorial code, to PyQt5 <a href="https://github.com/kenwaldek/pythonprogramming" target="blank"><strong>here</strong></a>.</p>
+
+                    <p>First, we need to go ahead and get PyQT4. To do this, if you are on Windows, head to: <strong><a href="http://www.riverbankcomputing.com/software/pyqt/download" target="blank">river bank computing</a></strong>.</p>
+                    <p>If you are on Mac or Linux, then you should be able to just do:</p>
+                    <pre class="prettyprint">sudo apt-get install python-qt4</pre>
+                    <p>You can also get a wheel file for pip installation at: http://www.lfd.uci.edu/~gohlke/pythonlibs/#pyqt4
+                    </p>
+                    <p>Once you have PyQT, let's create a simple application.</p>
+
+                    <p>First, we'll need some basic imports:</p>
+                    <pre class="prettyprint">import sys</pre>
+                    <p>We will use sys shortly just in case we want our application to be able to accept command line arguments, but also later on to ensure a nice, clean, close of the application when we want to exit. </p>
+                    <p>Next:</p>
+                    <pre class="prettyprint">from PyQt4 import QtGui</pre>
+                    <p>Here, we're importing QtGui, which deals with all things GUI with PyQT. Now some of you may be thinking "isn't all PyQT GUI stuff?" Nope, PyQT does a lot of other things besides just GUIs, and QtGui is purely just the graphical stuff.
+                        All of the PyQT sections are:</p>
+                    <ul>
+                        <li>QtGui - Deals with the graphical elements.</li>
+                        <li>QtCore - other non-GUI essentials.</li>
+                        <li>QtNetwork - Networking, as you may have guessed.</li>
+                        <li>QtOpenGL - Allows for the incorporation of OpenGL!</li>
+                        <li>QtSql - Wrapper for SQL handling.</li>
+                        <li>QtSvg - support for support vector graphics.</li>
+                        <li>QtXML - for handling XML data</li>
+                    </ul>
+                    <p>Next, we need some sort of application definition:</p>
+                    <pre class="prettyprint">app = QtGui.QApplication(sys.argv)</pre>
+                    <p>We are creating a QApplication object, and saving it to "app." Here, we pass this sys.argv argument because sys.argv allows us to pass command line arguments to the application. For more information on this, see our <a href="../sys-module-python-3/index.html"
+                            target="blank"><strong>sys module with Python tutorial</a></strong>.</p>
+                    <pre class="prettyprint">window = QtGui.QWidget()</pre>
+                    <p>Next, we define our window. Now this can sometimes be a little confusing. With GUIs, you generally have what is referred to as the "application," or the "frame," and then you have the "window" or the actual "gui" part. The frame is
+                        just the encapsulation of the window, literally on the screen, as well as in the background. You will probably better understand this as time goes on, but think of "application" as literally the border that goes around your window.
+                    </p>
+                    <pre class="prettyprint">window.setGeometry(0, 0, 500, 300)</pre>
+                    <p>Here, we can modify the window a bit. Keep in mind, that applications and their windows are created in memory first, then they are brought to the user's screen last. This is the same process that you see done with other forms of Graphics
+                        in programming, like games with PyGame, or graphing with Matplotlib. The reason for this is graphical rendering is cumbersome, and it would be rather inefficient to continuously be making edits and refreshing to the user's screen
+                        for each element. So, when we modify the window like this, it is not like the window will pop up full screen, and then change shape moments later. The screen has not yet been shown to the user, we're just building it in the memory.</p>
+                    <p>.setGeometry is a method that belongs to a few methods, but here the method is the QtGui.QWidget class. It is taking four parameters from us. First you have the window's starting x coordinate, then you have the starting y coordinate
+                        (0 and 0). Next, you have the window's dimensions, which are 500 and 300, meaning 500 pixels wide and 300 tall. </p>
+                    <p>Next, we can do something like:</p>
+                    <pre class="prettyprint">window.setWindowTitle("PyQT Tuts!")</pre>
+                    <p>This method simply sets the window's title to what we choose.</p>
+                    <p>Finally, once we're content with the GUI that we have built, we invoke:</p>
+                    <pre class="prettyprint">window.show()</pre>
+                    <p>.show() brings the window to the screen for the user. ".show()" is a QT method.</p>
+                    <img class="responsive-img" src="../static/images/pyqt/pyqt-basic-window-tutorial.png" />
+                    <p>Full code for this:</p>
+                    <pre class="prettyprint">import sys
+from PyQt4 import QtGui
+
+app = QtGui.QApplication(sys.argv)
+
+window = QtGui.QWidget()
+window.setGeometry(0, 0, 500, 300)
+window.setWindowTitle("PyQT Tuts!")
+
+window.show()</pre>
+                    <p>So now you have a very basic GUI application. Now that you see the fundamentals of how a GUI with QT works, we're going to talk about how to lay the foundation for a full application next.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>6 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="PyQT Application Structure" href="../application-structure-pyqt-tutorial/index2e45.html?completed=/basic-gui-pyqt-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">PyQT Application Structure</button></a></p><br>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=2&amp;t=/basic-gui-pyqt-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">PyQT Basic Tutorial</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Application Structure</div>
+                        <div class="collapsible-body">
+                            <p><a href="../application-structure-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT buttons</div>
+                        <div class="collapsible-body">
+                            <p><a href="../buttons-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Button Functions with PyQT</div>
+                        <div class="collapsible-body">
+                            <p><a href="../button-functions-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Menubar</div>
+                        <div class="collapsible-body">
+                            <p><a href="../menubar-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Toolbar</div>
+                        <div class="collapsible-body">
+                            <p><a href="../toolbar-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Pop up Message PyQT</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pop-up-messages-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Check box</div>
+                        <div class="collapsible-body">
+                            <p><a href="../check-box-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Progress bar example</div>
+                        <div class="collapsible-body">
+                            <p><a href="../progress-bar-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Dropdown button and QT Styles</div>
+                        <div class="collapsible-body">
+                            <p><a href="../drop-down-button-window-styles-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Font widget</div>
+                        <div class="collapsible-body">
+                            <p><a href="../font-picker-widget-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Color picker widget</div>
+                        <div class="collapsible-body">
+                            <p><a href="../color-picker-widget-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT Text Editor</div>
+                        <div class="collapsible-body">
+                            <p><a href="../text-editor-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT open files to edit</div>
+                        <div class="collapsible-body">
+                            <p><a href="../open-files-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyQT file saving</div>
+                        <div class="collapsible-body">
+                            <p><a href="../file-saving-pyqt-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}}

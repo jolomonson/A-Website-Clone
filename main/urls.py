@@ -80,9 +80,8 @@ urlpatterns = [
     path('raspberry-pi/', views.raspberrypi, name='raspberryPi'),
     path('robotics-raspberry-pi/', views.roboticsraspberrypi, name='roboticsRaspberryPi'),
     path('building-quadcopter/', views.buildingquadcopter, name='buildingQuadcopter'),
-    
-
     path('robotics-tutorials/', views.roboticstutorials, name='robotics'),
+    #GUI
     path('gui-development-tutorials/', views.guitutorials, name='gui'),
     path('golang-tutorials/', views.golangtutorials, name='golang'),
     path('register/', views.register, name='register'),

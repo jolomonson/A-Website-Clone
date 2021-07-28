@@ -1,0 +1,483 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423" 
+
+<pre class="prettyprint">
+<img class="responsive-img" src="/static/images/tkinter/tkinter-gui-tutorial-with-python-3.png" alt="Tkinter GUI tutorial in Python" />
+
+
+</iframe></div><br>
+
+
+
+
+
+
+<br><br>
+
+<body class="body">
+    <div class="row">
+    <div class="col l8 m12 s12">
+
+
+      <div class="container-fluid" align="left" >
+		
+
+
+
+
+
+
+		<!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				Tkinter Progress:  0%
+			</div>
+		</div>-->
+    <img class="responsive-img" src="../static/images/tkinter/tkinter-gui-tutorial-with-python-3.png" alt="Tkinter GUI tutorial in Python" />
+    <h2>Programming GUIs and windows with Tkinter and Python Introduction </h2>
+    <br>
+
+    <div class="video-container"><iframe width="750" height="423" src="http://www.youtube.com/embed/HjNHATw6XgY?list=PLQVvvaa0QuDclKx-QpC9wntnURXVJqLyk" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><br>
+
+
+
+
+
+
+    <br>
+
+    <p>Hello and welcome to my Tkinter mega-series, where I walk you through the creation of an actual application made with Python and Tkinter.</p>
+    <p>Are you just looking for the basics of Tkinter? Check out the miniseries within the <a title="Python 3 programming basics tutorial" href="../introduction-to-python-programming/index.html" target="_blank"><button class="btn" style="background-color:#FFD166; color:#000000">Python 3 basics series</button></a>        here: <a title="Tkinter with python programming basics" href="../python-3-tkinter-basics-tutorial/index.html" target="_blank"><button class="btn" style="background-color:#FFD166; color:#000000">Tkinter Basics</button></a></p><br>
+
+
+
+
+
+
+
+    <p>Many people are under the impression that Python and Tkinter are just plain not suitable for making applications, and I think they are wrong. The problem is no one actually appears to have shown people how to do it, so I will take that upon myself!</p>
+    <p>What we're going to be making here is a trading application for Bitcoin. The application will mainly:
+        <ul>
+            <li>Have multiple windows / navigation.</li>
+            <li>Have Live Matplotlib Graphs, displaying the Bitcoin price from various exchanges.</li>
+            <li>Allow the user to execute trades manually.</li>
+            <li>Allow the user to execute trades automatically.</li>
+        </ul>
+    </p>
+    <p>This will keep us busy enough, and even these four things are very in-depth. The main concern with using Python for this application is resource allocation. Python naturally is single-threaded, and very linear. If any one single operation is taking
+        a while to occur, the entire application will halt while that operation is in process. This is a huge downside, and the main reason people immediately discount Python for creating all sorts of programs, including GUI applications. This is a shame,
+        since you can very easily thread Python, and do many other things. We wont be able to utilize GPU processing here, but that is another option as well, but it would severely limit the amount of people who would be able to use the application (limiting
+        to people with CUDA enabled Nvidia GPUs).</p>
+    <p>While all of this might sound very confusing and daunting, what I plan to do is hold your hand through the entire process, explaining everything at every step of the way. If you ever get lost, you can always comment on the matching YouTube tutorial
+        video that is included in each section, and I will be happy to assist you.</p>
+    <p>With that, let's get started!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>The next tutorial: <a title="Object Oriented Programming Crash Course with Tkinter" href="../object-oriented-programming-crash-course-tkinter/index0c20.html?completed=/tkinter-depth-tutorial-making-actual-program/"><button class="btn" style="background-color:#FFD166; color:#000000">Object Oriented Programming Crash Course with Tkinter</button></a></p><br>
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+<div class="col l4 m12 s12">
+    <br><br><br>
+
+    <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+        <!-- C.A. : -->
+
+
+
+        <a href="https://bit.ly/2FTjPW1?a=101&amp;t=/tkinter-depth-tutorial-making-actual-program/" id=process_click>
+            <div class="card hoverable" style="max-width:400px; align-items: left;">
+                <div class="card-image">
+                    <img id=process_click class="responsive-img" src="../static/images/CAs/pydiscord.png" />
+                </div>
+            </div>
+        </a>
+        <li>
+            <div class="collapsible-header active" style="padding:2px">Programming GUIs and windows with Tkinter and Python Introduction </div>
+
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Object Oriented Programming Crash Course with Tkinter</div>
+            <div class="collapsible-body">
+                <p><a href="../object-oriented-programming-crash-course-tkinter/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Passing functions with Parameters in Tkinter using Lambda</div>
+            <div class="collapsible-body">
+                <p><a href="../passing-functions-parameters-tkinter-using-lambda/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">How to change and show a new window in Tkinter</div>
+            <div class="collapsible-body">
+                <p><a href="../change-show-new-frame-tkinter/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Styling your GUI a bit using TTK</div>
+            <div class="collapsible-body">
+                <p><a href="../styling-gui-bit-using-ttk/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">How to embed a Matplotlib graph to your Tkinter GUI</div>
+            <div class="collapsible-body">
+                <p><a href="../how-to-embed-matplotlib-graph-tkinter-gui/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">How to make the Matplotlib graph live in your application</div>
+            <div class="collapsible-body">
+                <p><a href="../embedding-live-matplotlib-graph-tkinter-gui/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Organizing our GUI</div>
+            <div class="collapsible-body">
+                <p><a href="../organizing-gui/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Plotting Live Updating Data in Matplotlib and our Tkinter GUI</div>
+            <div class="collapsible-body">
+                <p><a href="../plotting-live-bitcoin-price-data-tkinter-matplotlib/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Customizing an embedded Matplotlib Graph in Tkinter</div>
+            <div class="collapsible-body">
+                <p><a href="../customizing-tkinter-matplotlib-graph/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Creating our Main Menu in Tkinter</div>
+            <div class="collapsible-body">
+                <p><a href="../creating-main-menu-tkinter/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Building a pop-up message window</div>
+            <div class="collapsible-body">
+                <p><a href="../tkinter-popup-message-window/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Exchange Choice Option</div>
+            <div class="collapsible-body">
+                <p><a href="../adding-tkinter-menu-options/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Time-frame and sample size option</div>
+            <div class="collapsible-body">
+                <p><a href="../time-frame-sample-size-options/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Adding indicator Menus (3 videos)</div>
+            <div class="collapsible-body">
+                <p><a href="../adding-indicator-choice-menu/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Trading option, start/stop, and help menu options</div>
+            <div class="collapsible-body">
+                <p><a href="../adding-trading-option/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Tutorial on adding a tutorial</div>
+            <div class="collapsible-body">
+                <p><a href="../tutorial-for-tkinter-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Allowing the exchange choice option to affect actual shown exchange</div>
+            <div class="collapsible-body">
+                <p><a href="../exchange-choice-handling/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Adding exchange choice cont&#39;d</div>
+            <div class="collapsible-body">
+                <p><a href="../adding-exchanges-2/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Adding exchange choices part 3</div>
+            <div class="collapsible-body">
+                <p><a href="../adding-exchanges-3/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Indicator Support</div>
+            <div class="collapsible-body">
+                <p><a href="../adding-indicator-support/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Pulling data from the Sea of BTC API</div>
+            <div class="collapsible-body">
+                <p><a href="../pulling-data-from-seaofbtc/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Setting up sub plots within our Tkinter GUI</div>
+            <div class="collapsible-body">
+                <p><a href="../subplots-within-tkinter-gui/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Graphing an OHLC candlestick graph embedded in our Tkinter GUI</div>
+            <div class="collapsible-body">
+                <p><a href="../graphing-ohlc-candlestick-in-tkinter/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Acquiring RSI data from Sea of BTC API</div>
+            <div class="collapsible-body">
+                <p><a href="../getting-rsi-data-for-tkinter-gui/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Acquiring MACD data from Sea of BTC API</div>
+            <div class="collapsible-body">
+                <p><a href="../getting-macd-data-for-tkinter-gui/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+
+
+
+        <li>
+            <div class="collapsible-header">Converting Tkinter application to .exe and installer with cx_Freeze</div>
+            <div class="collapsible-body">
+                <p><a href="../converting-tkinter-to-exe-with-cx-freeze/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+            </div>
+        </li>
+    </ul>
+
+
+</div>
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

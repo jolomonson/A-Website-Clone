@@ -120,16 +120,10 @@ def roboticsraspberrypi(request):
     return render(request, 'main/tutorials/Robotics/robotics-tutorials/bots-pi/index.html')
 def buildingquadcopter(request):
     return render(request, 'main/tutorials/Robotics/robotics-tutorials/quad/index.html')
-
-
-
-
-
 def roboticstutorials(request):
     return render(request, 'main/tutorials/Robotics/robotics-tutorials/index.html')
-
 def guitutorials(request):
-    return render(request, 'main/tutorials/GUI/gui-development-tutorials/index.html')
+    return render(request, 'main/tutorials/GUI/gui-tutorials/index.html')
 
 def golangtutorials(request):
     return render(request, 'main/tutorials/Golang/golang-tutorials/index.html')
