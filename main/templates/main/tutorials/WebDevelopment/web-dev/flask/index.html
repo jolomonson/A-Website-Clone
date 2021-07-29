@@ -1,0 +1,557 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				Practical Flask Creating PythonProgrammingnet Progress:  0%
+			</div>
+		</div>-->
+                    <h2>Introduction to Practical Flask</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="750" height="423" src="https://www.youtube.com/embed/Lv1fv-HmkQo?list=PLQVvvaa0QuDc_owjTbIY4rbgXOFkUYOUB" frameborder="0" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome to the practical Flask tutorial series. This series is dedicated to creating an actual website from scratch. We're going to clone PythonProgramming.net, which actually is written in Flask. Creating PythonProgramming.net includes:
+                    </p>
+                    <ul>
+                        <li>How Flask helps Python interact with HTML</li>
+                        <li>Using Bootstrap to style your website</li>
+                        <li>Templating</li>
+                        <li>User systems</li>
+                        <li>Password Hashing</li>
+                        <li>Databases</li>
+                        <li>Content Management</li>
+                        <li>... and a whole lot more!</li>
+                    </ul>
+                    <p>It is recommended that you understand the basics of how HTML works as well as the basics of how Python works. Other than that, you should be able to follow along.</p>
+                    <p>The first thing you will need is some sort of a server. You can host a Flask application locally if you want. If you're using a Windows OS, operating a local MySQL database is going to be a challenge if you're a beginner, but you're
+                        free to try. We're going to show how to develop on an actual web server, though it is highly suggested by me that you do not develop and test on your live sever.</p>
+                    <p>Developing on your live server is a bad idea because it will cause a lot of disruptions to your users and is also highly likely to expose security bugs live, even if for only a short time.</p>
+                    <p>If you follow the video, we set up our web server via <a href="https://www.digitalocean.com/?refcode=d1c4c6e66979" target="blank">Digital Ocean</a>.</p>
+                    <p>My preferred host is actually <a href="https://www.linode.com/?r=b417bc672ff52d6c055fd7a56e024939c667b0fd" target="blank">Linode</a>, though their cheapest server is $10/mo, compared to Digital Ocean's $5. I use both hosts fairly heavily,
+                        spending triple digits at both. All of my smaller servers go to Digital Ocean, but all of my major websites that require larger servers go to Linode.</p>
+                    <p>Use whichever you want, or develop locally. Picking and buying a server is similar across VPS hosts. From there, we're going to be working with Ubuntu 14.10. You should have no problem working with future versions of Ubuntu as well.
+                    </p>
+                    <p>To interact with your server, and to easily follow along with this tutorial series, it is recommended that you have an SSH client for running commands on your server, as well as some sort of remote file managing client. Some suggestions
+                        I have:</p>
+                    <p>For <strong>Windows users</strong>, file management with a GUI can be done with FileZilla or WinSCP. Putty is an SSH client for Windows.</p>
+                    <p>For <strong>Mac OS or Linux users</strong>, you can just type ssh username@hostname in your terminal for SSH access. FileZilla works for a file management GUI on Mac OS and Linux as well, though there are many other options for this.
+                        It is mostly Windows users who don't have many choices. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>1 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Basic Flask Website tutorial" href="../basic-flask-website-tutorial/indexda02.html?completed=/practical-flask-introduction/"><button class="btn" style="background-color:#FFD166; color:#000000">Basic Flask Website tutorial</button></a></p><br>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=1&amp;t=/practical-flask-introduction/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction to Practical Flask</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Basic Flask Website tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../basic-flask-website-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask with Bootstrap and Jinja Templating</div>
+                        <div class="collapsible-body">
+                            <p><a href="../bootstrap-jinja-templates-flask/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Starting our Website home page with Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../website-home-page-flask/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Improving the Home Page Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-homepage-improvements/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Finishing the Home Page Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-homepage-completed/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Dynamic User Dashboard Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-user-dashboard/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Content Management Beginnings Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-content-management-basics/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Error Handling with Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-error-handling-basics/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask Flash function Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flash-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Users with Flask intro Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-users-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Handling POST and GET Requests with Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-get-post-requests-handling-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating MySQL database and table Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../mysql-database-with-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Connecting to MySQL database with MySQLdb Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-connect-mysql-using-mysqldb-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">User Registration Form Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-user-registration-form-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask Registration Code Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-registration-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Finishing User Registration Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-user-register-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Password Hashing with Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../password-hashing-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask User Login System Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-user-log-in-system-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Decorators - Login_Required pages Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../decorator-wrappers-flask-tutorial-login-required/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Dynamic user-based content Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../dynamic-user-based-content-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">More on Content Management Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-content-management-contd/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask CMS Concluded Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-cms-conclusion/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">The Crontab Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../crontab-tutorial-basics/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask SEO Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-seo-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask Includes Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-includes-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Jinja Templating Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../jinja-template-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask URL Converters Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-url-converters-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Flask-Mail Tutorial for email with Flask</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-email-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Return Files with Flask send_file Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-send-file-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Protected Directories with Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../flask-protected-files-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">jQuery with Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../jquery-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Pygal SVG graphs with Flask Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygal-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PayPal with Flask Web Development Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../paypal-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Securing your Flask website with SSL for HTTPS using Lets Encrypt</div>
+                        <div class="collapsible-body">
+                            <p><a href="../ssl-https-letsencrypt-flask-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

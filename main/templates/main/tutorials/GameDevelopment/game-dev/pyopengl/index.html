@@ -1,0 +1,527 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+    <script>
+        Materialize.toast('Chat with us on Discord:<a href="https://discord.gg/sentdex" target="blank"><button style="margin-bottom:5px" class="btn btn-sm">Join</button></a>', 4000)
+    </script>
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				PyOpenGL Progress:  0%
+			</div>
+		</div>-->
+                    <video autoplay="autoplay" muted="muted" poster="../static/videos/pyopengl-tutorial-python.gif" style="width:100%; max-height:80%">
+		<source src="../static/videos/pyopengl-tutorial-python.mp4" type="video/mp4" type="video/mp4">
+		<source src="../static/videos/pyopengl-tutorial-python.webm" type="video/webm">
+		</video>
+                    <h2>OpenGL with PyOpenGL introduction and creation of Rotating Cube</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="750" height="423" src="http://www.youtube.com/embed/R4n4NyDG2hI?list=PLQVvvaa0QuDdfGpqjkEJSeWKGCP31__wD" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><br>
+
+
+
+
+
+
+                    <br>
+
+
+
+                    <p>When I first began looking into OpenGL with Python, my main goal was to figure out how to make a rotating cube. I don't think I am alone, since this seems to be the pinnacle of understanding the basics of OpenGL. As such, I have compiled
+                        this first video to include everything from acquiring <a title="Python programming language" href="http://www.python.org/" target="_blank">Python</a>, <a title="Python OpenGL bindings" href="http://pyopengl.sourceforge.net/" target="_blank">PyOpenGL</a>,
+                        and <a title="Python programming game development" href="http://pygame.org/" target="_blank">PyGame</a>, to creating the necessary code to make a rotating cube. This first tutorial is quite long, but I wanted to go ahead and put
+                        everything into this video. I had a very hard time figuring out OpenGL, mainly because most of the OpenGL with PyOpenGL tutorials that I could find were clearly written for someone who already knew OpenGL. I did not, so this was
+                        a massive hurdle for me. Hopefully I can help you all learn it much faster than I did.</p>
+
+                    <p>First off, PyOpenGL is just some Python bindings (some Python code that acts like a sort of wrapper around native code), so you can manipulate OpenGL within the context of Python. OpenGL is a cross-language API, so you can take your
+                        knowledge of OpenGL to other languages.</p>
+
+                    <p>So, the way OpenGL works is you just specify the objects within space. For a cube, for example, you specify the "corners." Corners are referred to as vertices (plural) or as a vertex (singular). You may also see them referred to as
+                        a node (singular) or nodes (plural).</p>
+
+                    <p>Once you define the vertices, you can then do things with them. In this example, we want to draw lines between them. Defining the vertices is done with a simple list or tuple in Python. You can then pre-define some rules like what
+                        vertices make up a "surface" and between what vertices are the "edges," or lines that we want to have drawn between the vertices.</p>
+
+                    <p>Once you do that, then you're ready to write the OpenGL code. To do this, you have glBegin and glEnd statements that you call, and between these is where the OpenGL-specific code goes. In the glBegin statement, you specify the "type"
+                        of code that you are about to pass. These are constants, and contain things like GL_QUADS or GL_LINES. This basically notifies OpenGL how you want it to handle your statements.</p>
+
+                    <p>So that's the abstract concept of how OpenGL works, let's go ahead and do it!</p>
+
+                    <p>First, you will need to have the following:</p>
+                    <a title="Python programming language" href="http://www.python.org/" target="_blank">Python</a>
+                    <a title="Python OpenGL bindings" href="http://pyopengl.sourceforge.net/" target="_blank">PyOpenGL</a>
+                    <a title="Python programming game development" href="http://pygame.org/" target="_blank">PyGame</a>
+
+                    <p>If you are a Windows user, then I highly recommend downloading PyGame and PyOpenGL from this source of <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/" target="_blank">Windows binaries for Python Modules</a>. Just save that link
+                        to your bookmarks. Super useful website.</p>
+
+                    <p>Once you have everything, go ahead and open up IDLE and type in:</p>
+                    <pre class="prettyprint">import pygame
+import OpenGL
+</pre>
+                    <p>If you can type those statements and run them without any errors, then you are ready to proceed. If you are getting errors, something went wrong. Most of the time, the error is either you've downloaded the wrong Python version of PyGame
+                        or OpenGL, or the wrong bit version. So, if you are using 32 bit Python, you need to use 32 bit modules, and so on. Even if your operating system is a 64 bit OS, you may still find you're running a 32 bit version of Python. I highly
+                        recommend using 64 bit Python if you can, 32 bit is limited to 2GB of ram, which is quite the limitation. If you have a 32 bit OS, then you cannot use 64 bit.
+
+                        <p>Alright, now let's get into the code! If you still have the import pygame and import OpenGL code, erase that and start completely blank.</p>
+
+                        <p>First, we're going to do some imports:</p>
+                        <pre class="prettyprint">import pygame
+from pygame.locals import *
+from OpenGL.GL import *
+from OpenGL.GLU import *
+</pre>
+                        <p>We're importing all of PyGame here, and then all of the PyGame.locals. This is some typical PyGame code. If you want to learn a bunch more about PyGame, check out the <a href="../pygame-python-3-tutorial-series/index.html" target="blank">PyGame Python programming series</a>                            I offer here.</p>
+
+                        <p>Next, we import OpenGL.GL and OpenGL.GLU. OpenGL.GL is just your typical OpenGL functions, then OpenGL.GLU is some of the more "fancy" OpenGL functions.</p>
+
+                        <p>For the first few videos, I go ahead and miss-spell vertices. Oops.</p>
+                        <pre class="prettyprint">vertices= (
+    (1, -1, -1),
+    (1, 1, -1),
+    (-1, 1, -1),
+    (-1, -1, -1),
+    (1, -1, 1),
+    (1, 1, 1),
+    (-1, -1, 1),
+    (-1, 1, 1)
+    )
+</pre>
+                        <p>Here, we've defined the location (x,y,z) of each vertex. I think it is best to envision this in "units." Try to think of these locations "spatially." With a cube, there are 8 "nodes" or vertices.</p>
+
+                        <p>Next, we're ready to define the edges:</p>
+                        <pre class="prettyprint">edges = (
+    (0,1),
+    (0,3),
+    (0,4),
+    (2,1),
+    (2,3),
+    (2,7),
+    (6,3),
+    (6,4),
+    (6,7),
+    (5,1),
+    (5,4),
+    (5,7)
+    )
+</pre>
+                        <p>Each of the above tuples contains two numbers. Those numbers correspond to a vertex, and the "edge" is going to be drawn between those two vertices. We start with 0, since that's how Python and most programming languages work (the
+                            first element is 0). So, 0 corresponds to the first vertex we defined (1, -1, -1)... and so on.</p>
+
+                        <p>Now that we've got that, let's work on the required code to work with OpenGL to actually generate a cube:</p>
+                        <pre class="prettyprint">def Cube():
+    glBegin(GL_LINES)
+    for edge in edges:
+        for vertex in edge:
+            glVertex3fv(vertices[vertex])
+    glEnd()
+</pre>
+                        <p>First, we start off our function as we would any other function.</p>
+
+                        <p>Next, since this is just a function containing OpenGL code, we go ahead and open with a glBegin(GL_LINES), this notifies OpenGL that we're about to throw some code at it, and then the GL_LINES tells OpenGL how to handle that code,
+                            which, in this case, means it will treat the code as line-drawing code.</p>
+
+                        <p>From there, we say for edge in edges, which corresponds to each pair of vertices in our edges list. Since each edge contains 2 vertices, we then say for vertex in edge, do glVertex3fv(vertices[vertex]), which performs the glVertex3fv
+                            OpenGL function on the [vertex] element of the vertices tuple.</p>
+
+                        <p>As such, what ends up being passed through OpenGL with the constant of GL_LINES is:</p>
+
+                        <p>glVertex3fv((1, -1, -1))</p>
+                        <p>glVertex3fv((1, 1, -1))</p>
+
+                        <p>...and so on. OpenGL, knowing that we're drawing lines here will draw lines between those points.</p>
+
+                        <p>After running through all edges, we're done, so we call glEnd() to notify OpenGL that we're done telling it what to do. For each "type" of OpenGL code that you plan to use, you will need opening and closing GL commands like this.
+                        </p>
+
+                        <p>That's it for our cube function. This function will create the cube, but now we want to display the cube and specify our perspective in the environment:</p>
+                        <pre class="prettyprint">def main():
+    pygame.init()
+    display = (800,600)
+    pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
+</pre>
+                        <p>This is mostly typical PyGame code. If you want to understand it more, check out the <a href="../pygame-python-3-tutorial-series/index.html" target="blank">PyGame Python programming series</a>.</p>
+
+                        <p>The only major difference here is we're adding another "parameter" looking thing after "display" in the pygame.display.set_mode. These are actually constants, notifying PyGame that we're going to be feeding it OpenGL code, as well
+                            as DOUBLEBUF, which stands for double buffer, and is a type of buffering where there are two buffers to comply with monitor refresh rates. Take note that pipe ("|") that is used to separate constants. It will be used again
+                            later to separate constants.</p>
+
+                        <p>Next, within this main() function:</p>
+                        <pre class="prettyprint">    gluPerspective(45, (display[0]/display[1]), 0.1, 50.0)
+</pre>
+                        <p>gluPerspective is code that determines the perspective, as it sounds. The first value is the degree value of the field of view (fov). The second value is the aspect ratio, which is the display width divided by the display height.
+                            The next two values here are the znear and zfar, which are the near and far clipping planes.</p>
+
+
+                        <p>What in the heck is a clipping plane? If you're like me, that means nothing to you at this point. Basically, a clipping plane is at what distance does the object appear/disappear. So the object will only be visible between these
+                            two values, and both values are supposed to be positive, because they are in relation to your perspective, not in relation to your actual location within the 3D environment.</p>
+
+                        <p>So, we're having the close clipping happening at 0.1 units and the far clipping plane as 50.0 units away. This will make more sense later, once we've displayed the cube and we can control where we are in the 3D environment, then
+                            you will see the clipping planes in action.</p>
+
+                        <p>Next up, we have:</p>
+
+                        <pre class="prettyprint">
+    glTranslatef(0.0,0.0, -5)
+</pre>
+
+                        <p>glTranslatef, officially "multiplies the current matrix by a translation matrix." OK cool, again that means nothing to me. So, in layman's terms, this basically moves you, and the parameters are x, y and z. So above, we're moving
+                            back 5 unites. This is so we can actually see the cube when we bring it up. Otherwise, we'd be a bit too close. </p>
+
+                        <p>Now let's write our typical event loop for PyGame. Again, if you want to learn more, check out the aforementioned tutorial. </p>
+
+                        <pre class="prettyprint">
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+</pre>
+
+                        <p>This is a simple PyGame event loop that is only checking for any exit, which is only looking for the literal "x" out. Continuing under this "while" statement:</p>
+
+                        <pre class="prettyprint">
+        glRotatef(1, 3, 1, 1)
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+        Cube()
+        pygame.display.flip()
+        pygame.time.wait(10)
+</pre>
+
+                        <p>glRotatef multiplies the current matrix by a rotation matrix. The parameters here are angle, x, y and z. </p>
+
+                        <p>Then we have glClear, which is like any other clearing function. We specify a couple of constants here, which is telling OpenGL what exactly we're clearing. </p>
+
+                        <p>Once we have a clean "canvas" if you will, we then call our Cube() function. </p>
+
+                        <p>After that, we call pygame.display.flip(), which updates our display. </p>
+
+                        <p>Finally we throw in a short wait with pygame.time.wait(10). </p>
+
+                        <p>That's it for our main function, and now we just call a main() at the end to make it all work. Just in case you got lost somewhere, here's the entire script put together:</p>
+
+                        <pre class="prettyprint">
+import pygame
+from pygame.locals import *
+
+from OpenGL.GL import *
+from OpenGL.GLU import *
+
+verticies = (
+    (1, -1, -1),
+    (1, 1, -1),
+    (-1, 1, -1),
+    (-1, -1, -1),
+    (1, -1, 1),
+    (1, 1, 1),
+    (-1, -1, 1),
+    (-1, 1, 1)
+    )
+
+edges = (
+    (0,1),
+    (0,3),
+    (0,4),
+    (2,1),
+    (2,3),
+    (2,7),
+    (6,3),
+    (6,4),
+    (6,7),
+    (5,1),
+    (5,4),
+    (5,7)
+    )
+
+
+def Cube():
+    glBegin(GL_LINES)
+    for edge in edges:
+        for vertex in edge:
+            glVertex3fv(verticies[vertex])
+    glEnd()
+
+
+def main():
+    pygame.init()
+    display = (800,600)
+    pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
+
+    gluPerspective(45, (display[0]/display[1]), 0.1, 50.0)
+
+    glTranslatef(0.0,0.0, -5)
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        glRotatef(1, 3, 1, 1)
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+        Cube()
+        pygame.display.flip()
+        pygame.time.wait(10)
+
+
+main()
+</pre>
+
+                        <p>The end result should be:</p>
+
+                        <img class="responsive-img" src="../static/images/pyopengl/openGL-cube-with-Python-and-PyOpenGL-tutorial.gif" alt="text to screen" />
+
+                        <p>Awesome and congratulations on your PyOpenGL cube! There is obviously a lot more to learn, and some of these functions may not make too much sense just yet. I'll be going over those a bit more in depth soon.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <p>The next tutorial:
+                            <a title="Coloring Surfaces as well as understand some of the basic OpenGL code" href="../coloring-pyopengl-surfaces-python-opengl/index8d96.html?completed=/opengl-rotating-cube-example-pyopengl-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Coloring Surfaces as well as understand some of the basic OpenGL code</button></a>
+                        </p><br>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=4&amp;t=/opengl-rotating-cube-example-pyopengl-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">OpenGL with PyOpenGL introduction and creation of Rotating Cube</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Coloring Surfaces as well as understand some of the basic OpenGL code</div>
+                        <div class="collapsible-body">
+                            <p><a href="../coloring-pyopengl-surfaces-python-opengl/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Understanding navigation within the 3D environment via OpenGL</div>
+                        <div class="collapsible-body">
+                            <p><a href="../navigating-3d-environment/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Moving the player automatically towards the cube</div>
+                        <div class="collapsible-body">
+                            <p><a href="../moving-towards-pyopengl-cube/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Random Cube Position</div>
+                        <div class="collapsible-body">
+                            <p><a href="../random-cube-position-pyopengl-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Adding Many Cubes to our Game</div>
+                        <div class="collapsible-body">
+                            <p><a href="../multiple-opengl-cubes/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Adding a ground in OpenGL</div>
+                        <div class="collapsible-body">
+                            <p><a href="../adding-ground-pyopengl-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Infinite flying cubes</div>
+                        <div class="collapsible-body">
+                            <p><a href="../infinite-3d-pyopengl-flying-cubes-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Optimizing the processing for infinite cubes</div>
+                        <div class="collapsible-body">
+                            <p><a href="../improving-infinite-3d-cubes-pyopengl-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

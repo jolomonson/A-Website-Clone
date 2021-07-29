@@ -1,0 +1,460 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+    <!--       <pre class="prettyprint">            width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+			<div class="determinate" style="background-color:#FFD166;width: 0%;">
+				PyGame Progress:  0%
+			</div>
+		</div>-->
+
+
+                    <video autoplay="autoplay" muted="muted" poster="../static/videos/pygame-tutorials.png" style="width:100%; max-height:80%">
+		<source src="../static/videos/pygame-tutorials.mp4" type="video/mp4" type="video/mp4">
+		<source src="../static/videos/pygame-tutorials.webm" type="video/webm">
+		</video>
+                    <h2>Introduction to PyGame</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="750" height="423" src="http://www.youtube.com/embed/ujOTNg17LjI?list=PLQVvvaa0QuDdLkP8MrOXLe_rKuf6r80KO" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div><br>
+
+
+
+
+
+
+
+
+
+                    <p>Welcome to the introduction to PyGame and Python 3 video game programming! </p>
+
+                    <p><kbd data-toggle="collapse" data-target="#pygamereqs" aria-expanded="false" aria-controls="pygamereqs">Suggested Requirements for this series</kbd></p>
+                    <div class="collapse" id="pygamereqs">
+                        <div class="well">
+                            <p>You may wish to be familiar with the basics of the Python 3 programming language, or at least the basics of Programming in general</p>
+                            <p>That said, this course begins at a slowish pace, and I do my best to explain everything at least the first time it shows up. PyGame can actually be a wonderful starting place for your journey in Python.</p>
+                            <p>Don't be afraid to ask questions!</p>
+                        </div>
+                    </div>
+
+                    <p>Game creation in any programming language is very rewarding, and also makes for a great teaching tool. With game development, you often have quite a bit of logic, mathematics, physics, artificial intelligence, and other things, all
+                        of which come together for game creation. Not only this, but the topic is games, so it can be very fun.</p>
+
+                    <p>Many times people like to visualize the programs they are creating, as it can help people to learn programming logic quickly. Games are fantastic for this, as your are specifically programming everything you see.</p>
+
+                    <p>First, you're going to need <a title="PyGame module for game creating in Python" href="http://pygame.org/news.html" target="_blank"><span style="text-decoration: underline;"><strong>PyGame</strong></span></a>!</p>
+
+                    <p>Installation may vary by operating system. Macs historically have had trouble with PyGame, so you may need to get an earlier version of Python and PyGame.</p>
+
+                    <p>Nowadays, <kbd data-toggle="collapse" data-target="#pip" aria-expanded="false" aria-controls="pip">pip</kbd> is probably the best method for installing PyGame, since it comes with the latest versions of Python 2 and Python 3.</p>
+
+                    <div class="collapse" id="pip">
+                        <div class="well">
+                            <p>Here's a quick tutorial for using pip to install packages:</p>
+                            <div class="video-container">
+                                <iframe width="720" height="405" src="https://www.youtube.com/embed/jnpC_Ib_lbc?list=PLQVvvaa0QuDe8XSftW-RAxdo6OmaeL85M" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <p>Once you have that, you're ready to create your very first PyGame instance!</p>
+
+                    &nbsp;
+                    <pre class="prettyprint">import pygame
+
+pygame.init()
+</pre>
+                    <p>Above, we've imported PyGame, which is obviously necessary to make use of the module! Then, we run pygame.init(), which is integral to every single PyGame application that you will ever write. This will initiate PyGame, and allow you
+                        to then make various commands with PyGame and our game.</p>
+                    <pre class="prettyprint">gameDisplay = pygame.display.set_mode((800,600))
+pygame.display.set_caption('A bit Racey')
+</pre>
+                    <p>Next, we define our game's display, which is the main "display" for our game. You may also see this referred to as a "surface," as this is basically our canvas that we will draw things to, and the function literally returns a pygame.Surface
+                        object. We are saying right now that we want the resolution of our game to be 800 px wide and 600 px tall. Take note that this is a tuple as a function argument. If you do not make this a tuple with parenthesis, then 600 and 800
+                        will be treated as separate parameters and the function will blow up. It's a big deal.</p>
+
+                    <p>After that, we define our display's "caption." To me, it's more like a title, and is the title of the window. We've decided to call our game "A bit Racey." (tm!)</p>
+                    <pre class="prettyprint">clock = pygame.time.Clock()
+</pre>
+                    <p>Simple enough, this is a our game clock. We use this to track time within the game, and this is mostly used for FPS, or "frames per second." While somewhat trivial seeming, FPS is very important, and can be tweaked as we will see later.
+                        For the most part, the average human eye can see ~30 FPS. It's important to note, however, that this is only a very general statement, since every human eye is slightly different, and the human eye does not process things in "frames."
+                        The better way to put it is that after about 30 FPS, people generally cannot tell the difference.</p>
+
+                    <p>Take that 60 FPS YouTube. Anyway, we can increase FPS to literally speed up the game, or slow them down to slow down the game. This isn't ideal, especially when speeding up FPS, as the entire game loop is run per frame, and might be
+                        a massive waste of processing. More on this later though!</p>
+                    <pre class="prettyprint">crashed = False
+
+while not crashed:
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            crashed = True
+
+        print(event)
+
+    pygame.display.update()
+    clock.tick(60)
+</pre>
+                    <p>Okay, a bit more here. I don't like to separate loops and functions if I don't have to, since it can cause people to get indentation wrong. So, first, we've got a crashed = False statement, which is just a variable that we set initially.
+                        Then, we run our "game loop," which will run until we crash. Currently, the only way we're saying crashed = True is if the user exits out of the window, however.</p>
+
+                    <p>You'll notice here that we have a for loop within this while loop. This is going to be present in most PyGame scripts, where events are constantly being logged. It is shown in the video, but not here, but you can still try it: Try
+                        adding "print event" above the if statement. You will see in your console everything you do within the PyGame window. Pretty neat!</p>
+
+                    <p>After our if statement. you'll see that we run a pygame.display.update. It's important to note the difference between display.update and display.flip. Display.flip will update the entire surface. Basically the entire screen. Display.update
+                        can just update specific areas of the screen. That said, if you do not pass a parameter, then update will update the entire surface as well, bascially making flip() pointless for our interests. There might come times when you want
+                        to use flip for very specific tasks, however.</p>
+
+                    <p>The last thing within this while loop is clock.tick(60). Basically, this is how many frames per second we are running. In this case, we are running 60 FPS.</p>
+                    <pre class="prettyprint">pygame.quit()
+quit()
+</pre>
+                    <p>Once we have broken our game loop, we want to run a pygame.quit(). This will end our pygame instance. Then we can run a simple quit(), which will exit Python and the application.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>3 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Displaying images with PyGame" href="../displaying-images-pygame/index628b.html?completed=/pygame-python-3-part-1-intro/"><button class="btn" style="background-color:#FFD166; color:#000000">Displaying images with PyGame</button></a></p><br>
+
+
+
+
+
+
+
+                </div>
+
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=5&amp;t=/pygame-python-3-part-1-intro/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction to PyGame</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Displaying images with PyGame</div>
+                        <div class="collapsible-body">
+                            <p><a href="../displaying-images-pygame/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Moving an image around in PyGame</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygame-tutorial-moving-images-key-input/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Adding boundaries</div>
+                        <div class="collapsible-body">
+                            <p><a href="../adding-boundaries-pygame-video-game/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Displaying text to PyGame screen</div>
+                        <div class="collapsible-body">
+                            <p><a href="../displaying-text-pygame-screen/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Drawing objects with PyGame</div>
+                        <div class="collapsible-body">
+                            <p><a href="../drawing-objects-pygame-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Crashing</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygame-crashing-objects/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyGame Score</div>
+                        <div class="collapsible-body">
+                            <p><a href="../adding-score-pygame-video-game/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Drawing Objects and Shapes in PyGame</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygame-drawing-shapes-objects/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating a start menu</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygame-start-menu-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyGame Buttons, part 1, drawing the rectangle</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygame-buttons-part-1-button-rectangle/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyGame Buttons, part 2, making the buttons interactive</div>
+                        <div class="collapsible-body">
+                            <p><a href="../making-interactive-pygame-buttons/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyGame Buttons, part 3, adding text to the button</div>
+                        <div class="collapsible-body">
+                            <p><a href="../placing-text-pygame-buttons/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyGame Buttons, part 4, creating a general PyGame button function</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygame-button-function/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyGame Buttons, part 5, running functions on a button click</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pygame-button-function-events/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Converting PyGame to an executable</div>
+                        <div class="collapsible-body">
+                            <p><a href="../converting-pygame-executable-cx_freeze/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Adding a pause function to our game and Game Over</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pause-game-pygame/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">PyGame Icon</div>
+                        <div class="collapsible-body">
+                            <p><a href="../changing-pygame-icon/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Sounds and Music with PyGame</div>
+                        <div class="collapsible-body">
+                            <p><a href="../adding-sounds-music-pygame/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
+    <div class="row">
+
+        <div class="col l6 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/django-web-development" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/WebDevelopment/django.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Django</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn how to use the Django web framework to create websites.</p>
+                    </div>
+                    <div class="card-action right-align">
+
+                        <a href="/django-web-development" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+
+        <div class="col l6 s12 m6">
+
+            <div class="card-panel hoverable" style="height:360px; background-color:#FFFFFF;">
+                <a href="/flask" class="waves-effect waves-light" style="color:#000">
+                    <div class="card-image">
+                        <img class="responsive-img" src="{% static 'main/images/WebDevelopment/flask.png' %}" style="width:250px">
+                        <br><span class="card-title"><strong>Flask</strong></span>
+                    </div>
+                    <div class="card-content">
+                        <p>Learn the basics of creating various websites with the Flask Python micro-framework.</p>
+                    </div>
+                    <div class="card-action right-align">
+                        <a href="/flask" class="waves-effect waves-light btn" style="color:#000000; background-color:#FFD166">Start</a>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class='row'>
+        <div class="col l12 s12 m12">
+            <div class="card-panel hoverable" style="background-color:#FFFFFF;">
+
+                <span class="card-title"><strong><h5>Flask vs. Django</h5></strong></span>
+
+                <div class="card-content">
+                    <p>Flask and the other web frameworks besides Django are lower-level (sometimes called micro) frameworks. This means they are mainly meant to provide only the bare minimum of tools to get your website running. The underlying system of
+                        logic, design, and organization is done almost entirely by the developer from this point.</p>
+
+                    <p>Django provides the underlying connections to make a website actually run, but also provides the developer with a plethora of tools and systems to aid in the background.</p>
+
+                    <p>Flask is more open-ended to unique systems. A developer can create a backend system just about however they want, but they are likely to not use best-practices this way. Django is more closed off, encouraging the developer to do things
+                        the "Django way." While this can feel restrictive, it also means the developer is more likely to do things correctly, right out of the gate.</p>
+
+                    <p>In the end, both Django and Flask can make the exact same websites, as well as being as customize-able and as high quality as the other. This website, for example, is a Flask website, but could just as easily be a Django site.</p>
+
+                    <p>The best choice is to make an attempt at both, and see which suits you best.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
+                <ul>
+                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
+                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
+                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Legal Stuff:</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
+        </div>
+    </div>
+</footer>
+{% endblock %}

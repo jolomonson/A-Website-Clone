@@ -1,0 +1,361 @@
+{% extends 'main/header.html' %} {% load static %} {% block content %}
+
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+
+
+                <div class="container-fluid" align="left">
+
+
+
+
+
+
+
+
+                    <br>
+                    <h2>Introduction to Kivy, a multi-platform GUI library for computers (Windows, Linux, Mac) and Mobile (iOS, Android) - Kivy with Python Tutorials</h2>
+                    <br>
+
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/FjwD0SOGQ1k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><br>
+
+
+
+
+
+
+
+                    <br>
+
+                    <p>Welcome everyone to an updated Kivy tutorial series. It's been quite a few years since I last poked my head into Kivy, and it's time to revisit it!</p>
+
+                    <p>Kivy is a multi-platform GUI development library for Python, running on Windows, Mac, Linux, Android and iOS. The idea is, you can build an app in one locaiton, and use it across basically all devices. It's a super cool idea, but...only
+                        if it works. The last time I tried Kivy, I had a hard time getting it to run on Android, which shouldn't be too hard. We'll see how it goes this time!</p>
+
+                    <p>To get Kivy, it really depends on your operating system. Head to <a href="https://kivy.org/#home" target="blank"><strong>Kivy.org</strong></a>, then go to <a href="https://kivy.org/#download" target="blank"><strong>download</strong></a>,
+                        then follow the instructions for what you'll be using. It's just a series of commands you need to run, so pause the video and get that done.</p>
+
+                    <p>Next, like many things, I think it's best we just jump in without any further explanation. You know what Kivy is and why it could be awesome, now let's see what we can find.</p>
+
+                    <p>To begin, let's make a basic app that will just display some text for us. I'll make a new file called <code>epic.py</code>, careful not to call your file <code>kivy.py</code>!</p>
+
+                    <pre class="prettyprint lang-py">import kivy  # importing main package
+from kivy.app import App  # required base class for your app.
+from kivy.uix.label import Label  # uix element that will hold text
+kivy.require("1.10.1")  # make sure people running py file have right version
+
+# Our simple app. NameApp  convention matters here. Kivy
+# uses some magic here, so make sure you leave the App bit in there!
+class EpicApp(App):
+    # This is your "initialize" for the root wiget
+    def build(self):
+        # Creates that label which will just hold text.
+        return Label(text="Hey there!")
+
+
+# Run the app.
+if __name__ == "__main__":
+    EpicApp().run()
+</pre>
+
+                    <p>On Windows or Linux, you run this like a typical Python file. On OS X, you will instead run with something like <code>$ kivy epic.py</code>.</p>
+
+                    <p>You should see something like:</p>
+
+                    <img class="responsive-img" src="../static/images/kivy/kivy-intro.png" alt="python tutorials" />
+
+                    <p>Notice too, you can resize this window and the text just automatically adjusts and is responsive to whatever sizes you throw at it. Kivy just does this out of the box, with many different layout options to choose from.</p>
+
+                    <p>So the idea is to have a chat application, so let's continue. From our sockets chat app, we know we need a few things. Let's add in username, IP, and port field to the main screen, rather than just some text.</p>
+
+                    <pre class="prettyprint lang-py">import kivy
+from kivy.app import App
+from kivy.uix.label import Label
+from kivy.uix.gridlayout import GridLayout  # one of many layout structures
+from kivy.uix.textinput import TextInput  # allow for ...text input.
+
+kivy.require("1.10.1")
+
+# An actual app is likely to consist of many different
+# "pages" or "screens." Inherit from GridLayout
+class ConnectPage(GridLayout):
+    # runs on initialization
+    def __init__(self, **kwargs):
+        # we want to run __init__ of both ConnectPage AAAAND GridLayout
+        super().__init__(**kwargs)
+
+        self.cols = 2  # used for our grid
+
+        # widgets added in order, so mind the order.
+        self.add_widget(Label(text='IP:'))  # widget #1, top left
+        self.ip = TextInput(multiline=False)  # defining self.ip...
+        self.add_widget(self.ip) # widget #2, top right
+
+        self.add_widget(Label(text='Port:'))
+        self.port = TextInput(multiline=False)
+        self.add_widget(self.port)
+
+        self.add_widget(Label(text='Username:'))
+        self.username = TextInput(multiline=False)
+        self.add_widget(self.username)
+
+
+class EpicApp(App):
+    def build(self):
+        return ConnectPage()
+
+
+if __name__ == "__main__":
+    EpicApp().run()
+</pre>
+
+                    <p>The comments should suffice here. If you don't understand <code>super()</code>, here's a quick, basic, example:</p>
+
+
+                    <pre class="prettyprint lang-py">class One:
+    def __init__(self):
+        print("One!!!!")
+
+
+class Two(One):
+    def __init__(self):
+        print("Two!!!!")</pre>
+
+                    <p>In this case, the <code>__init__</code> of <code>Two</code> runs, but not of <code>One</code>. To get <code>One</code> to run, you can use super like:</p>
+
+                    <pre class="prettyprint lang-py">class Two(One):
+    def __init__(self):
+        super().__init__()
+        print("Two!!!!")
+</pre>
+
+                    <p>Now, they both run! Cool!</p>
+
+                    <p>Anyawy, the result is:</p>
+                    <img class="responsive-img" src="../static/images/kivy/layout-and-text.png" alt="python tutorials" />
+
+
+                    <p>Okay great, so you've seen the basics of Kivy and just how quickly we can get up and running. We don't have anything too beautiful yet, but interesting nonetheless. In the next tutorial, let's cover how we can access the content a
+                        user types in. We expect the user to type in some info and maybe hit a connect button. From here, we want to access what they typed, and attempt to connect them to the chat room!</p>
+
+                    <p>In the next tutorial, we'll add buttons and begin to add the event to handle for the data that is input into these fields. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Buttons and Events - Kivy with Python Tutorials" href="../buttons-events-kivy-application-python-tutorial/index09bc.html?completed=/introduction-kivy-application-python-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Buttons and Events - Kivy with Python Tutorials</button></a></p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
+            </div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=6&amp;t=/introduction-kivy-application-python-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+
+
+                    <!--HONLY -->
+
+
+
+
+
+
+
+
+
+
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction to Kivy, a multi-platform GUI library for computers (Windows, Linux, Mac) and Mobile (iOS, Android) - Kivy with Python Tutorials</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Buttons and Events - Kivy with Python Tutorials</div>
+                        <div class="collapsible-body">
+                            <p><a href="../buttons-events-kivy-application-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Changing screens/views/pages with ScreenManager - Kivy with Python Tutorials</div>
+                        <div class="collapsible-body">
+                            <p><a href="../screen-manager-pages-screens-kivy-application-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Scheduling tasks/functions/methods- Kivy with Python Tutorials</div>
+                        <div class="collapsible-body">
+                            <p><a href="../scheduling-clock-kivy-application-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Chat Application Page - Kivy with Python Tutorials</div>
+                        <div class="collapsible-body">
+                            <p><a href="../chat-application-kivy-application-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Finishing Chat Application - Kivy with Python Tutorials</div>
+                        <div class="collapsible-body">
+                            <p><a href="../finishing-chat-application-kivy-application-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Packaging and Deployment (PyInstaller, Buildozer) - Kivy with Python Tutorials</div>
+                        <div class="collapsible-body">
+                            <p><a href="../packaging-deployment-kivy-application-python-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
+{% endblock %}
