@@ -1,20 +1,58 @@
-{% extends 'main/header.html' %}
-{% load static %}
-{% load crispy_forms_tags %}
-{% block content %}
+{% extends 'main/header.html' %} {% load static %} {% load crispy_forms_tags %} {% block content %}
 
-<h3 style="text-align: center;">Login Page</h3>
-<form action="" method="post">
-    {% csrf_token %}
+<form action="" method="POST">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
     <div class="container">
-        {{LoginForm|safe}}
-        <button class="btn waves-effect waves-light" type="submit">Submit
-            <i class="material-icons right">send</i>
-        </button>
-        <h5 style="text-align: center;">Don't have an account <a href="/register">Register</a> here</h5>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" style="text-align: center;">
+                        <h5>Login Page</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <form class="form-horizontal" method="post" action="#">
+
+
+
+                            <div class="form-group">
+                                <label for="username" class="cols-sm-2 control-label">Username/E-mail</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password" class="cols-sm-2 control-label">Password</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <button type="button" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+                            </div>
+                            <div class="login-register" style="text-align: center;">
+                                <h3>Don't have an account? <a href="/register">Register</a> here</h3>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 </form>
-
 <footer class="page-footer">
     <div class="container">
         <div class="row">
@@ -24,8 +62,7 @@
                 <ul>
                     <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
                     <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
-                    <li><a href="https://www.facebook.com/pythonprogramming.net/"
-                            class="grey-text text-lighten-3">Facebook</a></li>
+                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
                     <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
                     <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
                 </ul>
