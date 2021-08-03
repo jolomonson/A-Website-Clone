@@ -76,7 +76,7 @@ def gamedevelopmenttutorials(request):
     return render(request, 'main/tutorials/GameDevelopment/game-development/index.html')
 #Python Fundamentals
 def pythonfundamentaltutorials(request):
-    return render(request, 'main/tutorials/PythonFundamentals/python-fundamental/index.html')
+    return render(request, 'main/tutorials/PythonFundamentals/python-funds/index.html')
 def pythonbasics(request):
     return render(request, 'main/tutorials/PythonFundamentals/basics/index.html')
 def pythonintermediate(request):
@@ -85,11 +85,11 @@ def socketstutorial(request):
     return render(request, 'main/tutorials/PythonFundamentals/socket-tutorials/index.html')
 #Web Development
 def webdevelopmenttutorials(request):
-    return render(request, 'main/tutorials/WebDevelopment/web-development/index.html')
+    return render(request, 'main/tutorials/WebDevelopment/web-dev/index.html')
 def djangowebdevelopment(request):
-    return render(request, 'main/tutorials/WebDevelopment/web-development/django/index.html')
+    return render(request, 'main/tutorials/WebDevelopment/web-dev/django/index.html')
 def flask(request):
-    return render(request, 'main/tutorials/WebDevelopment/web-development/flask/index.html')
+    return render(request, 'main/tutorials/WebDevelopment/web-dev/flask/index.html')
 #Bots and AI
 def bottutorials(request):
     return render(request, 'main/tutorials/BotsandAI/bot-tutorials/index.html')
@@ -113,7 +113,7 @@ def alexaskills(request):
     return render(request, 'main/tutorials/BotsandAI/bot-tutorials/alexa-skills/index.html')
 def twitterapi(request):
     return render(request, 'main/tutorials/BotsandAI/bot-tutorials/twitter-api/index.html')
-    #Raspberry PI
+    #Robotics
 def raspberrypi(request):
     return render(request, 'main/tutorials/Robotics/robotics-tutorials/raspberry/index.html')
 def roboticsraspberrypi(request):
@@ -122,11 +122,21 @@ def buildingquadcopter(request):
     return render(request, 'main/tutorials/Robotics/robotics-tutorials/quad/index.html')
 def roboticstutorials(request):
     return render(request, 'main/tutorials/Robotics/robotics-tutorials/index.html')
+    #GUI
 def guitutorials(request):
     return render(request, 'main/tutorials/GUI/gui-tutorials/index.html')
-
+def pyqt(request):
+    return render(request, 'main/tutorials/GUI/gui-tutorials/gui-pyqt/index.html')
+def tkinter(request):
+    return render(request, 'main/tutorials/GUI/gui-tutorials/tkinter/index.html')
+def kivy(request):
+    return render(request, 'main/tutorials/GUI/gui-tutorials/kivy/index.html')
+#Golang
 def golangtutorials(request):
     return render(request, 'main/tutorials/Golang/golang-tutorials/index.html')
+def syntaxgolanguage(request):
+    return render(request, 'main/tutorials/Golang/golang-tutorials/syntax-go/index.html')
+
 
 
 def register(request):

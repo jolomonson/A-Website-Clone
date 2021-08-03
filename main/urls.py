@@ -83,7 +83,12 @@ urlpatterns = [
     path('robotics-tutorials/', views.roboticstutorials, name='robotics'),
     #GUI
     path('gui-development-tutorials/', views.guitutorials, name='gui'),
+    path('basic-gui-pyqt/', views.pyqt, name='pyqt'),
+    path('tkinter/', views.tkinter, name='tkinter'),
+    path('kivy-application/', views.kivy, name='kivy'),
+    #GoLang
     path('golang-tutorials/', views.golangtutorials, name='golang'),
+    path('syntax-go-language/', views.syntaxgolanguage, name='golang'),
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
