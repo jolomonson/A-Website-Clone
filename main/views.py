@@ -1,6 +1,5 @@
 from email import message
 from django.shortcuts import render, redirect
-from .models import Tutorial
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import RegistrationForm

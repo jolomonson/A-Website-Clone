@@ -89,9 +89,6 @@ urlpatterns = [
     #GoLang
     path('golang-tutorials/', views.golangtutorials, name='golang'),
     path('syntax-go-language/', views.syntaxgolanguage, name='golang'),
-    path('register/', views.register, name='register'),
-    path('login/', views.user_login, name='login'),
-    path('logout/', views.user_logout, name='logout'),
 ]
 
 
