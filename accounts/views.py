@@ -1,11 +1,11 @@
 from email import message
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import RegistrationForm
 from django.contrib import messages
 # Create your views here.
-def account(request):
+def profile(request):
     return render(request, 'accounts/profile.html')
 
 def register(request):
@@ -21,8 +21,8 @@ def register(request):
         else:
             for msg in RegForm.error_messages:
                 messages.error(request, '{} form.error_messages[msg]'.format(msg))
-    else:
-        RegForm = RegistrationForm
+
+    RegForm = RegistrationForm
     return render(request, 'accounts/register.html', {'RegForm':RegForm})
 
 def user_login(request):
