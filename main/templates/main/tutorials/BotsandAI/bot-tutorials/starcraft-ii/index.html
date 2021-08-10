@@ -1,24 +1,9 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
-
-					
-					
-					  
-					
-
-					
-<!--       <pre class="prettyprint">              width="750" height="423"    -->
-<body class="body">
-    <div class="row">
-    <div class="col l8 m12 s12">
-
-
-      <div class="container-fluid" align="left" >
-		
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
 
 
 
@@ -26,100 +11,137 @@
 
 
 
-		<br>
-		<h2>Introduction and Collecting Minerals - Python AI in StarCraft II p.1</h2>
-		<br>
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
 
-		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/v3LJ6VvpfgI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
-		
-
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
 
 
+                <div class="container-fluid" align="left">
 
 
 
-		<br>
 
-<p>Welcome to a tutorial series where we will be creating Python bots and AI for the game: StarCraft II. Around mid 2017, DeepMind and Blizzard (the creators of StarCraft II) announced a partnership and API for interacting with the strategy game.</p>
 
-<p>Prior to this point, I had never actually played StarCraft II myself, but I have played many similar games like Command and Conquer and Age of Empires. The point of the games are to put you against other players, or computers, where you start with a "base," which allows you to build basic units that collect resources. From here, you can build more buildings that unlock new units, like combat units, and then you can do things like purchase/research upgrades for units or for even better units. Eventually, your objective is to amass an army to take out your opponent(s). In StarCraft II, there are 3 "races:" Terran, Protoss, and Zerg. The Protoss are more technology/robotics-based, so that's the race that I am going to at least start out playing with. It only seems fitting since we're coding an AI here.</p>
 
-<p>For the Protoss, the following diagram breaks down all of the buildings and units that you can create:</p>
 
-<img class="responsive-img" src="../static/images/machine-learning/starcraft-ii-protoss-breakdown.png" alt="python tutorials" />
 
-<p>The source for this image is <a href="https://liquipedia.net/starcraft2/Protoss_Units_(Legacy_of_the_Void)" target="blank"><strong>Protoss Units</strong></a>, and is a fairly useful resource if you have no idea what you are doing in the actual game, like me.</p>
+                    <br>
+                    <h2>Introduction and Collecting Minerals - Python AI in StarCraft II p.1</h2>
+                    <br>
 
-<p>As you can see, this is a tree-diagram, where one thing leads often to another. So, to build a "High Templar," you first must have a Nexus (you start with this, it's like your "command center"). From here, you build a Gateway, then a Cybernetics Core, then a Twilight Council, THEN Templar Archives.</p>
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/v3LJ6VvpfgI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
 
-<p>Buildings, workers, and fighters all cost you resources and, arguably the most important element: Time. Even just considering your chosen path to the types of buildings, upgrades, and units, things are already getting fairly complex, but then we also engage in battles on a large variety of maps with different topologies. Some maps are more open, while others have far fewer paths you could take across it, you need to determine which areas to safely expand your base to...etc.</p>
 
-<p>Finally, the enemy player is an obviously large factor too. Are they rushing you? Are they leaving you alone and amassing an army? What race are they? Are they researching upgrades? How much expansion have they done? ...and a whole lot more. Despite looking like a fairly simple game on the exterior, it's actually an extremely complex and competitive game.</p>
 
-<p>I wont spend too much time explaining the game from here, since I am not an expert. All I did to pick up the game enough was just code basic bots, run them in real-time, and then make various changes in real-time to see what worked next well, then I would code that in, and repeat. Eventually, you can run games as fast as possible, and iterate quite fast.</p>
 
-<p>First, you will need to get StarCraft II. The game is now free, so you just need to sign up for an account, grab the client, and install the game from here: <a href="https://us.battle.net/account/download/" target="blank"><strong>Download Clients</strong></a>.</p>
 
-<p>Next, I am going to be using <a href="https://github.com/Dentosal/python-sc2" target="blank"><strong>python-sc2</strong></a>. There's also <code>pysc2</code>, which is DeepMind's Python wrapper. I am going with <code>python-sc2</code> for now, since I think it's an easier one to pick up, but <code>pysc2</code> is more suitable most likely for deep-learning bots, since there are quite a few handy things pre-built for us there. Anyway, make sure to do <code>pip install sc2</code></p>
 
-<p>As of the release of Python 3.7, certain things have broken, namely websockets. If you're having trouble, try to use Python 3.6 instead!</p>
 
-<p>Now you are going to need maps!</p>
+                    <br>
 
-<p>Head to the <a href="https://github.com/Blizzard/s2client-proto#map-packs" target="blank"><strong>Map Packs section of the Blizzard s2client</strong></a> and download some maps. I downloaded all of them, but you don't need to necessarily get them all. Once you have some maps in archives, extract them to a <code>Maps</code> directory from within your <code>StarCraft II</code> directory. Each set of maps should be in a *subdirectory* of the <code>Maps</code> directory. For example, the file structure should be something like:</p>
+                    <p>Welcome to a tutorial series where we will be creating Python bots and AI for the game: StarCraft II. Around mid 2017, DeepMind and Blizzard (the creators of StarCraft II) announced a partnership and API for interacting with the strategy
+                        game.</p>
 
-<pre class="prettyprint lang-py">
+                    <p>Prior to this point, I had never actually played StarCraft II myself, but I have played many similar games like Command and Conquer and Age of Empires. The point of the games are to put you against other players, or computers, where
+                        you start with a "base," which allows you to build basic units that collect resources. From here, you can build more buildings that unlock new units, like combat units, and then you can do things like purchase/research upgrades
+                        for units or for even better units. Eventually, your objective is to amass an army to take out your opponent(s). In StarCraft II, there are 3 "races:" Terran, Protoss, and Zerg. The Protoss are more technology/robotics-based, so
+                        that's the race that I am going to at least start out playing with. It only seems fitting since we're coding an AI here.</p>
+
+                    <p>For the Protoss, the following diagram breaks down all of the buildings and units that you can create:</p>
+
+                    <img class="responsive-img" src="../static/images/machine-learning/starcraft-ii-protoss-breakdown.png" alt="python tutorials" />
+
+                    <p>The source for this image is <a href="https://liquipedia.net/starcraft2/Protoss_Units_(Legacy_of_the_Void)" target="blank"><strong>Protoss Units</strong></a>, and is a fairly useful resource if you have no idea what you are doing in
+                        the actual game, like me.</p>
+
+                    <p>As you can see, this is a tree-diagram, where one thing leads often to another. So, to build a "High Templar," you first must have a Nexus (you start with this, it's like your "command center"). From here, you build a Gateway, then
+                        a Cybernetics Core, then a Twilight Council, THEN Templar Archives.</p>
+
+                    <p>Buildings, workers, and fighters all cost you resources and, arguably the most important element: Time. Even just considering your chosen path to the types of buildings, upgrades, and units, things are already getting fairly complex,
+                        but then we also engage in battles on a large variety of maps with different topologies. Some maps are more open, while others have far fewer paths you could take across it, you need to determine which areas to safely expand your
+                        base to...etc.</p>
+
+                    <p>Finally, the enemy player is an obviously large factor too. Are they rushing you? Are they leaving you alone and amassing an army? What race are they? Are they researching upgrades? How much expansion have they done? ...and a whole
+                        lot more. Despite looking like a fairly simple game on the exterior, it's actually an extremely complex and competitive game.</p>
+
+                    <p>I wont spend too much time explaining the game from here, since I am not an expert. All I did to pick up the game enough was just code basic bots, run them in real-time, and then make various changes in real-time to see what worked
+                        next well, then I would code that in, and repeat. Eventually, you can run games as fast as possible, and iterate quite fast.</p>
+
+                    <p>First, you will need to get StarCraft II. The game is now free, so you just need to sign up for an account, grab the client, and install the game from here: <a href="https://us.battle.net/account/download/" target="blank"><strong>Download Clients</strong></a>.</p>
+
+                    <p>Next, I am going to be using <a href="https://github.com/Dentosal/python-sc2" target="blank"><strong>python-sc2</strong></a>. There's also <code>pysc2</code>, which is DeepMind's Python wrapper. I am going with <code>python-sc2</code>                        for now, since I think it's an easier one to pick up, but <code>pysc2</code> is more suitable most likely for deep-learning bots, since there are quite a few handy things pre-built for us there. Anyway, make sure to do <code>pip install sc2</code></p>
+
+                    <p>As of the release of Python 3.7, certain things have broken, namely websockets. If you're having trouble, try to use Python 3.6 instead!</p>
+
+                    <p>Now you are going to need maps!</p>
+
+                    <p>Head to the <a href="https://github.com/Blizzard/s2client-proto#map-packs" target="blank"><strong>Map Packs section of the Blizzard s2client</strong></a> and download some maps. I downloaded all of them, but you don't need to necessarily
+                        get them all. Once you have some maps in archives, extract them to a <code>Maps</code> directory from within your <code>StarCraft II</code> directory. Each set of maps should be in a *subdirectory* of the <code>Maps</code> directory.
+                        For example, the file structure should be something like:</p>
+
+                    <pre class="prettyprint lang-py">
 StarCraft II
 -Maps
 --Ladder2017Season1
 ---AbyssalReefLE.SC2Map
 </pre>
 
-<p>If you installed StarCraft II to a custom directory/drive, then you will need to go into your 3rd party packages in Python, go to <code>sc2/paths.py</code>, and change the <code>basedir</code> value to match yours. Once you have the maps and the game, you're ready to rumble! Let's go over a basic example!</p>
+                    <p>If you installed StarCraft II to a custom directory/drive, then you will need to go into your 3rd party packages in Python, go to <code>sc2/paths.py</code>, and change the <code>basedir</code> value to match yours. Once you have the
+                        maps and the game, you're ready to rumble! Let's go over a basic example!</p>
 
-<p>To begin, let's make some imports that we will be using:</p>
+                    <p>To begin, let's make some imports that we will be using:</p>
 
-<pre class="prettyprint lang-py">import sc2
+                    <pre class="prettyprint lang-py">import sc2
 from sc2 import run_game, maps, Race, Difficulty
 from sc2.player import Bot, Computer</pre>
 
-<p>Everything here is just from the python-sc2 package to make our lives easier, including things like running games, picking races, and setting up our opponent.</p>
+                    <p>Everything here is just from the python-sc2 package to make our lives easier, including things like running games, picking races, and setting up our opponent.</p>
 
-<p>Next, we need to create our bot's class. I am going to call my bot <code>SentdeBot</code>, but you can call your bot whatever you like! Our bot will inherit from the <code>sc2.BotAI</code> class. You can learn more about this class by heading to <code>sc2/bot_ai.py</code>. Here, you can see there are quite a few methods here. Things like <code>known_enemy_units</code> look fairly useful! Our bot's class will begin as:</p>
+                    <p>Next, we need to create our bot's class. I am going to call my bot <code>SentdeBot</code>, but you can call your bot whatever you like! Our bot will inherit from the <code>sc2.BotAI</code> class. You can learn more about this class
+                        by heading to <code>sc2/bot_ai.py</code>. Here, you can see there are quite a few methods here. Things like <code>known_enemy_units</code> look fairly useful! Our bot's class will begin as:</p>
 
-<pre class="prettyprint lang-py">class SentdeBot(sc2.BotAI):</pre>
+                    <pre class="prettyprint lang-py">class SentdeBot(sc2.BotAI):</pre>
 
-<p>So in the game, we obviously want to amass an army and annihilate our enemies. In order to do that, however, we first need resources. In StarCraft, that's minerals and gas. For minerals, we just need to mine them with workers. We start with 12 workers. For the <code>Protoss</code> race that we are, our "workers" are called Probes. Our first order of business should be to spread these workers evenly across your jobs. For example, you would want no more than 3 workers per patch of minerals, as having any more will not yield minerals any quicker. Luckily for us, the <code>sc2.BotAI</code> parent class has a method called <code>distribute_workers</code> that does just this for us! So, at every step, we'd like to make sure our workers are indeed distributed:</p>
+                    <p>So in the game, we obviously want to amass an army and annihilate our enemies. In order to do that, however, we first need resources. In StarCraft, that's minerals and gas. For minerals, we just need to mine them with workers. We start
+                        with 12 workers. For the <code>Protoss</code> race that we are, our "workers" are called Probes. Our first order of business should be to spread these workers evenly across your jobs. For example, you would want no more than 3
+                        workers per patch of minerals, as having any more will not yield minerals any quicker. Luckily for us, the <code>sc2.BotAI</code> parent class has a method called <code>distribute_workers</code> that does just this for us! So,
+                        at every step, we'd like to make sure our workers are indeed distributed:</p>
 
-<pre class="prettyprint lang-py">class SentdeBot(sc2.BotAI):
+                    <pre class="prettyprint lang-py">class SentdeBot(sc2.BotAI):
     async def on_step(self, iteration):
         # what to do every step
         await self.distribute_workers()  # in sc2/bot_ai.py</pre>
 
-<p>The <code>async</code> keyword is used to make these asynchronous methods, so we don't need to wait on each one to complete to be doing other things. Don't let the <code>async</code> keyword trip you up. You can learn more about <a href="../asyncio-basics-intermediate-python-tutorial/index.html" target="blank"><strong>Asyncio here</strong></a> if you like.</p>
+                    <p>The <code>async</code> keyword is used to make these asynchronous methods, so we don't need to wait on each one to complete to be doing other things. Don't let the <code>async</code> keyword trip you up. You can learn more about
+                        <a
+                            href="../asyncio-basics-intermediate-python-tutorial/index.html" target="blank"><strong>Asyncio here</strong></a> if you like.</p>
 
-<p>Let's assume that all we wanted to do was distribute our workers in games. In that case, we're done! To run the game, we will use <code>run_game</code>. This function first takes the map you want to run, then a list of the players. After this, you can specify whether or not you want the game to be played in real-time (basically, regular speed or super fast).</p>
+                    <p>Let's assume that all we wanted to do was distribute our workers in games. In that case, we're done! To run the game, we will use <code>run_game</code>. This function first takes the map you want to run, then a list of the players.
+                        After this, you can specify whether or not you want the game to be played in real-time (basically, regular speed or super fast).</p>
 
-<pre class="prettyprint lang-py">run_game(maps.get("AbyssalReefLE"), [
+                    <pre class="prettyprint lang-py">run_game(maps.get("AbyssalReefLE"), [
     Bot(Race.Protoss, SentdeBot()),
     Computer(Race.Terran, Difficulty.Easy)
 ], realtime=True)</pre>
 
-<p>So we're going to be playing on the <code>AbyssalReefLE</code> map. The players will be a <code>Bot</code>, which is the <code>Protoss</code> race, and the bot class is <code>SentdeBot</code>. The next and final player is the <code>Computer</code>, which is of the <code>Terran</code> race and easy difficulty.</p>
+                    <p>So we're going to be playing on the <code>AbyssalReefLE</code> map. The players will be a <code>Bot</code>, which is the <code>Protoss</code> race, and the bot class is <code>SentdeBot</code>. The next and final player is the <code>Computer</code>,
+                        which is of the <code>Terran</code> race and easy difficulty.</p>
 
-<p>Run this, and the game should eventually come up and your bot will be off to work!</p>
+                    <p>Run this, and the game should eventually come up and your bot will be off to work!</p>
 
 
 
-<div class="video-container">
-    <video controls>
+                    <div class="video-container">
+                        <video controls>
         <source src="../static/images/machine-learning/basic-starcraft-ii-bot.mp4" type="video/mp4"></video>
-    </video>
-</div>
+                        </video>
+                    </div>
 
-<p>Full code up to this point:</p>
+                    <p>Full code up to this point:</p>
 
-<pre class="prettyprint lang-py">import sc2
+                    <pre class="prettyprint lang-py">import sc2
 from sc2 import run_game, maps, Race, Difficulty
 from sc2.player import Bot, Computer
 
@@ -137,306 +159,260 @@ run_game(maps.get("AbyssalReefLE"), [
 </pre>
 
 
-<p>I hate to break it to you, but this isn't going to be winning you any games! But hey, you have a bot! In the next tutorial, we're going to work on adding more functionality to our bot so we can eventually start winning some games.</p>
-
-
-
-
-        
-
-		
-
-		
-		
-
-
-
-		<p>The next tutorial: <a title="Workers and Pylons - Python AI in StarCraft II p.2" href="../workers-pylons-starcraft-ii-ai-python-sc2-tutorial/index03f2.html?completed=/starcraft-ii-ai-python-sc2-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Workers and Pylons - Python AI in StarCraft II p.2</button></a></p>
-
-		
+                    <p>I hate to break it to you, but this isn't going to be winning you any games! But hey, you have a bot! In the next tutorial, we're going to work on adding more functionality to our bot so we can eventually start winning some games.</p>
 
 
 
 
 
-<br>
-	  </div>
 
-</div>
-<div class="col l4 m12 s12">
-<br><br><br>
 
-  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
 
-  		<!-- C.A. : -->
 
-	    
-	    	
-        <a href="https://nnfs.io?a=5&amp;t=/starcraft-ii-ai-python-sc2-tutorial/" id=process_click>
-          <div class="card hoverable" style="max-width:400px; align-items: left;">
-            <div class="card-image">
-              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+
+
+
+
+                    <p>The next tutorial: <a title="Workers and Pylons - Python AI in StarCraft II p.2" href="../workers-pylons-starcraft-ii-ai-python-sc2-tutorial/index03f2.html?completed=/starcraft-ii-ai-python-sc2-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Workers and Pylons - Python AI in StarCraft II p.2</button></a></p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
             </div>
-          </div>
-        </a>
- 
-							
-							    <li>
-								  <div class="collapsible-header active" style="padding:2px">Introduction and Collecting Minerals - Python AI in StarCraft II p.1</div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
 
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Workers and Pylons - Python AI in StarCraft II p.2</div>
-								  <div class="collapsible-body">
-										<p><a href="../workers-pylons-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Geysers and Expanding - Python AI in StarCraft II p.3</div>
-								  <div class="collapsible-body">
-										<p><a href="../geysers-expanding-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Building an AI Army - Python AI in StarCraft II p.4</div>
-								  <div class="collapsible-body">
-										<p><a href="../building-army-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Commanding your AI Army - Python AI in StarCraft II p.5</div>
-								  <div class="collapsible-body">
-										<p><a href="../commanding-army-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Defeating Hard AI - Python AI in StarCraft II p.6</div>
-								  <div class="collapsible-body">
-										<p><a href="../hard-ai-defeat-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Deep Learning with SC2 Intro - Python AI in StarCraft II p.7</div>
-								  <div class="collapsible-body">
-										<p><a href="../deep-learning-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Scouting and more Visual inputs - Python AI in StarCraft II p.8</div>
-								  <div class="collapsible-body">
-										<p><a href="../scouting-visual-input-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Building our training data - Python AI in StarCraft II p.9</div>
-								  <div class="collapsible-body">
-										<p><a href="../building-neural-network-training-data-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Building Neural Network Model - Python AI in StarCraft II p.10</div>
-								  <div class="collapsible-body">
-										<p><a href="../building-neural-network-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Training Neural Network Model - Python AI in StarCraft II p.11</div>
-								  <div class="collapsible-body">
-										<p><a href="../training-neural-network-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Using Neural Network Model - Python AI in StarCraft II p.12</div>
-								  <div class="collapsible-body">
-										<p><a href="../using-neural-network-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Version 2 Changes - Python AI in StarCraft II p.13</div>
-								  <div class="collapsible-body">
-										<p><a href="../version-2-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Improving Scouting - Python AI in StarCraft II p.14</div>
-								  <div class="collapsible-body">
-										<p><a href="../better-scouting-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Adding Choices - Python AI in StarCraft II p.15</div>
-								  <div class="collapsible-body">
-										<p><a href="../more-choices-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Visualization Changes - Python AI in StarCraft II p.16</div>
-								  <div class="collapsible-body">
-										<p><a href="../visual-changes-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">More Training and Findings - Python AI in StarCraft II p.17</div>
-								  <div class="collapsible-body">
-										<p><a href="../stage2-training-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-  </ul>
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
 
-
-</div>
-</div>
+                    <!-- C.A. : -->
 
 
 
-			</div>
-		</div>
+                    <a href="https://nnfs.io?a=5&amp;t=/starcraft-ii-ai-python-sc2-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
 
-		<!--login modal-->
-		
 
-		<!--Register modal-->
-		
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction and Collecting Minerals - Python AI in StarCraft II p.1</div>
+
+                    </li>
 
 
-		<script>
-			$(document).ready(function(){
-				$(".button-collapse").sideNav();
-				$('.modal-trigger').leanModal();
-				$('.collapsible').collapsible({
-				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-				});
-				$('#aside').pushpin({ top:110, bottom:500 });
-		  });
-		</script>
-		<script>
-		  $(document).ready(function(){
-			$('.collapsible').collapsible({
-			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-			});
-			$('select').material_select();
-		  });
-	  </script>
-	  <script>
-		function goBack() {
-			window.history.back()
-		}
-	</script>
-		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
 
-	</body>
+                    <li>
+                        <div class="collapsible-header">Workers and Pylons - Python AI in StarCraft II p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../workers-pylons-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
 
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
 
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+
+                    <li>
+                        <div class="collapsible-header">Geysers and Expanding - Python AI in StarCraft II p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../geysers-expanding-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Building an AI Army - Python AI in StarCraft II p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../building-army-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Commanding your AI Army - Python AI in StarCraft II p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../commanding-army-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Defeating Hard AI - Python AI in StarCraft II p.6</div>
+                        <div class="collapsible-body">
+                            <p><a href="../hard-ai-defeat-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Learning with SC2 Intro - Python AI in StarCraft II p.7</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deep-learning-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Scouting and more Visual inputs - Python AI in StarCraft II p.8</div>
+                        <div class="collapsible-body">
+                            <p><a href="../scouting-visual-input-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Building our training data - Python AI in StarCraft II p.9</div>
+                        <div class="collapsible-body">
+                            <p><a href="../building-neural-network-training-data-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Building Neural Network Model - Python AI in StarCraft II p.10</div>
+                        <div class="collapsible-body">
+                            <p><a href="../building-neural-network-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Training Neural Network Model - Python AI in StarCraft II p.11</div>
+                        <div class="collapsible-body">
+                            <p><a href="../training-neural-network-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Using Neural Network Model - Python AI in StarCraft II p.12</div>
+                        <div class="collapsible-body">
+                            <p><a href="../using-neural-network-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Version 2 Changes - Python AI in StarCraft II p.13</div>
+                        <div class="collapsible-body">
+                            <p><a href="../version-2-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Improving Scouting - Python AI in StarCraft II p.14</div>
+                        <div class="collapsible-body">
+                            <p><a href="../better-scouting-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Adding Choices - Python AI in StarCraft II p.15</div>
+                        <div class="collapsible-body">
+                            <p><a href="../more-choices-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Visualization Changes - Python AI in StarCraft II p.16</div>
+                        <div class="collapsible-body">
+                            <p><a href="../visual-changes-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">More Training and Findings - Python AI in StarCraft II p.17</div>
+                        <div class="collapsible-body">
+                            <p><a href="../stage2-training-starcraft-ii-ai-python-sc2-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
                 </ul>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h6 class="white-text">Legal stuff:</h6>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
 
-                </ul>
-              </div>
-            </div>
-          </div>
-          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
-          <div class="footer-copyright">
-            <div class="container">
-            © OVER 9000! PythonProgramming.net
 
             </div>
-
-          </div>
-        </footer>
+        </div>
 
 
-<!-- Mirrored from pythonprogramming.net/starcraft-ii-ai-python-sc2-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:09 GMT -->
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-

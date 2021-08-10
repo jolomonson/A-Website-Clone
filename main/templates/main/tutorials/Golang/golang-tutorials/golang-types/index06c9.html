@@ -1,0 +1,2558 @@
+<html>
+	
+<!-- Mirrored from pythonprogramming.net/go/types-go-language-programming-tutorial/?completed=/go/syntax-go-language-programming-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:49:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+
+		<!--
+		palette:
+		dark blue: #003F72
+		yellow: #FFD166
+		salmon: #EF476F
+		offwhite: #e7d7d7
+		Light Blue: #118AB2
+		Light green: #7DDF64
+		-->
+
+		<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+		<title>Python Programming Tutorials</title>
+
+		<meta name="description" content="Python Programming tutorials from beginner to advanced on a massive variety of topics. All video and text tutorials are free.">
+
+		<link rel="shortcut icon" href="../../static/favicon.ico">
+		<link rel="stylesheet" href="../../static/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="google-site-verification" content="3fLok05gk5gGtWd_VSXbSSSH27F2kr1QqcxYz9vYq2k" />
+        <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.css">
+
+
+		  <!-- Compiled and minified CSS -->
+
+		<!-- Compiled and minified JavaScript -->
+
+		<script src="../../../code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="../../../cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+
+
+
+        <style>
+		@media (min-width:992px) {
+		#aside {
+			width:250px;
+		}
+		pre { tab-size: 4;}
+		.btn {background-color:#FFD166;
+			  color:#000;
+		      height:auto;
+			  font-color:#000;
+			  }
+		.btn:hover {background-color:#FFD166;
+					}
+
+
+		</style>
+
+		<!-- Google Tracking -->
+		<script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
+              ga('config', 'UA-51891827-1', {'anonymize_ip': true});﻿
+			  ga('create', 'UA-51891827-1', 'auto');
+			  ga('send', 'pageview');
+
+		</script>
+
+            
+                
+                    <script async src="../../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({
+                              google_ad_client: "ca-pub-1579050400541873",
+                              enable_page_level_ads: true
+                         });
+                    </script>
+                
+            
+
+
+
+
+	</head>
+
+	<body>
+
+		<div class="navbar-fixed">
+			<nav style="background-color:#003F72">
+				<div class="nav-wrapper container">
+					<a href="../../index.html" class="brand-logo"><img class="img-responsive" style="width:50px; height;50px; margin-top:5px" src="../../static/images/mainlogowhitethick.jpg"></a>
+					<a href="#" data-activates="navsidebar" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+					<ul class="right hide-on-med-and-down">
+					<li><i class="material-icons">search</i></li>
+					<li>
+						<form method='get' id='searchform' style='height:50px; padding-top:10px' action='https://pythonprogramming.net/search/?l=hi'>
+							<input name='q' id="search" type="search" placeholder="search"  style='font-size:16px'>
+						</form>
+					</li>
+						
+			<li><a href="../../index.html">Home</a></li>
+			<li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="sudo apt-get upgrade" href="../../%2b%3d1/index.html">+=1</a></li>
+			<!--<li><a href="/store/python-hoodie/">Store</a></li>-->
+			<li><a href="../../support/index.html">Support the Content</a></li>
+			
+			<li><a href="https://goo.gl/7zgAVQ" target='blank'><!--<i class="material-icons">question_answer</i>-->Community</a></li>
+				<li><a href="../../login/index.html">Log in</a></li>
+                <li><a href="../../register/index.html">Sign up</a></li>
+			
+
+					</ul>
+					<ul class="side-nav" id="navsidebar">
+					<li>
+						<form method='get' id='searchform' style='height:50px; padding-top:10px' action='https://pythonprogramming.net/search/?l=hi'>
+							<input name='q' id="search" type="search" placeholder="search"  style='font-size:16px'>
+						</form>
+					</li>
+						
+			<li><a href="../../index.html">Home</a></li>
+			<li><a class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="sudo apt-get upgrade" href="../../%2b%3d1/index.html">+=1</a></li>
+			<!--<li><a href="/store/python-hoodie/">Store</a></li>-->
+			<li><a href="../../support/index.html">Support the Content</a></li>
+			
+			<li><a href="https://goo.gl/7zgAVQ" target='blank'><!--<i class="material-icons">question_answer</i>-->Community</a></li>
+				<li><a href="../../login/index.html">Log in</a></li>
+                <li><a href="../../register/index.html">Sign up</a></li>
+			
+
+					</ul>
+				</div>
+			</nav>
+		</div>
+
+
+
+		<!-- main content -->
+		<div class="container" style="max-width:1500px; min-height:100%">
+			<!--Notification:-->
+            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+            <!--End Notification:-->
+
+					
+					
+					  
+					
+
+					
+<!--       <pre class="prettyprint">              width="750" height="423"    -->
+<body class="body">
+    <div class="row">
+    <div class="col l8 m12 s12">
+
+
+      <div class="container-fluid" align="left" >
+		
+
+
+
+
+
+
+
+		<br>
+		<h2>Go Language Types</h2>
+		<br>
+	  
+		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/ZCceigT2A6I" frameborder="0" allowfullscreen></iframe></div><br>
+		
+
+
+
+
+
+
+		<br>
+	  
+<p>Welcome to part 3 of the Go programming tutorial series. In the previous tutorial, we covered some basics on imports and functions. Next, we're going to talk a bit about types in Go. As mentioned in the first tutorial, Go is a static-typed language, meaning you need to specify the type, and the type cannot change without you explicitly changing it.</p>
+
+<p>Let's consider a function that adds some numbers together. To do this, our function will look for 2 numbers, and we know it will return a number. With typing, all variables and parameters need types. If you have a function that returns something, you also need to specify the type. Here's a list of the Go language types:</p>
+
+<pre>bool
+
+string
+
+int  int8  int16  int32  int64
+uint uint8 uint16 uint32 uint64 uintptr
+
+byte // alias for uint8
+
+rune // alias for int32
+     // represents a Unicode code point
+
+float32 float64
+
+complex64 complex128</pre>
+
+<p>Source: <a href="https://tour.golang.org/basics/11" target="blank"><strong>golang.org</strong></a></p>
+
+<p>We'll use float64 in this case to make a point. In many cases, float32 is a superior choice, especially with a language like Go, which is centered around high performance and scale. Unless you need the high precision of float64, float32 might be a better "default" choice. To begin, let's start our script and build the <code>add</code> function:</p>
+
+<pre class="prettyprint lang-go">package main
+
+import "fmt"
+
+
+func add(x float64, y float64) float64 {
+	return x+y
+}</pre>
+
+<p>Every variable and parameter needs to have a type defined with it. <code>x float64, y float64</code> means our <code>x</code> and <code>y</code> parameters will be float64. The <code>float64</code> outside of the parenthesis and before the curly brace is the type for the return. If there are multiple items in the turn, then you would encase the types of the return in parenthesis after the parameters. Next, we can build our <code>main</code> function:</p>
+
+<pre class="prettyprint lang-py">func main() {
+	var num1 float64 = 5.6
+	var num2 float64 = 9.5
+
+    fmt.Print(add(num1,num2))
+}</pre>
+
+
+<p>Notice how we're defining our variables in the function. The full script up to this point:</p>
+
+<pre class="prettyprint lang-go">package main
+
+import "fmt"
+
+
+func add(x float64, y float64) float64 {
+	return x+y
+}
+
+func main() {
+	var num1 float64 = 5.6
+	var num2 float64 = 9.5
+
+    fmt.Print(add(num1,num2))
+}</pre>
+
+<p>If we run this: <code>go run whateveryoucalledit.go</code>, you should get 15.1 as the return in your console.</p>
+
+<p>Easy enough, but we can clean this up quite a bit. Any time in programming where you find yourself repeating similar lines, you could probably do it better. For example, in our <code>add function:</code>, we define two parameters which have the same type. If you have a situation like this, you can list out all the same-typed parameters or variables, followed at the very end with their type, like: </p>
+
+<pre class="prettyprint lang-go">func add(x, y float64)</pre>
+
+<p>We could do the same thing in our <code>main</code> function as well, with the variables:</p>
+
+<pre class="prettyprint lang-go">func main() {
+	var num1, num2 float64 = 5.6, 9.5
+    fmt.Print(add(num1,num2))
+}</pre>
+
+<p>There may be times when you want to prepare some variables, to be populated later. You can also do something like <code>var num1 float64</code>, and then assign it a value later. When you define, if you don't assign a value, strings default to <code>""</code>, booleans default to <code>false</code> and numerical types default to <code>0</code>.</p>
+
+<p>Finally, within functions, we can actually not assign typing, and just define variables like we might in a dynamically-typed language, using <code>:=</code> as the assignment operator. In our case, this would be something like:</p>
+
+<pre class="prettyprint lang-go">func main() {
+	num1, num2 := 5.6, 9.5
+    fmt.Print(add(num1,num2))
+}</pre>
+
+<p>"HEY! You said Go was static-typed!" Outside of your functions, you will need to define explicitly data types. Inside your functions, Go can figure out your types when compiled, but the assigned types *cannot* be changed without being explicitly converted. In some cases, this can cause you trouble if you're not careful. For now, our full script is: </p>
+
+<pre class="prettyprint lang-go">package main
+
+import "fmt"
+
+
+func add(x, y float64) float64 {
+	return x+y
+}
+
+func main() {
+	num1, num2 := 5.6, 9.5
+    fmt.Print(add(num1,num2))
+}</pre>
+
+<p>Cool, but what if we were using float32 instead? </p>
+
+<pre class="prettyprint lang-go">package main
+
+import "fmt"
+
+
+func add(x, y float32) float32 {
+	return x+y
+}
+
+func main() {
+	num1, num2 := 5.6, 9.5
+    fmt.Print(add(num1,num2))
+}</pre>
+
+<p>Running this returns an error:</p>
+<pre># command-line-arguments
+.\gotut3-functions-types.go:12: cannot use num1 (type float64) as type float32 in argument to add
+.\gotut3-functions-types.go:12: cannot use num2 (type float64) as type float32 in argument to add</pre>
+
+<p>This error is telling us that we're attempting to treat a float64 as a float32, and we can't do that. We never assigned float64 to our variables, but this is what Go automatically went with.</p>
+
+<p>Since I just mentioned it, but didn't show it, if you have a function that returns multiple values, you specify their types inside parenthesis like so: </p>
+<pre class="prettyprint lang-go">func multiple(a,b string) (string,string) {
+	return a,b
+}</pre>
+
+<p>We could use it like so:</p>
+
+<pre class="prettyprint lang-go">package main
+
+import "fmt"
+
+
+func multiple(a,b string) (string,string) {
+	return a,b
+}
+
+func main() {
+	w1,w2 := multiple("Hey","there")
+	fmt.Println(w1,w2)
+}</pre>
+
+<p>Note our use of double quotes, not singles. If you use single quotes, you will see: <code>.\yourgofilename.go:11: missing '</code></p>
+
+<p>In case it's not obvious, you see the filename, the line #, and then the error in the error messages.</p>
+
+<p>If you wanted to convert the types of a variable:</p>
+
+<pre class="prettyprint lang-go">
+	var a int = 62
+	var b float64 = float64(a)
+</pre>
+
+<p>Finally, type inference works in Go:</p>
+
+<pre class="prettyprint lang-go">
+	var x float32
+	y := x // y is float32 type
+</pre>
+
+
+
+        
+
+		
+
+		
+		
+
+
+                
+		<p>The next tutorial: <a title="Pointers in Go Programming" href="../pointers-go-language-programming-tutorial/index1421.html?completed=/go/types-go-language-programming-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Pointers in Go Programming</button></a></p>
+
+		
+
+
+
+
+
+<br>
+	  </div>
+
+</div>
+<div class="col l4 m12 s12">
+<br><br><br>
+
+  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+  		<!-- C.A. : -->
+
+	    
+	    	
+        <a href="https://nnfs.io?a=5&amp;t=/go/types-go-language-programming-tutorial/" id=process_click>
+          <div class="card hoverable" style="max-width:400px; align-items: left;">
+            <div class="card-image">
+              <img id=process_click class="responsive-img" src="../../static/images/CAs/nnfs-1.png"/>
+            </div>
+          </div>
+        </a>
+        
+		
+
+  		<!--HONLY -->
+
+  	    
+
+
+
+	
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+
+				     
+						 
+							
+								<li>
+								  <div class="collapsible-header">Introduction to the Go Programming Language</div>
+								  <div class="collapsible-body">
+										<p><a href="../introduction-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Go Language Syntax</div>
+								  <div class="collapsible-body">
+										<p><a href="../syntax-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+							    <li>
+								  <div class="collapsible-header active" style="padding:2px">Go Language Types</div>
+
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Pointers in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../pointers-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Simple Web App in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../web-app-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Structs in the Go Programming Language</div>
+								  <div class="collapsible-body">
+										<p><a href="../structs-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Methods in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../methods-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Pointer Receivers in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../pointer-receivers-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">More Web Dev in Go Language</div>
+								  <div class="collapsible-body">
+										<p><a href="../more-web-dev-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Acessing the Internet in Go</div>
+								  <div class="collapsible-body">
+										<p><a href="../parsing-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Parsing XML with Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../parsing-xml-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Looping in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../looping-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Continuing our Go Web application</div>
+								  <div class="collapsible-body">
+										<p><a href="../looping-sitemap-data-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Mapping in Golang</div>
+								  <div class="collapsible-body">
+										<p><a href="../mapping-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Mapping Golang sitemap data</div>
+								  <div class="collapsible-body">
+										<p><a href="../mapping-sitemap-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Golang Web App HTML Templating</div>
+								  <div class="collapsible-body">
+										<p><a href="../templating-webapp-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Applying templating to our Golang web app</div>
+								  <div class="collapsible-body">
+										<p><a href="../template-news-aggregator-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Goroutines - Concurrency in Goprogramming</div>
+								  <div class="collapsible-body">
+										<p><a href="../goroutines-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Synchronizing Goroutines - Concurrency in Golang</div>
+								  <div class="collapsible-body">
+										<p><a href="../sync-goroutines-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Defer - Golang</div>
+								  <div class="collapsible-body">
+										<p><a href="../defer-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Panic and Recover in Go Programming</div>
+								  <div class="collapsible-body">
+										<p><a href="../panic-recover-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Go Channels - Concurrency in Go</div>
+								  <div class="collapsible-body">
+										<p><a href="../channels-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Go Channels buffering, iteration, and synchronization</div>
+								  <div class="collapsible-body">
+										<p><a href="../channel-buffer-range-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+							
+								<li>
+								  <div class="collapsible-header">Adding Concurrency to speed up our Golang Web Application</div>
+								  <div class="collapsible-body">
+										<p><a href="../concurrency-web-app-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+								  </div>
+								</li>
+							
+						 
+					  
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+			   
+				  
+			   
+			
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+				  
+			   
+			
+
+  </ul>
+
+
+</div>
+</div>
+
+
+
+			</div>
+		</div>
+
+		<!--login modal-->
+		
+
+		<!--Register modal-->
+		
+
+
+		<script>
+			$(document).ready(function(){
+				$(".button-collapse").sideNav();
+				$('.modal-trigger').leanModal();
+				$('.collapsible').collapsible({
+				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+				});
+				$('#aside').pushpin({ top:110, bottom:500 });
+		  });
+		</script>
+		<script>
+		  $(document).ready(function(){
+			$('.collapsible').collapsible({
+			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+			});
+			$('select').material_select();
+		  });
+	  </script>
+	  <script>
+		function goBack() {
+			window.history.back()
+		}
+	</script>
+		<script type="text/javascript" src="../../static/js/run_prettify.js"></script>
+
+	</body>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../../support-donate/index.html">Support this Website!</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../../consulting/index.html">Consulting and Contracting</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="../../about/tos/index.html">Terms and Conditions</a></li>
+                  <li><a class="grey-text text-lighten-3" href="../../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
+          <div class="footer-copyright">
+            <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+            </div>
+
+          </div>
+        </footer>
+
+
+<!-- Mirrored from pythonprogramming.net/go/types-go-language-programming-tutorial/?completed=/go/syntax-go-language-programming-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:49:17 GMT -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

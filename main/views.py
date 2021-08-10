@@ -75,7 +75,7 @@ def gamedevelopmenttutorials(request):
     return render(request, 'main/tutorials/GameDevelopment/game-development/index.html')
 #Python Fundamentals
 def pythonfundamentaltutorials(request):
-    return render(request, 'main/tutorials/PythonFundamentals/python-funds/index.html')
+    return render(request, 'main/tutorials/PythonFundamentals/index.html')
 def pythonbasics(request):
     return render(request, 'main/tutorials/PythonFundamentals/basics/index.html')
 def pythonintermediate(request):
@@ -135,6 +135,9 @@ def golangtutorials(request):
     return render(request, 'main/tutorials/Golang/golang-tutorials/index.html')
 def syntaxgolanguage(request):
     return render(request, 'main/tutorials/Golang/golang-tutorials/syntax-go/index.html')
+def golangtypes(request):
+    return render(request, 'main/tutorials/Golang/golang-tutorials/golang-types/index.html')
+
 
 
 

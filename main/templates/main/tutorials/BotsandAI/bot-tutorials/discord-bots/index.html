@@ -609,17 +609,22 @@
                                     <div class="inner_cell">
                                         <div class="text_cell_render border-box-sizing rendered_html">
                                             <p>Welcome everyone to a DiscordPy tutorial. DiscordPy is a Python package aimed at helping you to make discord bots. For example, I would like to make a bot that searches PythonProgramming.net for tutorials on
-                                                topics people ask about, along with providing server information, handling roles, and other general tasks I often find myself doing on Discord.</p>
+                                                topics people ask about, along with providing server information, handling roles, and other general tasks I often find myself doing on Discord.
+                                            </p>
                                             <p>To begin, we're going to need DiscordPy!</p>
 
                                             <p><code>pip install discordpy</code></p>
 
-                                            <p>Next, I found the documentation to be problematic, not yet fully updated it seemed. I found the best place to figure out what's available is just the API documentation here: <a href="https://discordpy.readthedocs.io/en/latest/">https://discordpy.readthedocs.io/en/rewrite/api.html#</a></p>
-                                            <p>Great, once you have DiscordPy, you need a bot. To have a bot, you need an app. For an app, you'll need a server. If you have none of this, make a server first. Next, we need to head to: <a href="https://discordapp.com/developers/applications/">https://discordapp.com/developers/applications/</a></p>
+                                            <p>Next, I found the documentation to be problematic, not yet fully updated it seemed. I found the best place to figure out what's available is just the API documentation here: <a href="https://discordpy.readthedocs.io/en/latest/">https://discordpy.readthedocs.io/en/rewrite/api.html#</a>
+                                            </p>
+                                            <p>Great, once you have DiscordPy, you need a bot. To have a bot, you need an app. For an app, you'll need a server. If you have none of this, make a server first. Next, we need to head to: <a href="https://discordapp.com/developers/applications/">https://discordapp.com/developers/applications/</a>
+                                            </p>
                                             <p>Log in if you arent yet, then choose to create a new application.</p>
-                                            <p>Pick a name, take note of your <code>Client ID</code>, you will need this later.</p>
+                                            <p>Pick a name, take note of your <code>Client ID</code>, you will need this later.
+                                            </p>
                                             <p>Move down to the <code>Bot</code> choice under the application settings, and choose <code>add bot</code>.</p>
-                                            <p>Choose the settings you want. You probably at least want to be able to:</p>
+                                            <p>Choose the settings you want. You probably at least want to be able to:
+                                            </p>
                                             <p>
                                                 <ol>
                                             </p>
@@ -632,10 +637,13 @@
                                                     </ol>
                                                 </p>
                                                 The other things can be changed later. Your bot will get its own role. Initially, the invite link will have perms preset by your choices here, but later you can add more permissions as you please (server settings &gt; roles &gt; Choose your bot's role
-                                                and edit their permissions here).</p>
+                                                and edit their permissions here).
+                                            </p>
                                             <p>Once you've done this, you'll see a <code>permissions integer</code> at the bottom, take note of this too.</p>
-                                            <p>Now, you're ready to invite your bot to your server. You can do this with:</p>
-                                            <p><a href="https://discordapp.com/oauth2/authorize?client_id={CLIENTID}&amp;scope=bot&amp;permissions={PERMISSIONINT}">https://discordapp.com/oauth2/authorize?client_id={CLIENTID}&amp;scope=bot&amp;permissions={PERMISSIONINT}</a></p>
+                                            <p>Now, you're ready to invite your bot to your server. You can do this with:
+                                            </p>
+                                            <p><a href="https://discordapp.com/oauth2/authorize?client_id={CLIENTID}&amp;scope=bot&amp;permissions={PERMISSIONINT}">https://discordapp.com/oauth2/authorize?client_id={CLIENTID}&amp;scope=bot&amp;permissions={PERMISSIONINT}</a>
+                                            </p>
                                             <p>...replacing <code>{CLIENTID}</code> with the client id you took note of earlier and <code>{PERMISSIONINT}</code> with the permissions integer we just noted.</p>
                                             <p>Visit that link and approve your bot.</p>
                                             <p>Now, let's write the code for the bot!</p>
@@ -648,7 +656,8 @@
 
                                         <div class="inner_cell">
                                             <div class="input_area">
-                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">discord</span>
+                                                <div class=" highlight hl-ipython3">
+                                                    <pre><span></span><span class="kn">import</span> <span class="nn">discord</span>
 <span class="c1">#print(discord.__version__)  # check to make sure at least once you&#39;re on the right version!</span>
 
 <span class="n">token</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;token.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># I&#39;ve opted to just save my token to a text file. </span>
@@ -670,7 +679,8 @@
 
 
 <span class="n">client</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>  <span class="c1"># recall my token was saved!</span>
-</pre></div>
+</pre>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -704,12 +714,14 @@ __init__: Sentdex#7777: Sentdex: He's back now</code></p>
 
                                         <div class="inner_cell">
                                             <div class="input_area">
-                                                <div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@client</span><span class="o">.</span><span class="n">event</span>
+                                                <div class=" highlight hl-ipython3">
+                                                    <pre><span></span><span class="nd">@client</span><span class="o">.</span><span class="n">event</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>  <span class="c1"># event that happens per any message.</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{message.channel}</span><span class="s2">: </span><span class="si">{message.author}</span><span class="s2">: </span><span class="si">{message.author.name}</span><span class="s2">: </span><span class="si">{message.content}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">author</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Sentdex#7777&quot;</span> <span class="ow">and</span> <span class="s2">&quot;hello&quot;</span> <span class="ow">in</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
         <span class="k">await</span> <span class="n">message</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>
-</pre></div>
+</pre>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -721,7 +733,8 @@ __init__: Sentdex#7777: Sentdex: He's back now</code></p>
                                     </div>
                                     <div class="inner_cell">
                                         <div class="text_cell_render border-box-sizing rendered_html">
-                                            <p>Now, if you say "Hello" in some channel, your bot will reply with "Hi!"</p>
+                                            <p>Now, if you say "Hello" in some channel, your bot will reply with "Hi!"
+                                            </p>
                                             <p>Okay, so that's it for a basic introduction, but there's a LOT you can do with this. In the coming videos, I will cover my own creation of a bot, but this will be only a tiny slice of what's available to you,
                                                 and I highly suggest you browse the documentation to see everything you can do. For example, sometimes we like to change eachother's nicknames in Discord. My first bot would change users' nicknames, and
                                                 then change them again if the user tried to change it again, for example. I am a great host.</p>
@@ -750,7 +763,9 @@ __init__: Sentdex#7777: Sentdex: He's back now</code></p>
 
 
                     <p>The next tutorial:
-                        <a title="Building out Bot Commands - making Discord bots with Discordpy 1.0.0 p.2" href="../building-bot-commands-discordpy-bot-tutorial/index80e2.html?completed=/discordpy-basic-bot-tutorial-introduction/"><button class="btn" style="background-color:#FFD166; color:#000000">Building out Bot Commands - making Discord bots with Discordpy 1.0.0 p.2</button></a>
+                        <a title="Building out Bot Commands - making Discord bots with Discordpy 1.0.0 p.2" href="../building-bot-commands-discordpy-bot-tutorial/index80e2.html?completed=/discordpy-basic-bot-tutorial-introduction/"><button
+                                class="btn" style="background-color:#FFD166; color:#000000">Building out Bot Commands -
+                                making Discord bots with Discordpy 1.0.0 p.2</button></a>
                     </p>
 
 
@@ -796,18 +811,23 @@ __init__: Sentdex#7777: Sentdex: He's back now</code></p>
                     <li>
                         <div class="collapsible-header">Building out Bot Commands - making Discord bots with Discordpy 1.0.0 p.2</div>
                         <div class="collapsible-body">
-                            <p><a href="../building-bot-commands-discordpy-bot-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
+                            <p><a href="../building-bot-commands-discordpy-bot-tutorial/index.html"><button
+                                        class="btn waves-effect waves-light right-align"
+                                        style="background-color:#FFD166; color:#000000">Go
+                                    </button></a></p>
                         </div>
                     </li>
 
 
 
                     <li>
-                        <div class="collapsible-header">Timing bot actions - making Discord bots with Discordpy 1.0.0 p.3</div>
+                        <div class="collapsible-header">Timing bot actions - making Discord bots with Discordpy 1.0.0 p.3
+                        </div>
                         <div class="collapsible-body">
-                            <p><a href="../timing-actions-discordpy-bot-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
+                            <p><a href="../timing-actions-discordpy-bot-tutorial/index.html"><button
+                                        class="btn waves-effect waves-light right-align"
+                                        style="background-color:#FFD166; color:#000000">Go
+                                    </button></a></p>
                         </div>
                     </li>
 
@@ -816,8 +836,10 @@ __init__: Sentdex#7777: Sentdex: He's back now</code></p>
                     <li>
                         <div class="collapsible-header">Embedding and Attaching w/ Image Example - making Discord bots with Discordpy 1.0.0 p.4</div>
                         <div class="collapsible-body">
-                            <p><a href="../attaching-files-images-embed-discordpy-bot-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
+                            <p><a href="../attaching-files-images-embed-discordpy-bot-tutorial/index.html"><button
+                                        class="btn waves-effect waves-light right-align"
+                                        style="background-color:#FFD166; color:#000000">Go
+                                    </button></a></p>
                         </div>
                     </li>
 
@@ -869,40 +891,5 @@ __init__: Sentdex#7777: Sentdex: He's back now</code></p>
 
 </body>
 
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
 
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
-                    <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
-                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
-                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
-                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
-                </ul>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h6 class="white-text">Legal stuff:</h6>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
-                    <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-    <a href="https://xkcd.com/353/" target='blank'>
-        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
-    </a>
-    <div class="footer-copyright">
-        <div class="container">
-            © OVER 9000! PythonProgramming.net
-
-        </div>
-
-    </div>
-</footer>
 {% endblock %}

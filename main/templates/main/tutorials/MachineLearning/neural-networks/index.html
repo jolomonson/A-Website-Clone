@@ -49,7 +49,7 @@
                                     <p>Neural networks consist of a bunch of "neurons" which are values that start off as your input data, and then get multiplied by weights, summed together, and then passed through an activation function to produce new
                                         values, and this process then repeats over however many "layers" your neural network has to then produce an output.</p>
                                     <p>It looks something like</p>
-                                    <p><img src="../static/images/machine-learning/artificial-neural-network-model.png" style="max-width:500px"></p>
+                                    <p><img src="{% static 'main/images/MachineLearning/ai-neural-network.png' %}" style="max-width:500px"></p>
 
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                         then that would be the prediction of the neural network.</p>
                                     <p>Connecting all of the neurons are those lines. Each of them is a weight, and possibly a bias. So the inputs get multiplied by the weights, the biases are added in, then it gets summed at the next neuron, passed through
                                         an activation function, to be the next input value for the next one!</p>
-                                    <p><img src="../static/images/machine-learning/artificial-neuron-model-sigmoid-activiation-function.png" style="max-width:500px"></p>
+                                    <p><img src="{% static 'main/images/MachineLearning/ai-sigmoid.png' %}" style="max-width:500px"></p>
                                     <p>Above is an example of this "zoomed in" so to speak to show the mechanism for just a single neuron. You can see the inputs from other neurons come in, they're multiplied by the weights, then they are summed together.
                                         After this summation, they pass through an <code>activation function</code>. The activation function's job is to calculate whether or not, or how much, a neuron is "firing." A neuron could output a 0 or 1 to be
                                         off or on, but also, more commonly, could instead output a range between 0 and 1, for example, which serves as input to the next layer.</p>
@@ -558,34 +558,5 @@
         </div>
     </div>
 </div>
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
-                <ul>
-                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
-                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
-                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
-                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
-                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
-                </ul>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Legal Stuff:</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © OVER 9000! PythonProgramming.net
-            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
-        </div>
-    </div>
-</footer>
+
 {% endblock %}

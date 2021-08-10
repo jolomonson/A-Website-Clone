@@ -88,7 +88,9 @@ urlpatterns = [
     path('kivy-application/', views.kivy, name='kivy'),
     #GoLang
     path('golang-tutorials/', views.golangtutorials, name='golang'),
-    path('syntax-go-language/', views.syntaxgolanguage, name='golang'),
+    path('syntax-go-language/', views.syntaxgolanguage, name='syntax-golang'),
+    path('golang-types/', views.golangtypes, name='golang-types'),
+    
 ]
 
 

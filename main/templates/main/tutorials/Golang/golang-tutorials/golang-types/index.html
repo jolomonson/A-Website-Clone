@@ -1,15 +1,24 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
-
 <!-- main content -->
 <div class="container" style="max-width:1500px; min-height:100%">
-    <br><button type="button" class="btn" style="background-color:#FFF; color:#000" onclick="goBack()">Back</button><br>
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+
+
+
+
+
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
 
     <body class="body">
         <div class="row">
             <div class="col l8 m12 s12">
 
 
-                <div class="container-fluid" style="text-align: left;">
+                <div class="container-fluid" align="left">
 
 
 
@@ -19,10 +28,10 @@
 
 
                     <br>
-                    <h2>Go Language Syntax</h2>
+                    <h2>Go Language Types</h2>
                     <br>
 
-                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/nSYFfWijl8U" frameborder="0" allowfullscreen></iframe></div><br>
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/ZCceigT2A6I" frameborder="0" allowfullscreen></iframe></div><br>
 
 
 
@@ -32,135 +41,186 @@
 
                     <br>
 
-                    <p>Welcome to part 2 of the Go programming tutorial series. In the previous tutorial, we got everything set up and ran our first basic program, along with explaining some of what is going on. Here, I plan to further explain some more
-                        of our options, and more of how to understand how Go is working and how it can work for you.</p>
+                    <p>Welcome to part 3 of the Go programming tutorial series. In the previous tutorial, we covered some basics on imports and functions. Next, we're going to talk a bit about types in Go. As mentioned in the first tutorial, Go is a static-typed
+                        language, meaning you need to specify the type, and the type cannot change without you explicitly changing it.</p>
 
-                    <p>You're always going to start with the package information, which, for now, will just be</p>
+                    <p>Let's consider a function that adds some numbers together. To do this, our function will look for 2 numbers, and we know it will return a number. With typing, all variables and parameters need types. If you have a function that returns
+                        something, you also need to specify the type. Here's a list of the Go language types:</p>
 
-                    <pre class='prettyprint lang-go'>package main</pre>
+                    <pre>bool
 
-                    <p>Next you would do your imports. Most of the time, you wont have just a single package you want to import. Let's say you have two. You *could* do:</p>
+string
 
-                    <pre class='prettyprint lang-go'>import "fmt"
-import "math"</pre>
+int  int8  int16  int32  int64
+uint uint8 uint16 uint32 uint64 uintptr
 
-                    <p>But the style convention for Go Lang suggests you do the following instead:</p>
+byte // alias for uint8
+
+rune // alias for int32
+     // represents a Unicode code point
+
+float32 float64
+
+complex64 complex128</pre>
+
+                    <p>Source: <a href="https://tour.golang.org/basics/11" target="blank"><strong>golang.org</strong></a></p>
+
+                    <p>We'll use float64 in this case to make a point. In many cases, float32 is a superior choice, especially with a language like Go, which is centered around high performance and scale. Unless you need the high precision of float64, float32
+                        might be a better "default" choice. To begin, let's start our script and build the <code>add</code> function:</p>
+
+                    <pre class="prettyprint lang-go">package main
+
+import "fmt"
 
 
-                    <pre class='prettyprint lang-go'>import (
-	"fmt"
-	"math"
-)</pre>
-
-                    <p>Now your full script might look like:</p>
-
-                    <pre class='prettyprint lang-go'>package main
-
-import (
-	"fmt"
-	"math"
-	)
-
-func main() {
-	fmt.Println("The square root of 4 is",math.Sqrt(4))
+func add(x float64, y float64) float64 {
+	return x+y
 }</pre>
 
-                    <p>This time we're using the <code>Sqrt</code> function from the <code>math</code> library, which is short for square root, so it just returns the square root of the number we pass in the parameters. The parameters go inside the parenthesis.</p>
+                    <p>Every variable and parameter needs to have a type defined with it. <code>x float64, y float64</code> means our <code>x</code> and <code>y</code> parameters will be float64. The <code>float64</code> outside of the parenthesis and before
+                        the curly brace is the type for the return. If there are multiple items in the turn, then you would encase the types of the return in parenthesis after the parameters. Next, we can build our <code>main</code> function:</p>
 
-                    <p>Another question you might be already wondering, is how come the our <code>main</code> function is running? We only are defining it here, we never asked it to run! In Go, the main function runs automatically. For example, if we did:
-                    </p>
+                    <pre class="prettyprint lang-py">func main() {
+	var num1 float64 = 5.6
+	var num2 float64 = 9.5
 
-                    <pre class='prettyprint lang-go'>package main
-
-import (
-	"fmt"
-	"math"
-	)
+    fmt.Print(add(num1,num2))
+}</pre>
 
 
-func foo() {
-	fmt.Println("The square root of 4 is",math.Sqrt(4))
+                    <p>Notice how we're defining our variables in the function. The full script up to this point:</p>
+
+                    <pre class="prettyprint lang-go">package main
+
+import "fmt"
+
+
+func add(x float64, y float64) float64 {
+	return x+y
 }
 
 func main() {
+	var num1 float64 = 5.6
+	var num2 float64 = 9.5
 
+    fmt.Print(add(num1,num2))
 }</pre>
 
-                    <p>Nothing would happen, because we've only defined <code>foo</code>, but we never call it to run, and our main function has nothing happening in it. To run foo(), we could run it from the main function:</p>
-                    <pre class='prettyprint lang-go'>package main
+                    <p>If we run this: <code>go run whateveryoucalledit.go</code>, you should get 15.1 as the return in your console.</p>
 
-import (
-	"fmt"
-	"math"
-	)
+                    <p>Easy enough, but we can clean this up quite a bit. Any time in programming where you find yourself repeating similar lines, you could probably do it better. For example, in our <code>add function:</code>, we define two parameters which
+                        have the same type. If you have a situation like this, you can list out all the same-typed parameters or variables, followed at the very end with their type, like: </p>
+
+                    <pre class="prettyprint lang-go">func add(x, y float64)</pre>
+
+                    <p>We could do the same thing in our <code>main</code> function as well, with the variables:</p>
+
+                    <pre class="prettyprint lang-go">func main() {
+	var num1, num2 float64 = 5.6, 9.5
+    fmt.Print(add(num1,num2))
+}</pre>
+
+                    <p>There may be times when you want to prepare some variables, to be populated later. You can also do something like <code>var num1 float64</code>, and then assign it a value later. When you define, if you don't assign a value, strings
+                        default to <code>""</code>, booleans default to <code>false</code> and numerical types default to <code>0</code>.</p>
+
+                    <p>Finally, within functions, we can actually not assign typing, and just define variables like we might in a dynamically-typed language, using <code>:=</code> as the assignment operator. In our case, this would be something like:</p>
+
+                    <pre class="prettyprint lang-go">func main() {
+	num1, num2 := 5.6, 9.5
+    fmt.Print(add(num1,num2))
+}</pre>
+
+                    <p>"HEY! You said Go was static-typed!" Outside of your functions, you will need to define explicitly data types. Inside your functions, Go can figure out your types when compiled, but the assigned types *cannot* be changed without being
+                        explicitly converted. In some cases, this can cause you trouble if you're not careful. For now, our full script is: </p>
+
+                    <pre class="prettyprint lang-go">package main
+
+import "fmt"
 
 
-func foo() {
-	fmt.Println("The square root of 4 is",math.Sqrt(4))
+func add(x, y float64) float64 {
+	return x+y
 }
 
 func main() {
-	foo()
+	num1, num2 := 5.6, 9.5
+    fmt.Print(add(num1,num2))
 }</pre>
 
-                    <p>Another subtlety in Go is the casing of the functions. You'll notice that the functions we've made so far start with lower-case letters, but you might have noticed that all of the functions we've been using have upper-case letters
-                        to start. What's the deal there? It turns out this is actually an enforced standard in Go, where functions are either "exported" or "unexported". For a function to be used outside of its package (like how we're attempting to use
-                        math.Sqrt, but outside of the math package), it needs to be an "exported" function. If we imported the file we just made, we would not be able to use the <code>foo</code> function, for example.</p>
+                    <p>Cool, but what if we were using float32 instead? </p>
 
-                    <p>One more note for me to make about imports is when packages are contained within packages. So far, all of the functions we've used have been directly inside of the packages we've imported, but what if we want to access something like
-                        a random number? Well this could be done using the <code>rand</code> package from within the <code>math</code> package. In order to do this, we need to first import the <code>rand</code> package, changing our import statement to:
-                    </p>
+                    <pre class="prettyprint lang-go">package main
 
-                    <pre class='prettyprint lang-go'>import (
-	"fmt"
-	"math/rand"
-	)</pre>
+import "fmt"
 
-                    <p>So we can reference packages within packages with the forward slash. Now we can use the <code>Intn</code> function from the <code>rand</code> package like so:</p>
 
-                    <pre class='prettyprint lang-go'>rand.Intn(100)</pre>
-
-                    <p>All together now:</p>
-                    <pre class='prettyprint lang-go'>package main
-
-import (
-	"fmt"
-	"time"
-	"math/rand"
-)
-
+func add(x, y float32) float32 {
+	return x+y
+}
 
 func main() {
-	fmt.Println("It is currently:",time.Now())
-	fmt.Println("A number from 1-100", rand.Intn(100))
-
+	num1, num2 := 5.6, 9.5
+    fmt.Print(add(num1,num2))
 }</pre>
 
-                    <p>If you're ever curious to know more about the function that you're using, you can use <code>godoc</code> from your command line, like so:</p>
+                    <p>Running this returns an error:</p>
+                    <pre># command-line-arguments
+.\gotut3-functions-types.go:12: cannot use num1 (type float64) as type float32 in argument to add
+.\gotut3-functions-types.go:12: cannot use num2 (type float64) as type float32 in argument to add</pre>
 
-                    <pre>godoc fmt Println</pre>
+                    <p>This error is telling us that we're attempting to treat a float64 as a float32, and we can't do that. We never assigned float64 to our variables, but this is what Go automatically went with.</p>
 
-                    <p>Which should return:</p>
+                    <p>Since I just mentioned it, but didn't show it, if you have a function that returns multiple values, you specify their types inside parenthesis like so: </p>
+                    <pre class="prettyprint lang-go">func multiple(a,b string) (string,string) {
+	return a,b
+}</pre>
 
-                    <pre>func Println(a ...interface{}) (n int, err error)
-    Println formats using the default formats for its operands and writes to
-    standard output. Spaces are always added between operands and a newline
-    is appended. It returns the number of bytes written and any write error
-    encountered.</pre>
+                    <p>We could use it like so:</p>
 
+                    <pre class="prettyprint lang-go">package main
 
-
-
-
-
-
-
+import "fmt"
 
 
+func multiple(a,b string) (string,string) {
+	return a,b
+}
+
+func main() {
+	w1,w2 := multiple("Hey","there")
+	fmt.Println(w1,w2)
+}</pre>
+
+                    <p>Note our use of double quotes, not singles. If you use single quotes, you will see: <code>.\yourgofilename.go:11: missing '</code></p>
+
+                    <p>In case it's not obvious, you see the filename, the line #, and then the error in the error messages.</p>
+
+                    <p>If you wanted to convert the types of a variable:</p>
+
+                    <pre class="prettyprint lang-go">
+	var a int = 62
+	var b float64 = float64(a)
+</pre>
+
+                    <p>Finally, type inference works in Go:</p>
+
+                    <pre class="prettyprint lang-go">
+	var x float32
+	y := x // y is float32 type
+</pre>
 
 
 
-                    <p>The next tutorial: <a title="Go Language Types" href="../types-go-language-programming-tutorial/index06c9.html?completed=/go/syntax-go-language-programming-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Go Language Types</button></a></p>
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial: <a title="Pointers in Go Programming" href="../pointers-go-language-programming-tutorial/index1421.html?completed=/go/types-go-language-programming-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Pointers in Go Programming</button></a></p>
 
 
 
@@ -181,13 +241,434 @@ func main() {
 
 
 
-                    <a href="https://nnfs.io?a=1&amp;t=/go/syntax-go-language-programming-tutorial/" id=process_click>
+                    <a href="https://nnfs.io?a=3&amp;t=/go/types-go-language-programming-tutorial/" id=process_click>
                         <div class="card hoverable" style="max-width:400px; align-items: left;">
                             <div class="card-image">
                                 <img id=process_click class="responsive-img" src="../../static/images/CAs/nnfs-1.png" />
                             </div>
                         </div>
                     </a>
+
+
+
+                    <!--HONLY -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     <li>
                         <div class="collapsible-header">Introduction to the Go Programming Language</div>
@@ -200,18 +681,18 @@ func main() {
 
 
                     <li>
-                        <div class="collapsible-header active" style="padding:2px">Go Language Syntax</div>
-
+                        <div class="collapsible-header">Go Language Syntax</div>
+                        <div class="collapsible-body">
+                            <p><a href="../syntax-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
                     </li>
 
 
 
                     <li>
-                        <div class="collapsible-header">Go Language Types</div>
-                        <div class="collapsible-body">
-                            <p><a href="../types-go-language-programming-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-                        </div>
+                        <div class="collapsible-header active" style="padding:2px">Go Language Types</div>
+
                     </li>
 
 
@@ -423,17 +904,9 @@ func main() {
 									  </button></a></p>
                         </div>
                     </li>
-
-
-
                 </ul>
-
-
             </div>
         </div>
-
-
-
 </div>
 </div>
 
@@ -474,4 +947,40 @@ func main() {
 
 </body>
 
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">You've reached the end!</h5>
+
+                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../../support-donate/index.html">Support this Website!</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../../consulting/index.html">Consulting and Contracting</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h6 class="white-text">Legal stuff:</h6>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../../about/tos/index.html">Terms and Conditions</a></li>
+                    <li><a class="grey-text text-lighten-3" href="../../about/privacy-policy/index.html">Privacy Policy</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <a href="https://xkcd.com/353/" target='blank'>
+        <p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p>
+    </a>
+    <div class="footer-copyright">
+        <div class="container">
+            © OVER 9000! PythonProgramming.net
+
+        </div>
+
+    </div>
+</footer>
 {% endblock %}

@@ -1,254 +1,210 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
 
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
-				
-<!--       <pre class="prettyprint">              width="750" height="423"    -->
-<body class="body">
-    <div class="row">
-    <div class="col l8 m12 s12">
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
 
 
-      <div class="container-fluid" align="left" >
-		
-
-
-
-
-
-
-
-		<br>
-		<h2>Introduction - Halite II 2017 Artificial Intelligence Competition p.1</h2>
-		<br>
-	  
-		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/QjAu5lJo4zs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></div><br>
-		
+                <div class="container-fluid" align="left">
 
 
 
 
 
 
-		<br>
-	  
-<p>Hello and welcome to an introduction to <a href="https://halite.io/" target="blank"><strong>Halite</strong></a>, a competitive open-sourced Artificial Intelligence challenge. While searching for something like OpenAI's gym, but instead hoping for a way for players to compete directly against each other in enviornments, the people at Halite reached out to me.</p>
-
-<p>Halite a multi-player game environment, where you write a bot in just about any major programming language, and you can compete against other people who have done the same thing. In the latest challenge, Halite II, the idea is to "mine planets" with your ships, which allows you to create more ships to further mine more planets. You can also engage in combat with other player's ships and even destroy the planets.</p>
-
-<p>Once you've built an AI that you are proud of, you can submit your bot to the Halite website, where it will begin to compete against other players and earn a rank. You can see replays of your AI's matches, which look something like:</p>
-
-<img class="responsive-img" src="../../halite.io/assets/images/gifs/Oct-16-2017%2015-23-13%20intro.html" alt="Halite AI Challenge" />
-
-<p>Aside from being an enjoyable challenge, this challenge is put forth by <a href="https://www.twosigma.com/" target="blank"><strong>Two Sigma</strong></a> as both a general challenge but also as a means of finding talented programmers. Two Sigma is one of <a href="https://en.wikipedia.org/wiki/List_of_hedge_funds#" target="blank"><strong>the largest Hedge Funds in the world</strong></a>, focusing on leveraging data and analysis in the field of finance. If you're interested in a career in data analysis, you might want to check out their <a href="https://halite.io/learn-programming-challenge/contest-rules/two-sigma-recruiting" target="blank"><strong>Two Sigma Recruiting</strong></a> page, even if finance isn't a particularly interesting field to you, since you could easily work at a place like Two Sigma and never touch any finance stuff yourself. You can really think of them more as a data science company.</p>
-
-<p>Alright, let's dive in. To begin, you'll want to head to <a href="https://halite.io/" target="blank"><strong>Halite.io</strong></a> and create an account. Next, download the <a href="https://halite.io/learn-programming-challenge/downloads-and-starter-kits/" target="blank"><strong>starter kit</strong></a>. For me, I am going to be working specifically with Python, and I will likely be on multiple operating systems, but, right now, I am on Windows, so I am going to grab the Python 3 version for Windows. Once downloaded, extract those files.</p>
-
-<p>In here, you have the <code>halite.exe</code>, which you can use to run the game locally to create replay files, along with the <code>run_game.bat</code> and <code>run_game.sh</code>. On Windows, you will use the <code>run_game.bat</code> and <code>run_game.sh</code> on Linux, for example.</p>
-
-<p>You should also have a <code>MyBot.py</code>, along with an <code>hlt</code> directory. The <code>MyBot.py</code> contains a super simple starter bot, which uses a bunch of utility/helper scripts pre-made for you in the <code>hlt</code> directory. So, right now, your "bot" consists of your .py file and the <code>hlt</code> directory since that's also code you're trying to import. Open the <code>MyBot.py</code> file, and try to read through the logic. The idea here is that first we get all of our ships, then we're looking for any ships not currently docked. Next, we iterate through all of the planets, looking for a planet that doesn't have docked ships at it (making them "owned"). If our ship can dock, we attempt to dock, entering this action into a "command queue." The idea here with the command queue is that you might have many actions you want to take per "turn." You are controlling many ships. If we cannot dock, then we want to start looking for a new planet again, and begin navigating to it as our command. In order to "dock" at a planet, you need to be within close proximity. Now, each game turn takes place within the <code>while True</code> loop. So you send all of your commands ONCE per iteration of the main game loop (the top-level while True). Once the game ends, the <code>while True</code> will be broken and the game is over.</p>
-
-<p>While this starter bot isn't going to win you any awards, it does actually work, and is a decent starting point. Let's run a game! To do this on Windows, you can just double click on the <code>run_game.bat</code> file. You could also open a terminal, and run either <code>run_game.bat</code> on Windows or run the <code>run_game.sh</code> shell script on linux. For the curious, you can see what these scripts are doing by editing them:</p>
-
-<pre>halite.exe -d "240 160" "python MyBot.py" "python MyBot.py"</pre>
-
-<p>So really all this is doing is running a simple command for you, running <code>halite.exe</code> with the <code>-d</code> flag, which allows you to set dimensions (240x160 in the case above), and then you can insert players. In this case, we're making <code>MyBot.py</code> compete against <code>MyBot.py</code>, but you might find you create many bots, and then might want to run a few competitions between them to see who is better. If you're doing something with reinforcement learning, or genetic algorithms, or anything with degrees of randomness, running the same iteration against itself might prove to be a good way to build training data.</p>
-
-<p>You can learn more about the <a href="https://halite.io/learn-programming-challenge/halite-cli-and-tools/cli" target="blank"><strong>Halite CLI (command line interface) here</strong></a>. There are a few more flags, and ways you can run even different programming language bots against each other.</p>
-
-<p>Once you've run your bot, you should see a <code>replay</code> file has been created. You can use this file to visualize how your AI did. You can easily do this by heading to the <a href="https://halite.io/play-programming-challenge" target="blank"><strong>play</strong></a> page, and then drag-n-drop your file to the "replay a file" side. Once you do that, within a few seconds, you should see the game begins to replay, and you can watch the results.</p>
-
-<p>This is a competition though, so let's say that we're happy with this bot! Now, all we need to do is upload this bot. There is a <code>SUBMIT A BOT</code> button on the top right of the page, you can click this, and rather than uploading a replay file, we can submit a bot here. That said, we need to first zip it up! What we'll need to do is zip your bot file(s). In our case, we have <code>MyBot.py</code> and the <code>hlt</code> directory. See the <a href="https://halite.io/learn-programming-challenge/downloads-and-starter-kits/submit-bot" target="blank"><strong>submit your bot docs</strong></a> for more info, but, we want to just zip these things together, so let's highlight the <code>hlt</code> directory and python file (<code>MyBot.py</code>), then right click on one of them, choose <code>send to</code> (On Windows), and then you can call it <code>submission.zip</code>. Now, you can drag this into the left hand side of the <a href="https://halite.io/play-programming-challenge" target="blank"><strong>submit bot page</strong></a>, and your bot will begin playing matches shortly. You can view the results from this page, or any time by clicking on your profile picture and heading to your profile. You can see the results here. At least for me, I was playing and competing in matches within a minute.</p>
-
-<p>Now that you have the basics, you can head back to the starter bot, and begin to make tweaks. It might be wise, for example, to not send all of your ships to the same planet. You may also want to add in other forms of logic like, if you're winning, to begin destroying other planets. I've seen many matches start off with a clear victor, but end with the initial victor losing the lead to someone else. You might also want to prioritize the larger planets that have more resources.  You can also engage in ship-to-ship combat, and much more. If you're interested, I will be continuing this series by building on top of the logic here, and then later taking a swing at doing deep learning with Halite. Alright, get to hacking and I'll see you in the next tutorial!</p>
-
-        
-
-		
-
-		
-		
 
 
-                
-		<p>The next tutorial: <a title="Modifying Starter Bot - Halite II 2017 Artificial Intelligence Competition p.2" href="../modify-starter-bot-halite-ii-artificial-intelligence-competition/index703a.html?completed=/introduction-halite-ii-artificial-intelligence-competition/"><button class="btn" style="background-color:#FFD166; color:#000000">Modifying Starter Bot - Halite II 2017 Artificial Intelligence Competition p.2</button></a></p>
+                    <br>
+                    <h2>Introduction - Halite II 2017 Artificial Intelligence Competition p.1</h2>
+                    <br>
 
-		
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/QjAu5lJo4zs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe></div><br>
 
 
 
 
 
-<br>
-	  </div>
 
-</div>
-<div class="col l4 m12 s12">
-<br><br><br>
 
-  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+                    <br>
 
-  		<!-- C.A. : -->
+                    <p>Hello and welcome to an introduction to <a href="https://halite.io/" target="blank"><strong>Halite</strong></a>, a competitive open-sourced Artificial Intelligence challenge. While searching for something like OpenAI's gym, but instead
+                        hoping for a way for players to compete directly against each other in enviornments, the people at Halite reached out to me.</p>
 
-	    
-	    	
-        <a href="https://nnfs.io?a=1&amp;t=/introduction-halite-ii-artificial-intelligence-competition/" id=process_click>
-          <div class="card hoverable" style="max-width:400px; align-items: left;">
-            <div class="card-image">
-              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+                    <p>Halite a multi-player game environment, where you write a bot in just about any major programming language, and you can compete against other people who have done the same thing. In the latest challenge, Halite II, the idea is to "mine
+                        planets" with your ships, which allows you to create more ships to further mine more planets. You can also engage in combat with other player's ships and even destroy the planets.</p>
+
+                    <p>Once you've built an AI that you are proud of, you can submit your bot to the Halite website, where it will begin to compete against other players and earn a rank. You can see replays of your AI's matches, which look something like:</p>
+
+                    <img class="responsive-img" src="../../halite.io/assets/images/gifs/Oct-16-2017%2015-23-13%20intro.html" alt="Halite AI Challenge" />
+
+                    <p>Aside from being an enjoyable challenge, this challenge is put forth by <a href="https://www.twosigma.com/" target="blank"><strong>Two Sigma</strong></a> as both a general challenge but also as a means of finding talented programmers.
+                        Two Sigma is one of <a href="https://en.wikipedia.org/wiki/List_of_hedge_funds#" target="blank"><strong>the largest Hedge Funds in the world</strong></a>, focusing on leveraging data and analysis in the field of finance. If you're
+                        interested in a career in data analysis, you might want to check out their <a href="https://halite.io/learn-programming-challenge/contest-rules/two-sigma-recruiting" target="blank"><strong>Two Sigma Recruiting</strong></a> page,
+                        even if finance isn't a particularly interesting field to you, since you could easily work at a place like Two Sigma and never touch any finance stuff yourself. You can really think of them more as a data science company.</p>
+
+                    <p>Alright, let's dive in. To begin, you'll want to head to <a href="https://halite.io/" target="blank"><strong>Halite.io</strong></a> and create an account. Next, download the <a href="https://halite.io/learn-programming-challenge/downloads-and-starter-kits/"
+                            target="blank"><strong>starter kit</strong></a>. For me, I am going to be working specifically with Python, and I will likely be on multiple operating systems, but, right now, I am on Windows, so I am going to grab the Python 3
+                        version for Windows. Once downloaded, extract those files.</p>
+
+                    <p>In here, you have the <code>halite.exe</code>, which you can use to run the game locally to create replay files, along with the <code>run_game.bat</code> and <code>run_game.sh</code>. On Windows, you will use the <code>run_game.bat</code>                        and <code>run_game.sh</code> on Linux, for example.</p>
+
+                    <p>You should also have a <code>MyBot.py</code>, along with an <code>hlt</code> directory. The <code>MyBot.py</code> contains a super simple starter bot, which uses a bunch of utility/helper scripts pre-made for you in the <code>hlt</code>                        directory. So, right now, your "bot" consists of your .py file and the <code>hlt</code> directory since that's also code you're trying to import. Open the <code>MyBot.py</code> file, and try to read through the logic. The idea
+                        here is that first we get all of our ships, then we're looking for any ships not currently docked. Next, we iterate through all of the planets, looking for a planet that doesn't have docked ships at it (making them "owned"). If
+                        our ship can dock, we attempt to dock, entering this action into a "command queue." The idea here with the command queue is that you might have many actions you want to take per "turn." You are controlling many ships. If we cannot
+                        dock, then we want to start looking for a new planet again, and begin navigating to it as our command. In order to "dock" at a planet, you need to be within close proximity. Now, each game turn takes place within the <code>while True</code>                        loop. So you send all of your commands ONCE per iteration of the main game loop (the top-level while True). Once the game ends, the <code>while True</code> will be broken and the game is over.</p>
+
+                    <p>While this starter bot isn't going to win you any awards, it does actually work, and is a decent starting point. Let's run a game! To do this on Windows, you can just double click on the <code>run_game.bat</code> file. You could also
+                        open a terminal, and run either <code>run_game.bat</code> on Windows or run the <code>run_game.sh</code> shell script on linux. For the curious, you can see what these scripts are doing by editing them:</p>
+
+                    <pre>halite.exe -d "240 160" "python MyBot.py" "python MyBot.py"</pre>
+
+                    <p>So really all this is doing is running a simple command for you, running <code>halite.exe</code> with the <code>-d</code> flag, which allows you to set dimensions (240x160 in the case above), and then you can insert players. In this
+                        case, we're making <code>MyBot.py</code> compete against <code>MyBot.py</code>, but you might find you create many bots, and then might want to run a few competitions between them to see who is better. If you're doing something
+                        with reinforcement learning, or genetic algorithms, or anything with degrees of randomness, running the same iteration against itself might prove to be a good way to build training data.</p>
+
+                    <p>You can learn more about the <a href="https://halite.io/learn-programming-challenge/halite-cli-and-tools/cli" target="blank"><strong>Halite CLI (command line interface) here</strong></a>. There are a few more flags, and ways you can
+                        run even different programming language bots against each other.</p>
+
+                    <p>Once you've run your bot, you should see a <code>replay</code> file has been created. You can use this file to visualize how your AI did. You can easily do this by heading to the <a href="https://halite.io/play-programming-challenge"
+                            target="blank"><strong>play</strong></a> page, and then drag-n-drop your file to the "replay a file" side. Once you do that, within a few seconds, you should see the game begins to replay, and you can watch the results.</p>
+
+                    <p>This is a competition though, so let's say that we're happy with this bot! Now, all we need to do is upload this bot. There is a <code>SUBMIT A BOT</code> button on the top right of the page, you can click this, and rather than uploading
+                        a replay file, we can submit a bot here. That said, we need to first zip it up! What we'll need to do is zip your bot file(s). In our case, we have <code>MyBot.py</code> and the <code>hlt</code> directory. See the <a href="https://halite.io/learn-programming-challenge/downloads-and-starter-kits/submit-bot"
+                            target="blank"><strong>submit your bot docs</strong></a> for more info, but, we want to just zip these things together, so let's highlight the <code>hlt</code> directory and python file (<code>MyBot.py</code>), then right click
+                        on one of them, choose <code>send to</code> (On Windows), and then you can call it <code>submission.zip</code>. Now, you can drag this into the left hand side of the <a href="https://halite.io/play-programming-challenge" target="blank"><strong>submit bot page</strong></a>,
+                        and your bot will begin playing matches shortly. You can view the results from this page, or any time by clicking on your profile picture and heading to your profile. You can see the results here. At least for me, I was playing
+                        and competing in matches within a minute.</p>
+
+                    <p>Now that you have the basics, you can head back to the starter bot, and begin to make tweaks. It might be wise, for example, to not send all of your ships to the same planet. You may also want to add in other forms of logic like, if
+                        you're winning, to begin destroying other planets. I've seen many matches start off with a clear victor, but end with the initial victor losing the lead to someone else. You might also want to prioritize the larger planets that
+                        have more resources. You can also engage in ship-to-ship combat, and much more. If you're interested, I will be continuing this series by building on top of the logic here, and then later taking a swing at doing deep learning with
+                        Halite. Alright, get to hacking and I'll see you in the next tutorial!</p>
+
+
+
+
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Modifying Starter Bot - Halite II 2017 Artificial Intelligence Competition p.2" href="../modify-starter-bot-halite-ii-artificial-intelligence-competition/index703a.html?completed=/introduction-halite-ii-artificial-intelligence-competition/"><button class="btn" style="background-color:#FFD166; color:#000000">Modifying Starter Bot - Halite II 2017 Artificial Intelligence Competition p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
             </div>
-          </div>
-        </a>
-        
-		
+            <div class="col l4 m12 s12">
+                <br><br><br>
+
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
 
 
-							    <li>
-								  <div class="collapsible-header active" style="padding:2px">Introduction - Halite II 2017 Artificial Intelligence Competition p.1</div>
 
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Modifying Starter Bot - Halite II 2017 Artificial Intelligence Competition p.2</div>
-								  <div class="collapsible-body">
-										<p><a href="../modify-starter-bot-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Custom Bot - Halite II 2017 Artificial Intelligence Competition p.3</div>
-								  <div class="collapsible-body">
-										<p><a href="../custom-ai-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Deep Learning - Halite II 2017 Artificial Intelligence Competition p.4</div>
-								  <div class="collapsible-body">
-										<p><a href="../deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Training Data Deep Learning - Halite II 2017 Artificial Intelligence Competition p.5</div>
-								  <div class="collapsible-body">
-										<p><a href="../training-data-deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Training Model Deep Learning - Halite II 2017 Artificial Intelligence Competition p.6</div>
-								  <div class="collapsible-body">
-										<p><a href="../training-model-deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Deploying Model Deep Learning - Halite II 2017 Artificial Intelligence Competition p.7</div>
-								  <div class="collapsible-body">
-										<p><a href="../deploying-model-deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-					  
-				  
-			   
-				  
-			   
-				  
-			   
-				  
-			   
-				  
-			   
-				  
-			   
-				  
-			   
-			
-			   
-				  
-			   
-			
-			   
-				  
-			   
-				  
-			   
-				  
-			   
-				  
-			   
-				  
-			   
-			
+                    <a href="https://nnfs.io?a=1&amp;t=/introduction-halite-ii-artificial-intelligence-competition/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
 
-  </ul>
+
+
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction - Halite II 2017 Artificial Intelligence Competition p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Modifying Starter Bot - Halite II 2017 Artificial Intelligence Competition p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../modify-starter-bot-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Custom Bot - Halite II 2017 Artificial Intelligence Competition p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../custom-ai-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Learning - Halite II 2017 Artificial Intelligence Competition p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Training Data Deep Learning - Halite II 2017 Artificial Intelligence Competition p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../training-data-deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Training Model Deep Learning - Halite II 2017 Artificial Intelligence Competition p.6</div>
+                        <div class="collapsible-body">
+                            <p><a href="../training-model-deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deploying Model Deep Learning - Halite II 2017 Artificial Intelligence Competition p.7</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deploying-model-deep-learning-halite-ii-artificial-intelligence-competition/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
 
 
 </div>
 </div>
 
-
-
-			</div>
-		</div>
-		<footer class="page-footer">
-			<div class="container">
-				<div class="row">
-					<div class="col l6 s12">
-						<h5 class="white-text">You've reached the end!</h5>
-						<p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
-						<ul>
-							<li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
-							<li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
-							<li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
-							<li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
-							<li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
-						</ul>
-					</div>
-					<div class="col l4 offset-l2 s12">
-						<h5 class="white-text">Legal Stuff:</h5>
-						<ul>
-							<li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
-							<li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="footer-copyright">
-				<div class="container">
-					© OVER 9000! PythonProgramming.net
-					<a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
-				</div>
-			</div>
-		</footer>
 {% endblock %}
-
-
-
-
-
-

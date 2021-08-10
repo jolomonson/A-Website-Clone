@@ -1,24 +1,9 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
-
-					
-					
-					  
-					
-
-					
-<!--       <pre class="prettyprint">              width="750" height="423"    -->
-<body class="body">
-    <div class="row">
-    <div class="col l8 m12 s12">
-
-
-      <div class="container-fluid" align="left" >
-		
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
 
 
 
@@ -26,70 +11,99 @@
 
 
 
-		<br>
-		<h2>Generative Model Basics (Character-Level) - Unconventional Neural Networks in Python and Tensorflow p.1</h2>
-		<br>
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
 
-		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/a7Og0ImTg9Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
-		
-
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
 
 
+                <div class="container-fluid" align="left">
 
 
 
-		<br>
 
-<p>Hello and welcome to a series where we will just be playing around with neural networks. The idea here is to poke around with various neural networks, doing unconventional things with them. Doing things like trying to teach a sequence to sequence model math, doing classification with a generative model, and so on. I've wanted to do this in some tutorials, but haven't thought of a way to compile them, this will have to do!</p>
 
-<p>To begin with this series, you should have a foundation of <a href="../machine-learning-tutorial-python-introduction/index.html" target="blank"><strong>Machine Learning</strong></a> and <a href="../neural-networks-machine-learning-tutorial/index.html" target="blank"><strong>Deep Learning with TensorFlow</strong></a> specifically. If you do not, you're going to probably have a harder time following along, but you could still probably do it.</p>
 
-<p>At the very least, right now, you will need TensorFlow installed, and Python of course! I am currently using:</p>
 
-<p><code>Python 3.6</code></p>
-<p><code>TensorFlow 1.7</code></p>
 
-<p>If you want to follow along on the CPU, you may have trouble with long training times, but you can still do it with a <code>pip install --upgrade tensorflow</code>. If you plan to follow along with TensorFlow on the GPU, then you will also need the to install the Cuda Toolkit and the matching CuDNN. See the <a href="https://www.tensorflow.org/install/" target="blank"><strong>TensorFlow install</strong></a> page for which version of CuDNN and the Cuda Toolkit you need. For installing the GPU version of TensorFlow, you can see my <a href="https://www.youtube.com/watch?v=r7-WPbx8VuY" target="blank"><strong>TensorFlow-GPU Windows installation tutorial</strong></a> or the <a href="../how-to-cuda-gpu-tensorflow-deep-learning-tutorial/index.html" target="blank"><strong>Linux Tensorflow-GPU setup tutorial</strong></a>, both of which are with older version of TensorFlow, but the steps are the same (Get TF, CUDA Toolkit, and copy over the CuDNN files).</p>
+                    <br>
+                    <h2>Generative Model Basics (Character-Level) - Unconventional Neural Networks in Python and Tensorflow p.1</h2>
+                    <br>
 
-<p>Okay, enough on that, let's play! I've personally always really liked generative models. They are relatively quick to train, requiring very little data, but can produce results very similar to the input you fed them. They don't appear to have much practical use as of yet, but you can do fun things with them, like making art and such. Since this series is a little less practical and a little more for fun, let's do it! I'd like us to start with what's known as a Character-Level Generative Neural Network. The "character" part of this just means it'll generate new sequences by using individual characters. In most cases, this is for language like tasks, but this doesn't HAVE to be the case. Let's first check it out with a real language, however. The most simple-to-use implementation that I've seen for a character-level generative model in TensorFlow is the <a href="https://github.com/sherjilozair/char-rnn-tensorflow" target="blank"><strong>char-rnn-tensorflow</strong></a> project on GitHub from <a href="https://github.com/sherjilozair" target="blank"><strong>Sherjil Ozair</strong></a>. Just in case things have changed and you want to follow along exactly, the exact commit I am working with is: <a href="https://github.com/sherjilozair/char-rnn-tensorflow/commit/401ebfd639eb32586a9bf9312e3b442abc47ebed" target="blank"><strong>401ebfd</strong></a> Go ahead and Grab/clone this package, extract if necessary, and let's see what we've got here.</p>
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/a7Og0ImTg9Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
 
-<p>We've got a <code>data</code> directory, inside of which we have <code>tinyshakespeare</code>, which houses <code>input.txt</code>. Opening this, we can see it's written like you'd expect a play to be written, with structure like:</p>
 
-<pre>NAME:
+
+
+
+
+
+                    <br>
+
+                    <p>Hello and welcome to a series where we will just be playing around with neural networks. The idea here is to poke around with various neural networks, doing unconventional things with them. Doing things like trying to teach a sequence
+                        to sequence model math, doing classification with a generative model, and so on. I've wanted to do this in some tutorials, but haven't thought of a way to compile them, this will have to do!</p>
+
+                    <p>To begin with this series, you should have a foundation of <a href="../machine-learning-tutorial-python-introduction/index.html" target="blank"><strong>Machine Learning</strong></a> and <a href="../neural-networks-machine-learning-tutorial/index.html"
+                            target="blank"><strong>Deep Learning with TensorFlow</strong></a> specifically. If you do not, you're going to probably have a harder time following along, but you could still probably do it.</p>
+
+                    <p>At the very least, right now, you will need TensorFlow installed, and Python of course! I am currently using:</p>
+
+                    <p><code>Python 3.6</code></p>
+                    <p><code>TensorFlow 1.7</code></p>
+
+                    <p>If you want to follow along on the CPU, you may have trouble with long training times, but you can still do it with a <code>pip install --upgrade tensorflow</code>. If you plan to follow along with TensorFlow on the GPU, then you will
+                        also need the to install the Cuda Toolkit and the matching CuDNN. See the <a href="https://www.tensorflow.org/install/" target="blank"><strong>TensorFlow install</strong></a> page for which version of CuDNN and the Cuda Toolkit
+                        you need. For installing the GPU version of TensorFlow, you can see my <a href="https://www.youtube.com/watch?v=r7-WPbx8VuY" target="blank"><strong>TensorFlow-GPU Windows installation tutorial</strong></a> or the <a href="../how-to-cuda-gpu-tensorflow-deep-learning-tutorial/index.html"
+                            target="blank"><strong>Linux Tensorflow-GPU setup tutorial</strong></a>, both of which are with older version of TensorFlow, but the steps are the same (Get TF, CUDA Toolkit, and copy over the CuDNN files).</p>
+
+                    <p>Okay, enough on that, let's play! I've personally always really liked generative models. They are relatively quick to train, requiring very little data, but can produce results very similar to the input you fed them. They don't appear
+                        to have much practical use as of yet, but you can do fun things with them, like making art and such. Since this series is a little less practical and a little more for fun, let's do it! I'd like us to start with what's known as
+                        a Character-Level Generative Neural Network. The "character" part of this just means it'll generate new sequences by using individual characters. In most cases, this is for language like tasks, but this doesn't HAVE to be the case.
+                        Let's first check it out with a real language, however. The most simple-to-use implementation that I've seen for a character-level generative model in TensorFlow is the <a href="https://github.com/sherjilozair/char-rnn-tensorflow"
+                            target="blank"><strong>char-rnn-tensorflow</strong></a> project on GitHub from <a href="https://github.com/sherjilozair" target="blank"><strong>Sherjil Ozair</strong></a>. Just in case things have changed and you want to follow
+                        along exactly, the exact commit I am working with is: <a href="https://github.com/sherjilozair/char-rnn-tensorflow/commit/401ebfd639eb32586a9bf9312e3b442abc47ebed" target="blank"><strong>401ebfd</strong></a> Go ahead and Grab/clone
+                        this package, extract if necessary, and let's see what we've got here.</p>
+
+                    <p>We've got a <code>data</code> directory, inside of which we have <code>tinyshakespeare</code>, which houses <code>input.txt</code>. Opening this, we can see it's written like you'd expect a play to be written, with structure like:</p>
+
+                    <pre>NAME:
 thing person says
 
 NEXT NAME...
 and so on</pre>
 
-<p>So this is a bit more than just some English text, it's also got a bit of structure to it. The goal of a generative algorithm is to reproduce something *like* what it was trained on. Let's see how that goes with this sample data. Also, note how big the training data is: 1MB. Very little data is required at all here.</p>
+                    <p>So this is a bit more than just some English text, it's also got a bit of structure to it. The goal of a generative algorithm is to reproduce something *like* what it was trained on. Let's see how that goes with this sample data. Also,
+                        note how big the training data is: 1MB. Very little data is required at all here.</p>
 
-<p>We can change some things, but, we really can just run with the defaults. Go ahead and run:</p>
+                    <p>We can change some things, but, we really can just run with the defaults. Go ahead and run:</p>
 
-<p><code>python train.py</code></p>
+                    <p><code>python train.py</code></p>
 
-<p>The <code>train.py</code> file has defaults in place for the <code>tinyshakespeare</code> dataset. While our model trains, let's poke around. In the <code>train.py</code>, we can see all of the flags. We specify wherever the <code>input.txt</code> file is that we wish to use. We specify where we want to save things, where to log to...hmm let's look!</p>
-
-
-<p>Open another command prompt locally (inside the project directory), and do: <code>tensorboard --logdir=logs/</code>, then navigate to where it says, and you should be able to see a loss graph, like:</p>
-
-<img class="responsive-img" src="../static/images/machine-learning/neural-network-training-loss.png" alt="python tutorials" />
-
-<p>Looks like it's already leveling out, but still dropping, we'll let it keep going.</p>
-
-<p>Getting back to our options, we see we can modify the network's size and number of layers, along with batching, sequence lengths, epochs, saving, decay, and more.</p>
+                    <p>The <code>train.py</code> file has defaults in place for the <code>tinyshakespeare</code> dataset. While our model trains, let's poke around. In the <code>train.py</code>, we can see all of the flags. We specify wherever the <code>input.txt</code>                        file is that we wish to use. We specify where we want to save things, where to log to...hmm let's look!</p>
 
 
-<p>I've actually let this thing fully train, but you can stop it whenever. A checkpoint file is saved every 1000 steps. To sample, just run the sample file:</p>
+                    <p>Open another command prompt locally (inside the project directory), and do: <code>tensorboard --logdir=logs/</code>, then navigate to where it says, and you should be able to see a loss graph, like:</p>
 
-<p><code>python sample.py</code></p>
+                    <img class="responsive-img" src="../static/images/machine-learning/neural-network-training-loss.png" alt="python tutorials" />
 
-<p>The output probably looks something like:</p>
+                    <p>Looks like it's already leveling out, but still dropping, we'll let it keep going.</p>
 
-<pre>b"  iDfurm.\nDother shall you by sease, she sequencly of the general\nbroak his puspistirans sooner's land!\n\nHERMIONE:\nAre my wasteful sweeter than did with the added to her:\nmakes I part, thet else?\n\nKING RICHARD II:\nRobbling slaughter, in!\nThe touch my die own men's own jewing all.\n\nNurse:\nWere, friar, if this great Montague, sir, loving\nOrable degin suspection eye to do it;\nAnd if you may I ack no fower.\n\nFirst Citizen:\nEdward the starkly, for one exile abroad\nAnd your eye, that all the complewick"</pre>
+                    <p>Getting back to our options, we see we can modify the network's size and number of layers, along with batching, sequence lengths, epochs, saving, decay, and more.</p>
 
-<p>This is encoded with UTF-8 encoding. For now, we don't really need this, so we could remove it to better see what we were expecting. Edit <code>sample.py</code>, and we can just remove the <code>.encode('utf-8')</code> part. Running again, you should see something like:</p>
 
-<pre> singzen flesters.
+                    <p>I've actually let this thing fully train, but you can stop it whenever. A checkpoint file is saved every 1000 steps. To sample, just run the sample file:</p>
+
+                    <p><code>python sample.py</code></p>
+
+                    <p>The output probably looks something like:</p>
+
+                    <pre>b"  iDfurm.\nDother shall you by sease, she sequencly of the general\nbroak his puspistirans sooner's land!\n\nHERMIONE:\nAre my wasteful sweeter than did with the added to her:\nmakes I part, thet else?\n\nKING RICHARD II:\nRobbling slaughter, in!\nThe touch my die own men's own jewing all.\n\nNurse:\nWere, friar, if this great Montague, sir, loving\nOrable degin suspection eye to do it;\nAnd if you may I ack no fower.\n\nFirst Citizen:\nEdward the starkly, for one exile abroad\nAnd your eye, that all the complewick"</pre>
+
+                    <p>This is encoded with UTF-8 encoding. For now, we don't really need this, so we could remove it to better see what we were expecting. Edit <code>sample.py</code>, and we can just remove the <code>.encode('utf-8')</code> part. Running
+                        again, you should see something like:</p>
+
+                    <pre> singzen flesters.
 
 GREEN:
 O good woman: I cannot bellow you.
@@ -114,25 +128,27 @@ But I, these I would be same over to say.
 LADY GREY:
 'Twas will not there ano</pre>
 
-<p>We could also just make the print statement as decoded:</p>
+                    <p>We could also just make the print statement as decoded:</p>
 
-<pre class="prettyprint lang-py">            data = model.sample(sess, chars, vocab, args.n, args.prime,
+                    <pre class="prettyprint lang-py">            data = model.sample(sess, chars, vocab, args.n, args.prime,
                                args.sample).encode('utf-8')
 
             print(data.decode('utf-8'))</pre>
 
-<p>It really just depends what sort of data you're passing through here if you will want it to be utf-8 encoded. Anyway, neat, right?</p>
+                    <p>It really just depends what sort of data you're passing through here if you will want it to be utf-8 encoded. Anyway, neat, right?</p>
 
 
-<p>Our model has actually learned words, some old-styled English, and the format/structure of the play with NAME and the colon, followed by a new line, some speech, 2 new lines, and repeat. Very impressive, and this did not take long at all, or need much data!</p>
+                    <p>Our model has actually learned words, some old-styled English, and the format/structure of the play with NAME and the colon, followed by a new line, some speech, 2 new lines, and repeat. Very impressive, and this did not take long
+                        at all, or need much data!</p>
 
-<p>Peaking into our sample file, we also have some flags/defaults that we could change here! Let's try to change somethings, and instead run with:</p>
+                    <p>Peaking into our sample file, we also have some flags/defaults that we could change here! Let's try to change somethings, and instead run with:</p>
 
-<p><code>python sample.py -n=200 --prime="SENTDEX:"</code></p>
+                    <p><code>python sample.py -n=200 --prime="SENTDEX:"</code></p>
 
-<p>The <code>n</code> dictates how many characters we wish to generate and the <code>prime</code> is what we're going to start off the generative model with. The default is just a space, but we're going to start it with SENTDEX, so it should probably structure things like SENTDEX is a character in the play.</p>
+                    <p>The <code>n</code> dictates how many characters we wish to generate and the <code>prime</code> is what we're going to start off the generative model with. The default is just a space, but we're going to start it with SENTDEX, so it
+                        should probably structure things like SENTDEX is a character in the play.</p>
 
-<pre>SENTDEX:
+                    <pre>SENTDEX:
 Enfarce, I'll be untimely soul, I hear nor
 his name wept mole with me.
 
@@ -147,257 +163,211 @@ I do therein haply Signior Marcius!
 POMPEY:
 No toe!</pre>
 
-<p>Hah, alright. No toes for Pompey!</p>
+                    <p>Hah, alright. No toes for Pompey!</p>
 
-<p>So, of course the next question you must have is....can we do this with... code? Exactly what I was thinking. Let's try to train a model to make python-like code. Bonus points if it runs, but I doubt it would.</p>
-
-
-        
-
-		
-
-		
-		
-
-
-
-		<p>The next tutorial: <a title="Generating Pythonic code with Character Generative Model - Unconventional Neural Networks in Python and Tensorflow p.2" href="../generating-python-playing-neural-network-tensorflow/indexfe12.html?completed=/generative-model-python-playing-neural-network-tensorflow/"><button class="btn" style="background-color:#FFD166; color:#000000">Generating Pythonic code with Character Generative Model - Unconventional Neural Networks in Python and Tensorflow p.2</button></a></p>
-
-		
+                    <p>So, of course the next question you must have is....can we do this with... code? Exactly what I was thinking. Let's try to train a model to make python-like code. Bonus points if it runs, but I doubt it would.</p>
 
 
 
 
 
-<br>
-	  </div>
 
-</div>
-<div class="col l4 m12 s12">
-<br><br><br>
 
-  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
 
-  		<!-- C.A. : -->
 
-	    
-	    	
-        <a href="https://nnfs.io?a=3&amp;t=/generative-model-python-playing-neural-network-tensorflow/" id=process_click>
-          <div class="card hoverable" style="max-width:400px; align-items: left;">
-            <div class="card-image">
-              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+
+
+                    <p>The next tutorial:
+                        <a title="Generating Pythonic code with Character Generative Model - Unconventional Neural Networks in Python and Tensorflow p.2" href="../generating-python-playing-neural-network-tensorflow/indexfe12.html?completed=/generative-model-python-playing-neural-network-tensorflow/"><button class="btn" style="background-color:#FFD166; color:#000000">Generating Pythonic code with Character Generative Model - Unconventional Neural Networks in Python and Tensorflow p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
             </div>
-          </div>
-        </a>			 
-							
-							    <li>
-								  <div class="collapsible-header active" style="padding:2px">Generative Model Basics (Character-Level) - Unconventional Neural Networks in Python and Tensorflow p.1</div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
 
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Generating Pythonic code with Character Generative Model - Unconventional Neural Networks in Python and Tensorflow p.2</div>
-								  <div class="collapsible-body">
-										<p><a href="../generating-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=3&amp;t=/generative-model-python-playing-neural-network-tensorflow/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Generative Model Basics (Character-Level) - Unconventional Neural Networks in Python and Tensorflow p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Generating Pythonic code with Character Generative Model - Unconventional Neural Networks in Python and Tensorflow p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../generating-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Generating with MNIST - Unconventional Neural Networks in Python and Tensorflow p.3</div>
-								  <div class="collapsible-body">
-										<p><a href="../mnist-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Generating with MNIST - Unconventional Neural Networks in Python and Tensorflow p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../mnist-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Classification Generator Training Attempt - Unconventional Neural Networks in Python and Tensorflow p.4</div>
-								  <div class="collapsible-body">
-										<p><a href="../class-generator-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Classification Generator Training Attempt - Unconventional Neural Networks in Python and Tensorflow p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../class-generator-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Classification Generator Testing Attempt - Unconventional Neural Networks in Python and Tensorflow p.5</div>
-								  <div class="collapsible-body">
-										<p><a href="../class-generator-testing-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Classification Generator Testing Attempt - Unconventional Neural Networks in Python and Tensorflow p.5</div>
+                        <div class="collapsible-body">
+                            <p><a href="../class-generator-testing-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Drawing a Number by Request with Generative Model - Unconventional Neural Networks in Python and Tensorflow p.6</div>
-								  <div class="collapsible-body">
-										<p><a href="../drawing-with-generative-model-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Drawing a Number by Request with Generative Model - Unconventional Neural Networks in Python and Tensorflow p.6</div>
+                        <div class="collapsible-body">
+                            <p><a href="../drawing-with-generative-model-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Deep Dream - Unconventional Neural Networks in Python and Tensorflow p.7</div>
-								  <div class="collapsible-body">
-										<p><a href="../deep-dream-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Dream - Unconventional Neural Networks in Python and Tensorflow p.7</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deep-dream-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Deep Dream Frames - Unconventional Neural Networks in Python and Tensorflow p.8</div>
-								  <div class="collapsible-body">
-										<p><a href="../deep-dream-frames-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Dream Frames - Unconventional Neural Networks in Python and Tensorflow p.8</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deep-dream-frames-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Deep Dream Video - Unconventional Neural Networks in Python and Tensorflow p.9</div>
-								  <div class="collapsible-body">
-										<p><a href="../deep-dream-video-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Deep Dream Video - Unconventional Neural Networks in Python and Tensorflow p.9</div>
+                        <div class="collapsible-body">
+                            <p><a href="../deep-dream-video-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Doing Math with Neural Networks - Unconventional Neural Networks in Python and Tensorflow p.10</div>
-								  <div class="collapsible-body">
-										<p><a href="../math-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Doing Math with Neural Networks - Unconventional Neural Networks in Python and Tensorflow p.10</div>
+                        <div class="collapsible-body">
+                            <p><a href="../math-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Doing Math with Neural Networks testing addition results - Unconventional Neural Networks in Python and Tensorflow p.11</div>
-								  <div class="collapsible-body">
-										<p><a href="../addition-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Doing Math with Neural Networks testing addition results - Unconventional Neural Networks in Python and Tensorflow p.11</div>
+                        <div class="collapsible-body">
+                            <p><a href="../addition-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Complex Math - Unconventional Neural Networks in Python and Tensorflow p.12</div>
-								  <div class="collapsible-body">
-										<p><a href="../complex-math-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Complex Math - Unconventional Neural Networks in Python and Tensorflow p.12</div>
+                        <div class="collapsible-body">
+                            <p><a href="../complex-math-python-playing-neural-network-tensorflow/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-  </ul>
-
-
-</div>
-</div>
-
-
-
-			</div>
-		</div>
-
-		<!--login modal-->
-		
-
-		<!--Register modal-->
-		
-
-
-		<script>
-			$(document).ready(function(){
-				$(".button-collapse").sideNav();
-				$('.modal-trigger').leanModal();
-				$('.collapsible').collapsible({
-				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-				});
-				$('#aside').pushpin({ top:110, bottom:500 });
-		  });
-		</script>
-		<script>
-		  $(document).ready(function(){
-			$('.collapsible').collapsible({
-			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-			});
-			$('select').material_select();
-		  });
-	  </script>
-	  <script>
-		function goBack() {
-			window.history.back()
-		}
-	</script>
-		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
-
-	</body>
-
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
-
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                        </div>
+                    </li>
                 </ul>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h6 class="white-text">Legal stuff:</h6>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
 
-                </ul>
-              </div>
-            </div>
-          </div>
-          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
-          <div class="footer-copyright">
-            <div class="container">
-            © OVER 9000! PythonProgramming.net
 
             </div>
-
-          </div>
-        </footer>
+        </div>
 
 
-<!-- Mirrored from pythonprogramming.net/generative-model-python-playing-neural-network-tensorflow/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:18 GMT -->
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,24 +1,9 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
-
-					
-					
-					  
-					
-
-					
-<!--       <pre class="prettyprint">              width="750" height="423"    -->
-<body class="body">
-    <div class="row">
-    <div class="col l8 m12 s12">
-
-
-      <div class="container-fluid" align="left" >
-		
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
 
 
 
@@ -26,90 +11,113 @@
 
 
 
-		<br>
-		<h2>Deep Learning in the Browser with TensorFlow.js Tutorial Introduction  - TensorFlow.js Tutorial p.1</h2>
-		<br>
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
 
-		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/Bc8UC_m7M_Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
-		
-
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
 
 
-
-
-
-		<br>
+                <div class="container-fluid" align="left">
 
 
 
-		<p>Hello and welcome to a <a href="https://js.tensorflow.org/" target="blank">TensorFlow.js</a> tutorial series. TensorFlow.js, previously deeplearn.js, is a JavaScript library for training and deploying ML models in the browser.</p>
-		<h4>Why TensorFlow.js over something like TensorFlow lite, which also can run on things like phones?</h4>
-
-		<p>What's so special about this? Being javascript, it runs anywhere, and there are no installs required. Previously, if you wanted users to be able to run an ML model, you pretty much needed to host that model and provide the processing power, or your users needed to download and install all of the packages required which would have been absurd for releasing to the general public.</p>
-		<p>With this hurdle gone, all kinds of possibilities begin to emerge. Rather than serving ads, your site could instead use user processing power to, say, help detect cancer early.</p>
-		<p>TensorFlow.js runs on WebGL, which can either make use of a user's CPU, or GPU if available. Being WebGL, it's not as efficient as CUDA, but it's also not bad:</p>
-		<h4>Single-inference speeds of Python TensorFlow vs TensorFlow.js:</h4>
-
-		<img class="responsive-img" src="../static/images/machine-learning/speedcompare.png" alt="python tutorials" />
-		<h6>Source: <a href="https://youtu.be/YB-kfeNIPCE?t=18m52s">TensorFlow Dev Summit 2018</a></h6>
-
-		<h3>Sold! What do I need to start?</h3>
 
 
 
-		<p>TensorFlow.js comes with two major ways to work with it: "core" and with "layers." If you're familiar with working more with tensorflow, then the core library is probably more your style. If you're more familiar with working with a higher-level API like Keras, then the Layers library is what you're after. We'll be using the Layers API to start.</p>
-
-		<h4>What do I need to know to follow along?</h4>
 
 
-		<p>If you already are comfortable with TensorFlow, carry along with me. I am a very basic JavaScript developer, I will do my best to explain pretty much all of the JS as it relates to our TensorFlow.js models/code.</p>
-		<p>If you do not currently know TensorFlow or Neural Networks, you might want to check out:
-<a href="../neural-networks-machine-learning-tutorial/index.html" target="blank">Introduction to Neural Networks</a>
-and
-<a href="../tensorflow-introduction-machine-learning-tutorial/index.html" target="blank">Introduction to Deep Learning with TensorFlow</a>
+                    <br>
+                    <h2>Deep Learning in the Browser with TensorFlow.js Tutorial Introduction - TensorFlow.js Tutorial p.1</h2>
+                    <br>
 
-to get a better idea, but here's an ultra simplified breakdown:</p>
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/Bc8UC_m7M_Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
 
 
-<ul>
-<li>TensorFlow is a package created to help you perform operations on Tensors. </li>
-
-<li>What's a Tensor?! An array. It's that simple. It's a type of array, and not all arrays are the same, but, it's an array. </li>
-
-<li>TensorFlow as a library is here to help you form operations on tensors (arrays), like multiplication, but also when it comes to performing complex optimizations like trying to minimize loss. </li>
-
-<li>In our case, we want to use TensorFlow.js for neural networks. All neural networks are, are these relationships of nodes, where each node has a connection to another node, or a few nodes. Nodes have certain numerical values, and their connections carry various weights that are multiplied against the node's value. </li>
-
-<li>The whole point is to adjust those weights (and sometimes biases), in order to hopefully get the #s you're wanting at the final layer (the output layer) to be what your training data is asking for. You're hunting for some combination of weights between your nodes that best fits your data.</li>
-</ul>
-
-<p>That's really it. It's just a challenging mathematical problem that we'd rather not work out by hand optimizing and fitting all of those weights, but machines with many cores of processors can power through it with some accompanying mathematics. If you want to dive deeper into how these things work, visit the above tutorials, I don't plan to break down neural networks here any further than what I just did.</p>
-<h4>Working with the TensorFlow.js package</h4>
-
-		<p>As of my writing this, the TensorFlow.js library has a ~90% coverage of the entire TensorFlow library. This means, most likely, the thing you are doing in TensorFlow in, say, Python, is also possible to do in TensorFlow.js. Most of the time, I can guess the names of things without needing to even look it up, just prepare to change your naming convention to camelCase.</p>
-
-        <h4>To train, to transfer, or just to infer?</h4>
 
 
-        <h6>Just doing inference, with a model you've already trained:</h6>
-<p>It might often be the case that your application is actually all about inference, not really needing to be trained. If this is the case, then you should use Keras most likely to build and train your model on your own massive machinery and bajillion samples. Then, you can use something like the package tensorflowjs to convert the keras model. More info on this here: <a href="https://js.tensorflow.org/tutorials/import-keras.html" target="blank">Importing a Keras model into TensorFlow.js</a>.</p>
-
-<h6>Transfer learning:</h6>
-<p>Next, maybe you want to take a model that already has been trained, but allow your users to train that model something else. An example of this would be something like object detection. You could take a pre-trained model that does object detection, then let a user take a few images of something, label it with bounding boxes, then, using transfer learning, train a model to detect this new type of object, custom to exactly whatever the user was wanting. Again here, you'd probably pre-train it with Keras, convert the model, then you'd need to write some TensorFlow.js code to train the model. </p>
 
 
-		<p>It's my guess that transfer learning will be the most meaningful and impacting capability of TensorFlow.js, since the models can still be quick to train, but also do exceptionally powerful things. Who knows though. </p>
 
-        <h6>Training AND inference:</h6>
+                    <br>
 
 
-		<p>Finally, maybe you want to let your users create a totally fresh model, doing who knows what!</p>
-		<p>Keep in mind processing times. On a single inference, TensorFlow.js is 5x slower. Now imagine batching with 32, or 128, or whatever you might be batching with. Yikes! Keep this in mind. Despite this, you really can actually train smaller models on easier challenges on many devices. </p>
-		<p>If you want some examples of what you can do, check out the demos here: <a href="https://js.tensorflow.org/#getting-started">TensorFlow.js getting started and demos.</a></p>
-        <h3>Okay, let's get started!</h3>
-		<p>TensorFlow.js is, of course, a JavaScript library. To use it, we need to load it in. To do this, we need to place the following in our code, probably in the head tags of our .html document:</p>
 
-        <pre class="prettyprint">
+                    <p>Hello and welcome to a <a href="https://js.tensorflow.org/" target="blank">TensorFlow.js</a> tutorial series. TensorFlow.js, previously deeplearn.js, is a JavaScript library for training and deploying ML models in the browser.</p>
+                    <h4>Why TensorFlow.js over something like TensorFlow lite, which also can run on things like phones?</h4>
+
+                    <p>What's so special about this? Being javascript, it runs anywhere, and there are no installs required. Previously, if you wanted users to be able to run an ML model, you pretty much needed to host that model and provide the processing
+                        power, or your users needed to download and install all of the packages required which would have been absurd for releasing to the general public.</p>
+                    <p>With this hurdle gone, all kinds of possibilities begin to emerge. Rather than serving ads, your site could instead use user processing power to, say, help detect cancer early.</p>
+                    <p>TensorFlow.js runs on WebGL, which can either make use of a user's CPU, or GPU if available. Being WebGL, it's not as efficient as CUDA, but it's also not bad:</p>
+                    <h4>Single-inference speeds of Python TensorFlow vs TensorFlow.js:</h4>
+
+                    <img class="responsive-img" src="../static/images/machine-learning/speedcompare.png" alt="python tutorials" />
+                    <h6>Source: <a href="https://youtu.be/YB-kfeNIPCE?t=18m52s">TensorFlow Dev Summit 2018</a></h6>
+
+                    <h3>Sold! What do I need to start?</h3>
+
+
+
+                    <p>TensorFlow.js comes with two major ways to work with it: "core" and with "layers." If you're familiar with working more with tensorflow, then the core library is probably more your style. If you're more familiar with working with a
+                        higher-level API like Keras, then the Layers library is what you're after. We'll be using the Layers API to start.</p>
+
+                    <h4>What do I need to know to follow along?</h4>
+
+
+                    <p>If you already are comfortable with TensorFlow, carry along with me. I am a very basic JavaScript developer, I will do my best to explain pretty much all of the JS as it relates to our TensorFlow.js models/code.</p>
+                    <p>If you do not currently know TensorFlow or Neural Networks, you might want to check out:
+                        <a href="../neural-networks-machine-learning-tutorial/index.html" target="blank">Introduction to Neural Networks</a> and
+                        <a href="../tensorflow-introduction-machine-learning-tutorial/index.html" target="blank">Introduction to Deep Learning with TensorFlow</a> to get a better idea, but here's an ultra simplified breakdown:</p>
+
+
+                    <ul>
+                        <li>TensorFlow is a package created to help you perform operations on Tensors. </li>
+
+                        <li>What's a Tensor?! An array. It's that simple. It's a type of array, and not all arrays are the same, but, it's an array. </li>
+
+                        <li>TensorFlow as a library is here to help you form operations on tensors (arrays), like multiplication, but also when it comes to performing complex optimizations like trying to minimize loss. </li>
+
+                        <li>In our case, we want to use TensorFlow.js for neural networks. All neural networks are, are these relationships of nodes, where each node has a connection to another node, or a few nodes. Nodes have certain numerical values, and
+                            their connections carry various weights that are multiplied against the node's value. </li>
+
+                        <li>The whole point is to adjust those weights (and sometimes biases), in order to hopefully get the #s you're wanting at the final layer (the output layer) to be what your training data is asking for. You're hunting for some combination
+                            of weights between your nodes that best fits your data.</li>
+                    </ul>
+
+                    <p>That's really it. It's just a challenging mathematical problem that we'd rather not work out by hand optimizing and fitting all of those weights, but machines with many cores of processors can power through it with some accompanying
+                        mathematics. If you want to dive deeper into how these things work, visit the above tutorials, I don't plan to break down neural networks here any further than what I just did.</p>
+                    <h4>Working with the TensorFlow.js package</h4>
+
+                    <p>As of my writing this, the TensorFlow.js library has a ~90% coverage of the entire TensorFlow library. This means, most likely, the thing you are doing in TensorFlow in, say, Python, is also possible to do in TensorFlow.js. Most of
+                        the time, I can guess the names of things without needing to even look it up, just prepare to change your naming convention to camelCase.</p>
+
+                    <h4>To train, to transfer, or just to infer?</h4>
+
+
+                    <h6>Just doing inference, with a model you've already trained:</h6>
+                    <p>It might often be the case that your application is actually all about inference, not really needing to be trained. If this is the case, then you should use Keras most likely to build and train your model on your own massive machinery
+                        and bajillion samples. Then, you can use something like the package tensorflowjs to convert the keras model. More info on this here: <a href="https://js.tensorflow.org/tutorials/import-keras.html" target="blank">Importing a Keras model into TensorFlow.js</a>.</p>
+
+                    <h6>Transfer learning:</h6>
+                    <p>Next, maybe you want to take a model that already has been trained, but allow your users to train that model something else. An example of this would be something like object detection. You could take a pre-trained model that does
+                        object detection, then let a user take a few images of something, label it with bounding boxes, then, using transfer learning, train a model to detect this new type of object, custom to exactly whatever the user was wanting. Again
+                        here, you'd probably pre-train it with Keras, convert the model, then you'd need to write some TensorFlow.js code to train the model. </p>
+
+
+                    <p>It's my guess that transfer learning will be the most meaningful and impacting capability of TensorFlow.js, since the models can still be quick to train, but also do exceptionally powerful things. Who knows though. </p>
+
+                    <h6>Training AND inference:</h6>
+
+
+                    <p>Finally, maybe you want to let your users create a totally fresh model, doing who knows what!</p>
+                    <p>Keep in mind processing times. On a single inference, TensorFlow.js is 5x slower. Now imagine batching with 32, or 128, or whatever you might be batching with. Yikes! Keep this in mind. Despite this, you really can actually train smaller
+                        models on easier challenges on many devices. </p>
+                    <p>If you want some examples of what you can do, check out the demos here: <a href="https://js.tensorflow.org/#getting-started">TensorFlow.js getting started and demos.</a></p>
+                    <h3>Okay, let's get started!</h3>
+                    <p>TensorFlow.js is, of course, a JavaScript library. To use it, we need to load it in. To do this, we need to place the following in our code, probably in the head tags of our .html document:</p>
+
+                    <pre class="prettyprint">
             &lt;html&gt;
               &lt;head&gt;
                 &lt;!-- Loading in TensorFlow.js version 0.11.2 --&gt;
@@ -121,13 +129,10 @@ to get a better idea, but here's an ultra simplified breakdown:</p>
         </pre>
 
 
-		<p>You can also use NPM. For more information on this, see the <a href="https://js.tensorflow.org/#getting-started">Getting started w/ TensorFlow.js docs</a></p>
+                    <p>You can also use NPM. For more information on this, see the <a href="https://js.tensorflow.org/#getting-started">Getting started w/ TensorFlow.js docs</a></p>
 
 
-        <h3>Next, let's make ourselves a model!</h3>
-
-
-
+                    <h3>Next, let's make ourselves a model!</h3>
 
 
 
@@ -136,251 +141,211 @@ to get a better idea, but here's an ultra simplified breakdown:</p>
 
 
 
-		<p>For this, you can either create another set of script tags in your html file, or, what I would suggest is to instead open your .html file right now in the browser. I am going to use Google Chrome for this, so I right click the html file and choose to open it with Google Chrome.</p>
-		<p>Once it's open, you probably see nothing, that's what you expect. Now, if you are in Google Chrome, press f12 for the deveoper's console. Next, click on the "Console" tab. </p>
-		<p>Now we can use this as an interactive session!</p>
-		<p>To begin we need a model variable to be established. To do this:</p>
-<pre class="prettyprint">const model = tf.sequential();</pre>
-
-		<p>Press enter, if you're in the developer console, and you will see <code>undefined</code> returned. That's fine. Nothing note-worthy yet is all. Our model is a <code>tf.sequential</code> model, which is any model that goes in order. That is, the outputs from one layer are the inputs to the next one in exact order, without skipping/branching.</p>
-        <p>Now, let's add a layer to our hypothetical model:</p>
-<pre class="prettyprint">model.add(tf.layers.dense({units: 1, inputShape: [1]}));</pre>
-<pre class="prettyprint">model.add(tf.layers.dense({units: 64, inputShape: [1]}));</pre>
-<pre class="prettyprint">model.add(tf.layers.dense({units: 1, inputShape: [64]}));</pre>
-
-        <p>So, for now, we're just going to have a layer that takes an input of only 1 unit. Again, this type of layer is specific, it's a <code>dense</code> layer, which is just a generic, fully connected, layer. You can have layers with dropout, recurrent layers, convolutional layers, and more.</p>
-        <p>Next, let's add some more parameters to our model, specifically the loss calculation and the optimizer of choice:</p>
-<pre class="prettyprint">model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});</pre>
 
 
 
-        <p>Okay great, now we need our dataset. Our inputs and outputs!</p>
-<pre class="prettyprint">const xs = tf.tensor2d([1, 2, 3, 4, 5], [5, 1]);</pre>
+                    <p>For this, you can either create another set of script tags in your html file, or, what I would suggest is to instead open your .html file right now in the browser. I am going to use Google Chrome for this, so I right click the html
+                        file and choose to open it with Google Chrome.</p>
+                    <p>Once it's open, you probably see nothing, that's what you expect. Now, if you are in Google Chrome, press f12 for the deveoper's console. Next, click on the "Console" tab. </p>
+                    <p>Now we can use this as an interactive session!</p>
+                    <p>To begin we need a model variable to be established. To do this:</p>
+                    <pre class="prettyprint">const model = tf.sequential();</pre>
 
-        <p>In the above case, we're specifying a 2-dimensional tensor, which a shape of 5x1, which just means we've got 5 samples of 1 element each. Next up, we need some targets, our output layer for training:</p>
+                    <p>Press enter, if you're in the developer console, and you will see <code>undefined</code> returned. That's fine. Nothing note-worthy yet is all. Our model is a <code>tf.sequential</code> model, which is any model that goes in order.
+                        That is, the outputs from one layer are the inputs to the next one in exact order, without skipping/branching.</p>
+                    <p>Now, let's add a layer to our hypothetical model:</p>
+                    <pre class="prettyprint">model.add(tf.layers.dense({units: 1, inputShape: [1]}));</pre>
+                    <pre class="prettyprint">model.add(tf.layers.dense({units: 64, inputShape: [1]}));</pre>
+                    <pre class="prettyprint">model.add(tf.layers.dense({units: 1, inputShape: [64]}));</pre>
 
-<pre class="prettyprint">const ys = tf.tensor2d([2, 4, 6, 8, 10], [5, 1]);</pre>
+                    <p>So, for now, we're just going to have a layer that takes an input of only 1 unit. Again, this type of layer is specific, it's a <code>dense</code> layer, which is just a generic, fully connected, layer. You can have layers with dropout,
+                        recurrent layers, convolutional layers, and more.</p>
+                    <p>Next, let's add some more parameters to our model, specifically the loss calculation and the optimizer of choice:</p>
+                    <pre class="prettyprint">model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});</pre>
 
 
-        <p>After this, we're ready to fit: </p>
 
-<pre class="prettyprint">model.fit(xs, ys)</pre>
+                    <p>Okay great, now we need our dataset. Our inputs and outputs!</p>
+                    <pre class="prettyprint">const xs = tf.tensor2d([1, 2, 3, 4, 5], [5, 1]);</pre>
+
+                    <p>In the above case, we're specifying a 2-dimensional tensor, which a shape of 5x1, which just means we've got 5 samples of 1 element each. Next up, we need some targets, our output layer for training:</p>
+
+                    <pre class="prettyprint">const ys = tf.tensor2d([2, 4, 6, 8, 10], [5, 1]);</pre>
 
 
-        <p>Hey, what's this mention of a "promise?"</p>
-        <p>When you ask a model to fit, it can obviously take a few moments. This will not cause your page to hang. In fact, if you intend to wait, you need to explicitly wait! Luckily for us, this fitment is quite fast and is already done! A promise in javascript is just an object that can produce a value at some point in the future. </p>
-        <p>Once fitment is done, we can predict. We can do this with:</p>
-        <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1]))</pre>
+                    <p>After this, we're ready to fit: </p>
 
-        <p>Again though, we get back some information that isn't quite what we were after. In the console, we could use something like .print()</p>
-        <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).print()</pre>
+                    <pre class="prettyprint">model.fit(xs, ys)</pre>
 
-        <p>This returns:</p>
-<pre class="prettyprint">Tensor
+
+                    <p>Hey, what's this mention of a "promise?"</p>
+                    <p>When you ask a model to fit, it can obviously take a few moments. This will not cause your page to hang. In fact, if you intend to wait, you need to explicitly wait! Luckily for us, this fitment is quite fast and is already done! A
+                        promise in javascript is just an object that can produce a value at some point in the future. </p>
+                    <p>Once fitment is done, we can predict. We can do this with:</p>
+                    <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1]))</pre>
+
+                    <p>Again though, we get back some information that isn't quite what we were after. In the console, we could use something like .print()</p>
+                    <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).print()</pre>
+
+                    <p>This returns:</p>
+                    <pre class="prettyprint">Tensor
      [[3.4681847],]</pre>
-        <p>In our application though, we're going to want the value. To actually get the value, we can use dataSync:</p>
+                    <p>In our application though, we're going to want the value. To actually get the value, we can use dataSync:</p>
 
-        <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).dataSync();</pre>
+                    <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).dataSync();</pre> This gives us: <code>Float32Array [3.46818470954895]</code>
 
-            This gives us: <code>Float32Array [3.46818470954895]</code>
-
-        <p>Not quite right (we're looking for 2x, so 12), but still, we did the thing with the code! </p>
-        <p>How might we go about getting the right answer? Well, we have an optimizer that, per sample it reads, is only going to optimize so much. We don't have very much data, so this wasn't very much optimizing. We can try to fix this with more epochs (repetitions over our entire dataset). Can one really over-fit a perfectly linear relationship anyway? </p>
-        <p>We can add parameters to our training as a 3rd parameter like so:</p>
-<pre class="prettyprint">model.fit(xs, ys, {epochs:150})</pre>
-<pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).dataSync();
+                    <p>Not quite right (we're looking for 2x, so 12), but still, we did the thing with the code! </p>
+                    <p>How might we go about getting the right answer? Well, we have an optimizer that, per sample it reads, is only going to optimize so much. We don't have very much data, so this wasn't very much optimizing. We can try to fix this with
+                        more epochs (repetitions over our entire dataset). Can one really over-fit a perfectly linear relationship anyway? </p>
+                    <p>We can add parameters to our training as a 3rd parameter like so:</p>
+                    <pre class="prettyprint">model.fit(xs, ys, {epochs:150})</pre>
+                    <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).dataSync();
 Float32Array [11.820777893066406]</pre>
 
-        <p>...much closer!</p>
-        <p>If we wanted to also shuffle, we might do:</p>
-<pre class="prettyprint">model.fit(xs, ys, {epochs:150, shuffle:true})</pre>
+                    <p>...much closer!</p>
+                    <p>If we wanted to also shuffle, we might do:</p>
+                    <pre class="prettyprint">model.fit(xs, ys, {epochs:150, shuffle:true})</pre>
 
 
-        <p>Let's try seriously fit this bad boy!</p>
+                    <p>Let's try seriously fit this bad boy!</p>
 
 
-<pre class="prettyprint">model.fit(xs, ys, {epochs:15000})</pre>
+                    <pre class="prettyprint">model.fit(xs, ys, {epochs:15000})</pre>
 
-<pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).dataSync();
+                    <pre class="prettyprint">model.predict(tf.tensor2d([6], [1, 1])).dataSync();
 Float32Array [11.999996185302734]</pre>
 
-        <p>Okay, I'll take it, that's pretty darn close to 12! Warning, the above might take a minute or so to fully calculate. </p>
-<pre class="prettyprint">model.predict(tf.tensor2d([60], [1, 1])).dataSync();
+                    <p>Okay, I'll take it, that's pretty darn close to 12! Warning, the above might take a minute or so to fully calculate. </p>
+                    <pre class="prettyprint">model.predict(tf.tensor2d([60], [1, 1])).dataSync();
 Float32Array [119.99992370605469]
 model.predict(tf.tensor2d([15], [1, 1])).dataSync();
 Float32Array [29.999982833862305]
 model.predict(tf.tensor2d([21], [1, 1])).dataSync();
 Float32Array [41.99997329711914]</pre>
 
-        <p>Cool! Okay, that's an introduction to TensorFlow.js for you! Check out their docs here for more things you can do: <a href="https://js.tensorflow.org/api/0.11.2/" target="blank">TensorFlow.js API docs</a>.</p>
-        <p>We've just barely scratched the surface here, but hopefully you get the idea.</p>
-
-        
-
-		
-
-		
-		
-
-
-
-		<p>The next tutorial: <a title="A Basic TensorFlow.js Web Application Tutorial - TensorFlow.js Tutorial p.2" href="../basic-webapp-tutorial-tensorflowjs/indexbe7d.html?completed=/deep-learning-browser-introduction-tensorflowjs/"><button class="btn" style="background-color:#FFD166; color:#000000">A Basic TensorFlow.js Web Application Tutorial - TensorFlow.js Tutorial p.2</button></a></p>
-
-		
+                    <p>Cool! Okay, that's an introduction to TensorFlow.js for you! Check out their docs here for more things you can do: <a href="https://js.tensorflow.org/api/0.11.2/" target="blank">TensorFlow.js API docs</a>.</p>
+                    <p>We've just barely scratched the surface here, but hopefully you get the idea.</p>
 
 
 
 
 
-<br>
-	  </div>
 
-</div>
-<div class="col l4 m12 s12">
-<br><br><br>
 
-  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
 
-  		<!-- C.A. : -->
 
-	    
-	    	
-        <a href="https://nnfs.io?a=5&amp;t=/deep-learning-browser-introduction-tensorflowjs/" id=process_click>
-          <div class="card hoverable" style="max-width:400px; align-items: left;">
-            <div class="card-image">
-              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+
+                    <p>The next tutorial:
+                        <a title="A Basic TensorFlow.js Web Application Tutorial - TensorFlow.js Tutorial p.2" href="../basic-webapp-tutorial-tensorflowjs/indexbe7d.html?completed=/deep-learning-browser-introduction-tensorflowjs/"><button class="btn" style="background-color:#FFD166; color:#000000">A Basic TensorFlow.js Web Application Tutorial - TensorFlow.js Tutorial p.2</button></a>
+                    </p>
+
+
+
+
+
+
+
+                    <br>
+                </div>
+
             </div>
-          </div>
-        </a>
- 	
-							    <li>
-								  <div class="collapsible-header active" style="padding:2px">Deep Learning in the Browser with TensorFlow.js Tutorial Introduction  - TensorFlow.js Tutorial p.1</div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
 
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">A Basic TensorFlow.js Web Application Tutorial - TensorFlow.js Tutorial p.2</div>
-								  <div class="collapsible-body">
-										<p><a href="../basic-webapp-tutorial-tensorflowjs/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=5&amp;t=/deep-learning-browser-introduction-tensorflowjs/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Deep Learning in the Browser with TensorFlow.js Tutorial Introduction - TensorFlow.js Tutorial p.1</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">A Basic TensorFlow.js Web Application Tutorial - TensorFlow.js Tutorial p.2</div>
+                        <div class="collapsible-body">
+                            <p><a href="../basic-webapp-tutorial-tensorflowjs/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Pong AI - TensorFlow.js Tutorial p.3</div>
-								  <div class="collapsible-body">
-										<p><a href="../pong-ai-tensorflowjs-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Pong AI - TensorFlow.js Tutorial p.3</div>
+                        <div class="collapsible-body">
+                            <p><a href="../pong-ai-tensorflowjs-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Training a model in Python and loading in TensorFlow.js - TensorFlow.js Tutorial p.4</div>
-								  <div class="collapsible-body">
-										<p><a href="../loading-keras-model-tensorflowjs-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Training a model in Python and loading in TensorFlow.js - TensorFlow.js Tutorial p.4</div>
+                        <div class="collapsible-body">
+                            <p><a href="../loading-keras-model-tensorflowjs-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-  </ul>
-
-
-</div>
-</div>
-
-
-
-			</div>
-		</div>
-
-		<!--login modal-->
-		
-
-		<!--Register modal-->
-		
-
-
-		<script>
-			$(document).ready(function(){
-				$(".button-collapse").sideNav();
-				$('.modal-trigger').leanModal();
-				$('.collapsible').collapsible({
-				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-				});
-				$('#aside').pushpin({ top:110, bottom:500 });
-		  });
-		</script>
-		<script>
-		  $(document).ready(function(){
-			$('.collapsible').collapsible({
-			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-			});
-			$('select').material_select();
-		  });
-	  </script>
-	  <script>
-		function goBack() {
-			window.history.back()
-		}
-	</script>
-		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
-
-	</body>
-
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
-
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
+                        </div>
+                    </li>
                 </ul>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h6 class="white-text">Legal stuff:</h6>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
 
-                </ul>
-              </div>
-            </div>
-          </div>
-          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
-          <div class="footer-copyright">
-            <div class="container">
-            © OVER 9000! PythonProgramming.net
 
             </div>
-
-          </div>
-        </footer>
+        </div>
 
 
-<!-- Mirrored from pythonprogramming.net/deep-learning-browser-introduction-tensorflowjs/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:18 GMT -->
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,277 +1,238 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
 
-<!--       <pre class="prettyprint">              width="750" height="423"    -->
-<body class="body">
-    <div class="row">
-    <div class="col l8 m12 s12">
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
 
-
-      <div class="container-fluid" align="left" >
-	<br>
-		<h2>Introduction and Use - Tensorflow Object Detection API Tutorial</h2>
-		<br>
-	  
-		<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/COlbP62-B-U?list=PLQVvvaa0QuDcNK5GeCQnxYnSSaar2tpku" frameborder="0" allowfullscreen></iframe></div><br>
-				<br>
-	  
-<p>Hello and welcome to a miniseries and introduction to the <a href="https://github.com/tensorflow/models/tree/master/research/object_detection" target="blank"><strong>TensorFlow Object Detection API</strong></a>. This API can be used to detect, with bounding boxes, objects in images and/or video using either some of the pre-trained models made available or through models you can train on your own (which the API also makes easier).</p>
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
 
 
-<p>To begin, you're going to want to make sure you have TensorFlow and all of the dependencies. For CPU TensorFlow, you can just do <code>pip install tensorflow</code>, but, of course, the GPU version of TensorFlow is much faster at processing so it is ideal. If you need to install GPU TensorFlow:</p>
+                <div class="container-fluid" align="left">
+                    <br>
+                    <h2>Introduction and Use - Tensorflow Object Detection API Tutorial</h2>
+                    <br>
 
-<p>Installing GPU TensorFlow links:</p>
-<ul>
-	<li><a href="../how-to-cuda-gpu-tensorflow-deep-learning-tutorial/index.html" target="blank"><strong>GPU TensorFlow on Ubuntu tutorial</strong></a></li>
-	<li><a href="https://www.youtube.com/watch?v=r7-WPbx8VuY" target="blank"><strong>GPU TensorFlow on Windows tutorial</strong></a></li>
-</li>
+                    <div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/COlbP62-B-U?list=PLQVvvaa0QuDcNK5GeCQnxYnSSaar2tpku" frameborder="0" allowfullscreen></iframe></div><br>
+                    <br>
 
-<p>If you do not have a powerful enough GPU to run the GPU version of TensorFlow, one option is to use <a href="https://goo.gl/h7SSkv" target="blank"><strong>PaperSpace</strong></a>. Using that link should give you $10 in credit to get started, giving you ~10-20 hours of use.</p>
+                    <p>Hello and welcome to a miniseries and introduction to the <a href="https://github.com/tensorflow/models/tree/master/research/object_detection" target="blank"><strong>TensorFlow Object Detection API</strong></a>. This API can be used
+                        to detect, with bounding boxes, objects in images and/or video using either some of the pre-trained models made available or through models you can train on your own (which the API also makes easier).</p>
 
-<p>Beyond this, the other Python dependencies are covered with:</p>
 
-<pre class="prettyprint lang-py">pip install pillow
+                    <p>To begin, you're going to want to make sure you have TensorFlow and all of the dependencies. For CPU TensorFlow, you can just do <code>pip install tensorflow</code>, but, of course, the GPU version of TensorFlow is much faster at processing
+                        so it is ideal. If you need to install GPU TensorFlow:</p>
+
+                    <p>Installing GPU TensorFlow links:</p>
+                    <ul>
+                        <li><a href="../how-to-cuda-gpu-tensorflow-deep-learning-tutorial/index.html" target="blank"><strong>GPU TensorFlow on Ubuntu tutorial</strong></a></li>
+                        <li><a href="https://www.youtube.com/watch?v=r7-WPbx8VuY" target="blank"><strong>GPU TensorFlow on Windows tutorial</strong></a></li>
+                        </li>
+
+                        <p>If you do not have a powerful enough GPU to run the GPU version of TensorFlow, one option is to use <a href="https://goo.gl/h7SSkv" target="blank"><strong>PaperSpace</strong></a>. Using that link should give you $10 in credit to
+                            get started, giving you ~10-20 hours of use.</p>
+
+                        <p>Beyond this, the other Python dependencies are covered with:</p>
+
+                        <pre class="prettyprint lang-py">pip install pillow
 pip install lxml
 pip install jupyter
 pip install matplotlib</pre>
 
-<p>Next, we need to clone the github. We can do this with git, or you can just download the repository to .zip:</p>
+                        <p>Next, we need to clone the github. We can do this with git, or you can just download the repository to .zip:</p>
 
-<p><code>git clone https://github.com/tensorflow/models.git</code> OR click the green "clone or download" button on the <a href="https://github.com/tensorflow/models" target="blank"><strong>https://github.com/tensorflow/models</strong></a> page, download the .zip, and extract it.</p>
+                        <p><code>git clone https://github.com/tensorflow/models.git</code> OR click the green "clone or download" button on the <a href="https://github.com/tensorflow/models" target="blank"><strong>https://github.com/tensorflow/models</strong></a>                            page, download the .zip, and extract it.</p>
 
-<p>Once you have the <code>models</code> directory (or <code>models-master</code> if you downloaded and extracted the .zip), navigate to that directory in your terminal/cmd.exe. The next steps are slightly different on Ubuntu vs Windows.</p>
+                        <p>Once you have the <code>models</code> directory (or <code>models-master</code> if you downloaded and extracted the .zip), navigate to that directory in your terminal/cmd.exe. The next steps are slightly different on Ubuntu vs Windows.</p>
 
 
-<div class='card hoverable'>
-	<div class='card-content'>
-		<div class='card-title'><strong>On Ubuntu:</strong></div>
-			<p><code>protoc object_detection/protos/*.proto --python_out=.</code></p>
-			<p>And...</p>
-			<p><code>export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim</code></p>
+                        <div class='card hoverable'>
+                            <div class='card-content'>
+                                <div class='card-title'><strong>On Ubuntu:</strong></div>
+                                <p><code>protoc object_detection/protos/*.proto --python_out=.</code></p>
+                                <p>And...</p>
+                                <p><code>export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim</code></p>
 
-			<p>If you get an error on the <code>protoc</code> command on Ubuntu, check the version you are running with <code>protoc --version</code>, if it's not the latest version, you might want to update. As of my writing of this, we're using 3.4.0. In order to update or get protoc, head to the <a href="https://github.com/google/protobuf/releases" target="blank"><strong>protoc releases page</strong></a>. Download the python version, extract, navigate into the directory and then do:</p>
+                                <p>If you get an error on the <code>protoc</code> command on Ubuntu, check the version you are running with <code>protoc --version</code>, if it's not the latest version, you might want to update. As of my writing of this,
+                                    we're using 3.4.0. In order to update or get protoc, head to the <a href="https://github.com/google/protobuf/releases" target="blank"><strong>protoc releases page</strong></a>. Download the python version, extract,
+                                    navigate into the directory and then do:</p>
 
-<pre class="prettyprint lang-py">sudo ./configure
+                                <pre class="prettyprint lang-py">sudo ./configure
 sudo make check
 sudo make install</pre>
 
-			<p>After that, try the <code>protoc</code> command again (again, make sure you are issuing this from the <code>models</code> dir).</p>
-	</div>
-</div>
+                                <p>After that, try the <code>protoc</code> command again (again, make sure you are issuing this from the <code>models</code> dir).</p>
+                            </div>
+                        </div>
 
-<div class='card hoverable'>
-	<div class='card-content'>
-		<div class='card-title'><strong>On Windows:</strong></div>
-		<p>Head to the <a href="https://github.com/google/protobuf/releases" target="blank"><strong>protoc releases page</strong></a> and download the <code>protoc-3.4.0-win32.zip</code>, extract it, and you will find <code>protoc.exe</code> in the <code>bin</code> directory.</p>
-		<p>You can move this to something more appropriate if you like, or leave it here. I eventually put mine in program files, making a "protoc" directory and dropping it in there.</p>
-		<p>Now, from within the <code>models</code> (or <code>models-master</code>) directory, you can use the <code>protoc</code> command like so:</p>
-		<p><code>"C:/Program Files/protoc/bin/protoc" object_detection/protos/*.proto --python_out=.</code></p>
-	</div>
-</div>
+                        <div class='card hoverable'>
+                            <div class='card-content'>
+                                <div class='card-title'><strong>On Windows:</strong></div>
+                                <p>Head to the <a href="https://github.com/google/protobuf/releases" target="blank"><strong>protoc releases page</strong></a> and download the <code>protoc-3.4.0-win32.zip</code>, extract it, and you will find <code>protoc.exe</code>                                    in the <code>bin</code> directory.</p>
+                                <p>You can move this to something more appropriate if you like, or leave it here. I eventually put mine in program files, making a "protoc" directory and dropping it in there.</p>
+                                <p>Now, from within the <code>models</code> (or <code>models-master</code>) directory, you can use the <code>protoc</code> command like so:</p>
+                                <p><code>"C:/Program Files/protoc/bin/protoc" object_detection/protos/*.proto --python_out=.</code></p>
+                            </div>
+                        </div>
 
-<p>Next, open terminal/cmd.exe from the <code>models/object_detection</code> directory and open the Jupyter Notebook with <code>jupyter notebook</code>. From here, choose the <code>object_detection_tutorial.ipynb</code>. From here, you should be able to <code>cell</code> in the main menu, and choose <code>run all</code></p>
+                        <p>Next, open terminal/cmd.exe from the <code>models/object_detection</code> directory and open the Jupyter Notebook with <code>jupyter notebook</code>. From here, choose the <code>object_detection_tutorial.ipynb</code>. From here,
+                            you should be able to <code>cell</code> in the main menu, and choose <code>run all</code></p>
 
-<p>You should get the following results:</p>
+                        <p>You should get the following results:</p>
 
-<img class="responsive-img" src="../static/images/machine-learning/dogs_detected.png" alt="Object Detection machine learning tutorials" />
+                        <img class="responsive-img" src="../static/images/machine-learning/dogs_detected.png" alt="Object Detection machine learning tutorials" />
 
-<img class="responsive-img" src="../static/images/machine-learning/beach_object_detection.png" alt="Object Detection machine learning tutorials" />
-
-
-<p>In the next tutorial, we'll cover how we can label data live from a webcam stream by modifying this sample code slightly.</p>
+                        <img class="responsive-img" src="../static/images/machine-learning/beach_object_detection.png" alt="Object Detection machine learning tutorials" />
 
 
-        
-
-		
-
-		
-		
-
-
-                
-		<p>The next tutorial: <a title="Streaming Object Detection Video - Tensorflow Object Detection API Tutorial" href="../video-tensorflow-object-detection-api-tutorial/index970f.html?completed=/introduction-use-tensorflow-object-detection-api-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Streaming Object Detection Video - Tensorflow Object Detection API Tutorial</button></a></p>
-
-		
+                        <p>In the next tutorial, we'll cover how we can label data live from a webcam stream by modifying this sample code slightly.</p>
 
 
 
 
 
-<br>
-	  </div>
 
-</div>
-<div class="col l4 m12 s12">
-<br><br><br>
 
-  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
 
-  		<!-- C.A. : -->
 
-	    
-	    	
-        <a href="https://nnfs.io?a=3&amp;t=/introduction-use-tensorflow-object-detection-api-tutorial/" id=process_click>
-          <div class="card hoverable" style="max-width:400px; align-items: left;">
-            <div class="card-image">
-              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+
+
+                        <p>The next tutorial:
+                            <a title="Streaming Object Detection Video - Tensorflow Object Detection API Tutorial" href="../video-tensorflow-object-detection-api-tutorial/index970f.html?completed=/introduction-use-tensorflow-object-detection-api-tutorial/"><button class="btn" style="background-color:#FFD166; color:#000000">Streaming Object Detection Video - Tensorflow Object Detection API Tutorial</button></a>
+                        </p>
+
+
+
+
+
+
+
+                        <br>
+                </div>
+
             </div>
-          </div>
-        </a>					 				
-							    <li>
-								  <div class="collapsible-header active" style="padding:2px">Introduction and Use - Tensorflow Object Detection API Tutorial</div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
 
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Streaming Object Detection Video - Tensorflow Object Detection API Tutorial</div>
-								  <div class="collapsible-body">
-										<p><a href="../video-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=3&amp;t=/introduction-use-tensorflow-object-detection-api-tutorial/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction and Use - Tensorflow Object Detection API Tutorial</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Streaming Object Detection Video - Tensorflow Object Detection API Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../video-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Tracking Custom Objects Intro - Tensorflow Object Detection API Tutorial</div>
-								  <div class="collapsible-body">
-										<p><a href="../custom-objects-tracking-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Tracking Custom Objects Intro - Tensorflow Object Detection API Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../custom-objects-tracking-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Creating TFRecords - Tensorflow Object Detection API Tutorial</div>
-								  <div class="collapsible-body">
-										<p><a href="../creating-tfrecord-files-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Creating TFRecords - Tensorflow Object Detection API Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../creating-tfrecord-files-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Training Custom Object Detector - Tensorflow Object Detection API Tutorial</div>
-								  <div class="collapsible-body">
-										<p><a href="../training-custom-objects-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Training Custom Object Detector - Tensorflow Object Detection API Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../training-custom-objects-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Testing Custom Object Detector - Tensorflow Object Detection API Tutorial</div>
-								  <div class="collapsible-body">
-										<p><a href="../testing-custom-object-detector-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Testing Custom Object Detector - Tensorflow Object Detection API Tutorial</div>
+                        <div class="collapsible-body">
+                            <p><a href="../testing-custom-object-detector-tensorflow-object-detection-api-tutorial/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
-							
+                        </div>
+                    </li>
 
-  </ul>
-
-
-</div>
-</div>
-
-
-
-			</div>
-		</div>
-
-		<!--login modal-->
-		
-
-		<!--Register modal-->
-		
-
-
-		<script>
-			$(document).ready(function(){
-				$(".button-collapse").sideNav();
-				$('.modal-trigger').leanModal();
-				$('.collapsible').collapsible({
-				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-				});
-				$('#aside').pushpin({ top:110, bottom:500 });
-		  });
-		</script>
-		<script>
-		  $(document).ready(function(){
-			$('.collapsible').collapsible({
-			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-			});
-			$('select').material_select();
-		  });
-	  </script>
-	  <script>
-		function goBack() {
-			window.history.back()
-		}
-	</script>
-		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
-
-	</body>
-
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
-
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
-                </ul>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h6 class="white-text">Legal stuff:</h6>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
 
                 </ul>
-              </div>
-            </div>
-          </div>
-          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
-          <div class="footer-copyright">
-            <div class="container">
-            © OVER 9000! PythonProgramming.net
+
 
             </div>
-
-          </div>
-        </footer>
+        </div>
 
 
-<!-- Mirrored from pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:18 GMT -->
+
+</div>
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
+
+</body>
+
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

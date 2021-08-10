@@ -1,206 +1,181 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
-				
-<body class="body">
-    <div class="row">
-    <div class="col l8 m12 s12">
-      <div class="container-fluid" align="left" >
-		<!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+                <div class="container-fluid" align="left">
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
 			<div class="determinate" style="background-color:#FFD166;width: 0%;">
 				Image Recognition Progress:  0%
 			</div>
 		</div>-->
-		<img class="responsive-img" src="../static/images/image-recognition/image-recognition-with-python-tutorial.png"/>
-	  <h2>Introduction and Dependencies</h2>
-	  <h3>How to perform basic image recognition with the use of Python</h3>
-	  <br>
-	  
-	  <div class="video-container"><iframe width="750" height="423"  src="https://www.youtube.com/embed/hbL_FTEZSyY?list=PLQVvvaa0QuDffXBfcH9ZJuvctJV3OtB8A" frameborder="0" allowfullscreen></iframe></div><br>
+                    <img class="responsive-img" src="../static/images/image-recognition/image-recognition-with-python-tutorial.png" />
+                    <h2>Introduction and Dependencies</h2>
+                    <h3>How to perform basic image recognition with the use of Python</h3>
+                    <br>
+
+                    <div class="video-container"><iframe width="750" height="423" src="https://www.youtube.com/embed/hbL_FTEZSyY?list=PLQVvvaa0QuDffXBfcH9ZJuvctJV3OtB8A" frameborder="0" allowfullscreen></iframe></div><br>
 
 
 
 
 
 
-<br>
-	  
-	  <p>There are many applications for image recognition. One of the largest that people are most familiar with would be facial recognition, which is the art of matching faces in pictures to identities. Image recognition goes much further, however. It can allow computers to translate written text on paper into digital text, it can help the field of machine vision, where robots and other devices can recognize people and objects.</p>
+                    <br>
 
-		<p>Here, our goal is to begin to use machine learning, in the form of pattern recognition, to teach our program what text looks like. In this case, we'll use numbers, but this could translate to all letters of the alphabet, words, faces, really anything at all. The more complex the image, the more complex the code will need to become. When it comes to letters and characters, it is relatively simplistic, however.</p>
+                    <p>There are many applications for image recognition. One of the largest that people are most familiar with would be facial recognition, which is the art of matching faces in pictures to identities. Image recognition goes much further,
+                        however. It can allow computers to translate written text on paper into digital text, it can help the field of machine vision, where robots and other devices can recognize people and objects.</p>
 
-		<p>How is it done? Just like any problem, especially in programming, we need to just break it down into steps, and the problem will become easily solved. Let's break it down!</p>
-	  
-	  <p>First, you are going to need some sample documents to help with this series, you can get the <a href="../static/downloads/image-recognition/tutorialimages.zip"><strong>sample images here</strong></a>.</p>
-	  
-	  <p>From there, extract the zip folder and move the "images" directory to wherever you're writing this script. Within it, you should have an "images" directory. Within that, you have some simple images that we'll be using and then you have a bunch of example numbers within the numbers directory.</p>
-	  <p>Once you have that, you're going to need the <a href="https://www.python.org/"><strong>Python programming language</strong></a>. This specific series was created using Python 2.7. You can go through this with Python 3, though there may be some minor differences.</p>
-	  <p>You will also need Matplotlib, NumPy and PIL or Pillow. You can follow the video for installation, or you can also use pip install. At the time of my video, pip install wasn't really a method I would recommend. With any newer version of Python 2 or 3, you will get pip, and pip support on almost all packages is there now.</p>
-	  
-	  <kbd data-toggle="collapse" data-target="#dontknow" aria-expanded="false" aria-controls="dontknow">Don't know what pip is or how to install modules?</kbd>
-	  
-				<div class="collapse" id="dontknow">
-				  <div class="well">
-					<p><strong>Pip</strong> is probably the easiest way to install packages Once you install Python, you should be able to open your command prompt, like cmd.exe on windows, or bash on linux, and type:</p>
-					<code>pip install numpy</code><br>
-					<code>pip install matplotlib</code>			
-					<p>Having trouble still? No problem, there's a tutorial for that: <a href="../using-pip-install-for-python-modules/index.html" target="_blank"><strong>pip install Python modules tutorial</strong></a>.</p>
-					<p>If you're still having trouble, feel free to contact us, using the contact in the footer of this website.</p>
-				  </div>
-				</div>
-				
-				
-		<p>Once you have all of the dependencies, then you are ready to move on to the next part!</p>	
-<p>The next tutorial: <a title="Understanding Pixel Arrays" href="../python-pixel-arrays/indexe6e7.html?completed=/image-recognition-python/"><button class="btn" style="background-color:#FFD166; color:#000000">Understanding Pixel Arrays</button></a></p><br>
-	  </div>
-</div>
-<div class="col l4 m12 s12">
-<br><br><br>
-  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
-  		<!-- C.A. : -->    
-	    	
-        <a href="https://nnfs.io?a=4&amp;t=/image-recognition-python/" id=process_click>
-          <div class="card hoverable" style="max-width:400px; align-items: left;">
-            <div class="card-image">
-              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+                    <p>Here, our goal is to begin to use machine learning, in the form of pattern recognition, to teach our program what text looks like. In this case, we'll use numbers, but this could translate to all letters of the alphabet, words, faces,
+                        really anything at all. The more complex the image, the more complex the code will need to become. When it comes to letters and characters, it is relatively simplistic, however.</p>
+
+                    <p>How is it done? Just like any problem, especially in programming, we need to just break it down into steps, and the problem will become easily solved. Let's break it down!</p>
+
+                    <p>First, you are going to need some sample documents to help with this series, you can get the <a href="../static/downloads/image-recognition/tutorialimages.zip"><strong>sample images here</strong></a>.</p>
+
+                    <p>From there, extract the zip folder and move the "images" directory to wherever you're writing this script. Within it, you should have an "images" directory. Within that, you have some simple images that we'll be using and then you
+                        have a bunch of example numbers within the numbers directory.</p>
+                    <p>Once you have that, you're going to need the <a href="https://www.python.org/"><strong>Python programming language</strong></a>. This specific series was created using Python 2.7. You can go through this with Python 3, though there
+                        may be some minor differences.</p>
+                    <p>You will also need Matplotlib, NumPy and PIL or Pillow. You can follow the video for installation, or you can also use pip install. At the time of my video, pip install wasn't really a method I would recommend. With any newer version
+                        of Python 2 or 3, you will get pip, and pip support on almost all packages is there now.</p>
+
+                    <kbd data-toggle="collapse" data-target="#dontknow" aria-expanded="false" aria-controls="dontknow">Don't know what pip is or how to install modules?</kbd>
+
+                    <div class="collapse" id="dontknow">
+                        <div class="well">
+                            <p><strong>Pip</strong> is probably the easiest way to install packages Once you install Python, you should be able to open your command prompt, like cmd.exe on windows, or bash on linux, and type:</p>
+                            <code>pip install numpy</code><br>
+                            <code>pip install matplotlib</code>
+                            <p>Having trouble still? No problem, there's a tutorial for that: <a href="../using-pip-install-for-python-modules/index.html" target="_blank"><strong>pip install Python modules tutorial</strong></a>.</p>
+                            <p>If you're still having trouble, feel free to contact us, using the contact in the footer of this website.</p>
+                        </div>
+                    </div>
+
+
+                    <p>Once you have all of the dependencies, then you are ready to move on to the next part!</p>
+                    <p>The next tutorial: <a title="Understanding Pixel Arrays" href="../python-pixel-arrays/indexe6e7.html?completed=/image-recognition-python/"><button class="btn" style="background-color:#FFD166; color:#000000">Understanding Pixel Arrays</button></a></p><br>
+                </div>
             </div>
-          </div>
-        </a>  		 
-							
-							    <li>
-								  <div class="collapsible-header active" style="padding:2px">Introduction and Dependencies</div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+                    <!-- C.A. : -->
 
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Understanding Pixel Arrays</div>
-								  <div class="collapsible-body">
-										<p><a href="../python-pixel-arrays/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">More Pixel Arrays</div>
-								  <div class="collapsible-body">
-										<p><a href="../more-pixel-arrays/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Graphing our images in Matplotlib</div>
-								  <div class="collapsible-body">
-										<p><a href="../graphing-images-matplotlib/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Thresholding</div>
-								  <div class="collapsible-body">
-										<p><a href="../image-thresholding-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Thresholding Function</div>
-								  <div class="collapsible-body">
-										<p><a href="../thresholding-python-function/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Thresholding Logic</div>
-								  <div class="collapsible-body">
-										<p><a href="../automated-image-thresholding-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Saving our Data For Training and Testing</div>
-								  <div class="collapsible-body">
-										<p><a href="../saving-image-data/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Basic Testing</div>
-								  <div class="collapsible-body">
-										<p><a href="../basic-image-recognition-testing/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Testing, visualization, and moving forward</div>
-								  <div class="collapsible-body">
-										<p><a href="../testing-visualization-and-conclusion/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
-									  </button></a></p>
-								  </div>
-								</li>
-							
-  </ul>
+                    <a href="https://nnfs.io?a=4&amp;t=/image-recognition-python/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Introduction and Dependencies</div>
+
+                    </li>
 
 
-</div>
-</div>	
-</div>
-</div>
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net</p>
-                <ul>
-                    <li><a href="#" class="grey-text text-lighten-3">Support this Website!</a></li>
-                    <li><a href="#" class="grey-text text-lighten-3">Consulting and Contracting</a></li>
-                    <li><a href="https://www.facebook.com/pythonprogramming.net/" class="grey-text text-lighten-3">Facebook</a></li>
-                    <li><a href="https://twitter.com/sentdex" class="grey-text text-lighten-3">Twitter</a></li>
-                    <li><a href="https://instagram.com/sentdex" class="grey-text text-lighten-3">Instagram</a></li>
+
+                    <li>
+                        <div class="collapsible-header">Understanding Pixel Arrays</div>
+                        <div class="collapsible-body">
+                            <p><a href="../python-pixel-arrays/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">More Pixel Arrays</div>
+                        <div class="collapsible-body">
+                            <p><a href="../more-pixel-arrays/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Graphing our images in Matplotlib</div>
+                        <div class="collapsible-body">
+                            <p><a href="../graphing-images-matplotlib/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Thresholding</div>
+                        <div class="collapsible-body">
+                            <p><a href="../image-thresholding-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Thresholding Function</div>
+                        <div class="collapsible-body">
+                            <p><a href="../thresholding-python-function/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Thresholding Logic</div>
+                        <div class="collapsible-body">
+                            <p><a href="../automated-image-thresholding-python/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Saving our Data For Training and Testing</div>
+                        <div class="collapsible-body">
+                            <p><a href="../saving-image-data/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Basic Testing</div>
+                        <div class="collapsible-body">
+                            <p><a href="../basic-image-recognition-testing/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Testing, visualization, and moving forward</div>
+                        <div class="collapsible-body">
+                            <p><a href="../testing-visualization-and-conclusion/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+									  </button></a></p>
+                        </div>
+                    </li>
+
                 </ul>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Legal Stuff:</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#">Terms and Conditions</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#">Privacy Policy</a></li>
-                </ul>
+
+
             </div>
         </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © OVER 9000! PythonProgramming.net
-            <a class="grey-text text-lighten-4 right" href="#!">Programming is a SuperPower!</a>
-        </div>
-    </div>
-</footer>	
+</div>
+</div>
 
 {% endblock %}

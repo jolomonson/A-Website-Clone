@@ -1,159 +1,181 @@
 {% extends 'main/header.html' %} {% load static %} {% block content %}
 
-		<!-- main content -->
-		<div class="container" style="max-width:1500px; min-height:100%">
-			<!--Notification:-->
-            <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
-            <!--End Notification:-->
-			
-<!--       <pre class="prettyprint">              width="750" height="423"    -->
-<body class="body">
-    <div class="row">
-    <div class="col l8 m12 s12">
-      <div class="container-fluid" align="left" >
+<!-- main content -->
+<div class="container" style="max-width:1500px; min-height:100%">
+    <!--Notification:-->
+    <!--<p style="font-size:80%">TensorFlow.js Livestream:  <a href="https://www.youtube.com/watch?v=NjSlj95lliM" target="blank"><strong>Deep Learning in the browser</strong></a></p>-->
+    <!--End Notification:-->
 
-		<!--<div class="progress" style="background-color:#ffebbe;height:20px;">
+    <!--       <pre class="prettyprint">              width="750" height="423"    -->
+
+    <body class="body">
+        <div class="row">
+            <div class="col l8 m12 s12">
+                <div class="container-fluid" align="left">
+
+                    <!--<div class="progress" style="background-color:#ffebbe;height:20px;">
 			<div class="determinate" style="background-color:#FFD166;width: 0%;">
 				Clustering (unsupervised learning) Progress:  0%
 			</div>
 		</div>-->
-		<img class="responsive-img" src="../static/images/unsupervised-learning/unsupervised-machine-learning-clustering-mean-shift-and-kmeans.png"/>
-	  <h2>Unsupervised Machine Learning: Flat Clustering</h2>
-	  <h3>K-Means clusternig example with Python and Scikit-learn</h3>
-	  <br>
-	  
-	  <div class="video-container"><iframe width="750" height="423" src="https://www.youtube.com/embed/ZS-IM9C3eFg?list=PLQVvvaa0QuDd0flgGphKCej-9jp-QdzZ3" frameborder="0" allowfullscreen></iframe></div><br>
-  
-	  <p>This series is concerning "unsupervised machine learning." The difference between supervised and unsupervised machine learning is whether or not we, the scientist, are providing the machine with labeled data.</p>
-	  <p>Unsupervised machine learning is where the scientist does not provide the machine with labeled data, and the machine is expected to derive structure from the data all on its own.</p>
-	  <p>There are many forms of this, though the main form of unsupervised machine learning is clustering. Within clustering, you have "flat" clustering or "hierarchical" clustering.</p>
-	  
-<div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
-		<div class="row">
-		<div class="col l6">
-<p><strong>Flat Clustering</strong></p>
-<p>Flat clustering is where the scientist tells the machine how many categories to cluster the data into.</p>
-<p></p></div>
-		<div class="col l6">
-<p><strong>Hierarchical</strong></p>
-<p>Hierarchical clustering is where the machine is allowed to decide how many clusters to create based on its own algorithms.</p>
-<p></p>  </div></div>
-<div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
+                    <img class="responsive-img" src="../static/images/unsupervised-learning/unsupervised-machine-learning-clustering-mean-shift-and-kmeans.png" />
+                    <h2>Unsupervised Machine Learning: Flat Clustering</h2>
+                    <h3>K-Means clusternig example with Python and Scikit-learn</h3>
+                    <br>
+
+                    <div class="video-container"><iframe width="750" height="423" src="https://www.youtube.com/embed/ZS-IM9C3eFg?list=PLQVvvaa0QuDd0flgGphKCej-9jp-QdzZ3" frameborder="0" allowfullscreen></iframe></div><br>
+
+                    <p>This series is concerning "unsupervised machine learning." The difference between supervised and unsupervised machine learning is whether or not we, the scientist, are providing the machine with labeled data.</p>
+                    <p>Unsupervised machine learning is where the scientist does not provide the machine with labeled data, and the machine is expected to derive structure from the data all on its own.</p>
+                    <p>There are many forms of this, though the main form of unsupervised machine learning is clustering. Within clustering, you have "flat" clustering or "hierarchical" clustering.</p>
+
+                    <div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
+                    <div class="row">
+                        <div class="col l6">
+                            <p><strong>Flat Clustering</strong></p>
+                            <p>Flat clustering is where the scientist tells the machine how many categories to cluster the data into.</p>
+                            <p></p>
+                        </div>
+                        <div class="col l6">
+                            <p><strong>Hierarchical</strong></p>
+                            <p>Hierarchical clustering is where the machine is allowed to decide how many clusters to create based on its own algorithms.</p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
 
 
-	    This page will cover a Flat Clustering example, and the next tutorial will cover a Hierarchical Clustering example.</p>
-	  <p>Now, what can we use unsupervised machine learning for? In general, unsupervised machine learning can actually solve the exact same problems as supervised machine learning, though it may not be as efficient or accurate.</p>
-	  <p>Unsupervised machine learning is most often applied to questions of underlying structure. Genomics, for example, is an area where we do not truly understand the underlying structure. Thus, we use unsupervised machine learning to help us figure out the structure.</p>
-	  <p>Unsupervised learning can also aid in "feature reduction." A term we will cover eventually here is "Principal Component Analysis," or PCA, which is another form of feature reduction, used frequently with unsupervised machine learning. PCA attempts to locate linearly uncorrelated variables, calling these the Principal Components, since these are the more "unique" elements that differentiate or describe whatever the object of analysis is.</p>
-	  <p>There is also a meshing of supervised and unsupervised machine learning, often called semi-supervised machine learning. You will often find things get more complicated with real world examples. You may find, for example, that first you want to use unsupervised machine learning for feature reduction, then you will shift to supervised machine learning once you have used, for example, Flat Clustering to group your data into two clusters, which are now going to be your two labels for supervised learning.</p>
-	  <p>What might be an actual example of this? How about we're trying to differentiate between male and female faces. We aren't already sure what the defining differences between a male and female face are, so we take to unsupervised machine learning first. Our hopeful goal will be to create an algorithm that will naturally just group the faces into two groups. We're likely to go ahead and use Flat Clustering for this, and then we'll likely test the algorithm to see if it was indeed accurate, using labeled data only for testing, not for training. If we find the machine is successful, we now actually have our labels, and features that make up a male face and a female face. We can then use PCA, or maybe we already did. Either way, we can try to get feature count down. Once we've done this, we use these labels with their Principle Components as features, which we can then feed into a supervised machine learning algorithm for actual future identification.</p>
-	  <p>Now that you know some of the uses and some key terms, let's see an actual example with <a href="https://www.python.org/" target="_blank"><strong>Python</strong></a> and the <a href="http://scikit-learn.org/" target="_blank"><strong>Scikit-learn (sklearn) module</strong></a>.</p>
-	  <kbd data-toggle="collapse" data-target="#donthav" aria-expanded="false" aria-controls="donthav">Don't have Python or Sklearn?</kbd><br>
-	  
-		<div class="collapse" id="donthav">
-		  <div class="well">
-			<p><strong><a href="https://www.python.org/" target="_blank">Python</a></strong> is a programming language, and the language this entire website covers tutorials on. If you need Python, click on the link to python.org and download the latest version of Python.</p>
-			
-			<p><strong><a href="http://scikit-learn.org/" target="_blank">Scikit-learn (sklearn)</a></strong> is a popular machine learning module for the Python programming language.</p>
-			<p><strong></strong></p>
-			<p>The Scikit-learn module depends on Matplotlib, SciPy, and NumPy as well. You can use pip to install all of these, once you have Python.</p>
-			<kbd data-toggle="collapse" data-target="#dontknow" aria-expanded="false" aria-controls="dontknow">Don't know what pip is or how to install modules?</kbd>
-	  
-				<div class="collapse" id="dontknow">
-				  <div class="well">
-					<p><strong>Pip</strong> is probably the easiest way to install packages Once you install Python, you should be able to open your command prompt, like cmd.exe on windows, or bash on linux, and type:</p>
-					<code>pip install scikit-learn</code>
-					<p>Having trouble still? No problem, there's a tutorial for that: <a href="../using-pip-install-for-python-modules/index.html" target="_blank"><strong>pip install Python modules tutorial</strong></a>.</p>
-					<p>If you're still having trouble, feel free to contact us, using the contact in the footer of this website.</p>
-				  </div>
-				</div>
-		  </div>
-		</div>
-		
-		
-		
-		
-		
+                    This page will cover a Flat Clustering example, and the next tutorial will cover a Hierarchical Clustering example.</p>
+                    <p>Now, what can we use unsupervised machine learning for? In general, unsupervised machine learning can actually solve the exact same problems as supervised machine learning, though it may not be as efficient or accurate.</p>
+                    <p>Unsupervised machine learning is most often applied to questions of underlying structure. Genomics, for example, is an area where we do not truly understand the underlying structure. Thus, we use unsupervised machine learning to help
+                        us figure out the structure.</p>
+                    <p>Unsupervised learning can also aid in "feature reduction." A term we will cover eventually here is "Principal Component Analysis," or PCA, which is another form of feature reduction, used frequently with unsupervised machine learning.
+                        PCA attempts to locate linearly uncorrelated variables, calling these the Principal Components, since these are the more "unique" elements that differentiate or describe whatever the object of analysis is.</p>
+                    <p>There is also a meshing of supervised and unsupervised machine learning, often called semi-supervised machine learning. You will often find things get more complicated with real world examples. You may find, for example, that first
+                        you want to use unsupervised machine learning for feature reduction, then you will shift to supervised machine learning once you have used, for example, Flat Clustering to group your data into two clusters, which are now going
+                        to be your two labels for supervised learning.</p>
+                    <p>What might be an actual example of this? How about we're trying to differentiate between male and female faces. We aren't already sure what the defining differences between a male and female face are, so we take to unsupervised machine
+                        learning first. Our hopeful goal will be to create an algorithm that will naturally just group the faces into two groups. We're likely to go ahead and use Flat Clustering for this, and then we'll likely test the algorithm to see
+                        if it was indeed accurate, using labeled data only for testing, not for training. If we find the machine is successful, we now actually have our labels, and features that make up a male face and a female face. We can then use PCA,
+                        or maybe we already did. Either way, we can try to get feature count down. Once we've done this, we use these labels with their Principle Components as features, which we can then feed into a supervised machine learning algorithm
+                        for actual future identification.</p>
+                    <p>Now that you know some of the uses and some key terms, let's see an actual example with <a href="https://www.python.org/" target="_blank"><strong>Python</strong></a> and the <a href="http://scikit-learn.org/" target="_blank"><strong>Scikit-learn (sklearn) module</strong></a>.</p>
+                    <kbd data-toggle="collapse" data-target="#donthav" aria-expanded="false" aria-controls="donthav">Don't have Python or Sklearn?</kbd><br>
+
+                    <div class="collapse" id="donthav">
+                        <div class="well">
+                            <p><strong><a href="https://www.python.org/" target="_blank">Python</a></strong> is a programming language, and the language this entire website covers tutorials on. If you need Python, click on the link to python.org and download
+                                the latest version of Python.</p>
+
+                            <p><strong><a href="http://scikit-learn.org/" target="_blank">Scikit-learn (sklearn)</a></strong> is a popular machine learning module for the Python programming language.</p>
+                            <p><strong></strong></p>
+                            <p>The Scikit-learn module depends on Matplotlib, SciPy, and NumPy as well. You can use pip to install all of these, once you have Python.</p>
+                            <kbd data-toggle="collapse" data-target="#dontknow" aria-expanded="false" aria-controls="dontknow">Don't know what pip is or how to install modules?</kbd>
+
+                            <div class="collapse" id="dontknow">
+                                <div class="well">
+                                    <p><strong>Pip</strong> is probably the easiest way to install packages Once you install Python, you should be able to open your command prompt, like cmd.exe on windows, or bash on linux, and type:</p>
+                                    <code>pip install scikit-learn</code>
+                                    <p>Having trouble still? No problem, there's a tutorial for that: <a href="../using-pip-install-for-python-modules/index.html" target="_blank"><strong>pip install Python modules tutorial</strong></a>.</p>
+                                    <p>If you're still having trouble, feel free to contact us, using the contact in the footer of this website.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
-		
-		
-		<br>
-		
-		<div class="row">
-		<div class="col l6">
-		<pre  class="prettyprint">
+
+
+
+
+
+
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col l6">
+                            <pre class="prettyprint">
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import style
 style.use("ggplot")
 from sklearn.cluster import KMeans
 		</pre></div>
-		<div class="col l6">
-<p>Here, we're just doing our basic imports. We're importing NumPy which is a useful numbers crunching module, then matplotlib for graphing, and then KMeans from sklearn.</p></div></div>
+                        <div class="col l6">
+                            <p>Here, we're just doing our basic imports. We're importing NumPy which is a useful numbers crunching module, then matplotlib for graphing, and then KMeans from sklearn.</p>
+                        </div>
+                    </div>
 
 
 
-	<kbd data-toggle="collapse" data-target="#confused" aria-expanded="false" aria-controls="confused">Confused about imports and modules? (other than "KMeans")</kbd>
-	  
-				<div class="collapse" id="confused">
-				  <div class="well">
-					<p>If you're confused about imports, you may need to first run through the <a href="../introduction-to-python-programming/index.html" target="_blank"><strong>Python 3 Basics series</strong></a>, or specifically the <a href="../module-import-syntax-python-3-tutorial/index.html" target="_blank"><strong>module import syntax tutorial</strong></a>.</p>
-				  </div>
-				</div>
-	  
-	  
-	  <br><br>
-	  <p>The KMeans import from sklearn.cluster is in reference to the K-Means clustering algorithm. The general idea of clustering is to cluster data points together using various methods. You can probably guess that K-Means uses something to do with means. What ends up happening is a centroid, or prototype point, is identified, and data points are "clustered" into their groups by the centroid they are the closest to.</p>
-	  
-		<kbd data-toggle="collapse" data-target="#Voronoi" aria-expanded="false" aria-controls="Voronoi">Clusters being Called Cells, or Voronoi Cells, and references to Lloyd's Algorithm</kbd>
-	  
-				<div class="collapse" id="Voronoi">
-				  <div class="well">
-					<p>One of the things that makes any new topic confusing is a lot of complex sounding terms. I do my best to keep things simple, but not everyone is as kind as me.</p>
-					<p>Some people will refer to the style of clusters that you wind up seeing as "Voronoi" cells. Usually the "clusters" have defining "edges" to them that, when shaded or colored in, look like geometrical polygons, or cells, like this:</p>
-					<img class="responsive-img" src="../static/images/unsupervised-learning/plot_kmeans_digits_001.png"/>
-					<p>The K-Means algorithm gets its origins from "Lloyd's Algorithm," which basically does the exact same thing.</p>
-					<p></p>
-				  </div>
-				</div>
-				
-		<br>
-		<br>
-	  
-	  
-	  
-		<div class="row">
-		<div class="col l6">
-		<pre  class="prettyprint">
+                    <kbd data-toggle="collapse" data-target="#confused" aria-expanded="false" aria-controls="confused">Confused about imports and modules? (other than "KMeans")</kbd>
+
+                    <div class="collapse" id="confused">
+                        <div class="well">
+                            <p>If you're confused about imports, you may need to first run through the <a href="../introduction-to-python-programming/index.html" target="_blank"><strong>Python 3 Basics series</strong></a>, or specifically the <a href="../module-import-syntax-python-3-tutorial/index.html"
+                                    target="_blank"><strong>module import syntax tutorial</strong></a>.</p>
+                        </div>
+                    </div>
+
+
+                    <br><br>
+                    <p>The KMeans import from sklearn.cluster is in reference to the K-Means clustering algorithm. The general idea of clustering is to cluster data points together using various methods. You can probably guess that K-Means uses something
+                        to do with means. What ends up happening is a centroid, or prototype point, is identified, and data points are "clustered" into their groups by the centroid they are the closest to.</p>
+
+                    <kbd data-toggle="collapse" data-target="#Voronoi" aria-expanded="false" aria-controls="Voronoi">Clusters being Called Cells, or Voronoi Cells, and references to Lloyd's Algorithm</kbd>
+
+                    <div class="collapse" id="Voronoi">
+                        <div class="well">
+                            <p>One of the things that makes any new topic confusing is a lot of complex sounding terms. I do my best to keep things simple, but not everyone is as kind as me.</p>
+                            <p>Some people will refer to the style of clusters that you wind up seeing as "Voronoi" cells. Usually the "clusters" have defining "edges" to them that, when shaded or colored in, look like geometrical polygons, or cells, like
+                                this:</p>
+                            <img class="responsive-img" src="../static/images/unsupervised-learning/plot_kmeans_digits_001.png" />
+                            <p>The K-Means algorithm gets its origins from "Lloyd's Algorithm," which basically does the exact same thing.</p>
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <br>
+                    <br>
+
+
+
+                    <div class="row">
+                        <div class="col l6">
+                            <pre class="prettyprint">
 x = [1, 5, 1.5, 8, 1, 9]
 y = [2, 8, 1.8, 8, 0.6, 11]
 
 plt.scatter(x,y)
 plt.show()
 		</pre></div>
-		<div class="col l6">
-<p>This block of code is not required for machine learning. What we're doing here is plotting and visualizing our data before feeding it into the machine learning algorithm.</p></div></div>
+                        <div class="col l6">
+                            <p>This block of code is not required for machine learning. What we're doing here is plotting and visualizing our data before feeding it into the machine learning algorithm.</p>
+                        </div>
+                    </div>
 
 
-		<p>Running the code up to this point will provide you with the following graph:</p>
-		<img class="responsive-img" src="../static/images/unsupervised-learning/flat-clustering-python-tutorial-unmarked.png"/>
-		<p>This is the same set of data and graph that we used for our <a href="../linear-svc-example-scikit-learn-svm-python/index.html" target="_blank"><strong>Support Vector Machine / Linear SVC example with supervised machine learning</strong></a>.</p>
-		
-		<p>You can probably look at this graph, and group this data all on your own. Imagine if this graph was 3D. It would be a little harder. Now imagine this graph is 50-dimensional. Suddenly you're immobilized!</p>
-		<p>In the supervised machine learning example with this data, we were allowed to feed this data to the machine along with labels. Thus, the lower left group had labeling, and the upper right grouping did too. Our task there was to then accept future points and properly group them according the groups. Easy enough.</p>
-		<p>Our task here, however, is a bit different. We do not have labeled data, and we want the machine to figure out all on its own that it needs to group the data.</p>
-		<p>For now, since we're doing flat-clustering, our task is a bit easier since we can tell the machine that we want it categorized into two groups. Still, however, how might you do this?</p>
-		<p>K-Means approaches the problem by finding similar means, repeatedly trying to find centroids that match with the least variance in groups</p>
-		<p>This repeatedly trying ends up leaving this algorithm with fairly poor performance, though performance is an issue with all machine learning algorithms. This is why it is usually suggested that you use a highly stream-lined and efficient algorithm that is already tested heavily rather than creating your own.</p>
-		<p>You also have to decide, as the scientist, how highly you value precision as compared to speed. There is always a balance between precision and speed/performance. More on this later, however. Moving on with the code</p>
-	  
-	  
-<div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>	  
-		<div class="row">
-		<div class="col l6">
-		<pre  class="prettyprint">
+                    <p>Running the code up to this point will provide you with the following graph:</p>
+                    <img class="responsive-img" src="../static/images/unsupervised-learning/flat-clustering-python-tutorial-unmarked.png" />
+                    <p>This is the same set of data and graph that we used for our <a href="../linear-svc-example-scikit-learn-svm-python/index.html" target="_blank"><strong>Support Vector Machine / Linear SVC example with supervised machine learning</strong></a>.</p>
+
+                    <p>You can probably look at this graph, and group this data all on your own. Imagine if this graph was 3D. It would be a little harder. Now imagine this graph is 50-dimensional. Suddenly you're immobilized!</p>
+                    <p>In the supervised machine learning example with this data, we were allowed to feed this data to the machine along with labels. Thus, the lower left group had labeling, and the upper right grouping did too. Our task there was to then
+                        accept future points and properly group them according the groups. Easy enough.</p>
+                    <p>Our task here, however, is a bit different. We do not have labeled data, and we want the machine to figure out all on its own that it needs to group the data.</p>
+                    <p>For now, since we're doing flat-clustering, our task is a bit easier since we can tell the machine that we want it categorized into two groups. Still, however, how might you do this?</p>
+                    <p>K-Means approaches the problem by finding similar means, repeatedly trying to find centroids that match with the least variance in groups</p>
+                    <p>This repeatedly trying ends up leaving this algorithm with fairly poor performance, though performance is an issue with all machine learning algorithms. This is why it is usually suggested that you use a highly stream-lined and efficient
+                        algorithm that is already tested heavily rather than creating your own.</p>
+                    <p>You also have to decide, as the scientist, how highly you value precision as compared to speed. There is always a balance between precision and speed/performance. More on this later, however. Moving on with the code</p>
+
+
+                    <div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
+                    <div class="row">
+                        <div class="col l6">
+                            <pre class="prettyprint">
 X = np.array([[1, 2],
               [5, 8],
               [1.5, 1.8],
@@ -161,13 +183,16 @@ X = np.array([[1, 2],
               [1, 0.6],
               [9, 11]])
 		</pre></div>
-		<div class="col l6">
-<p>Here, we're simply converting our data to a NumPy array. See the video if you're confused. You should see each of the brackets here are the same x,y coordinates as before. We're doing this because a NumPy array of features is what Scikit-learn / sklearn expects.</p></div></div>	  
+                        <div class="col l6">
+                            <p>Here, we're simply converting our data to a NumPy array. See the video if you're confused. You should see each of the brackets here are the same x,y coordinates as before. We're doing this because a NumPy array of features
+                                is what Scikit-learn / sklearn expects.</p>
+                        </div>
+                    </div>
 
-<div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
-		<div class="row">
-		<div class="col l6">
-		<pre  class="prettyprint">
+                    <div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
+                    <div class="row">
+                        <div class="col l6">
+                            <pre class="prettyprint">
 kmeans = KMeans(n_clusters=2)
 kmeans.fit(X)
 
@@ -177,18 +202,20 @@ labels = kmeans.labels_
 print(centroids)
 print(labels)
 		</pre></div>
-		<div class="col l6">
-<p>Here, we initialize kmeans to be the KMeans algorithm (flat clustering), with the required parameter of how many clusters (n_clusters).</p>
-<p>Next, we use .fit() to fit the data (learning)</p>
-<p>Next, we're grabbing the values found for the Centroids, based on the fitment, as well as the labels for each centroid.</p></div></div>	  
+                        <div class="col l6">
+                            <p>Here, we initialize kmeans to be the KMeans algorithm (flat clustering), with the required parameter of how many clusters (n_clusters).</p>
+                            <p>Next, we use .fit() to fit the data (learning)</p>
+                            <p>Next, we're grabbing the values found for the Centroids, based on the fitment, as well as the labels for each centroid.</p>
+                        </div>
+                    </div>
 
-<p>Note here that the "labels" here are labels that the machine has assigned on its own, same with the centroids.</p>
+                    <p>Note here that the "labels" here are labels that the machine has assigned on its own, same with the centroids.</p>
 
-<div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
-<p>Now we're going to actually plot and visualize the machine's findings based on our data, and the fitment according to the number of clusters we said to find.</p>
-	  
+                    <div id="two" class="border-row" style="width:100%; margin-bottom: 10px;"> </div>
+                    <p>Now we're going to actually plot and visualize the machine's findings based on our data, and the fitment according to the number of clusters we said to find.</p>
 
-		<pre  class="prettyprint">
+
+                    <pre class="prettyprint">
 colors = ["g.","r.","c.","y."]
 
 for i in range(len(X)):
@@ -201,50 +228,29 @@ plt.scatter(centroids[:, 0],centroids[:, 1], marker = "x", s=150, linewidths = 5
 plt.show()
 		</pre>
 
-<p>The above code is all "visualization" code, having nothing more to do with Machine Learning than just showing us some results.</p>
+                    <p>The above code is all "visualization" code, having nothing more to do with Machine Learning than just showing us some results.</p>
 
-<p>First, we have a "colors" list. This list will be used to be iterated through to get some custom colors for the resulting graph. Just a nice box of colors to use.</p>
-<p>We only need two colors at first, but soon we're going to ask the machine to classify into other numbers of groups just for learning purposes, so I decided to put four choices here. The period after the letters is just the type of "plot marker" to use.</p>
-<p>Now, we're using a <kbd data-toggle="collapse" data-target="#forloop" aria-expanded="false" aria-controls="forloop">for loop</kbd> to iterate through our plots.</p>
-
-
-	  
-				<div class="collapse" id="forloop">
-				  <div class="well">
-					<p>If you're confused about the for loop, you may need to first run through the <a href="../introduction-to-python-programming/index.html" target="_blank"><strong>Python 3 Basics series</strong></a>, or specifically the <a href="../loop-python-3-basics-tutorial/index.html" target="_blank"><strong>For Loop basics tutorial</strong></a>.</p>
-				  </div>
-				</div>
-<p>If you're confused about the actual code being used, especially with iterating through this loop, or the scatter plotting code slices that look like this: [:, 0], then check out the video. I explain them there.</p>
-<p>The resulting graph, after the one that just shows the points, should look like:</p>
-<img class="responsive-img" src="../static/images/unsupervised-learning/unsupervised-machine-learning-flat-clustering-kmeans-example.png"/>
-<p>Do you see the Voronoi cells? I hope not, we didn't draw them. Remember, those are the polygons that mark the divisions between clusters. Here, we have each plot marked, by color, what group it belongs to. We have also marked the centroids as big blue "x" shapes.</p>
-<p>As we can see, the machine was very successful! Now, I encourage you to play with the n_clusters variable. First, decide how many clusters you will do, then try to predict where the centroids will be.</p>
-<p>We do this in the video, choosing 3 and 4 clusters. It's relatively easy to predict with these points if you understand how the algorithm works, and makes for a good learning exercise.</p>
-<p>That's it for our Flat Clustering example for unsupervised learning, how about Hierarchical Clustering next?</p>
-
-  
-		
-		
-				
-		
+                    <p>First, we have a "colors" list. This list will be used to be iterated through to get some custom colors for the resulting graph. Just a nice box of colors to use.</p>
+                    <p>We only need two colors at first, but soon we're going to ask the machine to classify into other numbers of groups just for learning purposes, so I decided to put four choices here. The period after the letters is just the type of
+                        "plot marker" to use.</p>
+                    <p>Now, we're using a <kbd data-toggle="collapse" data-target="#forloop" aria-expanded="false" aria-controls="forloop">for loop</kbd> to iterate through our plots.</p>
 
 
-		
-			
-				<br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>1 challenge(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
-			
-		
 
-		
-			
-				<br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>2 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
-			
-		
-		
-
-
-		
-<p>The next tutorial: <a title="Unsupervised Machine Learning: Hierarchical Clustering" href="../hierarchical-clustering-machine-learning-python-scikit-learn/indexc4bd.html?completed=/flat-clustering-machine-learning-python-scikit-learn/"><button class="btn" style="background-color:#FFD166; color:#000000">Unsupervised Machine Learning: Hierarchical Clustering</button></a></p><br>
+                    <div class="collapse" id="forloop">
+                        <div class="well">
+                            <p>If you're confused about the for loop, you may need to first run through the <a href="../introduction-to-python-programming/index.html" target="_blank"><strong>Python 3 Basics series</strong></a>, or specifically the <a href="../loop-python-3-basics-tutorial/index.html"
+                                    target="_blank"><strong>For Loop basics tutorial</strong></a>.</p>
+                        </div>
+                    </div>
+                    <p>If you're confused about the actual code being used, especially with iterating through this loop, or the scatter plotting code slices that look like this: [:, 0], then check out the video. I explain them there.</p>
+                    <p>The resulting graph, after the one that just shows the points, should look like:</p>
+                    <img class="responsive-img" src="../static/images/unsupervised-learning/unsupervised-machine-learning-flat-clustering-kmeans-example.png" />
+                    <p>Do you see the Voronoi cells? I hope not, we didn't draw them. Remember, those are the polygons that mark the divisions between clusters. Here, we have each plot marked, by color, what group it belongs to. We have also marked the centroids
+                        as big blue "x" shapes.</p>
+                    <p>As we can see, the machine was very successful! Now, I encourage you to play with the n_clusters variable. First, decide how many clusters you will do, then try to predict where the centroids will be.</p>
+                    <p>We do this in the video, choosing 3 and 4 clusters. It's relatively easy to predict with these points if you understand how the algorithm works, and makes for a good learning exercise.</p>
+                    <p>That's it for our Flat Clustering example for unsupervised learning, how about Hierarchical Clustering next?</p>
 
 
 
@@ -252,138 +258,116 @@ plt.show()
 
 
 
-	  </div>
 
 
-</div>
-<div class="col l4 m12 s12">
-<br><br><br>
 
-  <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+                    <br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>1 challenge(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
 
-  		<!-- C.A. : -->
 
-	    
-	    	
-        <a href="https://nnfs.io?a=1&amp;t=/flat-clustering-machine-learning-python-scikit-learn/" id=process_click>
-          <div class="card hoverable" style="max-width:400px; align-items: left;">
-            <div class="card-image">
-              <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png"/>
+
+
+
+                    <br><a href="../%2b%3d1/index.html" target="blank">There exists <strong>2 quiz/question(s)</strong> for this tutorial. <button class='btn btn-success'>Sign up to <strong>+=1</strong></button> for access to these, video downloads, and no ads.</a><br><br>
+
+
+
+
+
+
+                    <p>The next tutorial:
+                        <a title="Unsupervised Machine Learning: Hierarchical Clustering" href="../hierarchical-clustering-machine-learning-python-scikit-learn/indexc4bd.html?completed=/flat-clustering-machine-learning-python-scikit-learn/"><button class="btn" style="background-color:#FFD166; color:#000000">Unsupervised Machine Learning: Hierarchical Clustering</button></a>
+                    </p><br>
+
+
+
+
+
+
+
+                </div>
+
+
             </div>
-          </div>
-        </a>
- 							    <li>
-								  <div class="collapsible-header active" style="padding:2px">Unsupervised Machine Learning: Flat Clustering</div>
+            <div class="col l4 m12 s12">
+                <br><br><br>
 
-								</li>
-							
-						 
-							
-								<li>
-								  <div class="collapsible-header">Unsupervised Machine Learning: Hierarchical Clustering</div>
-								  <div class="collapsible-body">
-										<p><a href="../hierarchical-clustering-machine-learning-python-scikit-learn/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
+                <ul class="collapsible popout" data-collapsible="accordion" style='font-size:85%; padding-left:50px'>
+
+                    <!-- C.A. : -->
+
+
+
+                    <a href="https://nnfs.io?a=1&amp;t=/flat-clustering-machine-learning-python-scikit-learn/" id=process_click>
+                        <div class="card hoverable" style="max-width:400px; align-items: left;">
+                            <div class="card-image">
+                                <img id=process_click class="responsive-img" src="../static/images/CAs/nnfs-1.png" />
+                            </div>
+                        </div>
+                    </a>
+                    <li>
+                        <div class="collapsible-header active" style="padding:2px">Unsupervised Machine Learning: Flat Clustering</div>
+
+                    </li>
+
+
+
+                    <li>
+                        <div class="collapsible-header">Unsupervised Machine Learning: Hierarchical Clustering</div>
+                        <div class="collapsible-body">
+                            <p><a href="../hierarchical-clustering-machine-learning-python-scikit-learn/index.html"><button class="btn waves-effect waves-light right-align" style="background-color:#FFD166; color:#000000">Go
 									  </button></a></p>
-								  </div>
-								</li>
+                        </div>
+                    </li>
 
-  </ul>
+                </ul>
+
+
+            </div>
+        </div>
+
+    </body>
+
+
 
 
 </div>
-</div>	
+</div>
+
+<!--login modal-->
+
+
+<!--Register modal-->
+
+
+
+<script>
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+        $('.modal-trigger').leanModal();
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('#aside').pushpin({
+            top: 110,
+            bottom: 500
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('.collapsible').collapsible({
+            accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+        $('select').material_select();
+    });
+</script>
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+<script type="text/javascript" src="../static/js/run_prettify.js"></script>
 
 </body>
 
-
-
-
-			</div>
-		</div>
-
-		<!--login modal-->
-		
-
-		<!--Register modal-->
-		
-
-
-		<script>
-			$(document).ready(function(){
-				$(".button-collapse").sideNav();
-				$('.modal-trigger').leanModal();
-				$('.collapsible').collapsible({
-				  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-				});
-				$('#aside').pushpin({ top:110, bottom:500 });
-		  });
-		</script>
-		<script>
-		  $(document).ready(function(){
-			$('.collapsible').collapsible({
-			  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-			});
-			$('select').material_select();
-		  });
-	  </script>
-	  <script>
-		function goBack() {
-			window.history.back()
-		}
-	</script>
-		<script type="text/javascript" src="../static/js/run_prettify.js"></script>
-
-	</body>
-
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">You've reached the end!</h5>
-
-                <p class="grey-text text-lighten-4">Contact: Harrison@pythonprogramming.net.</p>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../support-donate/index.html">Support this Website!</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../consulting/index.html">Consulting and Contracting</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/pythonprogramming.net/">Facebook</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/sentdex">Twitter</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://instagram.com/sentdex">Instagram</a></li>
-                </ul>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h6 class="white-text">Legal stuff:</h6>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="../about/tos/index.html">Terms and Conditions</a></li>
-                  <li><a class="grey-text text-lighten-3" href="../about/privacy-policy/index.html">Privacy Policy</a></li>
-
-                </ul>
-              </div>
-            </div>
-          </div>
-          <a href="https://xkcd.com/353/" target='blank'><p class="grey-text right" style='padding-right:10px'>Programming is a superpower.</p></a>
-          <div class="footer-copyright">
-            <div class="container">
-            © OVER 9000! PythonProgramming.net
-
-            </div>
-
-          </div>
-        </footer>
-
-
-<!-- Mirrored from pythonprogramming.net/flat-clustering-machine-learning-python-scikit-learn/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Jun 2021 21:36:18 GMT -->
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
