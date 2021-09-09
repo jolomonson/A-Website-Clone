@@ -14,7 +14,7 @@
                         <h5>Registration Page</h5>
                     </div>
                     <div class="card-body">
-                        {% csrf_token %} {{RegForm}}
+                        {% csrf_token %} {{RegForm.as_p}}
 
                         <div class="form-group" style="text-align:center">
                             <br>

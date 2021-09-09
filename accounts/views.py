@@ -14,13 +14,13 @@ def register(request):
         if RegForm.is_valid():
             user = RegForm.save()
             username = RegForm.cleaned_data.get('username')
-            messages.success(request, 'New Account Created for: {}'.format(username)) 
+            messages.success(request, f"New Account Created for: {username}") 
             login(request, user)
-            messages.info(request, 'You are Logged in as {}'.format(user))
+            messages.info(request, f"You are Logged in as: {username}")
             return redirect('main:homePage')
         else:
             for msg in RegForm.error_messages:
-                messages.error(request, '{} form.error_messages[msg]'.format(msg))
+                messages.error(request, f"{msg}: form.error_messages[msg]")
 
     RegForm = RegistrationForm
     return render(request, 'accounts/register.html', {'RegForm':RegForm})
@@ -45,4 +45,5 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
+    messages.info(request, "Logged out Successfully")
     return redirect('/')
